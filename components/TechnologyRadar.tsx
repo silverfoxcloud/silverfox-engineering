@@ -214,7 +214,9 @@ export default function TechnologyRadar({ locale }: { locale: Locale }) {
                 onFocus={() => isVisible && setSelected(entry.name)}
                 onClick={() => isVisible && setSelected(entry.name)}
               >
-                {String(index + 1).padStart(2, "0")}
+                {fa
+                  ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰")
+                  : String(index + 1).padStart(2, "0")}
               </button>
             );
           })}
