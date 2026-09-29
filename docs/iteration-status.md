@@ -15,10 +15,10 @@
 - Footer corporate identity and localized company links aligned with the brand/domain strategy.
 
 
-- Clean canonical routes without `/fa` or `/en`.
-- Persisted locale preference on the same route.
-- Legacy `/fa/...` redirect pages marked `noindex`.
-- Locale-neutral sitemap.
+- English primary routes plus indexable Persian `/fa/...` alternates.
+- Route-based language switching with no client-only locale persistence.
+- Reciprocal English/Persian `hreflang`, per-language canonical URLs and OpenGraph locale metadata.
+- Bilingual sitemap with 15 Persian public routes and reciprocal language alternates.
 - Full-width desktop mega-menu with backdrop blur.
 - Deterministic menu close behavior: destination, outside click, Escape, route change and category switch.
 - Context-specific featured content for Engineering, Platforms and Resources.
@@ -36,10 +36,18 @@
 - Product copy tightened to distinguish target architecture from deployed/current capability where status is not yet confirmed.
 - Documentation for locale/routing, navigation, architecture and RTL/LTR behavior.
 
-## Validation required after commit
+## Validation completed
 
-- GitHub Actions build/export.
-- Deployed route verification.
+- GitHub Actions TypeScript validation and static export passed after the bilingual routing change.
+- Generated GitHub Pages artifact audited directly: 32 HTML outputs, no broken internal links, no missing local assets, no invalid SVG documents, and no canonical public page missing title/description/canonical metadata.
+- Bilingual SEO artifact audit passed: English/Persian home, Architecture and Fox Pay samples contain correct language copy, reciprocal hreflang and language-specific canonical URLs.
+- Sitemap artifact contains all 15 Persian routes plus reciprocal `hreflang=en/fa` entries.
+- Generated Persian page roots contain `lang="fa"` and `dir="rtl"`.
+
+## Visual validation still required
+
+- Deployed route visual verification in a browser.
+
 - Desktop visual review at 1920 and 1440.
 - Tablet visual review at 1024 and 768.
 - Mobile visual review at 430 and 390.
