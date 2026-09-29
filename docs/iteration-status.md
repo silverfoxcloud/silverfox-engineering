@@ -2,6 +2,19 @@
 
 ## Implemented in this iteration
 
+- Homepage restructured around a shorter capability-led narrative rather than embedding the full Technology Radar.
+- New core-capability storytelling for Cloud Platform, Security/Governance, Observability/Reliability, Data/Integration, AI and multilingual product experience.
+- New multilingual-experience engineering SVG with reduced-motion-safe animation.
+- Architecture page expanded from four generic sections into explicit product/platform boundaries, data ownership, contracts, events, multi-tenancy, reliability, security, distribution and evolutionary architecture.
+- Architecture nodes now route directly to their related engineering context while hover/focus still drives the detail panel.
+- SFAS, License Platform and Fox Pay pages now distinguish current engineering status from roadmap scope using current project repositories and canonical documents.
+- ExoTravel and ExoHub pages now describe bounded ownership and anti-duplication architecture without claiming unverified shipped capability.
+- Platform pages now include deeper technical narrative sections rather than sharing only a generic capabilities/approach skeleton.
+- Persian brand references, technical terminology and interface digits received another native-language audit.
+- Resource mega menu now includes Architecture as specified.
+- Footer corporate identity and localized company links aligned with the brand/domain strategy.
+
+
 - Clean canonical routes without `/fa` or `/en`.
 - Persisted locale preference on the same route.
 - Legacy `/fa/...` redirect pages marked `noindex`.
@@ -32,6 +45,7 @@
 - Mobile visual review at 430 and 390.
 - Persian RTL and English LTR screenshot review.
 - Final Technology Radar visual/collision review at deployed viewport sizes.
-- Final visual review of the new product/platform hero compositions and domain-specific SVG motion on the deployed site.
+- Final visual review of the new product/platform hero compositions, capability rows and domain-specific SVG motion on the deployed site.
+- Final viewport screenshot review at 1920/1440/1024/768/430/390 for both English LTR and Persian RTL.
 
 This document intentionally does not mark the redesign complete until those checks are performed.
