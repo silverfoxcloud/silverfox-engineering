@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "../../globals.css";
 
 export const metadata: Metadata = {
   title: "مهندسی پردازش ابری روباه نقره‌ای",
@@ -10,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function PersianLayout({ children }: { children: React.ReactNode }) {
-  return <div lang="fa" dir="rtl">{children}</div>;
+  return <html lang="fa" dir="rtl"><body>{children}</body></html>;
 }
