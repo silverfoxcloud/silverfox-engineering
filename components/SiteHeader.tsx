@@ -73,6 +73,7 @@ const groups = [
     items: [
       ["engineering-principles", "Engineering Principles", "اصول مهندسی", "Ownership, contracts, security and operational rules", "مالکیت، قرارداد، امنیت و قواعد عملیاتی"],
       ["technology-radar", "Technology Radar", "رادار فناوری", "A public view of technology decisions", "نمای عمومی از تصمیم‌های فناوری"],
+      ["architecture", "Architecture", "معماری", "System boundaries, contracts and evolution", "مرزهای سیستم، قراردادها و تکامل معماری"],
       ["https://git.silverfoxcloud.com", "GitHub", "GitHub", "Public repositories and engineering work", "مخزن‌های عمومی و کار مهندسی"],
       ["https://www.linkedin.com/company/silverfoxcloud", "LinkedIn", "LinkedIn", "Company updates and public communication", "خبرها و ارتباطات عمومی شرکت"],
     ],
