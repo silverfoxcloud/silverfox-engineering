@@ -89,3 +89,30 @@ Platform/product pages also use dedicated hero compositions:
 - Fox Pay: product-to-router-to-provider orchestration plus verification/reconciliation signals.
 - ExoTravel: product-owned travel-commerce lifecycle.
 - ExoHub: ecosystem integration hub with explicit shared boundaries.
+
+
+## Content sourcing and product truth
+
+Public copy is grounded in the canonical Silver Fox project documents and current product repository status.
+
+Source precedence:
+
+1. current project status and accepted phase reports;
+2. canonical architecture/roadmap documents;
+3. older reports and historical design material.
+
+The portal distinguishes three states:
+
+- implemented/current;
+- current engineering baseline with a known release gate;
+- roadmap/target architecture.
+
+A roadmap item is never promoted to a shipped capability merely to strengthen marketing copy. Private infrastructure topology, credentials, secret formats, internal defensive controls and exploitable operational procedures stay outside the public portal.
+
+## SEO with locale-neutral routes
+
+Each engineering and platform route has its own build-time title, description, canonical URL and OpenGraph URL. The sitemap contains only clean canonical routes.
+
+The locale architecture intentionally serves Persian and English on the same canonical URL. Standard hreflang is therefore not emitted because valid hreflang alternates require distinct crawlable language URLs. Pointing both `fa` and `en` at the same canonical resource would be misleading and provides no meaningful alternate for crawlers.
+
+If language-specific indexable URLs are introduced in the future, hreflang can be added as part of that routing decision rather than as an invalid metadata-only workaround.
