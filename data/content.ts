@@ -88,7 +88,7 @@ export const projects = [
 
 export const copy = {
   en: {
-    langName: "فارسی", langHref: "/fa/", eyebrow: "SILVER FOX ENGINEERING",
+    langName: "فارسی", langHref: "/", eyebrow: "SILVER FOX ENGINEERING",
     heroTitle: "Independent products. Shared engineering leverage.",
     heroBody: "Each Silver Fox product evolves independently, but it does not start alone. Identity, licensing, payments, data foundations and shared product experience are engineered as explicit platform capabilities so products can grow faster without inheriting one shared release cycle.",
     primaryCta: "Explore engineering", secondaryCta: "Architecture",
