@@ -8,7 +8,6 @@ import {
   platformSlugs,
   type PlatformSlug,
 } from "@/data/engineering-pages";
-import { useLocalizedMetadata } from "@/components/LocaleProvider";
 import type { Locale } from "@/data/content";
 
 function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
@@ -103,11 +102,6 @@ export default function PlatformDetailPage({ slug, locale }: { slug: PlatformSlu
   const page = platformPages[slug][locale];
   const fa = locale === "fa";
   const localize = (href: string) => fa ? "/fa" + href : href;
-
-  useLocalizedMetadata(
-    page.name + (fa ? " | مهندسی پردازش ابری روباه نقره‌ای" : " | Silver Fox Engineering"),
-    page.lead,
-  );
 
   return (
     <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
