@@ -18,7 +18,7 @@ export default function EngineeringDetailPage({ slug }: { slug: EngineeringSlug 
   const fa = locale === "fa";
 
   useLocalizedMetadata(
-    page.title + (fa ? " | مهندسی Silver Fox" : " | Silver Fox Engineering"),
+    page.title + (fa ? " | مهندسی پردازش ابری روباه نقره‌ای" : " | Silver Fox Engineering"),
     page.lead,
   );
 
