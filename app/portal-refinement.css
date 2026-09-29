@@ -999,3 +999,101 @@
     animation: none !important;
   }
 }
+
+/* Engineering Principles narrative */
+.homePrinciples {
+  padding: 118px 0;
+  border-top: 1px solid var(--border-soft);
+  background:
+    radial-gradient(circle at 14% 8%, rgba(70, 137, 205, .08), transparent 30%),
+    #091725;
+}
+
+.homePrinciplesGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, .75fr) minmax(0, 1.25fr);
+  gap: 84px;
+  align-items: start;
+}
+
+.homePrinciplesIntro {
+  position: sticky;
+  top: 118px;
+}
+
+.homePrinciplesIntro h2 {
+  margin: 15px 0 20px;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.rtl .homePrinciplesIntro h2 { letter-spacing: 0; }
+
+.homePrinciplesIntro p {
+  color: #9eafc0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.homePrinciplesIntro > a {
+  display: inline-flex;
+  margin-top: 20px;
+  color: #96d4ff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.homePrincipleRows {
+  border-top: 1px solid rgba(113, 164, 210, .2);
+}
+
+.homePrincipleRow {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 22px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(113, 164, 210, .16);
+}
+
+.homePrincipleRow > span {
+  color: #6595bd;
+  font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  padding-top: 5px;
+}
+
+.homePrincipleRow strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.homePrincipleRow p {
+  max-width: 760px;
+  margin: 10px 0 0;
+  color: #8fa4b8;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+@media (max-width: 900px) {
+  .homePrinciplesGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .homePrinciplesIntro {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .homePrinciples {
+    padding: 82px 0;
+  }
+
+  .homePrincipleRow {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+  }
+}

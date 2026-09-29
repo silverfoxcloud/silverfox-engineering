@@ -9,6 +9,7 @@ export const engineeringSlugs = [
   "devops-sre",
   "data",
   "technology-radar",
+  "engineering-principles",
 ] as const;
 
 export type EngineeringSlug = typeof engineeringSlugs[number];
@@ -286,6 +287,42 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       closingTitle: "جدید بودن، دلیل کافی برای مفید بودن نیست.",
       closingBody: "هر فناوری باید ریسک را کم کند، اهرم بیشتری بسازد یا اداره سیستم را ساده‌تر کند."
     }
+  },
+  "engineering-principles": {
+    en: {
+      eyebrow: "ENGINEERING PRINCIPLES",
+      title: "Rules that keep autonomy from becoming fragmentation.",
+      lead: "Silver Fox products evolve independently, but independence is bounded by shared rules for ownership, contracts, security, observability and change.",
+      summary: "These principles are constraints on how systems are designed and operated. They exist to keep reuse deliberate, coupling visible and operational responsibility clear.",
+      visual: "/visual-principles.svg",
+      sections: [
+        { title: "Ownership before reuse", body: "A capability is shared only when its responsibility and operating owner are explicit. Product domains keep ownership of business rules and authoritative data." },
+        { title: "Contracts are system boundaries", body: "Versioned APIs, schemas and compatibility rules define where systems meet. Integration should depend on a contract, not on another component's internal implementation." },
+        { title: "Secure defaults, explicit privilege", body: "Identity, authorization, tenant context, secret handling and audit evidence are designed into trusted boundaries. Privilege is granted deliberately and reviewed as the system changes." },
+        { title: "Observable change", body: "Delivery, telemetry and recovery belong to one feedback loop. A change is not operationally complete until its behavior can be explained with useful signals." },
+        { title: "Evolution follows evidence", body: "Complexity is introduced when measured scale, reliability or product needs justify it. Components may be split, replaced or centralized as evidence changes." },
+        { title: "RTL and LTR are equal product modes", body: "Localization, typography, direction, accessibility and responsive behavior are first-class product concerns rather than a translation pass at the end." }
+      ],
+      closingTitle: "Consistency should protect autonomy, not replace it.",
+      closingBody: "Shared engineering rules create predictable boundaries so products can move independently without making integration and operations unpredictable."
+    },
+    fa: {
+      eyebrow: "اصول مهندسی",
+      title: "قواعد مشترک، برای اینکه استقلال محصول به پراکندگی تبدیل نشود.",
+      lead: "محصولات Silver Fox مسیر توسعه مستقل دارند، اما این استقلال در چارچوب قواعد مشترک برای مالکیت، قراردادها، امنیت، مشاهده‌پذیری و مدیریت تغییر تعریف می‌شود.",
+      summary: "این اصول شعار نیستند؛ محدودیت‌های طراحی و عملیات‌اند. کمک می‌کنند استفاده مجدد آگاهانه باشد، وابستگی‌ها پنهان نمانند و مسئولیت هر بخش مشخص بماند.",
+      visual: "/visual-principles.svg",
+      sections: [
+        { title: "اول مالکیت، بعد اشتراک", body: "یک قابلیت زمانی مشترک می‌شود که مسئولیت و مالک عملیاتی آن روشن باشد. قوانین کسب‌وکار و داده مرجع هر دامنه در مالکیت همان محصول باقی می‌مانند." },
+        { title: "قرارداد، مرز ارتباط سیستم‌هاست", body: "API، schema و قواعد سازگاری نسخه‌بندی می‌شوند تا نقطه اتصال سیستم‌ها روشن باشد. یکپارچه‌سازی نباید به جزئیات داخلی پیاده‌سازی سرویس دیگر وابسته شود." },
+        { title: "پیش‌فرض امن، دسترسی صریح", body: "هویت، مجوزدهی، زمینه مستأجر، مدیریت اطلاعات محرمانه و شواهد ممیزی در مرزهای قابل اعتماد طراحی می‌شوند. دسترسی بیشتر باید آگاهانه اعطا و با تغییر سیستم بازبینی شود." },
+        { title: "تغییر باید قابل مشاهده باشد", body: "تحویل، telemetry و بازیابی یک چرخه بازخورد واحدند. تغییر زمانی از نظر عملیاتی کامل است که بتوان رفتار آن را با سیگنال‌های مفید توضیح داد." },
+        { title: "معماری با شواهد تکامل پیدا می‌کند", body: "پیچیدگی فقط وقتی وارد سیستم می‌شود که مقیاس، قابلیت اتکا یا نیاز واقعی محصول آن را توجیه کند. با تغییر شواهد، اجزا می‌توانند جدا، جایگزین یا متمرکز شوند." },
+        { title: "RTL و LTR دو حالت هم‌ارز محصول‌اند", body: "بومی‌سازی، تایپوگرافی، جهت، دسترس‌پذیری و رفتار responsive از ابتدا جزئی از محصول‌اند؛ نه مرحله‌ای برای ترجمه در پایان توسعه." }
+      ],
+      closingTitle: "هماهنگی باید از استقلال محصول محافظت کند، نه جای آن را بگیرد.",
+      closingBody: "قواعد مشترک مهندسی مرزها را قابل پیش‌بینی می‌کنند تا محصولات مستقل تغییر کنند، بدون اینکه یکپارچه‌سازی و عملیات غیرقابل پیش‌بینی شود."
+    }
   }
 };
 
@@ -307,19 +344,19 @@ export const platformPages: Record<PlatformSlug, Record<Locale, PlatformPage>> =
     fa: { name:"Silver Fox Admin System", eyebrow:"پلتفرم تجربه", title:"یک پایه مشترک برای محصولات عملیاتی.", lead:"SFAS مدیریت، اجزای طراحی، دسترس‌پذیری و پایه تجربه چندزبانه را یکپارچه می‌کند؛ بدون اینکه منطق کسب‌وکار محصولات در یک جا جمع شود.", capabilities:["پوسته مدیریت مشترک","پایه سیستم طراحی","تجربه چندزبانه","رابط عملیاتی دسترس‌پذیر"], engineering:["کامپوننت‌های قابل استفاده مجدد و توکن‌های معنایی","ناوبری و وضعیت‌های هماهنگ در محصولات","چیدمان و تایپوگرافی وابسته به زبان","استفاده مشترک بدون اشتراک منطق دامنه"] }
   },
   "license-platform": {
-    en: { name:"Silver Fox License Platform", eyebrow:"COMMERCIAL CONTROL PLANE", title:"Licensing, entitlement and usage as a platform.", lead:"The License Platform separates subscriptions, entitlements, technical licenses and metered usage so commercial policy does not leak into every product implementation.", capabilities:["Multi-tenancy","Policy-driven licensing","Entitlement management","Usage metering"], engineering:["Subscription and entitlement separation","Environment-aware credentials and policy","Idempotent sensitive operations","Auditable pricing and usage models"] },
-    fa: { name:"Silver Fox License Platform", eyebrow:"لایه کنترل تجاری", title:"لایسنس، دسترسی و مصرف؛ به‌عنوان یک قابلیت پلتفرمی.", lead:"این پلتفرم اشتراک، سطح دسترسی، لایسنس فنی و مصرف را از هم جدا نگه می‌دارد تا سیاست تجاری به کد هر محصول نشت نکند.", capabilities:["چندمستاجری","لایسنس مبتنی بر سیاست","مدیریت سطح دسترسی","اندازه‌گیری مصرف"], engineering:["تفکیک اشتراک از دسترسی فنی","سیاست و اعتبارنامه مستقل برای هر محیط","عملیات حساس با جلوگیری از اجرای تکراری","مدل قیمت و مصرف قابل ممیزی"] }
+    en: { name:"Silver Fox License Platform", eyebrow:"COMMERCIAL CONTROL PLANE", title:"Licensing, entitlement and usage as a platform.", lead:"The License Platform is designed to separate subscriptions, entitlements, technical licenses and usage governance so commercial policy does not leak into every product implementation.", capabilities:["Multi-tenancy","Policy-driven licensing","Entitlement model","Usage governance"], engineering:["Subscription and entitlement separation","Environment-aware credentials and policy","Idempotent sensitive operations","Auditable commercial models"] },
+    fa: { name:"Silver Fox License Platform", eyebrow:"لایه کنترل تجاری", title:"لایسنس، دسترسی و مصرف؛ به‌عنوان یک قابلیت پلتفرمی.", lead:"پلتفرم لایسنس با هدف تفکیک اشتراک، entitlement، لایسنس فنی و حاکمیت مصرف طراحی می‌شود تا سیاست تجاری وارد پیاده‌سازی هر محصول نشود.", capabilities:["چندمستاجری","لایسنس مبتنی بر سیاست","مدل entitlement","حاکمیت مصرف"], engineering:["تفکیک اشتراک از دسترسی فنی","سیاست و اعتبارنامه مستقل برای هر محیط","عملیات حساس با جلوگیری از اجرای تکراری","مدل تجاری قابل ممیزی"] }
   },
   "fox-pay": {
-    en: { name:"Fox Pay", eyebrow:"PAYMENT INFRASTRUCTURE", title:"One payment contract. Multiple providers.", lead:"Fox Pay isolates provider-specific behavior behind adapters and adds deterministic routing, verification, reconciliation, webhook delivery and operational visibility.", capabilities:["Provider abstraction","Policy routing","Reconciliation","Provider health"], engineering:["Go + PostgreSQL + Redis baseline","Deterministic routing and failover","Idempotency and replay protection","Provider-independent payment states"] },
-    fa: { name:"Fox Pay", eyebrow:"زیرساخت پرداخت", title:"یک قرارداد پرداخت؛ چند ارائه‌دهنده.", lead:"Fox Pay جزئیات اختصاصی هر درگاه را پشت لایه‌های سازگار پنهان می‌کند و مسیریابی، تأیید، تطبیق تراکنش، تحویل Webhook و دید عملیاتی را به‌صورت یکپارچه فراهم می‌کند.", capabilities:["انتزاع درگاه","مسیریابی سیاست‌محور","تطبیق تراکنش","پایش سلامت درگاه"], engineering:["پایه Go، PostgreSQL و Redis","مسیریابی و جایگزینی قطعی","جلوگیری از اجرای تکراری و بازپخش","وضعیت پرداخت مستقل از درگاه"] }
+    en: { name:"Fox Pay", eyebrow:"PAYMENT INFRASTRUCTURE", title:"One payment contract. Multiple providers.", lead:"Fox Pay is designed to isolate provider-specific behavior behind adapters and a common payment contract, with routing, verification, reconciliation, webhook delivery and provider health treated as orchestration concerns.", capabilities:["Provider abstraction","Routing policy","Verification & reconciliation","Provider health model"], engineering:["Go + PostgreSQL + Redis baseline","Deterministic routing and failover","Idempotency and replay protection","Provider-independent payment states"] },
+    fa: { name:"Fox Pay", eyebrow:"زیرساخت پرداخت", title:"یک قرارداد پرداخت؛ چند ارائه‌دهنده.", lead:"Fox Pay با هدف جداکردن رفتار اختصاصی هر درگاه از محصولات طراحی شده است؛ مسیریابی، تأیید، تطبیق تراکنش، تحویل Webhook و وضعیت ارائه‌دهنده در لایه ارکستریشن مدیریت می‌شوند.", capabilities:["انتزاع درگاه","سیاست مسیریابی","تأیید و تطبیق تراکنش","مدل سلامت ارائه‌دهنده"], engineering:["پایه Go، PostgreSQL و Redis","مسیریابی و جایگزینی قطعی","جلوگیری از اجرای تکراری و بازپخش","وضعیت پرداخت مستقل از درگاه"] }
   },
   exotravel: {
-    en: { name:"ExoTravel", eyebrow:"TRAVEL TECHNOLOGY", title:"A travel domain built on strong platform foundations.", lead:"ExoTravel combines product-owned travel workflows with shared tenancy, identity, audit, multilingual, commerce and integration foundations.", capabilities:["Travel domain ownership","Tenant-safe foundations","Commerce lifecycle","Partner and API readiness"], engineering:["Forced tenant isolation patterns","Audit and transactional outbox","Money and localization primitives","Progressive domain delivery"] },
-    fa: { name:"ExoTravel", eyebrow:"فناوری سفر", title:"دامنه سفر روی پایه‌ای محکم از قابلیت‌های پلتفرمی.", lead:"ExoTravel فرایندهای اختصاصی سفر را با زیرساخت مشترک چندمستاجری، هویت، ممیزی، چندزبانه، تجارت و یکپارچگی ترکیب می‌کند.", capabilities:["مالکیت دامنه سفر","پایه امن چندمستاجری","چرخه تجارت و رزرو","آمادگی همکاری و API"], engineering:["الگوهای جداسازی اجباری مستأجرها","ممیزی و Outbox تراکنشی","پایه پول و بومی‌سازی","تحویل مرحله‌ای دامنه‌ها"] }
+    en: { name:"ExoTravel", eyebrow:"TRAVEL TECHNOLOGY", title:"A travel domain built on strong platform foundations.", lead:"ExoTravel combines product-owned travel workflows with shared tenancy, identity, audit, multilingual, commerce and integration foundations.", capabilities:["Travel domain ownership","Tenant-safe foundations","Commerce lifecycle","Partner and API readiness"], engineering:["Tenant isolation at trusted boundaries","Audit and transactional outbox","Money and localization primitives","Progressive domain delivery"] },
+    fa: { name:"ExoTravel", eyebrow:"فناوری سفر", title:"دامنه سفر روی پایه‌ای محکم از قابلیت‌های پلتفرمی.", lead:"ExoTravel فرایندهای اختصاصی سفر را با زیرساخت مشترک چندمستاجری، هویت، ممیزی، چندزبانه، تجارت و یکپارچگی ترکیب می‌کند.", capabilities:["مالکیت دامنه سفر","پایه امن چندمستاجری","چرخه تجارت و رزرو","آمادگی همکاری و API"], engineering:["جداسازی مستأجر در مرزهای قابل اعتماد","ممیزی و Outbox تراکنشی","پایه پول و بومی‌سازی","تحویل مرحله‌ای دامنه‌ها"] }
   },
   exohub: {
-    en: { name:"ExoHub", eyebrow:"ECOSYSTEM PLATFORM", title:"Shared platform capabilities for connected products.", lead:"ExoHub provides common platform services for travel-commerce domains while keeping identity, tenancy, commerce, booking and financial ownership explicit.", capabilities:["Shared platform services","Domain boundaries","Commerce foundations","Integration layer"], engineering:["Platform-first reuse","Canonical domain ownership","API-first contracts","Event-aware integration"] },
-    fa: { name:"ExoHub", eyebrow:"پلتفرم اکوسیستم", title:"قابلیت‌های مشترک برای محصولاتی که باید به هم متصل بمانند.", lead:"ExoHub سرویس‌های مشترک پلتفرمی را برای دامنه‌های تجاری و سفر فراهم می‌کند و در عین حال مالکیت هویت، مستأجر، تجارت، رزرو و داده مالی را روشن نگه می‌دارد.", capabilities:["سرویس‌های مشترک پلتفرم","مرزبندی دامنه‌ها","پایه تجارت","لایه یکپارچگی"], engineering:["استفاده مجدد در سطح پلتفرم","مالکیت مرجع هر دامنه","قراردادهای API از ابتدا","یکپارچگی آگاه به رویداد"] }
+    en: { name:"ExoHub", eyebrow:"ECOSYSTEM PLATFORM", title:"Shared platform capabilities for connected products.", lead:"ExoHub is being designed as an integration-focused product for shared ecosystem capabilities while keeping identity, tenancy, commerce, booking and financial ownership explicit.", capabilities:["Shared platform services","Domain boundaries","Commerce foundations","Integration layer"], engineering:["Platform-first reuse","Canonical domain ownership","API-first contracts","Event-aware integration"] },
+    fa: { name:"ExoHub", eyebrow:"پلتفرم اکوسیستم", title:"قابلیت‌های مشترک برای محصولاتی که باید به هم متصل بمانند.", lead:"ExoHub به‌عنوان محصولی با تمرکز بر یکپارچه‌سازی قابلیت‌های مشترک اکوسیستم طراحی می‌شود؛ با حفظ مرز روشن مالکیت هویت، مستأجر، تجارت، رزرو و داده مالی.", capabilities:["سرویس‌های مشترک پلتفرم","مرزبندی دامنه‌ها","پایه تجارت","لایه یکپارچگی"], engineering:["استفاده مجدد در سطح پلتفرم","مالکیت مرجع هر دامنه","قراردادهای API از ابتدا","یکپارچگی آگاه به رویداد"] }
   }
 };

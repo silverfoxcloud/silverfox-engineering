@@ -16,6 +16,7 @@ export default function PortalPage() {
   const { locale } = useLocale();
   const c = copy[locale];
   const fa = locale === "fa";
+  const principles = engineeringPages["engineering-principles"][locale];
 
   useLocalizedMetadata(
     fa ? "مهندسی Silver Fox" : "Silver Fox Engineering",
@@ -171,6 +172,30 @@ export default function PortalPage() {
           </p>
         </div>
         <TechnologyRadar locale={locale} />
+      </section>
+
+      <section className="homePrinciples">
+        <div className="shell homePrinciplesGrid">
+          <div className="homePrinciplesIntro">
+            <span className="kicker">{principles.eyebrow}</span>
+            <h2>{principles.title}</h2>
+            <p>{principles.summary}</p>
+            <Link href="/engineering-principles/">
+              {fa ? "خواندن اصول مهندسی" : "Read engineering principles"} <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <div className="homePrincipleRows">
+            {principles.sections.slice(0, 4).map((section, index) => (
+              <div className="homePrincipleRow" key={section.title}>
+                <span>{fa ? "۰۱۲۳۴۵۶۷۸۹"[index + 1] : String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <strong>{section.title}</strong>
+                  <p>{section.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="homeClosing">

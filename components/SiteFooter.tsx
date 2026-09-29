@@ -42,6 +42,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
 
         <div className="footerGroup">
           <strong>{fa ? "منابع" : "Resources"}</strong>
+          <Link href="/engineering-principles/">{fa ? "اصول مهندسی" : "Engineering Principles"}</Link>
           <Link href="/technology-radar/">{fa ? "رادار فناوری" : "Technology Radar"}</Link>
           <a href="https://git.silverfoxcloud.com" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/company/silverfoxcloud" rel="noreferrer">LinkedIn ↗</a>

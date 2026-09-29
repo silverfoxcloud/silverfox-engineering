@@ -16,6 +16,8 @@
 - Technology Radar v2 with stable positions, status/category filters, contextual detail and a dedicated mobile representation.
 - Dedicated Architecture, Data, DevOps/SRE and Technology Radar SVGs replacing reused generic visuals.
 - Homepage copy refinement in Persian and English.
+- Dedicated Engineering Principles resource and homepage narrative section.
+- Product copy tightened to distinguish target architecture from deployed/current capability where status is not yet confirmed.
 - Documentation for locale/routing, navigation, architecture and RTL/LTR behavior.
 
 ## Validation required after commit
