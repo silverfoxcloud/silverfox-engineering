@@ -15,6 +15,9 @@
 - Expanded engineering footer.
 - Technology Radar v2 with stable positions, status/category filters, contextual detail and a dedicated mobile representation.
 - Dedicated Architecture, Data, DevOps/SRE and Technology Radar SVGs replacing reused generic visuals.
+- Cloud, Security, Platform and AI visuals refined into domain-specific system diagrams with reduced-motion-safe animation.
+- Product/platform hero visuals differentiated for SFAS, License Platform, Fox Pay, ExoTravel and ExoHub instead of reusing one generic logo treatment.
+- CI now performs an explicit TypeScript check before the static export build.
 - Homepage copy refinement in Persian and English.
 - Dedicated Engineering Principles resource and homepage narrative section.
 - Product copy tightened to distinguish target architecture from deployed/current capability where status is not yet confirmed.
@@ -29,6 +32,6 @@
 - Mobile visual review at 430 and 390.
 - Persian RTL and English LTR screenshot review.
 - Final Technology Radar visual/collision review at deployed viewport sizes.
-- Final motion review for the remaining domain-specific surfaces.
+- Final visual review of the new product/platform hero compositions and domain-specific SVG motion on the deployed site.
 
 This document intentionally does not mark the redesign complete until those checks are performed.
