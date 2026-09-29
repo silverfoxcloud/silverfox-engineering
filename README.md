@@ -40,9 +40,19 @@ Every content or UI change should preserve:
 
 ## Public routing and locale
 
-Canonical URLs are locale-neutral. Persian and English render on the same route, and the selected language is restored from browser preference storage. Legacy `/fa/...` paths remain only as `noindex` redirects to clean canonical routes.
+English uses the primary route tree:
 
-Because both languages intentionally share one canonical URL, the site does not emit misleading `hreflang` pairs that point multiple language codes at the same resource. Conventional hreflang requires distinct crawlable language URLs; adding those would require a deliberate change to the locale-routing architecture.
+- `/`
+- `/architecture/`
+- `/platforms/fox-pay/`
+
+Persian uses an equally indexable `/fa/` route tree:
+
+- `/fa/`
+- `/fa/architecture/`
+- `/fa/platforms/fox-pay/`
+
+Each language page has its own canonical URL and points to the other language with `hreflang`. The sitemap publishes both language trees and their alternates. Language switching is route-based, so crawlers and users see the same language-specific document rather than a client-only preference state.
 
 Implementation details and current validation status are documented in:
 
