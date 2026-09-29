@@ -119,7 +119,7 @@ const allRoutes = [
   "/fa/changelog/",
 ];
 
-function slugify(route: string) {
+function slugify(route) {
   return route === "/" ? "home" : route.replace(/^\/+|\/+$/g, "").replace(/\//g, "-");
 }
 
