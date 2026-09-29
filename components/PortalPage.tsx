@@ -1,0 +1,156 @@
+import Link from "next/link";
+import { copy, projects, type Locale } from "@/data/content";
+
+const icons = {
+  ecosystem: "◆",
+  projects: "▦",
+  architecture: "⌘",
+  standards: "◎",
+};
+
+export default function PortalPage({ locale }: { locale: Locale }) {
+  const c = copy[locale];
+  const rtl = locale === "fa";
+
+  return (
+    <main dir={rtl ? "rtl" : "ltr"} className={rtl ? "rtl" : "ltr"}>
+      <header className="siteHeader">
+        <div className="shell navWrap">
+          <Link href={locale === "fa" ? "/fa/" : "/"} className="brand" aria-label="Silver Fox Engineering">
+            <span className="mark">SF</span>
+            <span className="brandText"><strong>Silver Fox</strong><small>Engineering</small></span>
+          </Link>
+          <nav className="navLinks" aria-label="Primary navigation">
+            <a href="#ecosystem">{c.nav[0]}</a>
+            <a href="#projects">{c.nav[1]}</a>
+            <a href="#architecture">{c.nav[2]}</a>
+            <a href="#standards">{c.nav[3]}</a>
+            <a href="#security">{c.nav[4]}</a>
+          </nav>
+          <Link href={c.langHref} className="langSwitch">{c.langName}</Link>
+        </div>
+      </header>
+
+      <section className="hero">
+        <div className="heroGlow heroGlowOne" />
+        <div className="heroGlow heroGlowTwo" />
+        <div className="shell heroGrid">
+          <div className="heroCopy">
+            <div className="eyebrow">{c.eyebrow}</div>
+            <h1>{c.heroTitle}</h1>
+            <p>{c.heroBody}</p>
+            <div className="heroActions">
+              <a className="button primary" href="#projects">{c.primaryCta}<span>↗</span></a>
+              <a className="button secondary" href="#architecture">{c.secondaryCta}</a>
+            </div>
+          </div>
+          <div className="systemCard" aria-label="Silver Fox ecosystem diagram">
+            <div className="systemTop">
+              <span>Silver Fox</span>
+              <span className="liveDot">ENGINEERING</span>
+            </div>
+            <div className="coreNode">SILVER FOX<span>ECOSYSTEM</span></div>
+            <div className="connector vertical" />
+            <div className="nodeRow">
+              <div className="node">SFAS<small>Experience</small></div>
+              <div className="node">License<small>Entitlements</small></div>
+              <div className="node">Fox Pay<small>Payments</small></div>
+            </div>
+            <div className="connector vertical small" />
+            <div className="nodeRow productRow">
+              <div className="node product">ExoTravel</div>
+              <div className="node product">ExoHub</div>
+              <div className="node product">Lilium</div>
+            </div>
+          </div>
+        </div>
+        <div className="shell metricGrid">
+          {c.metrics.map(([n, label]) => (
+            <div className="metric" key={label}><strong>{n}</strong><span>{label}</span></div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" id="ecosystem">
+        <div className="shell">
+          <div className="sectionIntro">
+            <span className="sectionIcon">{icons.ecosystem}</span>
+            <div><h2>{c.ecosystemTitle}</h2><p>{c.ecosystemBody}</p></div>
+          </div>
+          <div className="pillarGrid">
+            {c.pillars.map(([title, body], i) => (
+              <article className="pillar" key={title}>
+                <span className="index">0{i + 1}</span><h3>{title}</h3><p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section sectionAlt" id="projects">
+        <div className="shell">
+          <div className="sectionHeading">
+            <div><span className="kicker">{icons.projects} {locale === "fa" ? "محصولات" : "PORTFOLIO"}</span><h2>{c.projectsTitle}</h2></div>
+            <p>{c.projectsBody}</p>
+          </div>
+          <div className="projectGrid">
+            {projects.map((p) => (
+              <article className="projectCard" key={p.name}>
+                <div className="projectHeader"><span className="projectShort">{p.short}</span><span className="status">{p.status[locale]}</span></div>
+                <div className="category">{p.category[locale]}</div>
+                <h3>{p.name}</h3>
+                <p>{p.description[locale]}</p>
+                <div className="tags">
+                  {p.capabilities[locale].map((cap) => <span key={cap}>{cap}</span>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="architecture">
+        <div className="shell">
+          <div className="sectionHeading">
+            <div><span className="kicker">{icons.architecture} {locale === "fa" ? "سیستم" : "SYSTEM"}</span><h2>{c.architectureTitle}</h2></div>
+            <p>{c.architectureBody}</p>
+          </div>
+          <div className="architectureGrid">
+            {c.architecture.map(([title, body], i) => (
+              <article className="architectureItem" key={title}>
+                <span>{String(i + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section sectionAlt" id="standards">
+        <div className="shell standardsGrid">
+          <div>
+            <span className="kicker">{icons.standards} {locale === "fa" ? "اصول" : "PRINCIPLES"}</span>
+            <h2>{c.standardsTitle}</h2>
+          </div>
+          <ol className="standardList">
+            {c.standards.map((item, i) => <li key={item}><span>{String(i + 1).padStart(2, "0")}</span><p>{item}</p></li>)}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section securitySection" id="security">
+        <div className="shell securityCard">
+          <div className="shield">SF</div>
+          <div><span className="kicker">SECURITY & DISCLOSURE</span><h2>{c.securityTitle}</h2><p>{c.securityBody}</p></div>
+        </div>
+      </section>
+
+      <footer>
+        <div className="shell footerInner">
+          <div className="brand footerBrand"><span className="mark">SF</span><span className="brandText"><strong>Silver Fox</strong><small>Engineering</small></span></div>
+          <div className="footerText"><span>{c.footer}</span><small>{c.legal}</small></div>
+          <a href="https://github.com/silverfoxcloud" rel="noreferrer">GitHub ↗</a>
+        </div>
+      </footer>
+    </main>
+  );
+}
