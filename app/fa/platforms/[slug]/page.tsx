@@ -10,9 +10,17 @@ export function generateStaticParams() {
   return platformSlugs.map((slug) => ({ slug }));
 }
 
-export const metadata: Metadata = {
-  robots: { index: false, follow: true },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  return {
+    robots: { index: false, follow: true },
+    alternates: { canonical: "/platforms/" + slug + "/" },
+  };
+}
 
 export default async function LegacyPersianPlatformPage({
   params,
