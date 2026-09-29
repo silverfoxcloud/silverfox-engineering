@@ -11,11 +11,12 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
         </div>
         <div className="footerText">
           <span>© 2026 Silver Fox</span>
-          <small>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal of Silver Fox Cloud Processing"}</small>
+          <small>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal of Silver Fox"}</small>
         </div>
         <div className="footerLinks">
-          <a href="https://silverfox.ir" rel="noreferrer">silverfox.ir ↗</a>
-          <a href="https://silverfoxcloud.com" rel="noreferrer">silverfoxcloud.com ↗</a>
+          {fa
+            ? <a href="https://silverfox.ir" rel="noreferrer">پردازش ابری روباه نقره‌ای ↗</a>
+            : <a href="https://silverfoxcloud.com" rel="noreferrer">Silver Fox Cloud ↗</a>}
           <a href="https://git.silverfoxcloud.com" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/company/silverfoxcloud" rel="noreferrer">LinkedIn ↗</a>
         </div>
