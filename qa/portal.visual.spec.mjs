@@ -240,14 +240,20 @@ test("technology radar filtering remains interactive", async ({ page }) => {
   await expect(page.locator(".radarDetail")).toBeVisible();
 });
 
-test("reduced motion disables reveal gating", async ({ page }) => {
+test("reduced motion keeps primary content visible and disables nonessential transitions", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
-  const state = await page.evaluate(() => ({
-    motionReady: document.documentElement.classList.contains("motionReady"),
-    opacity: getComputedStyle(document.querySelector("[data-reveal]")).opacity,
-  }));
-  expect(state.motionReady).toBeFalsy();
-  expect(state.opacity).toBe("1");
+  const state = await page.evaluate(() => {
+    const capability = document.querySelector(".capabilityRow");
+    const visual = document.querySelector(".capabilityVisual img");
+    return {
+      capabilityOpacity: capability ? getComputedStyle(capability).opacity : null,
+      capabilityVisibility: capability ? getComputedStyle(capability).visibility : null,
+      visualTransition: visual ? getComputedStyle(visual).transitionDuration : null,
+    };
+  });
+  expect(state.capabilityOpacity).toBe("1");
+  expect(state.capabilityVisibility).toBe("visible");
+  expect(state.visualTransition).toBe("0s");
 });
