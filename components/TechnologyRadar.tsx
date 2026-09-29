@@ -19,32 +19,32 @@ const entries: RadarEntry[] = [
   { name: "Go", category: "Backend", status: "adopt", en: "Primary service language where clear domain ownership, explicit APIs and predictable operations matter.", fa: "زبان اصلی سرویس‌ها در جایی که مالکیت دامنه، قرارداد API و رفتار عملیاتی قابل پیش‌بینی اهمیت دارد.", route: "/architecture/" },
   { name: "PostgreSQL", category: "Data", status: "adopt", en: "Durable relational state for transactional domains, constraints and auditable business data.", fa: "منبع پایدار داده رابطه‌ای برای دامنه‌های تراکنشی، قیود داده و اطلاعات کسب‌وکار قابل ممیزی.", route: "/data/" },
   { name: "Redis", category: "Data", status: "adopt", en: "Low-latency caching and short-lived coordination without turning cache into the source of truth.", fa: "کش کم‌تأخیر و هماهنگی کوتاه‌مدت، بدون تبدیل کش به منبع حقیقت داده.", route: "/data/" },
-  { name: "TypeScript", category: "Web", status: "adopt", en: "Typed application development across public interfaces and administration surfaces.", fa: "توسعه type-safe برای رابط‌های عمومی و محیط‌های مدیریتی.", route: "/platforms/sfas/" },
+  { name: "TypeScript", category: "Web", status: "adopt", en: "Typed application development across public interfaces and administration surfaces.", fa: "توسعه نوع‌امن برای رابط‌های عمومی و محیط‌های مدیریتی.", route: "/platforms/sfas/" },
   { name: "React", category: "Web", status: "adopt", en: "Composable interface primitives for product and administration experiences.", fa: "پایه کامپوننتی برای تجربه‌های محصول و رابط‌های مدیریتی.", route: "/platforms/sfas/" },
-  { name: "Next.js", category: "Web", status: "adopt", en: "Web application foundation where routing, rendering and deployment requirements justify it.", fa: "پایه اپلیکیشن وب در جایی که نیازهای routing، rendering و deployment آن را توجیه می‌کنند.", route: "/platforms/sfas/" },
+  { name: "Next.js", category: "Web", status: "adopt", en: "Web application foundation where routing, rendering and deployment requirements justify it.", fa: "پایه اپلیکیشن وب در جایی که نیازهای مسیریابی، رندر و استقرار آن را توجیه می‌کنند.", route: "/platforms/sfas/" },
   { name: "OpenAPI", category: "Platform", status: "adopt", en: "Versioned synchronous contracts that make integration boundaries explicit and reviewable.", fa: "قراردادهای نسخه‌بندی‌شده هم‌زمان برای مرزهای یکپارچه‌سازی صریح و قابل بازبینی.", route: "/platform/" },
 
-  { name: "Apache Kafka", category: "Data", status: "use", en: "Event transport when decoupling, throughput and operational ownership justify the added platform cost.", fa: "انتقال رویداد زمانی که جداسازی، throughput و نیاز عملیاتی هزینه پلتفرم را توجیه کند.", route: "/data/" },
-  { name: "OpenTelemetry", category: "Operations", status: "use", en: "Portable instrumentation for traces, metrics and correlation across service boundaries.", fa: "ابزار استاندارد و قابل‌انتقال برای trace، metric و correlation میان سرویس‌ها.", route: "/devops-sre/" },
-  { name: "OpenSearch", category: "Data", status: "use", en: "Search and analytical access paths when relational queries are not the right operational fit.", fa: "مسیر جست‌وجو و تحلیل در جایی که query رابطه‌ای انتخاب عملیاتی مناسبی نیست.", route: "/data/" },
-  { name: "S3-compatible storage", category: "Cloud", status: "use", en: "Object storage for media, artifacts and durable blobs where object semantics fit the workload.", fa: "ذخیره‌سازی object برای رسانه، artifact و blobهای پایدار، وقتی مدل object با workload سازگار است.", route: "/cloud/" },
-  { name: "Kubernetes", category: "Cloud", status: "use", en: "Orchestration only when workload scale and operational ownership earn its complexity.", fa: "orchestration فقط زمانی که مقیاس workload و مسئولیت عملیاتی، پیچیدگی آن را توجیه کنند.", route: "/cloud/" },
+  { name: "Apache Kafka", category: "Data", status: "use", en: "Event transport when decoupling, throughput and operational ownership justify the added platform cost.", fa: "انتقال رویداد زمانی که جداسازی، توان عملیاتی و نیاز عملیاتی، هزینه پلتفرم را توجیه کند.", route: "/data/" },
+  { name: "OpenTelemetry", category: "Operations", status: "use", en: "Portable instrumentation for traces, metrics and correlation across service boundaries.", fa: "ابزار استاندارد و قابل‌انتقال برای ردیابی، سنجه و هم‌بستگی میان سرویس‌ها.", route: "/devops-sre/" },
+  { name: "OpenSearch", category: "Data", status: "use", en: "Search and analytical access paths when relational queries are not the right operational fit.", fa: "مسیر جست‌وجو و تحلیل در جایی که پرس‌وجوی رابطه‌ای انتخاب عملیاتی مناسبی نیست.", route: "/data/" },
+  { name: "S3-compatible storage", category: "Cloud", status: "use", en: "Object storage for media, artifacts and durable blobs where object semantics fit the workload.", fa: "ذخیره‌سازی شیء برای رسانه، فایل‌های خروجی و داده‌های حجیم پایدار، وقتی مدل شیء با نوع بار کاری سازگار است.", route: "/cloud/" },
+  { name: "Kubernetes", category: "Cloud", status: "use", en: "Orchestration only when workload scale and operational ownership earn its complexity.", fa: "ارکستریشن فقط زمانی که مقیاس بار کاری و مسئولیت عملیاتی، پیچیدگی آن را توجیه کنند.", route: "/cloud/" },
 
   { name: "AI-assisted engineering", category: "AI", status: "trial", en: "Human-owned implementation, review and documentation workflows with traceable validation.", fa: "گردش‌کار توسعه، بازبینی و مستندسازی با مالکیت انسانی و اعتبارسنجی قابل ردیابی.", route: "/ai/" },
   { name: "Policy automation", category: "Security", status: "trial", en: "Reviewable automation for repeatable controls without hiding security decisions in opaque tooling.", fa: "خودکارسازی قابل بازبینی برای کنترل‌های تکرارپذیر، بدون پنهان‌کردن تصمیم امنیتی در ابزار مبهم.", route: "/security/" },
-  { name: "Platform abstractions", category: "Platform", status: "trial", en: "Measured reuse across products; abstractions are promoted only when repeated product needs prove the boundary.", fa: "استفاده مجدد سنجیده میان محصولات؛ abstraction فقط وقتی تثبیت می‌شود که نیاز تکرارشونده مرز آن را ثابت کند.", route: "/platform/" },
+  { name: "Platform abstractions", category: "Platform", status: "trial", en: "Measured reuse across products; abstractions are promoted only when repeated product needs prove the boundary.", fa: "استفاده مجدد سنجیده میان محصولات؛ انتزاع فقط وقتی تثبیت می‌شود که نیاز تکرارشونده، مرز آن را ثابت کند.", route: "/platform/" },
 
-  { name: "Managed cloud services", category: "Cloud", status: "assess", en: "Evaluate portability, operating burden and cost before moving ownership to a managed service.", fa: "ارزیابی portability، بار عملیاتی و هزینه پیش از واگذاری مسئولیت به سرویس مدیریت‌شده.", route: "/cloud/" },
-  { name: "Edge deployment", category: "Cloud", status: "assess", en: "Evaluate latency, placement, observability and operational constraints before adopting edge execution.", fa: "ارزیابی latency، محل اجرا، مشاهده‌پذیری و محدودیت عملیاتی پیش از استفاده از edge execution.", route: "/cloud/" },
+  { name: "Managed cloud services", category: "Cloud", status: "assess", en: "Evaluate portability, operating burden and cost before moving ownership to a managed service.", fa: "ارزیابی قابلیت جابه‌جایی، بار عملیاتی و هزینه پیش از واگذاری مسئولیت به سرویس مدیریت‌شده.", route: "/cloud/" },
+  { name: "Edge deployment", category: "Cloud", status: "assess", en: "Evaluate latency, placement, observability and operational constraints before adopting edge execution.", fa: "ارزیابی تأخیر، محل اجرا، مشاهده‌پذیری و محدودیت عملیاتی پیش از استفاده از پردازش لبه.", route: "/cloud/" },
   { name: "International payment rails", category: "Platform", status: "assess", en: "Future integration options are evaluated against provider contracts, compliance and operational fit.", fa: "گزینه‌های آینده پرداخت بر اساس قرارداد ارائه‌دهنده، الزامات انطباق و تناسب عملیاتی ارزیابی می‌شوند.", route: "/platforms/fox-pay/" },
-  { name: "Developer tooling", category: "Operations", status: "assess", en: "Emerging engineering tools are assessed against reproducibility, security and measurable workflow value.", fa: "ابزارهای جدید مهندسی بر اساس تکرارپذیری، امنیت و ارزش قابل سنجش در workflow ارزیابی می‌شوند.", route: "/devops-sre/" },
+  { name: "Developer tooling", category: "Operations", status: "assess", en: "Emerging engineering tools are assessed against reproducibility, security and measurable workflow value.", fa: "ابزارهای جدید مهندسی بر اساس تکرارپذیری، امنیت و ارزش قابل سنجش در گردش‌کار ارزیابی می‌شوند.", route: "/devops-sre/" },
 ];
 
 const statuses: Array<{ id: RadarStatus; en: string; fa: string }> = [
-  { id: "adopt", en: "Adopt", fa: "تثبیت‌شده" },
+  { id: "adopt", en: "Adopt", fa: "استفاده تثبیت‌شده" },
   { id: "use", en: "Use when justified", fa: "استفاده هدفمند" },
   { id: "trial", en: "Trial", fa: "آزمایش" },
-  { id: "assess", en: "Assess", fa: "ارزیابی" },
+  { id: "assess", en: "Assess", fa: "در حال ارزیابی" },
 ];
 
 const categoryFa: Record<RadarEntry["category"], string> = {
