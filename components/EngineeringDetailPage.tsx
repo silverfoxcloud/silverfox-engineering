@@ -10,18 +10,12 @@ import {
 } from "@/data/engineering-pages";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import TechnologyRadar from "@/components/TechnologyRadar";
-import { useLocalizedMetadata } from "@/components/LocaleProvider";
 import type { Locale } from "@/data/content";
 
 export default function EngineeringDetailPage({ slug, locale }: { slug: EngineeringSlug; locale: Locale }) {
   const page = engineeringPages[slug][locale];
   const fa = locale === "fa";
   const localize = (href: string) => fa ? "/fa" + href : href;
-
-  useLocalizedMetadata(
-    page.title + (fa ? " | مهندسی پردازش ابری روباه نقره‌ای" : " | Silver Fox Engineering"),
-    page.lead,
-  );
 
   return (
     <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
