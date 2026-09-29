@@ -231,13 +231,27 @@ test("mobile navigation opens and closes with Escape in both directions", async 
   }
 });
 
-test("technology radar filtering remains interactive", async ({ page }) => {
+test("technology radar blips stay visible and filtering remains interactive", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(baseURL + "/technology-radar/", { waitUntil: "domcontentloaded" });
+
+  const visibleBlips = await page.locator(".radarBlip:not(.filtered)").evaluateAll((nodes) =>
+    nodes.filter((node) => {
+      const style = getComputedStyle(node);
+      return style.visibility !== "hidden" && Number.parseFloat(style.opacity || "0") >= 0.9;
+    }).length,
+  );
+  expect(visibleBlips).toBeGreaterThan(0);
+
   const trial = page.getByRole("button", { name: "Trial", exact: true });
   await trial.click();
   await expect(trial).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".radarDetail")).toBeVisible();
+
+  const filteredVisible = await page.locator(".radarBlip:not(.filtered)").evaluateAll((nodes) =>
+    nodes.filter((node) => Number.parseFloat(getComputedStyle(node).opacity || "0") >= 0.9).length,
+  );
+  expect(filteredVisible).toBeGreaterThan(0);
 });
 
 test("reduced motion keeps primary content visible and disables nonessential transitions", async ({ page }) => {
