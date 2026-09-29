@@ -42,6 +42,14 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
         </div>
 
         <div className="footerGroup">
+          <strong>{fa ? "پکیج‌ها" : "Packages"}</strong>
+          <Link href={localize("/packages/")}>{fa ? "دایرکتوری" : "Directory"}</Link>
+          <Link href={localize("/packages/sfas-core/")}>SFAS Core</Link>
+          <Link href={localize("/packages/sfas-react-adapter/")}>React Adapter</Link>
+          <Link href={localize("/packages/sfas-date-picker/")}>Date Picker</Link>
+        </div>
+
+        <div className="footerGroup">
           <strong>{fa ? "منابع" : "Resources"}</strong>
           <Link href={localize("/engineering-principles/")}>{fa ? "اصول مهندسی" : "Engineering Principles"}</Link>
           <Link href={localize("/technology-radar/")}>{fa ? "رادار فناوری" : "Technology Radar"}</Link>
