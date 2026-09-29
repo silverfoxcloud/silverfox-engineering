@@ -1,47 +1,20 @@
 import Link from "next/link";
-import { copy, projects, stack, type Locale } from "@/data/content";
-import EngineeringStories from "@/components/EngineeringStories";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { copy, stack, type Locale } from "@/data/content";
+import { engineeringPages, platformPages } from "@/data/engineering-pages";
 
-const icons = {
-  ecosystem: "◆",
-  projects: "▦",
-  architecture: "⌘",
-  standards: "◎",
-};
-
-function faDigits(value: string) {
-  return value.replace(/[0-9]/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
-}
-
-function indexLabel(index: number, locale: Locale) {
-  const value = String(index + 1).padStart(2, "0");
-  return locale === "fa" ? faDigits(value) : value;
-}
+const featuredEngineering = ["architecture", "platform", "security", "devops-sre"] as const;
+const featuredPlatforms = ["sfas", "license-platform", "fox-pay", "exotravel", "exohub"] as const;
 
 export default function PortalPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
-  const rtl = locale === "fa";
+  const fa = locale === "fa";
+  const prefix = fa ? "/fa" : "";
 
   return (
-    <main dir={rtl ? "rtl" : "ltr"} className={rtl ? "rtl" : "ltr"}>
-      <header className="siteHeader">
-        <div className="shell navWrap">
-          <Link href={locale === "fa" ? "/fa/" : "/"} className="brand" aria-label="Silver Fox Engineering">
-            <span className="brandLogoWrap">
-              <img src="/silver-fox-logo.svg" alt="" className="brandLogo" />
-            </span>
-            <span className="brandText"><strong>Silver Fox</strong><small>Engineering</small></span>
-          </Link>
-          <nav className="navLinks" aria-label="Primary navigation">
-            <a href="#ecosystem">{c.nav[0]}</a>
-            <a href="#projects">{c.nav[1]}</a>
-            <a href="#architecture">{c.nav[2]}</a>
-            <a href="#technology">{c.nav[3]}</a>
-            <a href="#security">{c.nav[4]}</a>
-          </nav>
-          <Link href={c.langHref} className="langSwitch">{c.langName}</Link>
-        </div>
-      </header>
+    <main dir={fa ? "rtl" : "ltr"} className={fa ? "rtl" : "ltr"}>
+      <SiteHeader locale={locale} />
 
       <section className="hero">
         <div className="heroGridFx" aria-hidden="true" />
@@ -53,17 +26,16 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             <h1>{c.heroTitle}</h1>
             <p>{c.heroBody}</p>
             <div className="heroActions">
-              <a className="button primary" href="#technology">{c.primaryCta}<span>↗</span></a>
-              <a className="button secondary" href="#architecture">{c.secondaryCta}</a>
+              <Link className="button primary" href={`${prefix}/architecture/`}>{fa ? "معماری Silver Fox" : "Explore architecture"}<span>↗</span></Link>
+              <Link className="button secondary" href={`${prefix}/technology-radar/`}>{fa ? "رادار فناوری" : "Technology radar"}</Link>
             </div>
           </div>
 
           <div className="systemCard" aria-label="Silver Fox ecosystem diagram">
             <div className="systemTop">
-              <span>Silver Fox</span>
+              <span>{fa ? "پردازش ابری روباه نقره‌ای" : "Silver Fox"}</span>
               <span className="liveDot">ENGINEERING</span>
             </div>
-
             <div className="signalStage" aria-hidden="true">
               <span className="signalRing ringOne" />
               <span className="signalRing ringTwo" />
@@ -77,25 +49,22 @@ export default function PortalPage({ locale }: { locale: Locale }) {
                 <span>ECOSYSTEM</span>
               </div>
             </div>
-
             <div className="nodeRow">
-              <div className="node">SFAS<small>Experience</small></div>
-              <div className="node">License<small>Entitlements</small></div>
-              <div className="node">Fox Pay<small>Payments</small></div>
+              <div className="node">SFAS<small>{fa ? "تجربه" : "Experience"}</small></div>
+              <div className="node">License<small>{fa ? "دسترسی" : "Entitlements"}</small></div>
+              <div className="node">Fox Pay<small>{fa ? "پرداخت" : "Payments"}</small></div>
             </div>
             <div className="connector vertical small" />
             <div className="nodeRow productRow">
               <div className="node product">ExoTravel</div>
               <div className="node product">ExoHub</div>
-              <div className="node product">Platforms</div>
+              <div className="node product">{fa ? "محصولات" : "Products"}</div>
             </div>
           </div>
         </div>
 
         <div className="shell metricGrid">
-          {c.metrics.map(([n, label]) => (
-            <div className="metric" key={label}><strong>{n}</strong><span>{label}</span></div>
-          ))}
+          {c.metrics.map(([n, label]) => <div className="metric" key={label}><strong>{n}</strong><span>{label}</span></div>)}
         </div>
       </section>
 
@@ -105,120 +74,82 @@ export default function PortalPage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="section" id="ecosystem">
-        <div className="shell">
-          <div className="sectionIntro">
-            <span className="sectionIcon">{icons.ecosystem}</span>
-            <div><h2>{c.ecosystemTitle}</h2><p>{c.ecosystemBody}</p></div>
-          </div>
-          <div className="pillarGrid">
-            {c.pillars.map(([title, body], i) => (
-              <article className="pillar" key={title}>
-                <span className="index">{indexLabel(i, locale)}</span><h3>{title}</h3><p>{body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <EngineeringStories locale={locale} />
-
-      <section className="section sectionAlt" id="projects">
-        <div className="shell">
-          <div className="sectionHeading">
-            <div><span className="kicker">{icons.projects} {locale === "fa" ? "پلتفرم‌ها" : "PORTFOLIO"}</span><h2>{c.projectsTitle}</h2></div>
-            <p>{c.projectsBody}</p>
-          </div>
-          <div className="projectGrid">
-            {projects.map((p) => (
-              <article className="projectCard" key={p.name}>
-                <div className="projectHeader"><span className="projectShort">{p.short}</span><span className="status">{p.status[locale]}</span></div>
-                <div className="category">{p.category[locale]}</div>
-                <h3>{p.name}</h3>
-                <p>{p.description[locale]}</p>
-                <div className="tags">
-                  {p.capabilities[locale].map((cap) => <span key={cap}>{cap}</span>)}
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section architectureSection" id="architecture">
-        <div className="shell">
-          <div className="sectionHeading">
-            <div><span className="kicker">{icons.architecture} {locale === "fa" ? "معماری سیستم" : "SYSTEM"}</span><h2>{c.architectureTitle}</h2></div>
-            <p>{c.architectureBody}</p>
-          </div>
-          <div className="architectureGrid">
-            {c.architecture.map(([title, body], i) => (
-              <article className="architectureItem" key={title}>
-                <span>{indexLabel(i, locale)}</span><div><h3>{title}</h3><p>{body}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section techSection" id="technology">
-        <div className="shell">
-          <div className="sectionHeading">
-            <div><span className="kicker">◈ {locale === "fa" ? "فناوری" : "TECHNOLOGY"}</span><h2>{c.techTitle}</h2></div>
-            <p>{c.techBody}</p>
-          </div>
-          <div className="techGrid">
-            {c.technology.map(([title, body], i) => (
-              <article className="techCard" key={title}>
-                <span className="techIndex">{indexLabel(i, locale)}</span>
-                <div className="techPulse" aria-hidden="true" />
-                <h3>{title}</h3><p>{body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section sectionAlt" id="standards">
-        <div className="shell standardsGrid">
+      <section className="homeIntro">
+        <div className="shell homeIntroGrid">
           <div>
-            <span className="kicker">{icons.standards} {locale === "fa" ? "اصول" : "PRINCIPLES"}</span>
-            <h2>{c.standardsTitle}</h2>
+            <span className="kicker">{fa ? "رویکرد مهندسی" : "ENGINEERING APPROACH"}</span>
+            <h2>{fa ? "یک اکوسیستم؛ چند محصول؛ یک زبان مشترک مهندسی." : "One ecosystem. Multiple products. One engineering language."}</h2>
           </div>
-          <ol className="standardList">
-            {c.standards.map((item, i) => <li key={item}><span>{indexLabel(i, locale)}</span><p>{item}</p></li>)}
-          </ol>
+          <p>{fa ? "هدف این وب‌سایت معرفی محصول به شکل بازاریابی نیست. اینجا درباره تصمیم‌هایی می‌نویسیم که پشت محصولات قرار دارند؛ از مرزبندی دامنه و چندمستاجری تا امنیت، داده، عملیات، پردازش ابری و هوش مصنوعی." : "This is not a product marketing site. It documents the engineering choices behind the ecosystem—from domain boundaries and multi-tenancy to security, data, cloud operations and artificial intelligence."}</p>
         </div>
       </section>
 
-      <section className="section securitySection" id="security">
-        <div className="shell securityCard">
-          <div className="shield"><img src="/silver-fox-logo.svg" alt="" /></div>
+      <section className="homeFeatureSection">
+        <div className="shell">
+          <div className="homeSectionHeading">
+            <span className="kicker">{fa ? "بخش‌های مهندسی" : "ENGINEERING AREAS"}</span>
+            <h2>{fa ? "از معماری تا عملیات؛ هر موضوع صفحه خودش را دارد." : "From architecture to operations, each concern gets its own space."}</h2>
+          </div>
+          <div className="homeFeatureGrid">
+            {featuredEngineering.map((slug, index) => {
+              const page = engineeringPages[slug][locale];
+              return (
+                <Link className="homeFeatureCard" href={`${prefix}/${slug}/`} key={slug}>
+                  <span className="featureIndex">{fa ? "۰۱۲۳۴۵۶۷۸۹"[index+1] : index+1}</span>
+                  <span className="kicker">{page.eyebrow}</span>
+                  <h3>{page.title}</h3>
+                  <p>{page.summary}</p>
+                  <i>↗</i>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="homeMoreLinks">
+            <Link href={`${prefix}/cloud/`}>{fa ? "زیرساخت ابری" : "Cloud & Infrastructure"} ↗</Link>
+            <Link href={`${prefix}/ai/`}>{fa ? "مهندسی هوش مصنوعی" : "AI Engineering"} ↗</Link>
+            <Link href={`${prefix}/data/`}>{fa ? "مهندسی داده" : "Data Engineering"} ↗</Link>
+            <Link href={`${prefix}/technology-radar/`}>{fa ? "رادار فناوری" : "Technology Radar"} ↗</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="homePlatformSection">
+        <div className="shell">
+          <div className="homeSectionHeading split">
+            <div>
+              <span className="kicker">{fa ? "پلتفرم‌ها و محصولات" : "PLATFORMS & PRODUCTS"}</span>
+              <h2>{fa ? "هر محصول مستقل است؛ زیرساخت مشترک آن‌ها را به هم متصل می‌کند." : "Independent products, connected by shared infrastructure."}</h2>
+            </div>
+            <p>{fa ? "معرفی عمومی هر پلتفرم روی نقش فنی آن تمرکز می‌کند؛ نه جزئیات محرمانه پیاده‌سازی." : "Each public platform page focuses on engineering responsibility without exposing confidential implementation detail."}</p>
+          </div>
+          <div className="platformPreviewGrid">
+            {featuredPlatforms.map(slug => {
+              const page = platformPages[slug][locale];
+              return (
+                <Link className="platformPreviewCard" href={`${prefix}/platforms/${slug}/`} key={slug}>
+                  <span>{page.eyebrow}</span>
+                  <strong>{page.name}</strong>
+                  <p>{page.lead}</p>
+                  <i>↗</i>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="homeClosing">
+        <div className="shell homeClosingCard">
+          <img src="/silver-fox-logo.svg" alt="" />
           <div>
-            <span className="kicker">{locale === "fa" ? "مهندسی امنیت" : "SECURITY ENGINEERING"}</span>
-            <h2>{c.securityTitle}</h2>
-            <p>{c.securityBody}</p>
-            <div className="securityTags">{c.securityPoints.map((item) => <span key={item}>{item}</span>)}</div>
+            <span className="kicker">{fa ? "پردازش ابری روباه نقره‌ای" : "SILVER FOX CLOUD PROCESSING"}</span>
+            <h2>{fa ? "فناوری زمانی ارزشمند است که پیچیدگی را کمتر کند." : "Technology is useful when it reduces complexity."}</h2>
+            <p>{fa ? "معماری، ابزار و خودکارسازی برای ما هدف نیستند؛ وسیله‌اند تا محصولی ساخته شود که امن‌تر، قابل اتکاتر و آماده‌تر برای تغییر باشد." : "Architecture, tooling and automation are means to build products that are safer, more reliable and easier to evolve."}</p>
           </div>
         </div>
       </section>
 
-      <footer>
-        <div className="shell footerInner">
-          <div className="brand footerBrand">
-            <span className="brandLogoWrap"><img src="/silver-fox-logo.svg" alt="" className="brandLogo" /></span>
-            <span className="brandText"><strong>Silver Fox</strong><small>Engineering</small></span>
-          </div>
-          <div className="footerText">
-            <span>© 2026 Silver Fox</span>
-            <small>{c.legal}</small>
-          </div>
-          <div className="footerLinks">
-            <a href="https://git.silverfoxcloud.com" rel="noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/company/silverfoxcloud" rel="noreferrer">LinkedIn ↗</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter locale={locale} />
     </main>
   );
 }
