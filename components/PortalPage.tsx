@@ -18,6 +18,8 @@ export default function PortalPage() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.documentElement;
+    root.classList.add("motionReady");
     const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,7 +32,10 @@ export default function PortalPage() {
       { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
     );
     nodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      root.classList.remove("motionReady");
+    };
   }, []);
 
   useLocalizedMetadata(
