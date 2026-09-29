@@ -1,0 +1,67 @@
+name: Silver Fox Engineering Visual QA
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "visual-qa"
+  cancel-in-progress: true
+
+jobs:
+  visual-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install application dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install pinned Playwright runtime
+        run: |
+          npm install --no-save --package-lock=false @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Start static QA server
+        run: |
+          python3 -m http.server 4173 --directory out >/tmp/silverfox-http.log 2>&1 &
+          echo $! >/tmp/silverfox-http.pid
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/silverfox-http.log
+          exit 1
+
+      - name: Run responsive and interaction QA
+        run: npx playwright test qa/portal.visual.spec.ts --workers=2 --reporter=line
+
+      - name: Upload visual QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: silverfox-engineering-visual-qa
+          path: |
+            test-results/
+            playwright-report/
+          if-no-files-found: warn
+          retention-days: 14
