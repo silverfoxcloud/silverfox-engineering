@@ -10,12 +10,13 @@ import {
 } from "@/data/engineering-pages";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import TechnologyRadar from "@/components/TechnologyRadar";
-import { useLocale, useLocalizedMetadata } from "@/components/LocaleProvider";
+import { useLocalizedMetadata } from "@/components/LocaleProvider";
+import type { Locale } from "@/data/content";
 
-export default function EngineeringDetailPage({ slug }: { slug: EngineeringSlug }) {
-  const { locale } = useLocale();
+export default function EngineeringDetailPage({ slug, locale }: { slug: EngineeringSlug; locale: Locale }) {
   const page = engineeringPages[slug][locale];
   const fa = locale === "fa";
+  const localize = (href: string) => fa ? "/fa" + href : href;
 
   useLocalizedMetadata(
     page.title + (fa ? " | مهندسی پردازش ابری روباه نقره‌ای" : " | Silver Fox Engineering"),
@@ -23,7 +24,7 @@ export default function EngineeringDetailPage({ slug }: { slug: EngineeringSlug 
   );
 
   return (
-    <main dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
+    <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
       <SiteHeader locale={locale} />
 
       <section className="detailHero">
@@ -94,7 +95,7 @@ export default function EngineeringDetailPage({ slug }: { slug: EngineeringSlug 
               .filter((item) => item !== slug)
               .slice(0, 4)
               .map((item) => (
-                <Link className="relatedCard" href={"/" + item + "/"} key={item}>
+                <Link className="relatedCard" href={localize("/" + item + "/")} key={item}>
                   <span>{engineeringPages[item][locale].eyebrow}</span>
                   <strong>{engineeringPages[item][locale].title}</strong>
                   <i aria-hidden="true">↗</i>
