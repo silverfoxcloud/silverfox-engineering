@@ -1,3 +1,30 @@
+# Current Redesign Iteration — 2026-09-30
+
+## Status — VALIDATION PENDING
+
+The complete Kinde-benchmarked light redesign and same-URL bilingual migration is implemented on branch `redesign/kinde-light-locale`.
+
+Current implementation includes:
+
+- one clean public route tree for EN and FA;
+- `LocaleProvider` with `silverfox-engineering-locale` persistence;
+- pre-hydration `lang` / `dir` restoration;
+- no language navigation through `/fa`;
+- no active reciprocal locale `hreflang`;
+- legacy `/fa/...` compatibility routes as `noindex` migration entries;
+- a new light semantic token system;
+- Kinde used only as a visual benchmark / interaction reference;
+- rebuilt Header, Mega Menu, mobile accordion and language state control;
+- light ArchitectureMap, Technology Radar and platform visuals;
+- light-migrated engineering SVGs;
+- verified package and Engineering Library content preserved;
+- responsive rules for all required target widths;
+- Playwright QA rewritten for same-URL locale behavior and PR validation.
+
+This section intentionally does **not** claim PASS or production deployment yet. The release gate remains open until pull-request CI, TypeScript, static export, full browser QA, screenshot review, authorship audit and production verification complete.
+
+---
+
 # Portal Iteration Status — 2026-09-29## Final validation — PASS
 
 The application/runtime head validated in the final gate is:
