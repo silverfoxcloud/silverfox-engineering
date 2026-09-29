@@ -198,6 +198,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
                 className="megaNavButton"
                 type="button"
                 key={group.id}
+                ref={(node) => { desktopTriggerRefs.current[group.id] = node; }}
                 aria-expanded={expanded}
                 aria-controls={"mega-" + group.id}
                 onClick={() => setOpenGroup(expanded ? null : group.id)}
@@ -224,6 +225,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
 
         <button
           type="button"
+          ref={mobileTriggerRef}
           className="mobileMenuTrigger"
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
