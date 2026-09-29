@@ -106,11 +106,11 @@ Allowed motion patterns:
 - entering architecture relationships;
 - restrained flow pulses;
 - radar/filter transitions;
-- scroll reveal after progressive-enhancement activation.
+- restrained interaction transitions that never gate content visibility.
 
 Requirements:
 
-- content remains visible if JavaScript/reveal setup fails;
+- primary content remains visible regardless of JavaScript or scroll position;
 - `prefers-reduced-motion: reduce` disables nonessential motion;
 - no mouse-following decoration, constant particles or meaningless infinite 3D animation.
 
