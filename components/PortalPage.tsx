@@ -5,25 +5,69 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { copy } from "@/data/content";
 import ArchitectureMap from "@/components/ArchitectureMap";
-import TechnologyRadar from "@/components/TechnologyRadar";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
 import { useLocale, useLocalizedMetadata } from "@/components/LocaleProvider";
 
-const featuredEngineering = ["architecture", "platform", "security", "devops-sre"] as const;
-const featuredPlatforms = ["sfas", "license-platform", "fox-pay", "exotravel", "exohub"] as const;
+const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 
 export default function PortalPage() {
   const { locale } = useLocale();
   const c = copy[locale];
   const fa = locale === "fa";
-  const principles = engineeringPages["engineering-principles"][locale];
 
   useLocalizedMetadata(
-    fa ? "مهندسی Silver Fox" : "Silver Fox Engineering",
+    fa ? "مهندسی پردازش ابری روباه نقره‌ای" : "Silver Fox Engineering",
     fa
-      ? "پرتال عمومی مهندسی Silver Fox؛ معماری، پلتفرم‌ها، امنیت، داده، عملیات و تصمیم‌های فناوری."
-      : "Public engineering portal for Silver Fox architecture, platforms, security, data, operations and technology decisions.",
+      ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ معماری، پلتفرم ابری، امنیت، داده، قابلیت اتکا و تصمیم‌های فناوری."
+      : "Public engineering portal for Silver Fox architecture, cloud platform, security, data, reliability and technology decisions.",
   );
+
+  const capabilities = [
+    {
+      href: "/platform/",
+      visual: "/visual-platform.svg",
+      eyebrow: fa ? "پلتفرم ابری" : "CLOUD PLATFORM",
+      title: fa ? "قابلیت مشترک، بدون از بین بردن استقلال محصول" : "Shared capabilities without erasing product ownership",
+      body: engineeringPages.platform[locale].summary,
+    },
+    {
+      href: "/security/",
+      visual: "/visual-security.svg",
+      eyebrow: fa ? "امنیت و حاکمیت" : "SECURITY & GOVERNANCE",
+      title: engineeringPages.security[locale].title,
+      body: engineeringPages.security[locale].summary,
+    },
+    {
+      href: "/devops-sre/",
+      visual: "/visual-devops.svg",
+      eyebrow: fa ? "مشاهده‌پذیری و قابلیت اتکا" : "OBSERVABILITY & RELIABILITY",
+      title: engineeringPages["devops-sre"][locale].title,
+      body: engineeringPages["devops-sre"][locale].summary,
+    },
+    {
+      href: "/data/",
+      visual: "/visual-data.svg",
+      eyebrow: fa ? "داده و یکپارچگی" : "DATA & INTEGRATION",
+      title: engineeringPages.data[locale].title,
+      body: engineeringPages.data[locale].summary,
+    },
+    {
+      href: "/ai/",
+      visual: "/visual-ai.svg",
+      eyebrow: fa ? "هوش مصنوعی" : "AI ENGINEERING",
+      title: engineeringPages.ai[locale].title,
+      body: engineeringPages.ai[locale].summary,
+    },
+    {
+      href: "/platforms/sfas/",
+      visual: "/visual-experience.svg",
+      eyebrow: fa ? "تجربه چندزبانه" : "MULTILINGUAL EXPERIENCE",
+      title: fa ? "RTL و LTR از ابتدا جزئی از محصول‌اند" : "RTL and LTR are product modes, not translation afterthoughts",
+      body: fa
+        ? "سیستم طراحی، بومی‌سازی، دسترس‌پذیری و رفتار رابط در هر دو جهت به‌صورت هم‌ارز مهندسی و آزمون می‌شوند."
+        : "Design primitives, localization, accessibility and interface behavior are engineered and tested as equal experiences in both directions.",
+    },
+  ];
 
   return (
     <main dir={fa ? "rtl" : "ltr"} className={fa ? "rtl" : "ltr"}>
@@ -38,9 +82,14 @@ export default function PortalPage() {
             <div className="eyebrow">{c.eyebrow}</div>
             <h1>{c.heroTitle}</h1>
             <p>{c.heroBody}</p>
+            <p className="heroSupporting">
+              {fa
+                ? "هدف ما فقط ساخت نرم‌افزار نیست؛ سامانه‌ها باید امن، قابل اتکا، چندزبانه و آماده تکامل باشند."
+                : "The goal is not simply to ship software. Systems should remain secure, reliable, multilingual and ready to evolve."}
+            </p>
             <div className="heroActions">
               <Link className="button primary" href="/architecture/">
-                {fa ? "معماری Silver Fox" : "Explore architecture"}
+                {fa ? "مشاهده معماری" : "Explore architecture"}
                 <span aria-hidden="true">↗</span>
               </Link>
               <Link className="button secondary" href="/technology-radar/">
@@ -56,54 +105,64 @@ export default function PortalPage() {
       <section className="homeIntro">
         <div className="shell homeIntroGrid">
           <div>
-            <span className="kicker">{fa ? "تز مهندسی" : "ENGINEERING THESIS"}</span>
+            <span className="kicker">{fa ? "مدل مهندسی" : "ENGINEERING MODEL"}</span>
             <h2>
               {fa
-                ? "زیرساخت مشترک؛ مالکیت روشن در هر محصول."
-                : "Shared foundations. Product-owned boundaries."}
+                ? "یک اکوسیستم؛ محصولات مستقل؛ قواعد مشترک مهندسی."
+                : "One ecosystem. Independent products. Shared engineering rules."}
             </h2>
           </div>
           <p>
             {fa
-              ? "هویت، چندمستاجری، لایسنس، پرداخت، مدیریت و مشاهده‌پذیری در جایی مشترک می‌شوند که تکرار را کم کنند. منطق دامنه، داده و مسیر انتشار هر محصول مستقل می‌ماند تا استفاده مجدد به وابستگی سازمانی و فنی تبدیل نشود."
-              : "Identity, tenancy, licensing, payments, administration and observability are shared where reuse removes duplicated work. Domain logic, product data and release paths stay independently owned so reuse does not become delivery coupling."}
+              ? "قابلیت‌هایی مثل هویت، لایسنس، پرداخت، مدیریت و مشاهده‌پذیری فقط جایی مشترک می‌شوند که تکرار را کم کنند. منطق دامنه، داده و مسیر انتشار هر محصول در مالکیت همان محصول باقی می‌ماند."
+              : "Identity, licensing, payments, administration and observability are shared where reuse removes duplicated work. Domain logic, authoritative data and release decisions remain owned by each product."}
           </p>
         </div>
       </section>
 
-      <section className="homeFeatureSection">
+      <section className="homeCapabilitySection">
         <div className="shell">
-          <div className="homeSectionHeading">
-            <span className="kicker">{fa ? "حوزه‌های مهندسی" : "ENGINEERING DOMAINS"}</span>
-            <h2>
+          <div className="homeSectionHeading split">
+            <div>
+              <span className="kicker">{fa ? "قابلیت‌های اصلی" : "CORE CAPABILITIES"}</span>
+              <h2>
+                {fa
+                  ? "از معماری تا عملیات؛ یک نگاه یکپارچه به فناوری"
+                  : "From architecture to operations, one coherent engineering model"}
+              </h2>
+            </div>
+            <p>
               {fa
-                ? "هر حوزه، مسئولیت مهندسی مشخصی دارد."
-                : "Each domain has an explicit engineering responsibility."}
-            </h2>
+                ? "هر حوزه برای حل یک مسئله مشخص وجود دارد؛ از زیرساخت ابری و امنیت تا داده، قابلیت اتکا، هوش مصنوعی و تجربه چندزبانه."
+                : "Each capability exists to solve a concrete engineering problem, from cloud foundations and security to data, reliability, AI and multilingual product experience."}
+            </p>
           </div>
 
-          <div className="homeFeatureGrid">
-            {featuredEngineering.map((slug, index) => {
-              const page = engineeringPages[slug][locale];
-              return (
-                <Link className="homeFeatureCard" href={"/" + slug + "/"} key={slug}>
+          <div className="capabilityRows">
+            {capabilities.map((item, index) => (
+              <Link
+                href={item.href}
+                className={"capabilityRow " + (index % 2 ? "capabilityRowReverse" : "")}
+                key={item.href + item.eyebrow}
+              >
+                <div className="capabilityCopy">
                   <span className="featureIndex">
-                    {fa ? "۰۱۲۳۴۵۶۷۸۹"[index + 1] : index + 1}
+                    {fa
+                      ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰")
+                      : String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="kicker">{page.eyebrow}</span>
-                  <h3>{page.title}</h3>
-                  <p>{page.summary}</p>
-                  <i aria-hidden="true">↗</i>
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="homeMoreLinks">
-            <Link href="/cloud/">{fa ? "زیرساخت ابری" : "Cloud & Infrastructure"} ↗</Link>
-            <Link href="/ai/">{fa ? "مهندسی هوش مصنوعی" : "AI Engineering"} ↗</Link>
-            <Link href="/data/">{fa ? "مهندسی داده" : "Data Engineering"} ↗</Link>
-            <Link href="/technology-radar/">{fa ? "رادار فناوری" : "Technology Radar"} ↗</Link>
+                  <span className="kicker">{item.eyebrow}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                  <strong>
+                    {fa ? "مشاهده جزئیات مهندسی" : "Explore engineering context"} <span aria-hidden="true">↗</span>
+                  </strong>
+                </div>
+                <div className="capabilityVisual" aria-hidden="true">
+                  <img src={item.visual} alt="" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -112,17 +171,17 @@ export default function PortalPage() {
         <div className="shell">
           <div className="homeSectionHeading split">
             <div>
-              <span className="kicker">{fa ? "پلتفرم‌ها و محصولات" : "PLATFORMS & PRODUCTS"}</span>
+              <span className="kicker">{fa ? "پایه‌های مشترک محصول" : "SHARED PRODUCT FOUNDATIONS"}</span>
               <h2>
                 {fa
-                  ? "قرارداد مشترک؛ چرخه توسعه مستقل."
-                  : "Shared platform contracts. Independent product lifecycles."}
+                  ? "زیرساخت مشترک باید پیچیدگی را از مسیر ساخت محصول کنار بزند."
+                  : "Shared infrastructure should remove complexity from product delivery."}
               </h2>
             </div>
             <p>
               {fa
-                ? "SFAS، License Platform و Fox Pay قابلیت‌های پلتفرمی می‌سازند. ExoTravel و ExoHub این قابلیت‌ها را بدون واگذاری مالکیت دامنه و داده خود مصرف می‌کنند."
-                : "SFAS, License Platform and Fox Pay provide platform capabilities. ExoTravel and ExoHub consume them without surrendering ownership of their domain logic, data or release decisions."}
+                ? "SFAS، License Platform و Fox Pay سه مسئله متفاوت را در سطح پلتفرم حل می‌کنند: تجربه مدیریت، کنترل دسترسی تجاری و ارکستریشن پرداخت."
+                : "SFAS, License Platform and Fox Pay solve three different platform concerns: administration experience, commercial access control and payment orchestration."}
             </p>
           </div>
 
@@ -135,6 +194,7 @@ export default function PortalPage() {
                     <span className="kicker">{page.eyebrow}</span>
                     <h3>{page.name}</h3>
                     <p>{page.lead}</p>
+                    <small className="productStatusInline">{page.status}</small>
                     <Link href={"/platforms/" + slug + "/"}>
                       {fa ? "مشاهده مدل فنی" : "Explore technical model"}
                       <span aria-hidden="true"> ↗</span>
@@ -145,55 +205,57 @@ export default function PortalPage() {
                     <div className="productSignalNodes">
                       {page.capabilities.slice(0, 3).map((capability, capabilityIndex) => (
                         <span key={capability}>
-                          <b>{String(capabilityIndex + 1).padStart(2, "0")}</b>
+                          <b>
+                            {fa
+                              ? String(capabilityIndex + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰")
+                              : String(capabilityIndex + 1).padStart(2, "0")}
+                          </b>
                           {capability}
                         </span>
                       ))}
                     </div>
-                    <small>{String(index + 1).padStart(2, "0")} / 05</small>
+                    <small>{fa ? "۰" + String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]) : String(index + 1).padStart(2, "0")} / {fa ? "۰۳" : "03"}</small>
                   </div>
                 </article>
               );
             })}
           </div>
-        </div>
-      </section>
 
-      <section className="homeRadar">
-        <div className="shell homeSectionHeading split">
-          <div>
-            <span className="kicker">{fa ? "تصمیم‌های فناوری" : "TECHNOLOGY DECISIONS"}</span>
-            <h2>{fa ? "فناوری بر اساس نقش و محدودیت سیستم انتخاب می‌شود." : "Technology choices follow system constraints."}</h2>
-          </div>
-          <p>
-            {fa
-              ? "Radar وضعیت استفاده، آزمایش و ارزیابی فناوری‌ها را شفاف می‌کند؛ بدون تبدیل فهرست ابزارها به ادعای بازاریابی."
-              : "The Radar makes adoption, trials and assessments visible without turning a tool list into marketing claims."}
-          </p>
-        </div>
-        <TechnologyRadar locale={locale} />
-      </section>
-
-      <section className="homePrinciples">
-        <div className="shell homePrinciplesGrid">
-          <div className="homePrinciplesIntro">
-            <span className="kicker">{principles.eyebrow}</span>
-            <h2>{principles.title}</h2>
-            <p>{principles.summary}</p>
-            <Link href="/engineering-principles/">
-              {fa ? "خواندن اصول مهندسی" : "Read engineering principles"} <span aria-hidden="true">↗</span>
+          <div className="productDomainLinks">
+            <Link href="/platforms/exotravel/">
+              <span>{fa ? "محصول سفر" : "TRAVEL PRODUCT"}</span>
+              <strong>ExoTravel</strong>
+              <i aria-hidden="true">↗</i>
+            </Link>
+            <Link href="/platforms/exohub/">
+              <span>{fa ? "یکپارچگی اکوسیستم" : "ECOSYSTEM INTEGRATION"}</span>
+              <strong>ExoHub</strong>
+              <i aria-hidden="true">↗</i>
             </Link>
           </div>
-          <div className="homePrincipleRows">
-            {principles.sections.slice(0, 4).map((section, index) => (
-              <div className="homePrincipleRow" key={section.title}>
-                <span>{fa ? "۰۱۲۳۴۵۶۷۸۹"[index + 1] : String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{section.title}</strong>
-                  <p>{section.body}</p>
-                </div>
-              </div>
-            ))}
+        </div>
+      </section>
+
+      <section className="homeRadarTeaser">
+        <div className="shell radarTeaserGrid">
+          <div>
+            <span className="kicker">{fa ? "رادار فناوری" : "TECHNOLOGY RADAR"}</span>
+            <h2>
+              {fa
+                ? "فناوری باید جایگاهش را با نیاز واقعی سیستم به دست بیاورد."
+                : "Technology earns its place by solving a real system constraint."}
+            </h2>
+            <p>
+              {fa
+                ? "رادار فناوری نشان می‌دهد چه ابزارهایی تثبیت شده‌اند، کجا استفاده هدفمند داریم و چه گزینه‌هایی هنوز در مرحله آزمایش یا ارزیابی‌اند."
+                : "The Technology Radar separates established choices from context-dependent use, trials and technologies that are still being assessed."}
+            </p>
+            <Link href="/technology-radar/">
+              {fa ? "باز کردن رادار فناوری" : "Open Technology Radar"} <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <div className="radarTeaserVisual" aria-hidden="true">
+            <img src="/visual-radar.svg" alt="" />
           </div>
         </div>
       </section>
@@ -210,8 +272,8 @@ export default function PortalPage() {
             </h2>
             <p>
               {fa
-                ? "هدف پلتفرم، معماری یا خودکارسازی این نیست که اجزای بیشتری بسازیم؛ هدف این است که تغییر، تحویل و عملیات محصول قابل پیش‌بینی‌تر و قابل توضیح‌تر شود."
-                : "The point of platform work, architecture and automation is not to create more components. It is to make product change, delivery and operations more predictable and explainable."}
+                ? "پلتفرم زمانی ارزش دارد که تغییر، تحویل و عملیات محصول را قابل پیش‌بینی‌تر کند؛ نه اینکه فقط اجزای بیشتری به معماری اضافه کند."
+                : "Platform work is valuable when it makes product change, delivery and operations more predictable—not when it simply adds more components."}
             </p>
           </div>
         </div>
