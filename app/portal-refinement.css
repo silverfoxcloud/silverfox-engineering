@@ -1564,3 +1564,29 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+
+/* Architecture backbone signal */
+.mapNodes::after {
+  content: "";
+  position: absolute;
+  inset-inline: 12.5%;
+  top: -10px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(89, 154, 197, .12), #86d9ff, rgba(89, 154, 197, .12));
+  background-size: 220% 100%;
+  opacity: .65;
+  animation: architectureSignal 4.8s linear infinite;
+  pointer-events: none;
+}
+.mapNode.active::before {
+  border-color: #9ce6ff;
+  filter: drop-shadow(0 0 4px rgba(104, 206, 244, .65));
+}
+@keyframes architectureSignal {
+  from { background-position: 180% 0; }
+  to { background-position: -80% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mapNodes::after { animation: none; }
+}
