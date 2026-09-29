@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/data/content";
-import { useLocale } from "@/components/LocaleProvider";
 
 const groups = [
   {
@@ -99,7 +98,6 @@ const groups = [
 export default function SiteHeader({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
   const pathname = usePathname();
-  const { toggleLocale } = useLocale();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -124,8 +122,15 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const hrefFor = (slug: string) =>
-    slug.startsWith("https://") ? slug : "/" + slug.replace(/^\/+|\/+$/g, "") + "/";
+  const hrefFor = (slug: string) => {
+    if (slug.startsWith("https://")) return slug;
+    const clean = "/" + slug.replace(/^\/+|\/+$/g, "") + "/";
+    return fa ? "/fa" + clean : clean;
+  };
+
+  const languageHref = fa
+    ? (pathname.replace(/^\/fa(?=\/|$)/, "") || "/")
+    : (pathname === "/" ? "/fa/" : "/fa" + pathname);
 
   const closeAll = () => {
     setOpenGroup(null);
@@ -164,18 +169,15 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
           })}
         </nav>
 
-        <button
-          type="button"
+        <Link
           className="langSwitch"
           lang={fa ? "en" : "fa"}
-          onClick={() => {
-            toggleLocale();
-            closeAll();
-          }}
+          href={languageHref}
+          onClick={closeAll}
           aria-label={fa ? "Switch to English" : "تغییر زبان به فارسی"}
         >
           {fa ? "English" : "فارسی"}
-        </button>
+        </Link>
 
         <button
           type="button"
@@ -224,7 +226,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
                 <strong>{fa ? activeGroup.feature.fa.title : activeGroup.feature.en.title}</strong>
                 <p>{fa ? activeGroup.feature.fa.body : activeGroup.feature.en.body}</p>
                 <Link
-                  href={fa ? activeGroup.feature.fa.href : activeGroup.feature.en.href}
+                  href={hrefFor(fa ? activeGroup.feature.fa.href : activeGroup.feature.en.href)}
                   onClick={closeAll}
                 >
                   {fa ? activeGroup.feature.fa.cta : activeGroup.feature.en.cta}
