@@ -7,7 +7,6 @@ import SiteFooter from "@/components/SiteFooter";
 import { copy, type Locale } from "@/data/content";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
-import { useLocalizedMetadata } from "@/components/LocaleProvider";
 
 const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 
@@ -37,13 +36,6 @@ export default function PortalPage({ locale }: { locale: Locale }) {
       root.classList.remove("motionReady");
     };
   }, []);
-
-  useLocalizedMetadata(
-    fa ? "مهندسی پردازش ابری روباه نقره‌ای" : "Silver Fox Engineering",
-    fa
-      ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ معماری، پلتفرم ابری، امنیت، داده، قابلیت اتکا و تصمیم‌های فناوری."
-      : "Public engineering portal for Silver Fox architecture, cloud platform, security, data, reliability and technology decisions.",
-  );
 
   const capabilities = [
     {
