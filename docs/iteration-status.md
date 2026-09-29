@@ -1,4 +1,94 @@
-# Portal Iteration Status — 2026-09-29
+# Portal Iteration Status — 2026-09-29## Final validation — PASS
+
+The application/runtime head validated in the final gate is:
+
+- `7162f37c50baf6159d2a9c829b449bde49450613`
+- GitHub Pages run: `172` — **SUCCESS**
+- Visual QA run: `58` — **SUCCESS**
+- Playwright result: **348 / 348 passed**
+- Visual QA artifact: `11058312417`
+- Artifact SHA-256: `f907c1e06827a2058a83aba44a19b32446be854084b7680168bc00b096d8f0c7`
+
+The final browser gate covered:
+
+- 320, 375, 430, 768, 1024, 1280, 1440 and 1920 widths on the major routes;
+- English LTR and Persian RTL;
+- Homepage;
+- Architecture;
+- Technology Radar;
+- SFAS, License Platform and Fox Pay platform pages;
+- Package Directory and package detail routes;
+- Engineering Notes;
+- Architecture Decisions;
+- Build Stories;
+- Changelog;
+- route smoke coverage across the full generated public route set;
+- desktop Mega Menu keyboard open/close;
+- mobile navigation and Escape behavior;
+- language-switch integrity;
+- horizontal-overflow checks;
+- broken-image checks;
+- visible Technology Radar blips before and after filtering;
+- reduced-motion behavior and primary-content visibility.
+
+### Manual screenshot review
+
+Workflow artifacts were not accepted on test status alone. Full-page browser evidence was manually reviewed.
+
+The review confirmed:
+
+- Homepage capability, platform, package, build-story, changelog and engineering-note content is visible in both desktop and mobile captures;
+- the light/dark editorial rhythm renders correctly;
+- English and Persian homepage captures preserve their intended LTR/RTL composition;
+- Technology Radar blips are visible in the settled desktop state after the visibility fix;
+- Package Directory and Engineering Notes render with the intended technical-editorial hierarchy;
+- the earlier false blank-content capture caused by reveal-state behavior is no longer present.
+
+### Defects found and closed during final QA
+
+1. **Browser QA TypeScript leakage**
+   - A TypeScript annotation remained inside the temporary `.mjs` test harness.
+   - Fixed by isolating browser QA as valid JavaScript outside production typecheck dependencies.
+
+2. **Homepage content visibility**
+   - Manual artifact review found content that could appear blank in full-page captures because primary content still carried obsolete reveal attributes.
+   - Fixed by making primary editorial content unconditionally visible and removing reveal gating from Homepage content.
+
+3. **Technology Radar blip visibility**
+   - Manual artifact review found the radar rings visible while blips could remain visually absent because their default state depended on an entry animation.
+   - Fixed by making blips visible by default and limiting animation to interaction/filter states.
+   - Added an explicit Playwright assertion requiring visible blips before and after filtering.
+
+4. **Reduced-motion assertion precision**
+   - Chromium reported a disabled transition as `1e-06s` rather than the string `0s`.
+   - The QA assertion was corrected to use a numeric tolerance. This was a test-harness precision issue, not a runtime visual defect.
+
+## Git / authorship audit
+
+The validated application head and subsequent work use:
+
+- Author: `Hadi Nobakht <hadinobakht@aol.com>`
+- Committer: `Hadi Nobakht <hadinobakht@aol.com>`
+
+A review of the 100 most recent commits found no commit-message matches for:
+
+- `Co-authored-by`;
+- Claude;
+- ChatGPT;
+- OpenAI;
+- generated-by / AI attribution.
+
+## Admin / CMS boundary
+
+Package/publication administration remains source-controlled because this repository is a static Next.js export and contains no existing authenticated backend, database, migrations or CMS/Admin runtime to extend.
+
+A disconnected mock admin was deliberately **not** created. Adding authenticated CRUD would require a separate architecture decision covering a writable backend, identity/RBAC, storage, preview and publishing. This is an architectural boundary, not an unimplemented public-site defect.
+
+## Iteration disposition
+
+The public Engineering Portal implementation described in this iteration is now **validated and deployable** under the current static GitHub Pages architecture.
+
+The site now includes the required public engineering depth—architecture, platforms, product boundaries, Technology Radar, verified Packages, Engineering Notes, public Architecture Decisions, Build Stories, Changelog, bilingual SEO and responsive browser QA—while keeping roadmap work distinct from shipped capability and avoiding fabricated historical or operational claims.
 
 ## Implemented
 
