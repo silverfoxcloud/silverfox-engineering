@@ -1097,3 +1097,106 @@
     gap: 12px;
   }
 }
+
+
+/* Product-specific platform hero visualizations */
+.platformSystemVisual {
+  position: relative;
+  width: min(100%, 390px);
+  aspect-ratio: 1.18;
+  justify-self: end;
+  overflow: hidden;
+  border: 1px solid rgba(122, 183, 230, .2);
+  border-radius: 26px;
+  background:
+    linear-gradient(rgba(117, 175, 218, .055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(117, 175, 218, .055) 1px, transparent 1px),
+    radial-gradient(circle at 62% 18%, rgba(72, 160, 220, .13), transparent 38%),
+    #081827;
+  background-size: 28px 28px, 28px 28px, auto, auto;
+  box-shadow: 0 34px 86px rgba(0, 0, 0, .27);
+}
+.visualFooterTag {
+  position: absolute;
+  inset-inline: 22px;
+  bottom: 18px;
+  color: #7694ad;
+  font: 700 9px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.visualTopbar { height: 35px; display: flex; align-items: center; gap: 6px; padding: 0 14px; border-bottom: 1px solid rgba(126, 176, 216, .12); }
+.visualTopbar span { width: 6px; height: 6px; border-radius: 50%; background: #57768e; }
+.sfasCanvas { display: grid; grid-template-columns: 54px 1fr; height: calc(100% - 70px); }
+.sfasRail { border-inline-end: 1px solid rgba(126, 176, 216, .12); padding: 20px 14px; display: grid; align-content: start; gap: 15px; }
+.sfasRail i { width: 24px; height: 6px; border-radius: 99px; background: #31526c; }
+.sfasWork { padding: 22px; }
+.sfasWork strong { font-size: 17px; }
+.sfasMetric { display: block; width: 72%; height: 7px; margin-top: 24px; border-radius: 99px; background: linear-gradient(90deg, #5eb8e8, #315b7b); transform-origin: left; animation: metricSweep 5s ease-in-out infinite; }
+.sfasMetric.short { width: 46%; margin-top: 9px; animation-delay: .45s; }
+.sfasTiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 30px; }
+.sfasTiles i { min-height: 72px; border: 1px solid rgba(102, 167, 214, .22); border-radius: 10px; background: #0d2337; }
+
+.licenseGraph { position: absolute; inset: 25px 20px 48px; }
+.systemNode { position: absolute; display: grid; place-items: center; min-width: 92px; min-height: 42px; padding: 8px 12px; border: 1px solid rgba(109, 182, 231, .4); border-radius: 10px; background: #0d273e; color: #dcecf8; font: 700 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; z-index: 2; }
+.nodeOrg { top: 0; left: 50%; transform: translateX(-50%); }
+.nodeProduct { top: 72px; left: 50%; transform: translateX(-50%); }
+.nodeEntitlement { top: 144px; left: 50%; transform: translateX(-50%); border-color: #77c9f0; box-shadow: 0 0 24px rgba(84, 176, 227, .18); }
+.nodeLicense { top: 222px; left: 18px; }
+.nodeUsage { top: 222px; right: 18px; }
+.systemLink { position: absolute; left: 50%; width: 1px; background: linear-gradient(#61bce8, rgba(97, 188, 232, .16)); transform-origin: top; animation: linkSignal 3.6s ease-in-out infinite; }
+.linkOne { top: 42px; height: 30px; } .linkTwo { top: 114px; height: 30px; animation-delay: .3s; }
+.linkThree,.linkFour { top: 186px; height: 57px; }
+.linkThree { transform: rotate(42deg); animation-delay: .6s; }
+.linkFour { transform: rotate(-42deg); animation-delay: .9s; }
+
+.payFlow { position: absolute; inset: 25px 18px 72px; }
+.payProduct { top: 5px; left: 50%; transform: translateX(-50%); }
+.payRouter { position: absolute; top: 92px; left: 50%; transform: translateX(-50%); width: 112px; height: 56px; display: grid; place-items: center; border: 1px solid #70c6ef; border-radius: 50%; background: #10324d; color: #dff5ff; font: 800 11px/1 ui-monospace, monospace; box-shadow: 0 0 36px rgba(76, 176, 226, .16); }
+.payProviders { position: absolute; inset-inline: 0; bottom: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+.payProviders span { min-height: 48px; display: grid; place-items: center; border: 1px solid rgba(106, 168, 210, .25); border-radius: 9px; background: #0b2134; color: #aac3d5; font-size: 9px; }
+.payPulse { position: absolute; left: 50%; width: 5px; height: 5px; border-radius: 50%; background: #8ee1ff; box-shadow: 0 0 14px #5bc4ec; animation: payPacket 3.2s ease-in-out infinite; }
+.pulseOne { top: 56px; } .pulseTwo { top: 154px; animation-delay: 1.2s; }
+.payChecks { position: absolute; inset-inline: 18px; bottom: 18px; display: flex; gap: 6px; }
+.payChecks span { flex: 1; padding: 7px; text-align: center; border-top: 1px solid rgba(100, 165, 207, .2); color: #718fa8; font: 700 8px/1 ui-monospace, monospace; }
+
+.travelRoute { position: absolute; inset-inline: 22px; top: 58px; display: flex; align-items: center; }
+.travelStop { min-width: 64px; padding: 11px 9px; text-align: center; border: 1px solid rgba(109, 171, 214, .28); border-radius: 9px; background: #0b2134; color: #abc1d2; font-size: 9px; }
+.travelStop.active { border-color: #73c9f1; color: #e6f7ff; }
+.travelRoute i { flex: 1; height: 1px; background: linear-gradient(90deg, #62bfe9, #315875); position: relative; }
+.travelRoute i::after { content: ""; position: absolute; top: -2px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #99e4ff; animation: routePacket 3.8s linear infinite; }
+.travelLedger { position: absolute; inset-inline: 34px; top: 158px; display: grid; gap: 11px; }
+.travelLedger span { height: 34px; border: 1px solid rgba(103, 164, 206, .18); border-radius: 8px; background: linear-gradient(90deg, #102d46 0 34%, #0b2033 34%); }
+
+.hubCore { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 94px; height: 94px; display: grid; place-items: center; border: 1px solid #76cdf3; border-radius: 50%; background: #10324d; color: #ebf8ff; font-weight: 800; box-shadow: 0 0 38px rgba(68, 165, 217, .18); animation: hubBreath 4.8s ease-in-out infinite; z-index: 2; }
+.hubNode { position: absolute; min-width: 82px; padding: 9px; text-align: center; border: 1px solid rgba(104, 168, 211, .28); border-radius: 9px; background: #0b2236; color: #a8c1d3; font-size: 9px; z-index: 2; }
+.hubNorth { top: 28px; left: 50%; transform: translateX(-50%); }
+.hubEast { right: 20px; top: 50%; transform: translateY(-50%); }
+.hubSouth { bottom: 28px; left: 50%; transform: translateX(-50%); }
+.hubWest { left: 20px; top: 50%; transform: translateY(-50%); }
+.hubLink { position: absolute; left: 50%; top: 50%; width: 1px; height: 82px; background: linear-gradient(#67c2eb, rgba(103, 194, 235, .08)); transform-origin: top; }
+.hubLinkNorth { transform: rotate(180deg); } .hubLinkEast { transform: rotate(-90deg); }
+.hubLinkSouth { transform: rotate(0deg); } .hubLinkWest { transform: rotate(90deg); }
+
+@keyframes metricSweep { 0%,100% { transform: scaleX(.7); opacity: .65; } 50% { transform: scaleX(1); opacity: 1; } }
+@keyframes linkSignal { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+@keyframes payPacket { 0% { transform: translate(-50%, -12px); opacity: 0; } 35%,65% { opacity: 1; } 100% { transform: translate(-50%, 44px); opacity: 0; } }
+@keyframes routePacket { from { transform: translateX(0); opacity: .2; } 25% { opacity: 1; } to { transform: translateX(42px); opacity: 0; } }
+@keyframes hubBreath { 50% { box-shadow: 0 0 56px rgba(68, 165, 217, .3); } }
+
+@media (max-width: 900px) {
+  .platformSystemVisual { justify-self: start; width: min(100%, 520px); }
+}
+@media (max-width: 520px) {
+  .platformSystemVisual { aspect-ratio: 1.05; border-radius: 20px; }
+  .travelRoute { inset-inline: 12px; }
+  .travelStop { min-width: 52px; padding-inline: 5px; font-size: 8px; }
+  .hubNode { min-width: 68px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sfasMetric,
+  .systemLink,
+  .payPulse,
+  .travelRoute i::after,
+  .hubCore { animation: none !important; }
+}
