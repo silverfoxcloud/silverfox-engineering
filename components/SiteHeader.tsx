@@ -66,6 +66,33 @@ const groups = [
     },
   },
   {
+    id: "packages",
+    en: "Packages",
+    fa: "پکیج‌ها",
+    items: [
+      ["packages", "Package Directory", "دایرکتوری پکیج‌ها", "Verified packages, versions and lifecycle", "پکیج‌های تأییدشده، نسخه و وضعیت انتشار"],
+      ["packages/sfas-core", "SFAS Core", "SFAS Core", "Framework-independent shared runtime contracts", "هسته مستقل از فریم‌ورک و قراردادهای مشترک"],
+      ["packages/sfas-react-adapter", "React Adapter", "React Adapter", "React lifecycle bridge for SFAS", "پل lifecycle برای استفاده از SFAS در React"],
+      ["packages/sfas-date-picker", "Date Picker", "Date Picker", "Gregorian bridge and native Jalali calendar", "bridge گرگوری و تقویم جلالی بومی"],
+    ],
+    feature: {
+      en: {
+        eyebrow: "CURRENT RELEASE",
+        title: "Seven verified SFAS packages. One explicit prerelease state.",
+        body: "Version 0.2.0-alpha.12 is published to private GitHub Packages on the next channel, with controlled publication and clean-install validation completed.",
+        cta: "Browse packages",
+        href: "/packages/",
+      },
+      fa: {
+        eyebrow: "انتشار فعلی",
+        title: "هفت پکیج واقعی SFAS با وضعیت پیش‌انتشار روشن.",
+        body: "نسخه 0.2.0-alpha.12 در GitHub Packages خصوصی و کانال next منتشر شده و انتشار کنترل‌شده و clean install آن اعتبارسنجی شده است.",
+        cta: "مرور پکیج‌ها",
+        href: "/packages/",
+      },
+    },
+  },
+  {
     id: "resources",
     en: "Resources",
     fa: "منابع",
