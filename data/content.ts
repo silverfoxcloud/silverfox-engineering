@@ -89,8 +89,8 @@ export const projects = [
 export const copy = {
   en: {
     langName: "فارسی", langHref: "/fa/", eyebrow: "SILVER FOX ENGINEERING",
-    heroTitle: "Engineering systems built to evolve.",
-    heroBody: "Silver Fox engineers a connected technology ecosystem across cloud platforms, product infrastructure, payments, licensing and digital experiences. We focus on clear boundaries, secure defaults, operational visibility and architectures that can evolve without turning shared infrastructure into shared complexity.",
+    heroTitle: "Infrastructure for today. Architecture for what comes next.",
+    heroBody: "Each Silver Fox product evolves independently, but it does not start alone. Identity, licensing, payments, data foundations and shared product experience are engineered as explicit platform capabilities so products can grow faster without inheriting one shared release cycle.",
     primaryCta: "Explore engineering", secondaryCta: "Architecture",
     nav: ["Ecosystem", "Platforms", "Architecture", "Technology", "Security"],
     metrics: [["Cloud", "Platform-first architecture"],["AI", "Engineering acceleration"],["24/7", "Reliability mindset"]],
@@ -145,8 +145,8 @@ export const copy = {
   },
   fa: {
     langName: "English", langHref: "/", eyebrow: "مهندسی پردازش ابری روباه نقره‌ای",
-    heroTitle: "سیستم‌هایی که برای تغییر طراحی می‌شوند.",
-    heroBody: "در Silver Fox، قابلیت‌های مشترک مثل هویت، چندمستاجری، لایسنس، پرداخت و مدیریت یک‌بار و با قراردادهای روشن ساخته می‌شوند. هر محصول در عین استفاده از این زیرساخت، مالک منطق دامنه، داده و چرخه انتشار خود می‌ماند تا تغییر یک بخش، مسیر توسعه بقیه را متوقف نکند.",
+    heroTitle: "زیرساختی برای امروز؛ معماری‌ای برای فردا",
+    heroBody: "در پردازش ابری روباه نقره‌ای، هر محصول مستقل طراحی و توسعه می‌شود؛ اما تنها نمی‌ماند. هویت، لایسنس، پرداخت، داده و تجربه‌های مشترک روی پایه‌ای پلتفرمی شکل می‌گیرند تا محصولات سریع‌تر رشد کنند، ساده‌تر مقیاس بگیرند و با اطمینان بیشتری تغییر کنند.",
     primaryCta: "مشاهده رویکرد مهندسی", secondaryCta: "معماری",
     nav: ["اکوسیستم", "پلتفرم‌ها", "معماری", "فناوری", "امنیت"],
     metrics: [["پلتفرم ابری", "زیرساخت مشترک محصولات"],["هوش مصنوعی", "شتاب‌دهی مهندسی"],["۲۴/۷", "نگاه مبتنی بر قابلیت اتکا"]],
