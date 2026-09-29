@@ -1534,3 +1534,33 @@
     transition: none;
   }
 }
+
+
+/* Architecture readability pass: prioritize node comprehension over side-by-side density */
+.architectureMap {
+  grid-template-columns: 1fr;
+}
+.mapDetail {
+  border-inline-start: 0;
+  border-top: 1px solid rgba(111, 178, 228, .25);
+  padding: 24px 0 0;
+}
+.rtl .mapDetail {
+  padding: 24px 0 0;
+}
+.mapNodes {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.mapNode {
+  min-width: 0;
+}
+.mapNode strong {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+@media (max-width: 680px) {
+  .mapNodes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
