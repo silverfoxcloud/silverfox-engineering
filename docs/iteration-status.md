@@ -84,39 +84,74 @@ Therefore Package Admin / publication CRUD has **not** been fabricated as a disc
 
 Adding an authenticated CMS requires a separate architecture decision for a writable backend, identity/RBAC, storage, preview and publishing. This remains genuinely incomplete relative to a future CMS scope, but building a fake static admin would violate the requirement to extend the existing architecture rather than invent a disconnected one.
 
-## Validation completed before the latest content expansion
+## Final validation completed
 
-- GitHub Pages typecheck/build/deploy passed for the bilingual routing and for the new homepage editorial light/dark rhythm.
-- Initial Playwright Visual QA run #1 completed successfully.
-- The first browser artifact exposed a QA-capture weakness: scroll-reveal/initial radar animation could be captured before settling.
-- QA was improved to wait, scroll through the document, return to the top and capture the settled state.
-- Production TypeScript and browser QA dependencies were separated after an early workflow integration issue.
+The current static-public portal scope is complete and validated.
 
-## Final validation in progress
+### Production deployment
 
-The final browser/deploy gate must run against the latest commit that includes:
+- Validated application/QA HEAD: `7162f37c50baf6159d2a9c829b449bde49450613`.
+- GitHub Pages workflow: run `172` / `36619153616`.
+- TypeScript validation: **PASS**.
+- Static export: **PASS**.
+- Pages artifact upload: **PASS**.
+- Production deployment: **PASS**.
 
-- packages;
-- engineering publications;
-- homepage package/story/changelog/note sections;
-- editorial light/dark rhythm;
-- expanded sitemap;
-- updated browser route coverage.
+### Browser / visual QA
 
-Required final visual review:
+- Silver Fox Engineering Visual QA: run `58` / `36619153619`.
+- Result: **348 / 348 tests PASS**.
+- Browser: Chromium via Playwright `1.55.0`.
+- The browser suite validated required responsive widths: `320`, `375`, `430`, `768`, `1024`, `1280`, `1440`, and `1920`.
+- English LTR and Persian RTL were both exercised.
+- Major visual routes were captured across all required widths.
+- The complete public route set was smoke-tested in mobile and desktop modes.
+- No horizontal-overflow assertion failed.
+- No broken-image assertion failed.
+- Language switching, desktop mega-menu keyboard close, mobile navigation/Escape, Radar filtering, visible Radar blips, and reduced-motion behavior all passed.
+- Browser console/page errors remained release-blocking in the suite.
 
-- 320, 375, 430, 768, 1024, 1280, 1440 and 1920 widths;
-- English LTR and Persian RTL;
-- Homepage;
-- Technology Radar;
-- key Platform pages;
-- Package Directory/detail;
+### Manual artifact review
+
+Workflow screenshot artifacts were inspected in addition to automated assertions.
+
+Reviewed examples include:
+
+- Homepage — English and Persian at desktop and mobile widths;
+- Technology Radar — English and Persian desktop;
+- Package Directory;
 - Engineering Notes;
-- Architecture Decisions;
-- Build Stories;
-- Changelog;
-- desktop Mega Menu and mobile navigation;
-- no horizontal overflow;
-- reduced-motion state.
+- Engineering Changelog;
+- platform/product surfaces.
 
-This document intentionally does not mark the portal complete until the latest workflow and its screenshot evidence are reviewed.
+The review confirmed the intended dark/light editorial rhythm, readable RTL/LTR hierarchy, visible homepage capability/product/publication content, and visible Technology Radar blips.
+
+### Defects found and closed during final QA
+
+1. **Homepage full-page capture exposed blank content rows.**
+   - Primary content visibility was decoupled from reveal/scroll state.
+   - Homepage editorial rows now render visible by default.
+
+2. **Technology Radar main blips were too dependent on entry animation.**
+   - Blips now render visible by default.
+   - QA explicitly requires visible unfiltered blips before and after filtering.
+
+3. **Browser QA isolation initially leaked TypeScript-only syntax into the JavaScript test entrypoint.**
+   - The Playwright runtime remains isolated from production TypeScript/build dependencies.
+
+4. **Reduced-motion browser rounding returned `1e-06s` rather than literal `0s`.**
+   - The assertion now uses a numeric near-zero tolerance while still requiring primary content to remain visible.
+
+### Git authorship audit
+
+- Current HEAD author and committer: `Hadi Nobakht <hadinobakht@aol.com>`.
+- The latest 100 commits were checked for AI/assistant attribution markers.
+- No `Co-authored-by`, Claude, ChatGPT, OpenAI or equivalent AI trailer was found.
+
+## Explicit future architecture item — Admin / CMS
+
+The public engineering portal is complete for its current static GitHub Pages architecture.
+
+An authenticated Package Admin / publication CMS is **not** part of the current runtime because this repository has no writable backend, database, migrations or existing Admin/CMS system to extend. Current package and publication records remain source-controlled.
+
+A future CMS requires an explicit architecture decision covering storage, authentication/RBAC, preview, publishing and operational ownership. A disconnected static mock admin is intentionally not treated as completion of that requirement.

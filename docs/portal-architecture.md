@@ -149,7 +149,7 @@ The Technology Radar preserves its factual technology/status dataset and support
 - contextual details;
 - a separate mobile list representation.
 
-Node positions are stable across filters. Technology copy explains use context rather than claiming every assessed technology is deployed.
+Node positions are stable across filters. Radar blips are visible by default rather than depending on entry-animation completion, and filtering changes emphasis without making active results disappear. Technology copy explains use context rather than claiming every assessed technology is deployed.
 
 ## Motion and reduced motion
 
@@ -196,4 +196,4 @@ A separate Chromium Playwright workflow builds the same export and validates:
 - Technology Radar interaction;
 - reduced-motion behavior.
 
-Full-page screenshots are captured after scrolling the document so reveal states and initial animations have settled.
+Full-page screenshots capture a settled rendered state after a controlled document scroll. Primary content visibility is asserted independently of animation, while Radar QA explicitly verifies that active blips remain visible before and after filtering.
