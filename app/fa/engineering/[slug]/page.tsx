@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PublicationDetailPage } from "@/components/PublicationPages";
+import LegacyLocaleRedirect from "@/components/LegacyLocaleRedirect";
 import { engineeringNotes } from "@/data/publications";
 
 export function generateStaticParams() {
@@ -9,25 +9,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const record = engineeringNotes.find((item) => item.slug === slug);
-  if (!record) return {};
+  if (!engineeringNotes.some((item) => item.slug === slug)) return {};
   return {
-    title: record.title.fa,
-    description: record.summary.fa,
-    alternates: {
-      canonical: "/fa/engineering/" + slug + "/",
-      languages: {
-        en: "/engineering/" + slug + "/",
-        fa: "/fa/engineering/" + slug + "/",
-        "x-default": "/engineering/" + slug + "/",
-      },
-    },
+    alternates: { canonical: "/engineering/" + slug + "/" },
+    robots: { index: false, follow: true },
   };
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PersianLegacyEngineeringDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const record = engineeringNotes.find((item) => item.slug === slug);
-  if (!record) notFound();
-  return <PublicationDetailPage locale="fa" record={record} />;
+  if (!engineeringNotes.some((item) => item.slug === slug)) notFound();
+  return <LegacyLocaleRedirect cleanPath={"/engineering/" + slug + "/"} />;
 }

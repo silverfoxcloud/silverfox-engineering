@@ -1,28 +1,12 @@
 import type { Metadata } from "next";
-import PortalPage from "@/components/PortalPage";
+import LegacyLocaleRedirect from "@/components/LegacyLocaleRedirect";
 
 export const metadata: Metadata = {
-  title: "مهندسی پردازش ابری روباه نقره‌ای",
-  description:
-    "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ معماری، پلتفرم ابری، امنیت، داده، قابلیت اتکا و تصمیم‌های فناوری.",
-  alternates: {
-    canonical: "/fa/",
-    languages: {
-      en: "/",
-      fa: "/fa/",
-      "x-default": "/",
-    },
-  },
-  openGraph: {
-    title: "مهندسی پردازش ابری روباه نقره‌ای",
-    description:
-      "معماری، پلتفرم ابری و تصمیم‌های مهندسی در اکوسیستم پردازش ابری روباه نقره‌ای.",
-    url: "/fa/",
-    locale: "fa_IR",
-    alternateLocale: ["en_US"],
-  },
+  title: "Silver Fox Engineering",
+  alternates: { canonical: "/" },
+  robots: { index: false, follow: true },
 };
 
-export default function PersianHome() {
-  return <PortalPage locale="fa" />;
+export default function PersianLegacyHome() {
+  return <LegacyLocaleRedirect cleanPath="/" />;
 }

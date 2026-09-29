@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { PublicationIndexPage } from "@/components/PublicationPages";
+import LegacyLocaleRedirect from "@/components/LegacyLocaleRedirect";
 
 export const metadata: Metadata = {
-  title: "تصمیم‌های معماری",
-  description: "ADRهای عمومی Silver Fox با زمینه، محدودیت و trade-off.",
-  alternates: {
-    canonical: "/fa/architecture-decisions/",
-    languages: { en: "/architecture-decisions/", fa: "/fa/architecture-decisions/", "x-default": "/architecture-decisions/" },
-  },
+  alternates: { canonical: "/architecture-decisions/" },
+  robots: { index: false, follow: true },
 };
 
-export default function Page() {
-  return <PublicationIndexPage locale="fa" kind="decision" />;
+export default function PersianLegacyArchitectureDecisionIndex() {
+  return <LegacyLocaleRedirect cleanPath="/architecture-decisions/" />;
 }

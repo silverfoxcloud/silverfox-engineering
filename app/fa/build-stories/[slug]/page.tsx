@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PublicationDetailPage } from "@/components/PublicationPages";
+import LegacyLocaleRedirect from "@/components/LegacyLocaleRedirect";
 import { buildStories } from "@/data/publications";
 
 export function generateStaticParams() {
@@ -9,25 +9,15 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const record = buildStories.find((item) => item.slug === slug);
-  if (!record) return {};
+  if (!buildStories.some((item) => item.slug === slug)) return {};
   return {
-    title: record.title.fa,
-    description: record.summary.fa,
-    alternates: {
-      canonical: "/fa/build-stories/" + slug + "/",
-      languages: {
-        en: "/build-stories/" + slug + "/",
-        fa: "/fa/build-stories/" + slug + "/",
-        "x-default": "/build-stories/" + slug + "/",
-      },
-    },
+    alternates: { canonical: "/build-stories/" + slug + "/" },
+    robots: { index: false, follow: true },
   };
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function PersianLegacyBuildStoryDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const record = buildStories.find((item) => item.slug === slug);
-  if (!record) notFound();
-  return <PublicationDetailPage locale="fa" record={record} />;
+  if (!buildStories.some((item) => item.slug === slug)) notFound();
+  return <LegacyLocaleRedirect cleanPath={"/build-stories/" + slug + "/"} />;
 }
