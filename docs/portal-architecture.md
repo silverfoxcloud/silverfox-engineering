@@ -158,9 +158,9 @@ Motion explains relationship or lifecycle where useful.
 - architecture signal motion;
 - product flow/pulse visuals;
 - radar reveal/filter transitions;
-- restrained scroll reveal.
+- restrained interaction and diagram transitions.
 
-When `prefers-reduced-motion: reduce` is active, reveal gating is not enabled and animated engineering surfaces stop their nonessential motion.
+Primary content visibility is never gated by JavaScript or scroll position. When `prefers-reduced-motion: reduce` is active, animated engineering surfaces stop their nonessential motion.
 
 ## SEO
 
