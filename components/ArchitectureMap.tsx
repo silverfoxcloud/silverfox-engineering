@@ -25,7 +25,7 @@ const nodes = [
     fa: "پلتفرم لایسنس",
     path: "platforms/license-platform",
     infoEn: "Licensing and entitlements are exposed through explicit contracts instead of being duplicated inside each product.",
-    infoFa: "لایسنس و entitlement از طریق قراردادهای صریح ارائه می‌شوند تا این منطق در هر محصول دوباره ساخته نشود.",
+    infoFa: "لایسنس و حق دسترسی از طریق قراردادهای صریح ارائه می‌شوند تا این منطق در هر محصول دوباره ساخته نشود.",
   },
   {
     en: "Fox Pay",
@@ -60,7 +60,7 @@ const nodes = [
     fa: "مشاهده‌پذیری",
     path: "devops-sre",
     infoEn: "Telemetry and operational signals make failures explainable and support measurable reliability work.",
-    infoFa: "Telemetry و سیگنال‌های عملیاتی کمک می‌کنند خطا قابل توضیح باشد و قابلیت اتکا با داده واقعی سنجیده شود.",
+    infoFa: "داده‌های مشاهده‌پذیری و سیگنال‌های عملیاتی کمک می‌کنند خطا قابل توضیح باشد و قابلیت اتکا با داده واقعی سنجیده شود.",
   },
 ] as const;
 
