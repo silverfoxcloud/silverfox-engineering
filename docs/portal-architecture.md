@@ -4,23 +4,21 @@
 
 Silver Fox Engineering is a statically exported Next.js application deployed through GitHub Pages.
 
-The repository currently contains:
+The repository contains:
 
 - public UI and static route generation;
 - source-controlled bilingual content/data;
 - SVG and CSS engineering visuals;
 - build/deploy workflows;
-- browser QA.
+- Chromium/Playwright browser QA.
 
-It does **not** contain a writable application API, database, migrations or an existing CMS/Admin runtime.
+It does **not** contain a writable application API, database, migrations or authenticated CMS/Admin runtime.
 
-This distinction is intentional. A future authenticated content-management system would require a separate architecture decision for storage, authentication, authorization, preview and publishing. A disconnected mock admin is not treated as an acceptable substitute.
+## Clean public route model
 
-## Public route model
+The normal application has one route tree for both languages.
 
-The portal uses two statically generated, crawlable language trees.
-
-Core English areas include:
+Core areas include:
 
 - `/`
 - `/architecture/`
@@ -39,161 +37,157 @@ Core English areas include:
 - `/changelog/`
 - `/platforms/{product}/`
 
-Persian mirrors these through `/fa/...`.
-
 Package, Engineering Note, Architecture Decision and Build Story detail routes are generated from verified source-controlled records.
 
-## Locale semantics
+No normal navigation creates `/fa`, `/en`, locale query parameters or locale hashes.
 
-Page components receive locale explicitly from the route.
+## Same-URL locale architecture
 
-- English page roots use `lang="en"` and `dir="ltr"`.
-- Persian page roots use `lang="fa"` and `dir="rtl"`.
-- The Persian nested layout synchronizes document-level language/direction immediately.
-- Internal navigation remains within the active language tree.
-- Language switching navigates to the corresponding alternate route.
-- No locale preference is required to render the correct static document.
+`LocaleProvider` is mounted at the root layout.
+
+The active locale:
+
+- is `en` or `fa`;
+- is persisted under `silverfox-engineering-locale`;
+- updates every shared page without route navigation;
+- sets `document.documentElement.lang`;
+- sets `document.documentElement.dir`;
+- persists across clean-route navigation and reload.
+
+English renders `lang="en" dir="ltr"`.
+Persian renders `lang="fa" dir="rtl"`.
+
+### Pre-hydration behavior
+
+Static export defaults to conservative English markup so server output and the first React render remain hydration-safe.
+
+A small inline bootstrap in the root `<head>` reads the persisted locale before normal application rendering, applies `lang` / `dir` and marks Persian restoration as pending. The body remains hidden only during this short restoration window. `LocaleProvider` resolves the same persisted value in a layout effect and removes the pending marker on the next frame.
+
+This avoids an exposed EN → FA content flash while preserving hydration correctness.
+
+## Legacy `/fa` migration
+
+Old indexed `/fa/...` static pages remain only for compatibility.
+
+Each legacy page:
+
+- contains no unique application content;
+- declares the equivalent clean canonical route;
+- is `noindex,follow`;
+- writes Persian to the locale storage key;
+- applies Persian document direction immediately;
+- uses `window.location.replace(...)` to migrate to the clean route.
+
+Because replacement is used, the migration does not intentionally add an extra Back-button entry.
+
+## SEO model and trade-off
+
+Same-URL bilingual content cannot truthfully use the same SEO model as two separately crawlable locale URLs.
+
+The active architecture therefore:
+
+- publishes one canonical per clean route;
+- excludes `/fa` compatibility pages from the sitemap;
+- does not emit reciprocal `hreflang` links to fake active language pages;
+- keeps static metadata accurate and conservative;
+- updates browser title/description when the active locale changes;
+- updates document `lang` / `dir` with locale state.
+
+The explicit trade-off is that English and Persian are not independently crawlable localized documents at separate URLs. This is accepted because unchanged visible URLs are a product requirement.
 
 ## Navigation
 
 `SiteHeader` owns desktop and mobile navigation.
 
-Desktop groups now cover:
+Desktop:
 
-- Engineering;
-- Platforms;
-- Packages;
-- Resources / Engineering Library.
+- grouped Engineering / Platforms / Packages / Resources navigation;
+- white mega-menu surface;
+- keyboard-operable triggers;
+- Escape close;
+- focus return;
+- backdrop close.
 
-The full-width mega menu closes on destination selection, backdrop click, Escape, route change or another group selection. Mobile uses a dedicated navigation surface rather than compressing the desktop panel.
+Mobile:
 
-## Homepage information architecture
+- dedicated navigation surface;
+- per-group accordion controls;
+- `aria-expanded` / `aria-controls`;
+- Escape close and focus return.
 
-The homepage is intentionally directional rather than a duplicate of every deep page.
+Language switching is a state control, not a Link.
 
-Current journey:
+## Page architecture
 
-1. Hero + interactive ecosystem architecture;
-2. light editorial engineering model;
-3. dark core capability narrative;
-4. shared platform/product foundations;
-5. light verified package release surface;
-6. dark Engineering Build Stories and Recently Shipped evidence;
-7. light Engineering Notes;
-8. dark Technology Radar teaser;
-9. final engineering identity statement.
+### Homepage
 
-The light/dark alternation creates an editorial rhythm: infrastructure and interactive system surfaces stay predominantly dark, while knowledge and explanation can move onto light editorial surfaces.
+The homepage is directional and progressively reveals complexity rather than dumping complete architecture into one page.
 
-## Architecture visualization
+### Engineering domain pages
 
-`ArchitectureMap` exposes shared capability/product boundaries with one contextual detail panel.
+Architecture, cloud, security, data, AI, DevOps/SRE and principles use shared editorial hierarchy with domain-specific content and technical visuals.
 
-- hover and focus update context;
-- click navigates to the relevant engineering/platform page;
-- touch has direct navigation;
-- motion is supplemental rather than required to understand the fallback content.
+### Platform pages
 
-## Platforms and product truth
+SFAS, License Platform, Fox Pay, ExoTravel and ExoHub have distinct technical models and preserve current-state wording from verified data.
 
-Platform pages use dedicated visual models for SFAS, License Platform, Fox Pay, ExoTravel and ExoHub.
+### Packages
 
-Content distinguishes:
+The Package Directory and package detail pages present source-controlled release truth. The canonical package facts remain prerelease `0.2.0-alpha.12`, `next`, private GitHub Packages unless source evidence changes.
 
-- implemented/current capability;
-- current engineering baseline with a release or adoption gate;
-- accepted architecture direction;
-- roadmap/proposed work.
+### Engineering Library
 
-An accepted ADR is not automatically presented as shipped runtime behavior.
+Engineering Notes, Architecture Decisions, Build Stories and Changelog use publication-oriented layouts and preserve source/status context.
 
-## Packages
+### Technology Radar
 
-The Package Directory is built from live SFAS package manifests and current SFAS status evidence.
+The factual Radar dataset and filter behavior are preserved. The visual environment is light, blips are visible without entrance animation, and mobile uses a list representation.
 
-Current package family:
+## Visual architecture
 
-- `@silverfoxcloud/sfas-foundation`
-- `@silverfoxcloud/sfas-core`
-- `@silverfoxcloud/sfas-html-adapter`
-- `@silverfoxcloud/sfas-react-adapter`
-- `@silverfoxcloud/sfas-jalali`
-- `@silverfoxcloud/sfas-datatable`
-- `@silverfoxcloud/sfas-date-picker`
+The portal now uses one semantic light design system from `app/globals.css`.
 
-All are represented as prerelease `0.2.0-alpha.12` on the `next` channel in the private GitHub Packages registry. Registry credentials are never embedded in public copy.
+The previous stacked dark refinement layer is intentionally retired. Public page types share:
 
-Package administration is source-controlled because this repository has no existing CMS/Admin runtime to extend.
+- semantic color tokens;
+- typography;
+- spacing;
+- border/radius rules;
+- button hierarchy;
+- navigation;
+- publication layouts;
+- package/code surfaces;
+- diagram grammar;
+- responsive behavior.
 
-## Engineering Library
+Current Kinde is documented as a visual benchmark / interaction reference only; the Silver Fox implementation owns its information architecture, content, diagrams and product identity.
 
-The Engineering Library consists of:
+## Performance
 
-- Engineering Notes: authored public explanations derived from real architecture and implementation evidence;
-- Architecture Decisions: public-safe summaries of accepted ADRs;
-- Build Stories: real system-building narratives grounded in reports/tests/milestones;
-- Changelog: verifiable releases and completed engineering work.
+The architecture avoids a large general-purpose animation library.
 
-Portal publication dates are not used to fabricate historical article dates. Where a source ADR or phase has its own historical date, the source date is shown separately.
+Interactions use React already present in the application plus CSS transitions where appropriate. Static export, SVGs and targeted client boundaries remain the default approach.
 
-## Technology Radar
+Locale data is source-controlled and shared by the existing bilingual records rather than duplicated into a second active route tree.
 
-The Technology Radar preserves its factual technology/status dataset and supports:
+## QA
 
-- Adopt;
-- Use when justified;
-- Trial;
-- Assess;
-- status/category filtering;
-- keyboard-accessible blips;
-- contextual details;
-- a separate mobile list representation.
+`.github/workflows/visual-qa.yml` builds the static export and runs Chromium/Playwright on pull requests and main.
 
-Node positions are stable across filters. Radar blips are visible by default rather than depending on entry-animation completion, and filtering changes emphasis without making active results disappear. Technology copy explains use context rather than claiming every assessed technology is deployed.
+Browser coverage validates:
 
-## Motion and reduced motion
-
-Motion explains relationship or lifecycle where useful.
-
-- architecture signal motion;
-- product flow/pulse visuals;
-- radar reveal/filter transitions;
-- restrained interaction and diagram transitions.
-
-Primary content visibility is never gated by JavaScript or scroll position. When `prefers-reduced-motion: reduce` is active, animated engineering surfaces stop their nonessential motion.
-
-## SEO
-
-Public routes provide language-specific:
-
-- titles and descriptions;
-- canonical URLs;
-- reciprocal English/Persian `hreflang`;
-- `x-default`;
-- OpenGraph metadata.
-
-The root adds Twitter summary metadata plus Organization/WebSite JSON-LD. `robots.txt` exposes the bilingual sitemap. The sitemap includes engineering, platform, package and publication routes.
-
-## Quality gates
-
-GitHub Pages CI runs:
-
-1. dependency install;
-2. TypeScript validation;
-3. static export;
-4. Pages deployment.
-
-A separate Chromium Playwright workflow builds the same export and validates:
-
-- required viewport widths;
-- both EN/LTR and FA/RTL;
-- route health;
-- horizontal overflow;
-- broken images;
-- language switch;
-- desktop mega-menu keyboard behavior;
-- mobile navigation;
-- Technology Radar interaction;
-- reduced-motion behavior.
-
-Full-page screenshots capture a settled rendered state after a controlled document scroll. Primary content visibility is asserted independently of animation, while Radar QA explicitly verifies that active blips remain visible before and after filtering.
+- 320, 375, 430, 768, 1024, 1280, 1440 and 1920;
+- EN/LTR and FA/RTL;
+- full-page screenshots for major routes;
+- clean route smoke coverage;
+- same-URL language switching;
+- persistence after navigation/reload;
+- document `lang` / `dir`;
+- legacy `/fa` migration;
+- absence of generated `/fa` links;
+- hydration/browser errors;
+- navigation focus return;
+- mobile accordion behavior;
+- Radar visibility/filtering;
+- reduced motion;
+- horizontal overflow and broken images.
