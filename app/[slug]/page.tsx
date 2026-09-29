@@ -22,11 +22,20 @@ export async function generateMetadata({
   return {
     title: page.title,
     description: page.lead,
-    alternates: { canonical: "/" + slug + "/" },
+    alternates: {
+      canonical: "/" + slug + "/",
+      languages: {
+        en: "/" + slug + "/",
+        fa: "/fa/" + slug + "/",
+        "x-default": "/" + slug + "/",
+      },
+    },
     openGraph: {
       title: page.title,
       description: page.lead,
       url: "/" + slug + "/",
+      locale: "en_US",
+      alternateLocale: ["fa_IR"],
     },
   };
 }
@@ -39,5 +48,5 @@ export default async function EngineeringPage({
   const { slug } = await params;
   if (!engineeringSlugs.includes(slug as EngineeringSlug)) notFound();
 
-  return <EngineeringDetailPage slug={slug as EngineeringSlug} />;
+  return <EngineeringDetailPage slug={slug as EngineeringSlug} locale="en" />;
 }
