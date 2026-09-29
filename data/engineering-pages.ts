@@ -36,32 +36,42 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
     en: {
       eyebrow: "SYSTEM ARCHITECTURE",
       title: "Architecture that keeps change affordable.",
-      lead: "Silver Fox is designed as a connected ecosystem of bounded products and shared platform capabilities. The goal is simple: reuse what should be common without coupling everything that needs to move independently.",
-      summary: "Clear ownership, contract-first integration, evolutionary boundaries and measurable systems give teams room to change architecture when evidence—not fashion—justifies it.",
+      lead: "Silver Fox is built as a connected ecosystem of independently owned products and shared platform capabilities. Common infrastructure is reused through explicit contracts; product data, domain behavior and release decisions stay bounded.",
+      summary: "The architecture optimizes for controlled change: clear ownership, versioned interfaces, tenant-safe boundaries, observable behavior and the option to split or replace components when evidence justifies it.",
       visual: "/visual-architecture.svg",
       sections: [
-        { title: "Bounded by responsibility", body: "Business domains own their models, data and lifecycle. Shared infrastructure does not become shared business logic.", bullets: ["Explicit domain ownership", "Independent release paths", "No duplicate platform capabilities"] },
-        { title: "Contracts before coupling", body: "APIs and event contracts define how systems meet. Public APIs are versioned; asynchronous flows use explicit schemas and idempotent consumers.", bullets: ["OpenAPI for synchronous contracts", "AsyncAPI for event contracts", "Problem Details for consistent API errors"] },
-        { title: "Modular first, distributed when earned", body: "A service is extracted when scale, isolation, runtime suitability or operational ownership creates a real reason—not to make a diagram look more modern." },
-        { title: "Evolution is a feature", body: "Architecture decisions leave room for migration, backward compatibility and measured decomposition. A component can be split or replaced without rewriting the ecosystem." }
+        { title: "Platform and product boundaries", body: "Identity, administration, licensing and payments can become shared platform capabilities without absorbing product-specific workflows. A shared service owns a reusable technical concern; a product domain keeps its business rules and authoritative data.", bullets: ["Shared technical capability", "Product-owned business behavior", "Independent release paths"] },
+        { title: "Data ownership stays explicit", body: "Transactional state belongs to the domain that is responsible for it. PostgreSQL-backed domain data remains authoritative; caches, search projections and analytics views improve access without becoming a second source of truth." },
+        { title: "Contracts define integration", body: "Versioned APIs and schemas define how independently evolving components meet. The contract is the dependency surface; another service's internal tables, private implementation and deployment model are not." , bullets: ["OpenAPI for synchronous interfaces", "Stable machine-readable errors", "Compatibility reviewed as architecture"] },
+        { title: "Events decouple progression", body: "Asynchronous integration is used when workflow progression, fan-out or resilience benefits from it. Transactional changes and event intent stay aligned so downstream projections can be rebuilt without inventing business truth." },
+        { title: "Multi-tenancy crosses every trusted boundary", body: "Tenant context is carried through authorization, data access, background work and operational tooling. Isolation is a system property rather than a filter applied at the interface." },
+        { title: "Reliability is designed into state transitions", body: "Retries, idempotency, timeout handling, recovery paths and reconciliation are modeled around the business operation. The goal is not to hide failure, but to make uncertain outcomes recoverable and explainable." },
+        { title: "Security follows ownership and privilege", body: "Identity, authorization, secret handling, audit evidence and least-privilege access are enforced at trusted boundaries. Public documentation explains the principles while sensitive controls and topology stay private." },
+        { title: "Distribution has to earn its complexity", body: "Components remain modular until scale, isolation, runtime suitability or operational ownership creates a reason to separate them. A more distributed diagram is not automatically a better system." },
+        { title: "Evolution is a first-class requirement", body: "Backward compatibility, migration paths and versioned boundaries preserve room to change. Architecture is allowed to become more specialized as measured product and operational needs become clearer." }
       ],
       closingTitle: "Good architecture protects options.",
-      closingBody: "The system should be easy to understand today and still leave a credible path to tomorrow."
+      closingBody: "A useful architecture is understandable now, measurable in operation and still leaves a credible path to change later."
     },
     fa: {
       eyebrow: "معماری سیستم",
-      title: "معماری‌ای که هزینه تغییر را پایین نگه می‌دارد.",
-      lead: "در پردازش ابری روباه نقره‌ای، محصولات به هم متصل‌اند اما در هم حل نمی‌شوند. قابلیت‌هایی که باید مشترک باشند یک‌بار در لایه پلتفرم ساخته می‌شوند و هر دامنه‌ای که به استقلال نیاز دارد، مالک داده، منطق و چرخه توسعه خودش باقی می‌ماند.",
-      summary: "مرزهای روشن، قراردادهای پایدار و سیستم‌های قابل اندازه‌گیری کمک می‌کنند معماری بر اساس نیاز واقعی تغییر کند؛ نه بر اساس موج بعدی فناوری.",
+      title: "معماری‌ای که تغییر را قابل کنترل نگه می‌دارد.",
+      lead: "در پردازش ابری روباه نقره‌ای، محصولات مستقل‌اند اما جدا از هم ساخته نمی‌شوند. قابلیت‌های مشترک از طریق قراردادهای روشن در اختیار محصولات قرار می‌گیرند و در مقابل، داده، منطق دامنه و تصمیم انتشار هر محصول در همان دامنه باقی می‌ماند.",
+      summary: "هدف معماری، کم‌کردن هزینه تغییر است: مالکیت روشن، رابط‌های نسخه‌بندی‌شده، مرزهای امن چندمستاجری، رفتار قابل مشاهده و امکان تفکیک یا جایگزینی اجزا وقتی شواهد واقعی آن را توجیه کند.",
       visual: "/visual-architecture.svg",
       sections: [
-        { title: "هر دامنه، یک مسئولیت روشن", body: "مدل داده، منطق کسب‌وکار و چرخه توسعه هر دامنه صاحب مشخص دارد. زیرساخت مشترک به معنی منطق مشترک نیست.", bullets: ["مالکیت روشن دامنه", "انتشار مستقل", "پرهیز از ساخت قابلیت‌های تکراری"] },
-        { title: "قرارداد پیش از وابستگی", body: "رابط‌های برنامه‌نویسی و رویدادها مرز ارتباط سیستم‌ها هستند. قراردادها نسخه‌بندی می‌شوند تا تغییر یک بخش، بخش‌های دیگر را غافلگیر نکند.", bullets: ["OpenAPI برای رابط‌های هم‌زمان", "AsyncAPI برای رویدادها", "الگوی خطای یکپارچه برای API"] },
-        { title: "ماژولار تا وقتی توزیع‌شدن لازم شود", body: "یک سرویس زمانی جدا می‌شود که مقیاس، ایزوله‌سازی، نوع بار کاری یا مالکیت عملیاتی واقعاً آن را توجیه کند؛ نه برای پر کردن نمودار معماری." },
-        { title: "تغییر، بخشی از طراحی است", body: "سازگاری با نسخه‌های قبلی، مهاجرت داده و مسیر تفکیک اجزا از ابتدا در نظر گرفته می‌شوند تا رشد سیستم نیازمند بازنویسی کامل نباشد." }
+        { title: "مرز پلتفرم و محصول", body: "هویت، مدیریت، لایسنس و پرداخت می‌توانند قابلیت مشترک پلتفرمی باشند، بدون اینکه فرایندهای اختصاصی محصول را در خود جمع کنند. پلتفرم مسئول مسئله فنی مشترک است و محصول مالک قواعد کسب‌وکار و داده مرجع خود می‌ماند.", bullets: ["قابلیت فنی مشترک", "منطق کسب‌وکار در مالکیت محصول", "مسیر انتشار مستقل"] },
+        { title: "مالکیت داده باید روشن بماند", body: "داده تراکنشی در همان دامنه‌ای نگهداری می‌شود که مسئولیت آن را بر عهده دارد. کش، جست‌وجو و نماهای تحلیلی برای سرعت و دسترسی بهترند؛ نه برای ساختن یک منبع حقیقت دوم." },
+        { title: "قرارداد، مرز یکپارچگی است", body: "API و schema نسخه‌بندی‌شده مشخص می‌کنند اجزای مستقل چگونه با هم ارتباط می‌گیرند. وابستگی باید به قرارداد باشد، نه به جدول داخلی، جزئیات پیاده‌سازی یا روش استقرار سرویس دیگر.", bullets: ["OpenAPI برای رابط‌های هم‌زمان", "خطاهای پایدار و قابل پردازش", "سازگاری نسخه‌ها به‌عنوان تصمیم معماری"] },
+        { title: "رویداد برای جداسازی جریان کار", body: "ارتباط ناهم‌زمان زمانی استفاده می‌شود که پیشرفت فرایند، fan-out یا تاب‌آوری از آن سود ببرد. تغییر تراکنشی و قصد انتشار رویداد باید هماهنگ بمانند تا مصرف‌کننده‌های بعدی بتوانند نماهای خود را بدون ساختن واقعیت جدید بازسازی کنند." },
+        { title: "چندمستاجری از تمام مرزهای قابل اعتماد عبور می‌کند", body: "زمینه مستأجر در مجوزدهی، دسترسی داده، پردازش پس‌زمینه و ابزارهای عملیاتی همراه درخواست می‌ماند. جداسازی مستأجر یک فیلتر رابط کاربری نیست؛ بخشی از رفتار سیستم است." },
+        { title: "قابلیت اتکا در مدل وضعیت ساخته می‌شود", body: "تلاش مجدد، idempotency، مدیریت timeout، بازیابی و تطبیق نتیجه باید متناسب با عملیات کسب‌وکار طراحی شوند. هدف پنهان‌کردن خطا نیست؛ هدف این است که نتیجه نامطمئن قابل بازیابی و قابل توضیح باشد." },
+        { title: "امنیت از مالکیت و سطح دسترسی پیروی می‌کند", body: "هویت، مجوزدهی، مدیریت اطلاعات محرمانه، شواهد ممیزی و اصل کمترین دسترسی در مرزهای قابل اعتماد اعمال می‌شوند. اصول عمومی منتشر می‌شوند، اما توپولوژی و کنترل‌های حساس خصوصی می‌مانند." },
+        { title: "توزیع‌شدن باید ارزشش را ثابت کند", body: "اجزا تا زمانی ماژولار می‌مانند که مقیاس، جداسازی، نوع بار کاری یا مالکیت عملیاتی دلیل روشنی برای تفکیک ایجاد کند. نمودار شلوغ‌تر لزوماً معماری بهتر نیست." },
+        { title: "تکامل، بخشی از طراحی است", body: "سازگاری با نسخه قبل، مسیر مهاجرت و مرزهای نسخه‌بندی‌شده حق انتخاب آینده را حفظ می‌کنند. با روشن‌تر شدن نیاز واقعی محصول و عملیات، معماری می‌تواند تخصصی‌تر شود." }
       ],
       closingTitle: "معماری خوب، حق انتخاب آینده را حفظ می‌کند.",
-      closingBody: "سیستم امروز باید ساده و قابل فهم باشد و برای فردا هم مسیر قابل اتکایی برای رشد داشته باشد."
+      closingBody: "سیستم امروز باید قابل فهم و قابل سنجش باشد و برای تغییر فردا نیز مسیر معقولی باقی بگذارد."
     }
   },
   platform: {
@@ -334,29 +344,167 @@ type PlatformPage = {
   eyebrow: string;
   title: string;
   lead: string;
+  status: string;
   capabilities: string[];
   engineering: string[];
+  sections: PageSection[];
 };
 
 export const platformPages: Record<PlatformSlug, Record<Locale, PlatformPage>> = {
   sfas: {
-    en: { name:"Silver Fox Admin System", eyebrow:"EXPERIENCE PLATFORM", title:"A shared foundation for operational products.", lead:"SFAS standardizes administration, design primitives, accessibility and multilingual product foundations while leaving domain behavior inside each product.", capabilities:["Shared admin shell","Design-system foundations","Multilingual experience","Accessible operational UI"], engineering:["Reusable components and semantic tokens","Consistent product navigation and states","Locale-aware layout and typography","Adoption without sharing business logic"] },
-    fa: { name:"Silver Fox Admin System", eyebrow:"پلتفرم تجربه", title:"یک پایه مشترک برای محصولات عملیاتی.", lead:"SFAS مدیریت، اجزای طراحی، دسترس‌پذیری و پایه تجربه چندزبانه را یکپارچه می‌کند؛ بدون اینکه منطق کسب‌وکار محصولات در یک جا جمع شود.", capabilities:["پوسته مدیریت مشترک","پایه سیستم طراحی","تجربه چندزبانه","رابط عملیاتی دسترس‌پذیر"], engineering:["کامپوننت‌های قابل استفاده مجدد و توکن‌های معنایی","ناوبری و وضعیت‌های هماهنگ در محصولات","چیدمان و تایپوگرافی وابسته به زبان","استفاده مشترک بدون اشتراک منطق دامنه"] }
+    en: {
+      name: "Silver Fox Admin System",
+      eyebrow: "EXPERIENCE PLATFORM",
+      title: "A shared administration foundation without shared product logic.",
+      lead: "SFAS provides reusable administration, design, localization and accessibility foundations so product teams can start from the same operational baseline without inheriting one shared business application.",
+      status: "Phase 1 engineering baseline complete; first controlled package publication proof is the remaining release-binding gate.",
+      capabilities: ["Shared admin shell", "Design-system foundations", "RTL/LTR as equal product modes", "Accessible operational UI"],
+      engineering: ["Versioned reusable packages", "SSR-safe React and HTML adapters", "Gregorian/Jalali date foundation", "Automated interaction, accessibility and visual QA"],
+      sections: [
+        { title: "Why SFAS exists", body: "Administration surfaces repeat the same hard problems: navigation, forms, data tables, themes, localization, accessibility and interaction states. SFAS moves those foundations into reusable packages while leaving business workflows in the consuming product." },
+        { title: "RTL and LTR are one product contract", body: "Direction is not a late translation pass. Layout, keyboard behavior, technical LTR islands, typography and visual regression are tested as equal operating modes." },
+        { title: "Reuse is versioned", body: "Products consume explicit package surfaces and can adopt compatible releases deliberately. Shared primitives should reduce duplicated UI engineering without forcing every product into the same release cycle." },
+        { title: "Current engineering state", body: "The Phase 1 engineering baseline is complete across seven TypeScript package surfaces with automated unit, contract, browser, accessibility and visual checks. The remaining release-binding step is the first controlled publication and clean install proof from the canonical package registry." }
+      ]
+    },
+    fa: {
+      name: "Silver Fox Admin System",
+      eyebrow: "پلتفرم تجربه و مدیریت",
+      title: "یک پایه مشترک برای مدیریت؛ بدون اشتراک منطق محصول.",
+      lead: "SFAS زیرساخت رابط مدیریت، سیستم طراحی، بومی‌سازی و دسترس‌پذیری را به‌صورت قابل استفاده مجدد فراهم می‌کند تا محصولات از یک پایه عملیاتی مشترک شروع کنند، بدون اینکه فرایندهای کسب‌وکارشان در یک برنامه مرکزی ادغام شود.",
+      status: "پایه مهندسی فاز ۱ کامل است؛ اثبات اولین انتشار کنترل‌شده بسته‌ها، آخرین گیت اتصال Release است.",
+      capabilities: ["پوسته مشترک مدیریت", "پایه سیستم طراحی", "پشتیبانی هم‌ارز RTL/LTR", "رابط عملیاتی دسترس‌پذیر"],
+      engineering: ["بسته‌های نسخه‌بندی‌شده", "Adapterهای React و HTML", "پایه تاریخ میلادی و جلالی", "آزمون تعامل، دسترس‌پذیری و رگرسیون بصری"],
+      sections: [
+        { title: "چرا SFAS وجود دارد", body: "رابط‌های مدیریتی بارها با مسئله‌های مشابهی مثل ناوبری، فرم، جدول داده، تم، بومی‌سازی، دسترس‌پذیری و وضعیت‌های تعاملی روبه‌رو می‌شوند. SFAS این پایه‌ها را مشترک می‌کند و منطق کسب‌وکار را در محصول مصرف‌کننده نگه می‌دارد." },
+        { title: "RTL و LTR دو نسخه جدا نیستند", body: "جهت صفحه یک مرحله ترجمه در انتهای کار نیست. چیدمان، رفتار صفحه‌کلید، بخش‌های فنی LTR، تایپوگرافی و رگرسیون بصری برای هر دو جهت به‌صورت هم‌ارز بررسی می‌شوند." },
+        { title: "استفاده مجدد باید نسخه‌پذیر باشد", body: "محصولات سطح مشخصی از بسته‌ها را مصرف می‌کنند و نسخه‌های سازگار را آگاهانه می‌پذیرند. هدف کم‌کردن تکرار در مهندسی UI است، نه قفل‌کردن همه محصولات به یک چرخه انتشار." },
+        { title: "وضعیت مهندسی فعلی", body: "پایه مهندسی فاز ۱ در هفت سطح بسته TypeScript تکمیل شده و آزمون‌های واحد، قراردادی، مرورگر، دسترس‌پذیری و بصری روی آن اجرا می‌شوند. گام باقی‌مانده برای Release، انتشار کنترل‌شده و اثبات نصب تمیز از Registry اصلی است." }
+      ]
+    }
   },
   "license-platform": {
-    en: { name:"Silver Fox License Platform", eyebrow:"COMMERCIAL CONTROL PLANE", title:"Licensing, entitlement and usage as a platform.", lead:"The License Platform is designed to separate subscriptions, entitlements, technical licenses and usage governance so commercial policy does not leak into every product implementation.", capabilities:["Multi-tenancy","Policy-driven licensing","Entitlement model","Usage governance"], engineering:["Subscription and entitlement separation","Environment-aware credentials and policy","Idempotent sensitive operations","Auditable commercial models"] },
-    fa: { name:"Silver Fox License Platform", eyebrow:"لایه کنترل تجاری", title:"لایسنس، دسترسی و مصرف؛ به‌عنوان یک قابلیت پلتفرمی.", lead:"پلتفرم لایسنس با هدف تفکیک اشتراک، entitlement، لایسنس فنی و حاکمیت مصرف طراحی می‌شود تا سیاست تجاری وارد پیاده‌سازی هر محصول نشود.", capabilities:["چندمستاجری","لایسنس مبتنی بر سیاست","مدل entitlement","حاکمیت مصرف"], engineering:["تفکیک اشتراک از دسترسی فنی","سیاست و اعتبارنامه مستقل برای هر محیط","عملیات حساس با جلوگیری از اجرای تکراری","مدل تجاری قابل ممیزی"] }
+    en: {
+      name: "Silver Fox License Platform",
+      eyebrow: "LICENSING & ENTITLEMENT CONTROL PLANE",
+      title: "Separate the commercial relationship from technical access.",
+      lead: "The License Platform models subscriptions, entitlements and licenses as different responsibilities. That separation lets commercial policy evolve without pushing product-specific licensing logic into every codebase.",
+      status: "Phases 0–4 complete. The next phase is application authentication and customer API access.",
+      capabilities: ["Multi-tenancy", "Policy-driven licensing", "Entitlement snapshots", "Versioned signed licenses"],
+      engineering: ["Subscription / entitlement / license separation", "Hybrid activation policy", "Online and offline validation model", "Auditable issuance and lifecycle"],
+      sections: [
+        { title: "Three models, three responsibilities", body: "A subscription represents the commercial relationship. An entitlement grants technical rights. A license is the signed credential that proves access. Keeping those concepts separate prevents billing policy, feature rights and runtime validation from collapsing into one object." },
+        { title: "Policy belongs to the product", body: "Products can define different activation, duration, environment and feature rules. Licensing behavior is policy-driven so the platform can serve products with different enforcement models without hard-coded special cases." },
+        { title: "The licensing engine is now a real foundation", body: "The current implementation includes a versioned signed-license model, activation policies, lifecycle actions, online/offline validation, key rotation foundations, auditability and tenant-aware issuance. The implementation has dedicated integration, migration and end-to-end coverage." },
+        { title: "The next boundary is authenticated API access", body: "Application identity and customer API credentials are the next planned layer. This keeps product-to-platform authentication distinct from the license credential itself and creates a cleaner base for quotas, rate controls and future metering." }
+      ]
+    },
+    fa: {
+      name: "Silver Fox License Platform",
+      eyebrow: "لایه کنترل لایسنس و سطح دسترسی",
+      title: "رابطه تجاری را از دسترسی فنی جدا می‌کنیم.",
+      lead: "در پلتفرم لایسنس، اشتراک، entitlement و لایسنس سه مسئولیت متفاوت دارند. این تفکیک اجازه می‌دهد سیاست تجاری تغییر کند، بدون اینکه منطق اختصاصی لایسنس وارد کد همه محصولات شود.",
+      status: "فازهای ۰ تا ۴ کامل شده‌اند. گام بعدی احراز هویت برنامه و دسترسی API مشتری است.",
+      capabilities: ["چندمستاجری", "لایسنس مبتنی بر سیاست", "تصویر entitlement", "لایسنس امضاشده و نسخه‌بندی‌شده"],
+      engineering: ["تفکیک اشتراک، entitlement و لایسنس", "سیاست ترکیبی فعال‌سازی", "اعتبارسنجی آنلاین و آفلاین", "صدور و چرخه عمر قابل ممیزی"],
+      sections: [
+        { title: "سه مدل برای سه مسئولیت", body: "اشتراک رابطه تجاری را ثبت می‌کند، entitlement حق فنی را مشخص می‌کند و لایسنس مدرک امضاشده دسترسی است. این جداسازی مانع از آن می‌شود که قیمت‌گذاری، سطح قابلیت و اعتبارسنجی فنی در یک مدل درهم ادغام شوند." },
+        { title: "سیاست لایسنس متعلق به محصول است", body: "محصولات می‌توانند قواعد متفاوتی برای فعال‌سازی، مدت، محیط و قابلیت‌ها داشته باشند. رفتار لایسنس مبتنی بر سیاست است تا پلتفرم بدون شرط‌های اختصاصی برای هر محصول کار کند." },
+        { title: "موتور لایسنس اکنون یک پایه عملیاتی است", body: "پیاده‌سازی فعلی شامل مدل لایسنس امضاشده و نسخه‌بندی‌شده، سیاست فعال‌سازی، چرخه عمر، اعتبارسنجی آنلاین و آفلاین، پایه چرخش کلید، ممیزی و صدور آگاه از مستأجر است. این بخش با آزمون‌های یکپارچه‌سازی، مهاجرت و انتها‌به‌انتها پوشش داده شده است." },
+        { title: "مرز بعدی، دسترسی API احراز هویت‌شده است", body: "هویت برنامه و اعتبارنامه API مشتری در فاز بعدی قرار دارند. این تفکیک، احراز هویت محصول در برابر پلتفرم را از خود credential لایسنس جدا می‌کند و پایه روشن‌تری برای quota، کنترل نرخ و اندازه‌گیری مصرف می‌سازد." }
+      ]
+    }
   },
   "fox-pay": {
-    en: { name:"Fox Pay", eyebrow:"PAYMENT INFRASTRUCTURE", title:"One payment contract. Multiple providers.", lead:"Fox Pay is designed to isolate provider-specific behavior behind adapters and a common payment contract, with routing, verification, reconciliation, webhook delivery and provider health treated as orchestration concerns.", capabilities:["Provider abstraction","Routing policy","Verification & reconciliation","Provider health model"], engineering:["Go + PostgreSQL + Redis baseline","Deterministic routing and failover","Idempotency and replay protection","Provider-independent payment states"] },
-    fa: { name:"Fox Pay", eyebrow:"زیرساخت پرداخت", title:"یک قرارداد پرداخت؛ چند ارائه‌دهنده.", lead:"Fox Pay با هدف جداکردن رفتار اختصاصی هر درگاه از محصولات طراحی شده است؛ مسیریابی، تأیید، تطبیق تراکنش، تحویل Webhook و وضعیت ارائه‌دهنده در لایه ارکستریشن مدیریت می‌شوند.", capabilities:["انتزاع درگاه","سیاست مسیریابی","تأیید و تطبیق تراکنش","مدل سلامت ارائه‌دهنده"], engineering:["پایه Go، PostgreSQL و Redis","مسیریابی و جایگزینی قطعی","جلوگیری از اجرای تکراری و بازپخش","وضعیت پرداخت مستقل از درگاه"] }
+    en: {
+      name: "Fox Pay",
+      eyebrow: "PAYMENT ORCHESTRATION",
+      title: "Keep provider complexity out of product code.",
+      lead: "Fox Pay is being built as a provider-neutral payment layer. Products integrate with a stable payment contract while provider accounts, routing decisions and provider-specific behavior stay behind the orchestration boundary.",
+      status: "Phase 1 multi-tenant core complete. Identity, RBAC and API clients are the next planned phase.",
+      capabilities: ["Organization and project boundaries", "Provider-neutral domain model", "BYOM operating model", "Routing and reconciliation roadmap"],
+      engineering: ["Go + PostgreSQL + Redis baseline", "Multi-tenant organization/project core", "Provider adapters planned behind one contract", "Idempotency and auditable routing as required invariants"],
+      sections: [
+        { title: "Bring your own merchant account", body: "Fox Pay is not designed to hold customer funds or act as a merchant of record. Each business uses its own provider relationship while the platform supplies the software boundary for orchestration." },
+        { title: "Provider-specific behavior belongs behind adapters", body: "Creation, callback, verification, inquiry, refund and error semantics vary by provider. The target architecture isolates those differences so product code depends on one payment model rather than a collection of gateway SDKs." },
+        { title: "Routing must preserve payment correctness", body: "Weighted, priority, health-aware and failover routing are roadmap capabilities. A timeout or unknown result cannot trigger blind failover; inquiry, idempotency and recovery have to resolve uncertain state first to reduce duplicate-payment risk." },
+        { title: "Current engineering state", body: "The implemented foundation currently covers the core multi-tenant organization and project domain. Identity, RBAC and machine API clients are next; provider framework, payment state machine, routing, reconciliation and advanced observability remain subsequent phases rather than shipped claims." }
+      ]
+    },
+    fa: {
+      name: "Fox Pay",
+      eyebrow: "ارکستریشن پرداخت",
+      title: "پیچیدگی درگاه باید بیرون از کد محصول بماند.",
+      lead: "Fox Pay به‌عنوان لایه‌ای مستقل از ارائه‌دهنده ساخته می‌شود. محصول با یک قرارداد پرداخت پایدار کار می‌کند و حساب‌های پذیرندگی، تصمیم مسیریابی و رفتار اختصاصی هر درگاه پشت مرز ارکستریشن باقی می‌مانند.",
+      status: "هسته چندمستاجری فاز ۱ کامل است. هویت، RBAC و API Clientها گام بعدی برنامه هستند.",
+      capabilities: ["مرز سازمان و پروژه", "مدل مستقل از ارائه‌دهنده", "مدل BYOM", "نقشه‌راه مسیریابی و تطبیق"],
+      engineering: ["پایه Go، PostgreSQL و Redis", "هسته چندمستاجری سازمان و پروژه", "Adapterهای درگاه پشت قرارداد مشترک", "idempotency و ممیزی تصمیم مسیریابی به‌عنوان اصل طراحی"],
+      sections: [
+        { title: "حساب پذیرندگی در مالکیت کسب‌وکار می‌ماند", body: "Fox Pay برای نگهداری پول مشتری یا ایفای نقش Merchant of Record طراحی نشده است. هر کسب‌وکار رابطه خود را با ارائه‌دهنده پرداخت حفظ می‌کند و پلتفرم لایه نرم‌افزاری ارکستریشن را فراهم می‌کند." },
+        { title: "رفتار اختصاصی درگاه پشت Adapter می‌ماند", body: "ایجاد پرداخت، callback، تأیید، استعلام، refund و مدل خطا میان ارائه‌دهنده‌ها متفاوت است. معماری هدف این تفاوت‌ها را جدا می‌کند تا محصول به یک مدل پرداخت وابسته باشد، نه به مجموعه‌ای از SDKهای درگاه." },
+        { title: "مسیریابی نباید صحت پرداخت را قربانی کند", body: "مسیریابی وزنی، اولویتی، مبتنی بر سلامت و failover در نقشه‌راه قرار دارند. timeout یا نتیجه نامشخص نباید باعث ارسال کورکورانه همان پرداخت به درگاه بعدی شود؛ ابتدا استعلام، idempotency و بازیابی باید وضعیت را روشن کنند." },
+        { title: "وضعیت مهندسی فعلی", body: "پیاده‌سازی فعلی هسته چندمستاجری سازمان و پروژه را پوشش می‌دهد. هویت، RBAC و API Client گام بعدی‌اند و چارچوب ارائه‌دهنده، state machine پرداخت، مسیریابی، تطبیق و مشاهده‌پذیری پیشرفته در فازهای بعد قرار دارند؛ بنابراین در این سایت به‌عنوان قابلیت آماده عرضه معرفی نمی‌شوند." }
+      ]
+    }
   },
   exotravel: {
-    en: { name:"ExoTravel", eyebrow:"TRAVEL TECHNOLOGY", title:"A travel domain built on strong platform foundations.", lead:"ExoTravel combines product-owned travel workflows with shared tenancy, identity, audit, multilingual, commerce and integration foundations.", capabilities:["Travel domain ownership","Tenant-safe foundations","Commerce lifecycle","Partner and API readiness"], engineering:["Tenant isolation at trusted boundaries","Audit and transactional outbox","Money and localization primitives","Progressive domain delivery"] },
-    fa: { name:"ExoTravel", eyebrow:"فناوری سفر", title:"دامنه سفر روی پایه‌ای محکم از قابلیت‌های پلتفرمی.", lead:"ExoTravel فرایندهای اختصاصی سفر را با زیرساخت مشترک چندمستاجری، هویت، ممیزی، چندزبانه، تجارت و یکپارچگی ترکیب می‌کند.", capabilities:["مالکیت دامنه سفر","پایه امن چندمستاجری","چرخه تجارت و رزرو","آمادگی همکاری و API"], engineering:["جداسازی مستأجر در مرزهای قابل اعتماد","ممیزی و Outbox تراکنشی","پایه پول و بومی‌سازی","تحویل مرحله‌ای دامنه‌ها"] }
+    en: {
+      name: "ExoTravel",
+      eyebrow: "TRAVEL COMMERCE",
+      title: "A travel domain that keeps its business ownership.",
+      lead: "ExoTravel is organized around product-owned travel and commerce workflows while consuming common identity, tenancy, audit, localization and platform foundations through explicit boundaries.",
+      status: "Architecture and phased delivery roadmap defined; implementation follows the accepted foundation-first sequence.",
+      capabilities: ["Travel domain ownership", "Tenant-aware foundation", "Commerce lifecycle roadmap", "Partner/API readiness"],
+      engineering: ["Explicit domain boundaries", "Money and localization primitives", "Audit and event-aware integration", "Phased delivery behind validation gates"],
+      sections: [
+        { title: "Product ownership comes first", body: "Travel workflows, booking semantics and product data remain owned by the travel domain. Shared platform capabilities support the product without becoming a second owner of its business state." },
+        { title: "Foundation before feature breadth", body: "The roadmap establishes tenancy, identity, authorization, localization, audit and design foundations before finance, booking and public API layers expand." },
+        { title: "Commerce is built around invariants", body: "Inventory, quotes, payment and booking need explicit state transitions, idempotency and durable financial semantics. The architecture treats those rules as domain behavior rather than UI logic." }
+      ]
+    },
+    fa: {
+      name: "ExoTravel",
+      eyebrow: "تجارت و فناوری سفر",
+      title: "محصول سفر، مالک دامنه خودش باقی می‌ماند.",
+      lead: "ExoTravel گردش‌کارهای سفر و تجارت را در مالکیت خود نگه می‌دارد و هویت، چندمستاجری، ممیزی، بومی‌سازی و پایه‌های مشترک را از طریق مرزهای روشن مصرف می‌کند.",
+      status: "معماری و نقشه‌راه مرحله‌ای تعریف شده‌اند و اجرا بر اساس ترتیب foundation-first پیش می‌رود.",
+      capabilities: ["مالکیت دامنه سفر", "پایه آگاه از مستأجر", "نقشه‌راه چرخه تجارت", "آمادگی Partner/API"],
+      engineering: ["مرز روشن دامنه", "پایه پول و بومی‌سازی", "ممیزی و یکپارچگی آگاه از رویداد", "تحویل مرحله‌ای پشت گیت‌های اعتبارسنجی"],
+      sections: [
+        { title: "مالکیت محصول در اولویت است", body: "گردش‌کار سفر، معنای رزرو و داده محصول در مالکیت دامنه سفر می‌مانند. قابلیت مشترک باید محصول را تقویت کند، نه اینکه به منبع دوم حقیقت کسب‌وکار تبدیل شود." },
+        { title: "پایه پیش از گستردگی قابلیت", body: "نقشه‌راه، چندمستاجری، هویت، مجوزدهی، بومی‌سازی، ممیزی و سیستم طراحی را پیش از توسعه گسترده مالی، رزرو و API عمومی تثبیت می‌کند." },
+        { title: "تجارت بر پایه invariant ساخته می‌شود", body: "موجودی، quote، پرداخت و رزرو به state transition روشن، idempotency و معنای مالی پایدار نیاز دارند. این قواعد در دامنه پیاده می‌شوند، نه در منطق رابط کاربری." }
+      ]
+    }
   },
   exohub: {
-    en: { name:"ExoHub", eyebrow:"ECOSYSTEM PLATFORM", title:"Shared platform capabilities for connected products.", lead:"ExoHub is being designed as an integration-focused product for shared ecosystem capabilities while keeping identity, tenancy, commerce, booking and financial ownership explicit.", capabilities:["Shared platform services","Domain boundaries","Commerce foundations","Integration layer"], engineering:["Platform-first reuse","Canonical domain ownership","API-first contracts","Event-aware integration"] },
-    fa: { name:"ExoHub", eyebrow:"پلتفرم اکوسیستم", title:"قابلیت‌های مشترک برای محصولاتی که باید به هم متصل بمانند.", lead:"ExoHub به‌عنوان محصولی با تمرکز بر یکپارچه‌سازی قابلیت‌های مشترک اکوسیستم طراحی می‌شود؛ با حفظ مرز روشن مالکیت هویت، مستأجر، تجارت، رزرو و داده مالی.", capabilities:["سرویس‌های مشترک پلتفرم","مرزبندی دامنه‌ها","پایه تجارت","لایه یکپارچگی"], engineering:["استفاده مجدد در سطح پلتفرم","مالکیت مرجع هر دامنه","قراردادهای API از ابتدا","یکپارچگی آگاه به رویداد"] }
+    en: {
+      name: "ExoHub",
+      eyebrow: "ECOSYSTEM INTEGRATION",
+      title: "Add business capabilities without duplicating the platform core.",
+      lead: "ExoHub follows an anti-duplication principle: new capabilities extend the existing identity, tenancy, booking, payment, ledger, audit and integration foundations instead of creating parallel systems.",
+      status: "Architecture direction defined; capabilities are integrated through bounded contexts rather than a parallel platform.",
+      capabilities: ["Shared platform reuse", "Bounded business contexts", "API/event contracts", "Single source-of-truth ownership"],
+      engineering: ["Extend before duplicating", "Canonical domain ownership", "Transactional source of truth", "Event-aware projections and integrations"],
+      sections: [
+        { title: "A new capability is not a new platform", body: "Membership, entitlement, allocation or property operations can be added as bounded contexts while reusing the existing identity, customer, booking, payment, ledger, audit and observability foundations." },
+        { title: "Anti-duplication is an architecture gate", body: "Before a new module, table, API or event is added, the design checks whether an existing domain can own the responsibility. This reduces duplicate data ownership and conflicting business rules." },
+        { title: "Events and projections do not own the transaction", body: "Search and event projections can serve specialized read paths, but authoritative business mutations remain inside the owning transactional domain." }
+      ]
+    },
+    fa: {
+      name: "ExoHub",
+      eyebrow: "یکپارچگی اکوسیستم",
+      title: "قابلیت جدید، نباید هسته پلتفرم را دوباره بسازد.",
+      lead: "ExoHub بر اصل پرهیز از تکرار بنا شده است: قابلیت‌های تازه باید هویت، چندمستاجری، رزرو، پرداخت، دفتر مالی، ممیزی و یکپارچگی موجود را گسترش دهند؛ نه اینکه برای هر دامنه یک سیستم موازی ایجاد شود.",
+      status: "جهت معماری تعریف شده و قابلیت‌ها به‌صورت bounded context روی پایه مشترک توسعه پیدا می‌کنند، نه به‌عنوان یک پلتفرم موازی.",
+      capabilities: ["استفاده مجدد از پایه مشترک", "bounded contextهای روشن", "قرارداد API و رویداد", "مالکیت یکتای منبع حقیقت"],
+      engineering: ["گسترش پیش از تکرار", "مالکیت مرجع دامنه", "منبع حقیقت تراکنشی", "Projection و یکپارچگی رویدادمحور"],
+      sections: [
+        { title: "قابلیت جدید، پلتفرم جدید نیست", body: "عضویت، entitlement، allocation یا عملیات ملک می‌توانند به‌صورت bounded context اضافه شوند و از هویت، مشتری، رزرو، پرداخت، دفتر مالی، ممیزی و مشاهده‌پذیری موجود استفاده کنند." },
+        { title: "پرهیز از تکرار یک گیت معماری است", body: "پیش از اضافه‌شدن ماژول، جدول، API یا رویداد تازه بررسی می‌شود که آیا یک دامنه موجود می‌تواند مسئولیت را بر عهده بگیرد یا نه. این کار از مالکیت دوگانه داده و قواعد متناقض جلوگیری می‌کند." },
+        { title: "رویداد و Projection مالک تراکنش نیستند", body: "جست‌وجو و نماهای رویدادمحور می‌توانند مسیر خواندن تخصصی بسازند، اما تغییر معتبر کسب‌وکار در دامنه تراکنشی مالک انجام می‌شود." }
+      ]
+    }
   }
 };
