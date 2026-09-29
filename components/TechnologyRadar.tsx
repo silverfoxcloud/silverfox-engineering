@@ -72,6 +72,7 @@ function statusLabel(status: RadarStatus, fa: boolean) {
 
 export default function TechnologyRadar({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
+  const localize = (href: string) => fa ? "/fa" + href : href;
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(entries.map((entry) => entry.category)))],
     [],
@@ -230,7 +231,7 @@ export default function TechnologyRadar({ locale }: { locale: Locale }) {
             </div>
             <h3>{current.name}</h3>
             <p>{fa ? current.fa : current.en}</p>
-            <Link href={current.route}>
+            <Link href={localize(current.route)}>
               {fa ? "مشاهده زمینه مهندسی" : "Open engineering context"}
               <span aria-hidden="true"> ↗</span>
             </Link>
@@ -274,7 +275,7 @@ export default function TechnologyRadar({ locale }: { locale: Locale }) {
         <div className="radarMobileDetail">
           <strong>{current.name}</strong>
           <p>{fa ? current.fa : current.en}</p>
-          <Link href={current.route}>{fa ? "مشاهده زمینه مهندسی" : "Open engineering context"} ↗</Link>
+          <Link href={localize(current.route)}>{fa ? "مشاهده زمینه مهندسی" : "Open engineering context"} ↗</Link>
         </div>
       </div>
     </section>
