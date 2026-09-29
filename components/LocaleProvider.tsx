@@ -42,7 +42,7 @@ function persistLocale(locale: Locale) {
 }
 
 export default function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const locale = useSyncExternalStore(subscribe, readLocale, () => "en");
+  const locale = useSyncExternalStore<Locale>(subscribe, readLocale, () => "en" as Locale);
 
   useEffect(() => {
     const root = document.documentElement;
