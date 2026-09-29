@@ -68,7 +68,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
   const [active, setActive] = useState(0);
   const router = useRouter();
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? "/fa" + href : href;
+  const localize = (href: string) => href;
   const selected = nodes[active];
 
   return (

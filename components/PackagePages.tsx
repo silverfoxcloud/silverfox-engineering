@@ -8,8 +8,8 @@ function faDigits(value: string) {
   return value.replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
 }
 
-function localize(locale: Locale, href: string) {
-  return locale === "fa" ? "/fa" + href : href;
+function localize(_locale: Locale, href: string) {
+  return href;
 }
 
 export function PackageDirectoryPage({ locale }: { locale: Locale }) {
