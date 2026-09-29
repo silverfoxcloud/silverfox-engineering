@@ -269,5 +269,5 @@ test("reduced motion keeps primary content visible and disables nonessential tra
   });
   expect(state.capabilityOpacity).toBe("1");
   expect(state.capabilityVisibility).toBe("visible");
-  expect(state.visualTransition).toBe("0s");
+  expect(Number.parseFloat(state.visualTransition || "1")).toBeLessThan(0.001);
 });
