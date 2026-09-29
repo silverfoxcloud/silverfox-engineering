@@ -68,6 +68,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
   const [active, setActive] = useState(0);
   const router = useRouter();
   const fa = locale === "fa";
+  const localize = (href: string) => fa ? "/fa" + href : href;
   const selected = nodes[active];
 
   return (
@@ -91,7 +92,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
               aria-pressed={active === index}
               onMouseEnter={() => setActive(index)}
               onFocus={() => setActive(index)}
-              onClick={() => router.push("/" + node.path + "/")}
+              onClick={() => router.push(localize("/" + node.path + "/"))}
             >
               <span className="mapNodeIndex">{fa ? "۰۱۲۳۴۵۶۷۸۹"[index + 1] : String(index + 1).padStart(2, "0")}</span>
               <strong>{fa ? node.fa : node.en}</strong>
@@ -104,7 +105,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
         <span>{fa ? "مرز مسئولیت" : "RESPONSIBILITY BOUNDARY"}</span>
         <h3>{fa ? selected.fa : selected.en}</h3>
         <p>{fa ? selected.infoFa : selected.infoEn}</p>
-        <Link href={"/" + selected.path + "/"}>
+        <Link href={localize("/" + selected.path + "/")}>
           {fa ? "مشاهده جزئیات" : "Explore this domain"}
           <span aria-hidden="true"> ↗</span>
         </Link>
