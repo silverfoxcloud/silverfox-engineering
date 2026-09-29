@@ -47,14 +47,14 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
           <a href="https://git.silverfoxcloud.com" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/company/silverfoxcloud" rel="noreferrer">LinkedIn ↗</a>
           <a href={fa ? "https://silverfox.ir" : "https://silverfoxcloud.com"} rel="noreferrer">
-            {fa ? "پردازش ابری روباه نقره‌ای ↗" : "Silver Fox ↗"}
+            {fa ? "شرکت ↗" : "Company ↗"}
           </a>
         </div>
       </div>
 
       <div className="shell footerMeta">
         <span>{fa ? "© ۲۰۲۶ Silver Fox" : "© 2026 Silver Fox"}</span>
-        <span>{fa ? "محتوای عمومی؛ جزئیات حساس معماری منتشر نمی‌شوند." : "Public engineering content; sensitive implementation details stay private."}</span>
+        <span>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal"}</span>
       </div>
     </footer>
   );
