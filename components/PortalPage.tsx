@@ -4,17 +4,17 @@ import Link from "next/link";
 import { useEffect } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { copy } from "@/data/content";
+import { copy, type Locale } from "@/data/content";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
-import { useLocale, useLocalizedMetadata } from "@/components/LocaleProvider";
+import { useLocalizedMetadata } from "@/components/LocaleProvider";
 
 const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 
-export default function PortalPage() {
-  const { locale } = useLocale();
+export default function PortalPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const fa = locale === "fa";
+  const localize = (href: string) => fa ? (href === "/" ? "/fa/" : "/fa" + href) : href;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -93,7 +93,7 @@ export default function PortalPage() {
   ];
 
   return (
-    <main dir={fa ? "rtl" : "ltr"} className={fa ? "rtl" : "ltr"}>
+    <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl" : "ltr"}>
       <SiteHeader locale={locale} />
 
       <section className="hero">
@@ -111,11 +111,11 @@ export default function PortalPage() {
                 : "The goal is not simply to ship software. Systems should remain secure, reliable, multilingual and ready to evolve."}
             </p>
             <div className="heroActions">
-              <Link className="button primary" href="/architecture/">
+              <Link className="button primary" href={localize("/architecture/")}>
                 {fa ? "مشاهده معماری" : "Explore architecture"}
                 <span aria-hidden="true">↗</span>
               </Link>
-              <Link className="button secondary" href="/technology-radar/">
+              <Link className="button secondary" href={localize("/technology-radar/")}>
                 {fa ? "رادار فناوری" : "Technology Radar"}
               </Link>
             </div>
@@ -164,7 +164,7 @@ export default function PortalPage() {
           <div className="capabilityRows">
             {capabilities.map((item, index) => (
               <Link
-                href={item.href}
+                href={localize(item.href)}
                 className={"capabilityRow " + (index % 2 ? "capabilityRowReverse" : "")}
                 data-reveal
                 key={item.href + item.eyebrow}
@@ -219,7 +219,7 @@ export default function PortalPage() {
                     <h3>{page.name}</h3>
                     <p>{page.lead}</p>
                     <small className="productStatusInline">{page.status}</small>
-                    <Link href={"/platforms/" + slug + "/"}>
+                    <Link href={localize("/platforms/" + slug + "/")}>
                       {fa ? "مشاهده مدل فنی" : "Explore technical model"}
                       <span aria-hidden="true"> ↗</span>
                     </Link>
@@ -246,12 +246,12 @@ export default function PortalPage() {
           </div>
 
           <div className="productDomainLinks">
-            <Link href="/platforms/exotravel/">
+            <Link href={localize("/platforms/exotravel/")}>
               <span>{fa ? "محصول سفر" : "TRAVEL PRODUCT"}</span>
               <strong>ExoTravel</strong>
               <i aria-hidden="true">↗</i>
             </Link>
-            <Link href="/platforms/exohub/">
+            <Link href={localize("/platforms/exohub/")}>
               <span>{fa ? "یکپارچگی اکوسیستم" : "ECOSYSTEM INTEGRATION"}</span>
               <strong>ExoHub</strong>
               <i aria-hidden="true">↗</i>
@@ -274,7 +274,7 @@ export default function PortalPage() {
                 ? "رادار فناوری نشان می‌دهد چه ابزارهایی تثبیت شده‌اند، کجا استفاده هدفمند داریم و چه گزینه‌هایی هنوز در مرحله آزمایش یا ارزیابی‌اند."
                 : "The Technology Radar separates established choices from context-dependent use, trials and technologies that are still being assessed."}
             </p>
-            <Link href="/technology-radar/">
+            <Link href={localize("/technology-radar/")}>
               {fa ? "باز کردن رادار فناوری" : "Open Technology Radar"} <span aria-hidden="true">↗</span>
             </Link>
           </div>
