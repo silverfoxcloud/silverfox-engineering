@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { engineeringSlugs, platformSlugs } from "@/data/engineering-pages";
+import { packageSlugs } from "@/data/packages";
 
 export const dynamic = "force-static";
 
@@ -39,6 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/platforms/" + slug + "/",
         "/fa/platforms/" + slug + "/",
         0.75,
+      ),
+    ),
+    ...entry("/packages/", "/fa/packages/", 0.82),
+    ...packageSlugs.flatMap((slug) =>
+      entry(
+        "/packages/" + slug + "/",
+        "/fa/packages/" + slug + "/",
+        0.72,
       ),
     ),
   ];
