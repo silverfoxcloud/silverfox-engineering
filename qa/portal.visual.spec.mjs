@@ -153,6 +153,13 @@ async function assertPageHealth(page, route) {
   );
   expect(brokenImages).toEqual([]);
 
+  const hiddenRevealContent = await page.locator("[data-reveal]").evaluateAll((nodes) =>
+    nodes
+      .filter((node) => Number.parseFloat(getComputedStyle(node).opacity) < 0.95)
+      .map((node) => node.tagName + "." + node.className),
+  );
+  expect(hiddenRevealContent, "content must never be hidden behind reveal state").toEqual([]);
+
   const languageHref = await page.locator(".langSwitch").getAttribute("href");
   expect(languageHref).toBeTruthy();
   if (isFa) expect(languageHref).not.toMatch(/^\/fa(?:\/|$)/);
