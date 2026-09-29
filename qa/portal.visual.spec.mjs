@@ -26,6 +26,10 @@ const majorRoutes = [
   "/fa/platforms/license-platform/",
   "/platforms/fox-pay/",
   "/fa/platforms/fox-pay/",
+  "/packages/",
+  "/fa/packages/",
+  "/packages/sfas-core/",
+  "/fa/packages/sfas-core/",
 ];
 
 const allRoutes = [
@@ -59,6 +63,22 @@ const allRoutes = [
   "/fa/platforms/fox-pay/",
   "/fa/platforms/exotravel/",
   "/fa/platforms/exohub/",
+  "/packages/",
+  "/packages/sfas-foundation/",
+  "/packages/sfas-core/",
+  "/packages/sfas-html-adapter/",
+  "/packages/sfas-react-adapter/",
+  "/packages/sfas-jalali/",
+  "/packages/sfas-datatable/",
+  "/packages/sfas-date-picker/",
+  "/fa/packages/",
+  "/fa/packages/sfas-foundation/",
+  "/fa/packages/sfas-core/",
+  "/fa/packages/sfas-html-adapter/",
+  "/fa/packages/sfas-react-adapter/",
+  "/fa/packages/sfas-jalali/",
+  "/fa/packages/sfas-datatable/",
+  "/fa/packages/sfas-date-picker/",
 ];
 
 function slugify(route: string) {
@@ -181,7 +201,7 @@ test("reduced motion disables reveal gating", async ({ page }) => {
   await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
   const state = await page.evaluate(() => ({
     motionReady: document.documentElement.classList.contains("motionReady"),
-    opacity: getComputedStyle(document.querySelector<HTMLElement>("[data-reveal]")!).opacity,
+    opacity: getComputedStyle(document.querySelector("[data-reveal]")).opacity,
   }));
   expect(state.motionReady).toBeFalsy();
   expect(state.opacity).toBe("1");
