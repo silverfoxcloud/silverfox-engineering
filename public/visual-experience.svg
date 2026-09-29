@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+<title id="title">Multilingual product experience</title>
+<desc id="desc">A shared interface foundation supports equal right-to-left and left-to-right product modes with accessibility and reusable design primitives.</desc>
+<style>
+.cursor{animation:cursor 4.6s ease-in-out infinite}.switch{animation:switch 5.2s ease-in-out infinite}
+@keyframes cursor{0%,100%{transform:translateX(-24px);opacity:.25}50%{transform:translateX(24px);opacity:1}}
+@keyframes switch{0%,45%{opacity:.35}50%,95%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.cursor,.switch{animation:none}}
+</style>
+<rect width="760" height="520" rx="28" fill="#071421"/>
+<rect x="92" y="82" width="576" height="356" rx="24" fill="#0a1f32" stroke="#315e7d"/>
+<rect x="92" y="82" width="576" height="46" rx="24" fill="#0d273d"/>
+<circle cx="120" cy="105" r="5" fill="#56758c"/><circle cx="138" cy="105" r="5" fill="#56758c"/><circle cx="156" cy="105" r="5" fill="#56758c"/>
+<g>
+  <rect x="120" y="158" width="218" height="226" rx="16" fill="#0c253a" stroke="#3d6e8e"/>
+  <rect x="422" y="158" width="218" height="226" rx="16" fill="#0c253a" stroke="#3d6e8e"/>
+  <text x="144" y="190" fill="#dcecf7" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">LTR</text>
+  <text x="616" y="190" fill="#dcecf7" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" text-anchor="end">RTL</text>
+</g>
+<g fill="#21445f">
+  <rect x="144" y="215" width="144" height="9" rx="5"/><rect x="144" y="235" width="112" height="8" rx="4"/>
+  <rect x="472" y="215" width="144" height="9" rx="5"/><rect x="504" y="235" width="112" height="8" rx="4"/>
+</g>
+<g fill="#10314b" stroke="#4d86aa">
+  <rect x="144" y="274" width="70" height="72" rx="10"/><rect x="226" y="274" width="70" height="72" rx="10"/>
+  <rect x="464" y="274" width="70" height="72" rx="10"/><rect x="546" y="274" width="70" height="72" rx="10"/>
+</g>
+<path d="M350 260H410" stroke="#67bfe8" stroke-width="2"/>
+<path class="cursor" d="M372 250L388 260L372 270Z" fill="#91e0ff"/>
+<g class="switch">
+  <rect x="344" y="182" width="72" height="30" rx="15" fill="#103750" stroke="#65bde5"/>
+  <text x="380" y="202" fill="#dff7ff" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">FA / EN</text>
+</g>
+<g fill="#789bb3" font-family="Inter,Arial,sans-serif" font-size="9" text-anchor="middle">
+  <text x="190" y="371">ACCESSIBLE PRIMITIVES</text>
+  <text x="570" y="371">DIRECTION-AWARE UI</text>
+</g>
+<text x="380" y="414" fill="#7694ad" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">ONE DESIGN SYSTEM · TWO EQUAL DIRECTIONS</text>
+</svg>
