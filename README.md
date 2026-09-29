@@ -1,50 +1,35 @@
 # Silver Fox Engineering
 
-Public bilingual engineering portal for the **Silver Fox ecosystem**.
+**Silver Fox Engineering** is the public engineering portal of the Silver Fox ecosystem.
 
-- Default language: English
-- Persian: `/fa/`
-- Framework: Next.js static export
-- Hosting target: GitHub Pages
-- Custom domain: `engineering.silverfoxcloud.com`
+It presents the technologies, architecture principles, platform capabilities, engineering practices, and technical direction behind Silver Fox products in a clear and professionally curated form.
 
-## Purpose
+## What this portal covers
 
-This repository contains only information intentionally approved for public engineering communication: product overviews, ecosystem relationships, architecture principles and engineering standards.
+The site focuses on public engineering topics including:
 
-Private product repositories, source code, credentials, secrets, sensitive schemas, internal infrastructure details and non-public security implementation are out of scope.
+- ecosystem and platform architecture
+- cloud-native and distributed systems
+- multi-tenancy and service boundaries
+- platform engineering and shared capabilities
+- API and integration architecture
+- data platforms, PostgreSQL, Redis, caching, and event-driven patterns
+- security engineering, identity, authorization, auditability, and zero-trust principles
+- DevOps, CI/CD, infrastructure automation, observability, reliability, and operations
+- AI-assisted engineering, intelligent automation, and responsible use of AI in software delivery
+- multilingual product engineering and internationalization
+- engineering standards, quality, testing, performance, resilience, and scalability
+- selected public overviews of Silver Fox platforms and products
 
-## Local development
+## Public engineering scope
 
-```bash
-npm install
-npm run dev
-```
+This repository and website intentionally publish only material suitable for public engineering communication. They explain engineering direction, architecture concepts, technology choices, and platform philosophy without exposing confidential implementation details, credentials, secrets, sensitive infrastructure topology, private schemas, internal operational procedures, or security-sensitive controls.
 
-## Production build
+## Languages
 
-```bash
-npm run build
-```
+The portal is available in English and Persian, with multilingual engineering treated as a product and architecture concern rather than an afterthought.
 
-The static site is exported to `out/`.
+---
 
-## GitHub Pages
-
-The included workflow deploys `out/` with GitHub Pages Actions.
-
-Repository settings:
-
-1. Repository → **Settings → Pages**
-2. Under **Build and deployment → Source**, choose **GitHub Actions**
-3. Set **Custom domain** to `engineering.silverfoxcloud.com`
-4. Cloudflare DNS should contain:
-   - Type: `CNAME`
-   - Name: `engineering`
-   - Target: `silverfoxcloud.github.io`
-   - Proxy: **DNS only** while GitHub validates and provisions HTTPS
-5. Enable **Enforce HTTPS** when GitHub makes it available.
-
-## Security
-
-See [SECURITY.md](SECURITY.md).
+**Silver Fox Engineering**  
+engineering.silverfoxcloud.com
