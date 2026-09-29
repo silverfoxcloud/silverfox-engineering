@@ -137,7 +137,6 @@ export default function PortalPage({ locale }: { locale: Locale }) {
               <Link
                 href={localize(item.href)}
                 className={"capabilityRow " + (index % 2 ? "capabilityRowReverse" : "")}
-                data-reveal
                 key={item.href + item.eyebrow}
               >
                 <div className="capabilityCopy">
@@ -184,7 +183,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             {featuredPlatforms.map((slug, index) => {
               const page = platformPages[slug][locale];
               return (
-                <article className="productStory" key={slug} data-reveal>
+                <article className="productStory" key={slug}>
                   <div className="productStoryCopy">
                     <span className="kicker">{page.eyebrow}</span>
                     <h3>{page.name}</h3>
@@ -256,7 +255,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
 
           <div className="homePackageRows">
             {packages.slice(0, 4).map((pkg, index) => (
-              <Link href={localize("/packages/" + pkg.slug + "/")} key={pkg.slug} data-reveal>
+              <Link href={localize("/packages/" + pkg.slug + "/")} key={pkg.slug}>
                 <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <strong>{pkg.displayName}</strong>
@@ -286,7 +285,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
 
           <div className="homeStoryRows">
             {buildStories.map((story, index) => (
-              <Link href={localize("/build-stories/" + story.slug + "/")} key={story.slug} data-reveal>
+              <Link href={localize("/build-stories/" + story.slug + "/")} key={story.slug}>
                 <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <small>{story.platform}</small>
@@ -338,7 +337,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
 
           <div className="homeKnowledgeRows">
             {engineeringNotes.map((note, index) => (
-              <Link href={localize("/engineering/" + note.slug + "/")} key={note.slug} data-reveal>
+              <Link href={localize("/engineering/" + note.slug + "/")} key={note.slug}>
                 <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <small>{note.category} · {note.platform}</small>
@@ -353,7 +352,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="homeRadarTeaser">
-        <div className="shell radarTeaserGrid" data-reveal>
+        <div className="shell radarTeaserGrid">
           <div>
             <span className="kicker">{fa ? "رادار فناوری" : "TECHNOLOGY RADAR"}</span>
             <h2>
