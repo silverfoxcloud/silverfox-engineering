@@ -10,7 +10,8 @@ import {
 } from "@/data/engineering-pages";
 import type { Locale } from "@/data/content";
 
-function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
+function PlatformHeroVisual({ slug, locale }: { slug: PlatformSlug; locale: Locale }) {
+  const fa = locale === "fa";
   if (slug === "sfas") {
     return (
       <div className="platformSystemVisual sfasVisual" aria-hidden="true">
@@ -24,7 +25,7 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
             <div className="sfasTiles"><i /><i /><i /></div>
           </div>
         </div>
-        <div className="visualFooterTag">RTL ↔ LTR · accessible primitives</div>
+        <div className="visualFooterTag">{fa ? "RTL ↔ LTR · اجزای دسترس‌پذیر" : "RTL ↔ LTR · accessible primitives"}</div>
       </div>
     );
   }
@@ -33,17 +34,17 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
     return (
       <div className="platformSystemVisual licenseVisual" aria-hidden="true">
         <div className="licenseGraph">
-          <span className="systemNode nodeOrg">Organization</span>
-          <span className="systemNode nodeProduct">Product</span>
-          <span className="systemNode nodeEntitlement">Entitlement</span>
-          <span className="systemNode nodeLicense">License</span>
-          <span className="systemNode nodeUsage">Usage</span>
+          <span className="systemNode nodeOrg">{fa ? "سازمان" : "Organization"}</span>
+          <span className="systemNode nodeProduct">{fa ? "محصول" : "Product"}</span>
+          <span className="systemNode nodeEntitlement">{fa ? "حق دسترسی" : "Entitlement"}</span>
+          <span className="systemNode nodeLicense">{fa ? "لایسنس" : "License"}</span>
+          <span className="systemNode nodeUsage">{fa ? "مصرف" : "Usage"}</span>
           <i className="systemLink linkOne" />
           <i className="systemLink linkTwo" />
           <i className="systemLink linkThree" />
           <i className="systemLink linkFour" />
         </div>
-        <div className="visualFooterTag">policy · enforcement · audit</div>
+        <div className="visualFooterTag">{fa ? "سیاست · اعمال دسترسی · ممیزی" : "policy · enforcement · audit"}</div>
       </div>
     );
   }
@@ -52,15 +53,15 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
     return (
       <div className="platformSystemVisual payVisual" aria-hidden="true">
         <div className="payFlow">
-          <span className="systemNode payProduct">Product</span>
-          <span className="payRouter">ROUTER</span>
+          <span className="systemNode payProduct">{fa ? "محصول" : "Product"}</span>
+          <span className="payRouter">{fa ? "مسیریاب" : "ROUTER"}</span>
           <div className="payProviders">
-            <span>Gateway A</span><span>Gateway B</span><span>Gateway C</span>
+            <span>{fa ? "درگاه A" : "Gateway A"}</span><span>{fa ? "درگاه B" : "Gateway B"}</span><span>{fa ? "درگاه C" : "Gateway C"}</span>
           </div>
           <i className="payPulse pulseOne" />
           <i className="payPulse pulseTwo" />
         </div>
-        <div className="payChecks"><span>verify</span><span>reconcile</span><span>webhook</span></div>
+        <div className="payChecks"><span>{fa ? "تأیید" : "verify"}</span><span>{fa ? "تطبیق" : "reconcile"}</span><span>webhook</span></div>
       </div>
     );
   }
@@ -69,16 +70,16 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
     return (
       <div className="platformSystemVisual travelVisual" aria-hidden="true">
         <div className="travelRoute">
-          <span className="travelStop active">Discover</span>
+          <span className="travelStop active">{fa ? "کشف" : "Discover"}</span>
           <i />
-          <span className="travelStop">Book</span>
+          <span className="travelStop">{fa ? "رزرو" : "Book"}</span>
           <i />
-          <span className="travelStop">Pay</span>
+          <span className="travelStop">{fa ? "پرداخت" : "Pay"}</span>
           <i />
-          <span className="travelStop">Travel</span>
+          <span className="travelStop">{fa ? "سفر" : "Travel"}</span>
         </div>
         <div className="travelLedger"><span /><span /><span /></div>
-        <div className="visualFooterTag">product-owned travel commerce</div>
+        <div className="visualFooterTag">{fa ? "تجارت سفر با مالکیت مستقل محصول" : "product-owned travel commerce"}</div>
       </div>
     );
   }
@@ -86,10 +87,10 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
   return (
     <div className="platformSystemVisual hubVisual" aria-hidden="true">
       <div className="hubCore">ExoHub</div>
-      <span className="hubNode hubNorth">Identity</span>
-      <span className="hubNode hubEast">Commerce</span>
-      <span className="hubNode hubSouth">Integration</span>
-      <span className="hubNode hubWest">Tenancy</span>
+      <span className="hubNode hubNorth">{fa ? "هویت" : "Identity"}</span>
+      <span className="hubNode hubEast">{fa ? "تجارت" : "Commerce"}</span>
+      <span className="hubNode hubSouth">{fa ? "یکپارچگی" : "Integration"}</span>
+      <span className="hubNode hubWest">{fa ? "چندمستاجری" : "Tenancy"}</span>
       <i className="hubLink hubLinkNorth" />
       <i className="hubLink hubLinkEast" />
       <i className="hubLink hubLinkSouth" />
@@ -120,7 +121,7 @@ export default function PlatformDetailPage({ slug, locale }: { slug: PlatformSlu
                 <p>{page.status}</p>
               </div>
             </div>
-            <PlatformHeroVisual slug={slug} />
+            <PlatformHeroVisual slug={slug} locale={locale} />
           </div>
         </div>
       </section>
