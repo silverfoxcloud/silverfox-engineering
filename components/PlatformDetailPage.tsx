@@ -8,7 +8,8 @@ import {
   platformSlugs,
   type PlatformSlug,
 } from "@/data/engineering-pages";
-import { useLocale, useLocalizedMetadata } from "@/components/LocaleProvider";
+import { useLocalizedMetadata } from "@/components/LocaleProvider";
+import type { Locale } from "@/data/content";
 
 function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
   if (slug === "sfas") {
@@ -98,10 +99,10 @@ function PlatformHeroVisual({ slug }: { slug: PlatformSlug }) {
   );
 }
 
-export default function PlatformDetailPage({ slug }: { slug: PlatformSlug }) {
-  const { locale } = useLocale();
+export default function PlatformDetailPage({ slug, locale }: { slug: PlatformSlug; locale: Locale }) {
   const page = platformPages[slug][locale];
   const fa = locale === "fa";
+  const localize = (href: string) => fa ? "/fa" + href : href;
 
   useLocalizedMetadata(
     page.name + (fa ? " | مهندسی پردازش ابری روباه نقره‌ای" : " | Silver Fox Engineering"),
@@ -109,7 +110,7 @@ export default function PlatformDetailPage({ slug }: { slug: PlatformSlug }) {
   );
 
   return (
-    <main dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
+    <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
       <SiteHeader locale={locale} />
 
       <section className="platformHero">
@@ -200,7 +201,7 @@ export default function PlatformDetailPage({ slug }: { slug: PlatformSlug }) {
               .filter((item) => item !== slug)
               .slice(0, 4)
               .map((item) => (
-                <Link className="relatedCard" href={"/platforms/" + item + "/"} key={item}>
+                <Link className="relatedCard" href={localize("/platforms/" + item + "/")} key={item}>
                   <span>{platformPages[item][locale].eyebrow}</span>
                   <strong>{platformPages[item][locale].name}</strong>
                   <i aria-hidden="true">↗</i>
