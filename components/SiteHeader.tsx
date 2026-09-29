@@ -44,7 +44,7 @@ const groups = [
     fa: "پلتفرم‌ها",
     items: [
       ["platforms/sfas", "SFAS", "SFAS", "Administration foundations, design primitives and RTL/LTR", "زیرساخت مدیریت، design primitives و RTL/LTR"],
-      ["platforms/license-platform", "License Platform", "پلتفرم لایسنس", "Licensing, entitlements and tenant-aware enforcement", "لایسنس، entitlement و اعمال محدودیت با مرز مستأجر"],
+      ["platforms/license-platform", "License Platform", "پلتفرم لایسنس", "Licensing, entitlements and tenant-aware enforcement", "لایسنس، حق دسترسی و اعمال محدودیت با مرز مستأجر"],
       ["platforms/fox-pay", "Fox Pay", "Fox Pay", "Payment orchestration, routing and reconciliation", "ارکستریشن پرداخت، مسیریابی و تطبیق تراکنش"],
       ["platforms/exotravel", "ExoTravel", "ExoTravel", "Travel-commerce workflows with product ownership", "گردش‌کارهای travel-commerce با مالکیت مستقل محصول"],
       ["platforms/exohub", "ExoHub", "ExoHub", "Integration responsibilities across the ecosystem", "مسئولیت‌های یکپارچه‌سازی در سطح اکوسیستم"],
