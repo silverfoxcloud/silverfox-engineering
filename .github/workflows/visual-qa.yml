@@ -53,7 +53,7 @@ jobs:
           exit 1
 
       - name: Run responsive and interaction QA
-        run: npx playwright test qa/portal.visual.spec.ts --workers=2 --reporter=line
+        run: npx playwright test qa/portal.visual.spec.mjs --workers=2 --reporter=line
 
       - name: Upload visual QA evidence
         if: always()
