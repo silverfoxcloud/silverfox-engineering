@@ -131,6 +131,9 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   const { setLocale } = useLocale();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<string | null>("engineering");
+  const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
 
   const activeGroup = useMemo(
     () => groups.find((group) => group.id === openGroup) ?? null,
@@ -140,6 +143,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   useEffect(() => {
     setOpenGroup(null);
     setMobileOpen(false);
+    setMobileGroup("engineering");
   }, [pathname]);
 
   useEffect(() => {
@@ -170,6 +174,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   const closeAll = () => {
     setOpenGroup(null);
     setMobileOpen(false);
+    setMobileGroup("engineering");
   };
 
   return (
