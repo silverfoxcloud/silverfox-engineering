@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/data/content";
@@ -144,14 +144,21 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key !== "Escape") return;
+      if (openGroup) {
+        const trigger = desktopTriggerRefs.current[openGroup];
         setOpenGroup(null);
+        requestAnimationFrame(() => trigger?.focus());
+        return;
+      }
+      if (mobileOpen) {
         setMobileOpen(false);
+        requestAnimationFrame(() => mobileTriggerRef.current?.focus());
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [openGroup, mobileOpen]);
 
   const hrefFor = (slug: string) => {
     if (slug.startsWith("https://")) return slug;
@@ -283,19 +290,33 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             aria-label={fa ? "فهرست موبایل" : "Mobile navigation"}
           >
             <div className="shell mobileNavInner">
-              {groups.map((group) => (
-                <section key={group.id}>
-                  <strong>{fa ? group.fa : group.en}</strong>
-                  <div>
-                    {group.items.map(([slug, en, label]) => (
-                      <Link key={slug} href={hrefFor(slug)} onClick={closeAll}>
-                        {fa ? label : en}
-                        <span aria-hidden="true">↗</span>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              ))}
+              {groups.map((group) => {
+                const expanded = mobileGroup === group.id;
+                return (
+                  <section key={group.id}>
+                    <button
+                      type="button"
+                      className="mobileGroupTrigger"
+                      aria-expanded={expanded}
+                      aria-controls={"mobile-group-" + group.id}
+                      onClick={() => setMobileGroup(expanded ? null : group.id)}
+                    >
+                      <strong>{fa ? group.fa : group.en}</strong>
+                      <span aria-hidden="true">{expanded ? "−" : "+"}</span>
+                    </button>
+                    {expanded && (
+                      <div id={"mobile-group-" + group.id}>
+                        {group.items.map(([slug, en, label]) => (
+                          <Link key={slug} href={hrefFor(slug)} onClick={closeAll}>
+                            {fa ? label : en}
+                            <span aria-hidden="true">↗</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
             </div>
           </nav>
         </>
