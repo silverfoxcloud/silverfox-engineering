@@ -596,3 +596,406 @@
     animation: none;
   }
 }
+
+/* Technology Radar v2 */
+.radarExperience {
+  padding-top: 44px;
+  padding-bottom: 100px;
+}
+
+.radarToolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.radarStatusFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.radarStatusFilters button {
+  cursor: pointer;
+  border: 1px solid rgba(102, 158, 205, .28);
+  border-radius: 999px;
+  background: rgba(13, 35, 56, .68);
+  color: #b9cad9;
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 12px;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.radarStatusFilters button:hover,
+.radarStatusFilters button.selected {
+  border-color: rgba(119, 201, 253, .72);
+  background: #173b5b;
+  color: #fff;
+}
+
+.radarCategory {
+  display: grid;
+  gap: 6px;
+  min-width: 190px;
+}
+
+.radarCategory > span {
+  color: #8197ad;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.rtl .radarCategory > span {
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.radarCategory select {
+  appearance: none;
+  border: 1px solid rgba(102, 158, 205, .3);
+  border-radius: 9px;
+  background: #0c2136;
+  color: #e6f0f8;
+  padding: 10px 36px 10px 12px;
+  font: inherit;
+  font-size: 12px;
+}
+
+.rtl .radarCategory select {
+  padding: 10px 12px 10px 36px;
+}
+
+.radarLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 40px;
+  align-items: center;
+}
+
+.radarPlot {
+  position: relative;
+  width: min(100%, 720px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid rgba(104, 172, 223, .34);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(31, 91, 134, .18), rgba(6, 23, 38, .74) 64%, rgba(4, 15, 26, .96)),
+    #071725;
+  box-shadow:
+    inset 0 0 80px rgba(33, 116, 173, .12),
+    0 34px 90px rgba(0, 0, 0, .24);
+  animation: radarEnter 650ms cubic-bezier(.22,.61,.36,1) both;
+}
+
+.radarPlot::before {
+  content: "";
+  position: absolute;
+  inset: 7%;
+  border: 1px solid rgba(110, 184, 235, .12);
+  border-radius: 50%;
+  background:
+    linear-gradient(90deg, transparent 49.8%, rgba(113, 188, 238, .09) 50%, transparent 50.2%),
+    linear-gradient(transparent 49.8%, rgba(113, 188, 238, .09) 50%, transparent 50.2%);
+  pointer-events: none;
+}
+
+.radarAxis {
+  position: absolute;
+  z-index: 1;
+  background: rgba(121, 194, 241, .12);
+  pointer-events: none;
+}
+
+.radarAxisHorizontal {
+  left: 7%;
+  right: 7%;
+  top: 50%;
+  height: 1px;
+}
+
+.radarAxisVertical {
+  top: 7%;
+  bottom: 7%;
+  left: 50%;
+  width: 1px;
+}
+
+.radarRingVisual {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  border: 1px solid rgba(115, 190, 239, .25);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: radarRingReveal 700ms cubic-bezier(.22,.61,.36,1) both;
+}
+
+.radarRingVisual-adopt { width: 36%; height: 36%; animation-delay: 80ms; }
+.radarRingVisual-use { width: 58%; height: 58%; animation-delay: 140ms; }
+.radarRingVisual-trial { width: 78%; height: 78%; animation-delay: 200ms; }
+.radarRingVisual-assess { width: 94%; height: 94%; animation-delay: 260ms; }
+
+.radarRingVisual > span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  translate: -50% 0;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(6, 22, 36, .88);
+  color: #80bce3;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.rtl .radarRingVisual > span {
+  font-size: 11px;
+}
+
+.radarBlip {
+  position: absolute;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  translate: -50% -50%;
+  border: 1px solid rgba(157, 220, 255, .7);
+  border-radius: 50%;
+  background: #215d88;
+  color: #fff;
+  font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(57, 139, 192, .08);
+  opacity: 0;
+  animation: radarBlipIn 420ms ease forwards;
+  animation-delay: var(--radar-delay, 0ms);
+  transition: opacity 180ms ease, scale 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.radarBlip:hover,
+.radarBlip:focus-visible,
+.radarBlip.active {
+  scale: 1.18;
+  background: #4d9fd0;
+  box-shadow: 0 0 0 6px rgba(91, 181, 233, .12), 0 0 28px rgba(83, 184, 238, .38);
+}
+
+.radarBlip.filtered {
+  opacity: .08 !important;
+  pointer-events: none;
+  animation: none;
+}
+
+.radarSide {
+  display: grid;
+  gap: 20px;
+}
+
+.radarDetail {
+  min-height: 250px;
+  border: 0;
+  border-block: 1px solid rgba(103, 164, 211, .26);
+  border-radius: 0;
+  background: transparent;
+  padding: 26px 0;
+}
+
+.radarDetailMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.radarDetailMeta span,
+.radarDetailMeta b {
+  color: #7eb9df;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.rtl .radarDetailMeta span,
+.rtl .radarDetailMeta b {
+  letter-spacing: 0;
+  font-size: 12px;
+}
+
+.radarDetail h3 {
+  margin: 22px 0 12px;
+  font-size: 30px;
+  line-height: 1.18;
+  letter-spacing: -.035em;
+}
+
+.rtl .radarDetail h3 {
+  letter-spacing: 0;
+}
+
+.radarDetail p {
+  margin: 0;
+  color: #a9bdcf;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.radarDetail a {
+  display: inline-flex;
+  margin-top: 22px;
+  color: #94d3ff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.radarLegend {
+  margin-top: 0;
+}
+
+.radarLegend > div {
+  border-bottom-color: rgba(94, 143, 184, .18);
+}
+
+.radarLegend i {
+  border: 1px solid rgba(151, 216, 255, .65);
+  background: #215d88;
+}
+
+.radarMobile {
+  display: none;
+}
+
+@keyframes radarEnter {
+  from { opacity: 0; scale: .98; }
+  to { opacity: 1; scale: 1; }
+}
+
+@keyframes radarRingReveal {
+  from { opacity: 0; scale: .88; }
+  to { opacity: 1; scale: 1; }
+}
+
+@keyframes radarBlipIn {
+  from { opacity: 0; scale: .75; }
+  to { opacity: 1; scale: 1; }
+}
+
+@media (max-width: 980px) {
+  .radarToolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .radarCategory {
+    min-width: 0;
+    width: min(100%, 320px);
+  }
+
+  .radarLayout {
+    display: none;
+  }
+
+  .radarMobile {
+    display: grid;
+    gap: 26px;
+  }
+
+  .radarMobile section {
+    display: grid;
+    gap: 12px;
+  }
+
+  .radarMobile section h3 {
+    margin: 0;
+    color: #83c8f1;
+    font-size: 13px;
+  }
+
+  .radarMobile section > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid rgba(104, 164, 209, .2);
+  }
+
+  .radarMobile button {
+    min-height: 64px;
+    border: 0;
+    border-bottom: 1px solid rgba(104, 164, 209, .14);
+    border-radius: 0;
+    background: transparent;
+    color: #d8e7f3;
+    text-align: start;
+    padding: 12px 4px;
+    display: grid;
+    gap: 5px;
+  }
+
+  .radarMobile button.active {
+    color: #fff;
+    background: rgba(31, 81, 119, .22);
+  }
+
+  .radarMobile button span {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .radarMobile button small {
+    color: #718ba2;
+    font-size: 10px;
+  }
+
+  .radarMobileDetail {
+    border-block: 1px solid rgba(104, 164, 209, .22);
+    padding: 22px 0;
+  }
+
+  .radarMobileDetail strong {
+    font-size: 23px;
+  }
+
+  .radarMobileDetail p {
+    color: #a9bdcf;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .radarMobileDetail a {
+    color: #94d3ff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 560px) {
+  .radarStatusFilters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .radarStatusFilters button {
+    text-align: center;
+    padding-inline: 8px;
+  }
+
+  .radarMobile section > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radarPlot,
+  .radarRingVisual,
+  .radarBlip {
+    animation: none !important;
+  }
+}

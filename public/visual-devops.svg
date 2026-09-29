@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+<title id="title">Silver Fox delivery and reliability loop</title>
+<desc id="desc">Change flows through validation, delivery, telemetry and recovery as one continuous engineering feedback loop.</desc>
+<defs><linearGradient id="loop" x1="0" x2="1"><stop stop-color="#63cdf3"/><stop offset=".5" stop-color="#6e8cff"/><stop offset="1" stop-color="#63cdf3"/></linearGradient></defs>
+<rect width="760" height="520" rx="28" fill="#071421"/>
+<path d="M158 258c0-116 99-180 222-180 132 0 222 67 222 180s-90 180-222 180c-123 0-222-64-222-180Z" fill="none" stroke="#173a57" stroke-width="32"/>
+<path d="M158 258c0-116 99-180 222-180 132 0 222 67 222 180s-90 180-222 180c-123 0-222-64-222-180Z" fill="none" stroke="url(#loop)" stroke-width="3" stroke-dasharray="10 10"/>
+<g fill="#0d2942" stroke="#4f92bd">
+  <rect x="78" y="220" width="150" height="78" rx="16"/><rect x="305" y="54" width="150" height="78" rx="16"/><rect x="532" y="220" width="150" height="78" rx="16"/><rect x="305" y="388" width="150" height="78" rx="16"/>
+</g>
+<g fill="#eef8ff" font-family="Inter,Arial,sans-serif" text-anchor="middle">
+  <text x="153" y="252" font-size="15" font-weight="700">CHANGE</text><text x="153" y="276" font-size="11" fill="#8ca9be">review · validate</text>
+  <text x="380" y="86" font-size="15" font-weight="700">DELIVER</text><text x="380" y="110" font-size="11" fill="#8ca9be">build · deploy</text>
+  <text x="607" y="252" font-size="15" font-weight="700">OBSERVE</text><text x="607" y="276" font-size="11" fill="#8ca9be">logs · metrics · traces</text>
+  <text x="380" y="420" font-size="15" font-weight="700">RECOVER</text><text x="380" y="444" font-size="11" fill="#8ca9be">respond · learn</text>
+</g>
+<g fill="#68c8ef"><circle cx="250" cy="120" r="5"/><circle cx="510" cy="120" r="5"/><circle cx="510" cy="396" r="5"/><circle cx="250" cy="396" r="5"/></g>
+<text x="380" y="254" fill="#dcefff" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700" text-anchor="middle">FEEDBACK LOOP</text><text x="380" y="280" fill="#7fa4bf" font-family="Inter,Arial,sans-serif" font-size="11" text-anchor="middle">safe change · measurable reliability</text>
+</svg>

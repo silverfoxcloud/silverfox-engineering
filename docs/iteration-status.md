@@ -13,6 +13,8 @@
 - Simplified Architecture overview with one contextual detail panel.
 - Product storytelling that replaces the five-card platform grid.
 - Expanded engineering footer.
+- Technology Radar v2 with stable positions, status/category filters, contextual detail and a dedicated mobile representation.
+- Dedicated Architecture, Data, DevOps/SRE and Technology Radar SVGs replacing reused generic visuals.
 - Homepage copy refinement in Persian and English.
 - Documentation for locale/routing, navigation, architecture and RTL/LTR behavior.
 
@@ -24,7 +26,7 @@
 - Tablet visual review at 1024 and 768.
 - Mobile visual review at 430 and 390.
 - Persian RTL and English LTR screenshot review.
-- Technology Radar collision/interaction pass.
-- Remaining domain-specific SVG and motion review.
+- Final Technology Radar visual/collision review at deployed viewport sizes.
+- Final motion review for the remaining domain-specific surfaces.
 
 This document intentionally does not mark the redesign complete until those checks are performed.

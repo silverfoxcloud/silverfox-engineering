@@ -37,7 +37,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "Architecture that keeps change affordable.",
       lead: "Silver Fox is designed as a connected ecosystem of bounded products and shared platform capabilities. The goal is simple: reuse what should be common without coupling everything that needs to move independently.",
       summary: "Clear ownership, contract-first integration, evolutionary boundaries and measurable systems give teams room to change architecture when evidence—not fashion—justifies it.",
-      visual: "/visual-platform.svg",
+      visual: "/visual-architecture.svg",
       sections: [
         { title: "Bounded by responsibility", body: "Business domains own their models, data and lifecycle. Shared infrastructure does not become shared business logic.", bullets: ["Explicit domain ownership", "Independent release paths", "No duplicate platform capabilities"] },
         { title: "Contracts before coupling", body: "APIs and event contracts define how systems meet. Public APIs are versioned; asynchronous flows use explicit schemas and idempotent consumers.", bullets: ["OpenAPI for synchronous contracts", "AsyncAPI for event contracts", "Problem Details for consistent API errors"] },
@@ -52,7 +52,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "معماری‌ای که هزینه تغییر را پایین نگه می‌دارد.",
       lead: "در پردازش ابری روباه نقره‌ای، محصولات به هم متصل‌اند اما در هم حل نمی‌شوند. قابلیت‌هایی که باید مشترک باشند یک‌بار در لایه پلتفرم ساخته می‌شوند و هر دامنه‌ای که به استقلال نیاز دارد، مالک داده، منطق و چرخه توسعه خودش باقی می‌ماند.",
       summary: "مرزهای روشن، قراردادهای پایدار و سیستم‌های قابل اندازه‌گیری کمک می‌کنند معماری بر اساس نیاز واقعی تغییر کند؛ نه بر اساس موج بعدی فناوری.",
-      visual: "/visual-platform.svg",
+      visual: "/visual-architecture.svg",
       sections: [
         { title: "هر دامنه، یک مسئولیت روشن", body: "مدل داده، منطق کسب‌وکار و چرخه توسعه هر دامنه صاحب مشخص دارد. زیرساخت مشترک به معنی منطق مشترک نیست.", bullets: ["مالکیت روشن دامنه", "انتشار مستقل", "پرهیز از ساخت قابلیت‌های تکراری"] },
         { title: "قرارداد پیش از وابستگی", body: "رابط‌های برنامه‌نویسی و رویدادها مرز ارتباط سیستم‌ها هستند. قراردادها نسخه‌بندی می‌شوند تا تغییر یک بخش، بخش‌های دیگر را غافلگیر نکند.", bullets: ["OpenAPI برای رابط‌های هم‌زمان", "AsyncAPI برای رویدادها", "الگوی خطای یکپارچه برای API"] },
@@ -197,7 +197,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "Delivery and reliability are one engineering loop.",
       lead: "A change is not complete when it compiles. It must be deployable, observable, reversible where possible and supported by signals that explain behavior in production.",
       summary: "CI/CD, operational telemetry and reliability practices turn software delivery into a controlled feedback loop.",
-      visual: "/visual-cloud.svg",
+      visual: "/visual-devops.svg",
       sections: [
         { title: "Continuous validation", body: "Tests, security checks, builds and repository hygiene are automated early so drift is caught before deployment." },
         { title: "Observable services", body: "Structured logs, metrics, distributed traces and correlation identifiers provide context across requests and workers." },
@@ -212,7 +212,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "تحویل نرم‌افزار و قابلیت اتکا، یک چرخه مهندسی‌اند.",
       lead: "تغییر زمانی تمام نمی‌شود که کد بدون خطا ساخته شود. باید بتوان آن را با اطمینان مستقر کرد، رفتار آن را دید، در صورت نیاز مسیر بازگشت داشت و با داده واقعی فهمید در محیط عملیاتی چه اتفاقی افتاده است.",
       summary: "یکپارچه‌سازی و استقرار پیوسته، مشاهده‌پذیری و مهندسی قابلیت اتکا، فرایند تحویل را به یک چرخه بازخورد کنترل‌شده تبدیل می‌کنند.",
-      visual: "/visual-cloud.svg",
+      visual: "/visual-devops.svg",
       sections: [
         { title: "اعتبارسنجی پیوسته", body: "آزمون، بررسی امنیتی، ساخت و کنترل سلامت مخزن تا جای ممکن خودکار می‌شوند تا انحراف پیش از استقرار دیده شود." },
         { title: "سرویس‌های قابل مشاهده", body: "لاگ ساختاریافته، سنجه، ردیابی توزیع‌شده و شناسه هم‌بستگی کمک می‌کنند مسیر یک درخواست در سرویس و کارگر پس‌زمینه قابل دنبال‌کردن باشد." },
@@ -229,7 +229,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "Keep the source of truth clear.",
       lead: "Transactional state, cache, search and event projections serve different jobs. Silver Fox keeps those responsibilities explicit so speed does not quietly become ambiguity.",
       summary: "PostgreSQL is the transactional source of truth in core domains; Redis, search and event projections accelerate specific access patterns without becoming accidental authorities.",
-      visual: "/visual-platform.svg",
+      visual: "/visual-data.svg",
       sections: [
         { title: "Relational state first", body: "Core business data favors explicit relational models, constraints and transactional integrity. Flexible fields do not replace domain design." },
         { title: "Historical integrity", body: "Important business facts use immutable events, effective dates, versions or decision snapshots rather than silent overwrite." },
@@ -244,7 +244,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "منبع حقیقت باید همیشه روشن بماند.",
       lead: "داده تراکنشی، کش، جست‌وجو و نمای رویداد هرکدام کار متفاوتی دارند. در پردازش ابری روباه نقره‌ای این مرزها عمداً جدا نگه داشته می‌شوند تا افزایش سرعت، به ابهام در مالکیت داده تبدیل نشود.",
       summary: "در دامنه‌های اصلی، PostgreSQL منبع حقیقت تراکنشی است. Redis و لایه‌های جست‌وجو یا نمای رویداد برای سرعت و الگوی دسترسی خاص استفاده می‌شوند، نه برای جایگزینی حقیقت اصلی.",
-      visual: "/visual-platform.svg",
+      visual: "/visual-data.svg",
       sections: [
         { title: "داده رابطه‌ای، پایه کار", body: "داده‌های اصلی کسب‌وکار با مدل رابطه‌ای، محدودیت‌های روشن و تراکنش‌های قابل اتکا نگهداری می‌شوند. فیلدهای انعطاف‌پذیر جای طراحی دامنه را نمی‌گیرند." },
         { title: "حفظ تاریخچه", body: "واقعیت‌های مهم تجاری با رویداد تغییرناپذیر، تاریخ اثرگذاری، نسخه یا تصویر تصمیم نگهداری می‌شوند و بی‌صدا بازنویسی نمی‌شوند." },
@@ -261,7 +261,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "Use technology deliberately.",
       lead: "The Silver Fox radar is not a popularity chart. It describes technologies and practices by the role they currently play in our engineering approach.",
       summary: "Adopted technologies solve active problems today. Trial items are evaluated in bounded contexts. Assess items are monitored before they earn production responsibility.",
-      visual: "/visual-ai.svg",
+      visual: "/visual-radar.svg",
       sections: [
         { title: "Adopt", body: "Go, PostgreSQL, Redis, TypeScript, React/Next.js, OpenAPI, structured CI/CD and security-focused source control practices are established parts of the stack." },
         { title: "Use When Justified", body: "Kafka, OpenSearch, OpenTelemetry, S3-compatible object storage and container orchestration are used when their operational role is clear." },
@@ -276,7 +276,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       title: "فناوری را آگاهانه انتخاب می‌کنیم.",
       lead: "رادار فناوری پردازش ابری روباه نقره‌ای جدول محبوبیت ابزارها نیست. نشان می‌دهد هر فناوری یا روش، امروز چه نقشی در رویکرد مهندسی ما دارد و با چه سطحی از تعهد استفاده می‌شود.",
       summary: "فناوری‌های تثبیت‌شده مسئله واقعی امروز را حل می‌کنند. گزینه‌های آزمایشی در محدوده مشخص سنجیده می‌شوند و فناوری‌های در حال بررسی پیش از گرفتن مسئولیت عملیاتی، باید ارزش خود را نشان دهند.",
-      visual: "/visual-ai.svg",
+      visual: "/visual-radar.svg",
       sections: [
         { title: "استفاده تثبیت‌شده", body: "Go، PostgreSQL، Redis، TypeScript، React/Next.js، OpenAPI، فرایندهای یکپارچه‌سازی و استقرار پیوسته و کنترل‌های امنیتی مخزن، بخشی از پایه فعلی هستند." },
         { title: "استفاده در صورت نیاز", body: "Kafka، OpenSearch، OpenTelemetry، ذخیره‌سازی سازگار با S3 و ارکستریشن کانتینر زمانی استفاده می‌شوند که نقش عملیاتی مشخصی داشته باشند." },

@@ -56,3 +56,20 @@ The home page no longer presents all platforms/products as five identical cards.
 ## RTL / LTR
 
 Both languages use the same route and component tree. Direction is updated at the document root and each page root, so layout, navigation, focus order and copy remain part of the same implementation rather than separate route trees.
+
+## Technology Radar
+
+`TechnologyRadar` keeps node positions stable across filters so category/status changes do not cause misleading jumps. Desktop uses four explicit decision rings and a live contextual detail panel. Keyboard focus and pointer hover expose the same information. Tablet/mobile switches to grouped readable lists rather than shrinking the desktop radar.
+
+The public statuses are:
+
+- Adopt
+- Use when justified
+- Trial
+- Assess
+
+Technology copy describes engineering context and trade-offs rather than implying that every evaluated technology is deployed.
+
+## Domain-specific visuals
+
+Architecture, Data Engineering, DevOps & SRE and Technology Radar now use dedicated SVGs instead of reusing generic platform/cloud/AI artwork. Existing Cloud, Security, Platform and AI visuals remain domain-specific and are reviewed as separate assets.
