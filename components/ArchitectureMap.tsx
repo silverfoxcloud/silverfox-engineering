@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Locale } from "@/data/content";
 
 const nodes = [
@@ -65,6 +66,7 @@ const nodes = [
 
 export default function ArchitectureMap({ locale }: { locale: Locale }) {
   const [active, setActive] = useState(0);
+  const router = useRouter();
   const fa = locale === "fa";
   const selected = nodes[active];
 
@@ -77,7 +79,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
         <div className="mapCore">
           <img src="/silver-fox-logo.svg" alt="" />
           <strong>Silver Fox</strong>
-          <span>{fa ? "زیرساخت مشترک" : "Shared foundations"}</span>
+          <span>{fa ? "پلتفرم ابری" : "Cloud Platform"}</span>
         </div>
 
         <div className="mapNodes" role="group" aria-label={fa ? "حوزه‌های معماری" : "Architecture domains"}>
@@ -89,7 +91,7 @@ export default function ArchitectureMap({ locale }: { locale: Locale }) {
               aria-pressed={active === index}
               onMouseEnter={() => setActive(index)}
               onFocus={() => setActive(index)}
-              onClick={() => setActive(index)}
+              onClick={() => router.push("/" + node.path + "/")}
             >
               <span className="mapNodeIndex">{fa ? "۰۱۲۳۴۵۶۷۸۹"[index + 1] : String(index + 1).padStart(2, "0")}</span>
               <strong>{fa ? node.fa : node.en}</strong>
