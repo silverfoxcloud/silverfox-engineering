@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import LegacyLocaleRedirect from "@/components/LegacyLocaleRedirect";
+import PlatformDetailPage from "@/components/PlatformDetailPage";
 import {
+  platformPages,
   platformSlugs,
   type PlatformSlug,
 } from "@/data/engineering-pages";
@@ -16,13 +17,31 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (!platformSlugs.includes(slug as PlatformSlug)) return {};
+
+  const page = platformPages[slug as PlatformSlug].fa;
   return {
-    robots: { index: false, follow: true },
-    alternates: { canonical: "/platforms/" + slug + "/" },
+    title: page.name + " | مهندسی پردازش ابری روباه نقره‌ای",
+    description: page.lead,
+    alternates: {
+      canonical: "/fa/platforms/" + slug + "/",
+      languages: {
+        en: "/platforms/" + slug + "/",
+        fa: "/fa/platforms/" + slug + "/",
+        "x-default": "/platforms/" + slug + "/",
+      },
+    },
+    openGraph: {
+      title: page.name,
+      description: page.lead,
+      url: "/fa/platforms/" + slug + "/",
+      locale: "fa_IR",
+      alternateLocale: ["en_US"],
+    },
   };
 }
 
-export default async function LegacyPersianPlatformPage({
+export default async function PersianPlatformPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -30,5 +49,5 @@ export default async function LegacyPersianPlatformPage({
   const { slug } = await params;
   if (!platformSlugs.includes(slug as PlatformSlug)) notFound();
 
-  return <LegacyLocaleRedirect target={"/platforms/" + slug + "/"} locale="fa" />;
+  return <PlatformDetailPage slug={slug as PlatformSlug} locale="fa" />;
 }
