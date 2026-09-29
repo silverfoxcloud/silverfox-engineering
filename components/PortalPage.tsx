@@ -3,7 +3,7 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { copy, type Locale } from "@/data/content";
+import { copy, stack, type Locale } from "@/data/content";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
 import { packages } from "@/data/packages";
@@ -93,6 +93,19 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           </div>
 
           <ArchitectureMap locale={locale} />
+        </div>
+      </section>
+
+      <section className="stackStrip" aria-label={fa ? "فناوری‌های اصلی" : "Core engineering stack"}>
+        <div className="shell stackStripInner">
+          <span className="stackStripLabel">{fa ? "پشته مهندسی" : "ENGINEERING STACK"}</span>
+          <div className="stackStripList">
+            {stack
+              .filter((item) =>
+                ["Go", "PostgreSQL", "Redis", "OpenAPI", "OpenTelemetry", "TypeScript", "Next.js", "React", "Cloudflare"].includes(item),
+              )
+              .map((item) => <span key={item}>{item}</span>)}
+          </div>
         </div>
       </section>
 
