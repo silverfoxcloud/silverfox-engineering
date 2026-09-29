@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { copy, projects, stack, type Locale } from "@/data/content";
+import EngineeringStories from "@/components/EngineeringStories";
 
 const icons = {
   ecosystem: "◆",
@@ -119,6 +120,8 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </div>
       </section>
+
+      <EngineeringStories locale={locale} />
 
       <section className="section sectionAlt" id="projects">
         <div className="shell">
