@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
 <title id="title">Silver Fox data ownership model</title>
 <desc id="desc">Transactional state remains authoritative while cache, search and event projections serve derived access paths.</desc>
-<rect width="760" height="520" rx="28" fill="#071421"/>
-<g fill="none" stroke="#183a58"><path d="M72 104H688"/><path d="M72 416H688"/></g>
-<g fill="#0d2942" stroke="#5aa4d3" stroke-width="2">
+<rect width="760" height="520" rx="28" fill="#f7f7f4"/>
+<g fill="none" stroke="#ffffff"><path d="M72 104H688"/><path d="M72 416H688"/></g>
+<g fill="#ffffff" stroke="#5b61d6" stroke-width="2">
   <ellipse cx="380" cy="150" rx="112" ry="28"/><path d="M268 150v84c0 16 50 29 112 29s112-13 112-29v-84"/><path d="M268 192c0 16 50 29 112 29s112-13 112-29"/>
 </g>
-<g fill="#e9f5ff" font-family="Inter,Arial,sans-serif" text-anchor="middle"><text x="380" y="176" font-size="18" font-weight="700">TRANSACTIONAL STATE</text><text x="380" y="204" font-size="12" fill="#88b6d7">constraints · ownership · history</text></g>
-<g stroke="#5cb9e7" stroke-width="2" fill="none"><path d="M380 263v54"/><path d="M380 317H170v45M380 317v45M380 317h210v45"/></g>
-<g fill="#0a2238" stroke="#315f82">
+<g fill="#17181a" font-family="Inter,Arial,sans-serif" text-anchor="middle"><text x="380" y="176" font-size="18" font-weight="700">TRANSACTIONAL STATE</text><text x="380" y="204" font-size="12" fill="#5b61d6">constraints · ownership · history</text></g>
+<g stroke="#5b61d6" stroke-width="2" fill="none"><path d="M380 263v54"/><path d="M380 317H170v45M380 317v45M380 317h210v45"/></g>
+<g fill="#ffffff" stroke="#c9cdd3">
   <rect x="86" y="362" width="168" height="76" rx="15"/><rect x="296" y="362" width="168" height="76" rx="15"/><rect x="506" y="362" width="168" height="76" rx="15"/>
 </g>
-<g fill="#e9f5ff" font-family="Inter,Arial,sans-serif" text-anchor="middle">
-  <text x="170" y="392" font-size="15" font-weight="700">CACHE</text><text x="170" y="416" font-size="11" fill="#829db3">latency · coordination</text>
-  <text x="380" y="392" font-size="15" font-weight="700">SEARCH</text><text x="380" y="416" font-size="11" fill="#829db3">derived access path</text>
-  <text x="590" y="392" font-size="15" font-weight="700">EVENT VIEW</text><text x="590" y="416" font-size="11" fill="#829db3">projection · integration</text>
+<g fill="#17181a" font-family="Inter,Arial,sans-serif" text-anchor="middle">
+  <text x="170" y="392" font-size="15" font-weight="700">CACHE</text><text x="170" y="416" font-size="11" fill="#5b61d6">latency · coordination</text>
+  <text x="380" y="392" font-size="15" font-weight="700">SEARCH</text><text x="380" y="416" font-size="11" fill="#5b61d6">derived access path</text>
+  <text x="590" y="392" font-size="15" font-weight="700">EVENT VIEW</text><text x="590" y="416" font-size="11" fill="#5b61d6">projection · integration</text>
 </g>
-<g fill="#72c9f1"><circle cx="380" cy="289" r="5"/><circle cx="170" cy="342" r="4"/><circle cx="380" cy="342" r="4"/><circle cx="590" cy="342" r="4"/></g>
-<text x="380" y="78" fill="#7998af" font-family="Inter,Arial,sans-serif" font-size="12" text-anchor="middle">SOURCE OF TRUTH STAYS EXPLICIT</text>
+<g fill="#5b61d6"><circle cx="380" cy="289" r="5"/><circle cx="170" cy="342" r="4"/><circle cx="380" cy="342" r="4"/><circle cx="590" cy="342" r="4"/></g>
+<text x="380" y="78" fill="#5b61d6" font-family="Inter,Arial,sans-serif" font-size="12" text-anchor="middle">SOURCE OF TRUTH STAYS EXPLICIT</text>
 </svg>
