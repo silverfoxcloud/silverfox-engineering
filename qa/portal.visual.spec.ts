@@ -65,6 +65,17 @@ function slugify(route: string) {
   return route === "/" ? "home" : route.replace(/^\/+|\/+$/g, "").replace(/\//g, "-");
 }
 
+async function settleVisualState(page: import("@playwright/test").Page) {
+  await page.waitForTimeout(900);
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < height; y += 650) {
+    await page.evaluate((top) => window.scrollTo(0, top), y);
+    await page.waitForTimeout(45);
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(180);
+}
+
 async function assertPageHealth(page: import("@playwright/test").Page, route: string) {
   const isFa = route === "/fa/" || route.startsWith("/fa/");
   await expect(page.locator("main")).toHaveAttribute("lang", isFa ? "fa" : "en");
@@ -104,6 +115,7 @@ for (const route of majorRoutes) {
       await page.goto(baseURL + route, { waitUntil: "domcontentloaded" });
       await page.evaluate(() => document.fonts.ready);
       await assertPageHealth(page, route);
+      await settleVisualState(page);
 
       await page.screenshot({
         path: testInfo.outputPath(`${slugify(route)}-${viewport.name}.png`),
