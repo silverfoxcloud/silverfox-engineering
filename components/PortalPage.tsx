@@ -7,6 +7,8 @@ import SiteFooter from "@/components/SiteFooter";
 import { copy, type Locale } from "@/data/content";
 import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
+import { packages } from "@/data/packages";
+import { buildStories, engineeringNotes, changelog } from "@/data/publications";
 
 const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 
@@ -248,6 +250,127 @@ export default function PortalPage({ locale }: { locale: Locale }) {
               <strong>ExoHub</strong>
               <i aria-hidden="true">↗</i>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="homePackageEditorial">
+        <div className="shell">
+          <div className="homeLightHeading">
+            <div>
+              <span className="kicker">{fa ? "پکیج‌های مهندسی" : "ENGINEERING PACKAGES"}</span>
+              <h2>
+                {fa
+                  ? "زیرساخت مشترک وقتی ارزشمند است که واقعاً قابل مصرف و نسخه‌بندی باشد."
+                  : "Shared infrastructure matters when it is actually versioned and consumable."}
+              </h2>
+            </div>
+            <div>
+              <p>
+                {fa
+                  ? "هفت پکیج SFAS اکنون با نسخه 0.2.0-alpha.12 روی کانال next در GitHub Packages خصوصی منتشر شده‌اند. این بخش وضعیت prerelease را صریح نگه می‌دارد."
+                  : "Seven SFAS packages are published as 0.2.0-alpha.12 on the next channel in private GitHub Packages. The portal keeps their prerelease state explicit."}
+              </p>
+              <Link href={localize("/packages/")}>
+                {fa ? "مرور همه پکیج‌ها" : "Browse all packages"} <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="homePackageRows">
+            {packages.slice(0, 4).map((pkg, index) => (
+              <Link href={localize("/packages/" + pkg.slug + "/")} key={pkg.slug} data-reveal>
+                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <strong>{pkg.displayName}</strong>
+                  <code>{pkg.name}</code>
+                </div>
+                <small>{pkg.version}</small>
+                <i aria-hidden="true">↗</i>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="homeEvidenceSection">
+        <div className="shell">
+          <div className="homeSectionHeading split">
+            <div>
+              <span className="kicker">{fa ? "روایت‌های ساخت" : "BUILD STORIES"}</span>
+              <h2>{fa ? "بلوغ مهندسی با شواهد ساخته می‌شود، نه با ادعا." : "Engineering maturity is built with evidence, not claims."}</h2>
+            </div>
+            <p>
+              {fa
+                ? "این روایت‌ها از report، تست و milestone واقعی می‌آیند و محدودیت‌های همان مرحله را هم پنهان نمی‌کنند."
+                : "These stories come from real reports, tests and milestones, and keep the limitations of each phase visible."}
+            </p>
+          </div>
+
+          <div className="homeStoryRows">
+            {buildStories.map((story, index) => (
+              <Link href={localize("/build-stories/" + story.slug + "/")} key={story.slug} data-reveal>
+                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <small>{story.platform}</small>
+                  <h3>{story.title[locale]}</h3>
+                  <p>{story.summary[locale]}</p>
+                </div>
+                <i aria-hidden="true">↗</i>
+              </Link>
+            ))}
+          </div>
+
+          <div className="homeShippedHeading">
+            <div>
+              <span className="kicker">{fa ? "آخرین تغییرات" : "RECENTLY SHIPPED"}</span>
+              <h2>{fa ? "تغییرات واقعی، با تاریخ و زمینه مشخص." : "Real changes with a date and an engineering context."}</h2>
+            </div>
+            <Link href={localize("/changelog/")}>{fa ? "مشاهده Changelog" : "View changelog"} <span aria-hidden="true">↗</span></Link>
+          </div>
+
+          <div className="homeChangelogRows">
+            {changelog.slice(0, 3).map((entry) => (
+              <Link href={localize(entry.href)} key={entry.date + entry.title.en}>
+                <time dateTime={entry.date}>{fa ? entry.date.replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).replaceAll("-", "/") : entry.date}</time>
+                <span>{entry.type}</span>
+                <strong>{entry.title[locale]}</strong>
+                <i aria-hidden="true">↗</i>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="homeKnowledgeSection">
+        <div className="shell">
+          <div className="homeLightHeading">
+            <div>
+              <span className="kicker">{fa ? "یادداشت‌های مهندسی" : "ENGINEERING NOTES"}</span>
+              <h2>{fa ? "دانش فنی باید قابل خواندن، نقدکردن و دنبال‌کردن باشد." : "Engineering knowledge should be readable, reviewable and traceable."}</h2>
+            </div>
+            <div>
+              <p>
+                {fa
+                  ? "یادداشت‌های عمومی از ADRها و implementation واقعی استخراج می‌شوند؛ نه از متن بازاریابی عمومی و نه از تاریخ‌سازی."
+                  : "Public notes are grounded in real ADRs and implementation evidence—not generic marketing language or manufactured history."}
+              </p>
+              <Link href={localize("/engineering/")}>{fa ? "مطالعه همه یادداشت‌ها" : "Read all Engineering Notes"} <span aria-hidden="true">↗</span></Link>
+            </div>
+          </div>
+
+          <div className="homeKnowledgeRows">
+            {engineeringNotes.map((note, index) => (
+              <Link href={localize("/engineering/" + note.slug + "/")} key={note.slug} data-reveal>
+                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <small>{note.category} · {note.platform}</small>
+                  <h3>{note.title[locale]}</h3>
+                  <p>{note.summary[locale]}</p>
+                </div>
+                <i aria-hidden="true">↗</i>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
