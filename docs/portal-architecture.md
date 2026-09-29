@@ -2,34 +2,33 @@
 
 ## Public route model
 
-Language is an application preference, not part of the canonical URL.
+The portal uses two statically generated, crawlable language trees.
 
-Canonical examples:
+English examples:
 
 - `/`
 - `/architecture/`
 - `/technology-radar/`
 - `/platforms/fox-pay/`
-- `/platforms/license-platform/`
 
-The sitemap publishes only canonical clean routes.
+Persian examples:
 
-Legacy Persian URLs under `/fa/...` remain as `noindex` static redirect pages so existing links can move users to the canonical route while restoring Persian as their preference.
+- `/fa/`
+- `/fa/architecture/`
+- `/fa/technology-radar/`
+- `/fa/platforms/fox-pay/`
 
-## Locale state
+Each route renders its language at build time. Language switching navigates to the corresponding alternate URL instead of changing a browser-only preference.
 
-The public site is statically exported to GitHub Pages, so there is no request-time server session or cookie-aware rendering layer.
+## Locale semantics
 
-Locale state is therefore handled by `LocaleProvider`:
+Page components receive locale explicitly from the route. This keeps the static HTML, visible copy, direction and navigation consistent before hydration.
 
-- persisted in `localStorage`;
-- restored when a canonical route is opened directly;
-- applied to `html[lang]` and `html[dir]`;
-- switched without route navigation;
-- current route and scroll context remain unchanged;
-- React uses `useSyncExternalStore` with an English server snapshot to avoid hydration mismatch.
-
-Because the deployment is a static export, build-time metadata uses English as the default canonical representation. The active client locale updates the document title and description where appropriate. Canonical URLs remain language-neutral.
+- English page roots use `lang="en"` and `dir="ltr"`.
+- Persian page roots use `lang="fa"` and `dir="rtl"`.
+- The Persian nested layout synchronizes document-level `lang` and `dir` immediately.
+- Internal navigation stays within the active language tree.
+- No locale state is persisted in `localStorage`.
 
 ## Navigation
 
@@ -55,7 +54,7 @@ The home page no longer presents all platforms/products as five identical cards.
 
 ## RTL / LTR
 
-Both languages use the same route and component tree. Direction is updated at the document root and each page root, so layout, navigation, focus order and copy remain part of the same implementation rather than separate route trees.
+Both languages use the same shared components and content model, but they are rendered through distinct static route trees. Direction, typography, navigation, focus behavior and responsive rules remain one implementation with two explicit locale inputs rather than two forked applications.
 
 ## Technology Radar
 
@@ -109,10 +108,14 @@ The portal distinguishes three states:
 
 A roadmap item is never promoted to a shipped capability merely to strengthen marketing copy. Private infrastructure topology, credentials, secret formats, internal defensive controls and exploitable operational procedures stay outside the public portal.
 
-## SEO with locale-neutral routes
+## SEO and language alternates
 
-Each engineering and platform route has its own build-time title, description, canonical URL and OpenGraph URL. The sitemap contains only clean canonical routes.
+Every public engineering and platform page has:
 
-The locale architecture intentionally serves Persian and English on the same canonical URL. Standard hreflang is therefore not emitted because valid hreflang alternates require distinct crawlable language URLs. Pointing both `fa` and `en` at the same canonical resource would be misleading and provides no meaningful alternate for crawlers.
+- a language-specific title and description;
+- its own canonical URL;
+- OpenGraph URL and locale;
+- reciprocal `hreflang` links for English and Persian;
+- an `x-default` pointing at the English primary route.
 
-If language-specific indexable URLs are introduced in the future, hreflang can be added as part of that routing decision rather than as an invalid metadata-only workaround.
+The sitemap includes both language versions and their language alternates. This makes the Persian edition directly crawlable instead of relying on client-side locale switching.
