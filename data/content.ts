@@ -2,190 +2,183 @@ export type Locale = "en" | "fa";
 
 export const projects = [
   {
-    name: "Silver Fox Admin System",
-    short: "SFAS",
-    category: { en: "Core Platform", fa: "پلتفرم هسته" },
-    status: { en: "Active development", fa: "در حال توسعه فعال" },
+    name: "Silver Fox Admin System", short: "SFAS",
+    category: { en: "Experience Platform", fa: "پلتفرم تجربه" },
+    status: { en: "Platform engineering", fa: "مهندسی پلتفرم" },
     description: {
-      en: "A shared administration and design-system layer for Silver Fox products, providing a stable UI foundation, reusable capabilities, and first-class RTL/LTR support.",
-      fa: "لایه مشترک مدیریت و سیستم طراحی برای محصولات Silver Fox که زیرساخت رابط کاربری پایدار، قابلیت‌های قابل استفاده مجدد و پشتیبانی هم‌سطح RTL/LTR را فراهم می‌کند."
+      en: "A shared administration and product-experience foundation that standardizes design primitives, reusable application capabilities, accessibility and multilingual interfaces across the ecosystem.",
+      fa: "زیرساخت مشترک مدیریت و تجربه محصول که اصول طراحی، قابلیت‌های قابل استفاده مجدد، دسترس‌پذیری و رابط‌های چندزبانه را در سطح اکوسیستم استاندارد می‌کند."
     },
     capabilities: {
-      en: ["Shared admin shell", "Design tokens & components", "RTL / LTR", "Light / Dark / System"],
-      fa: ["پوسته مدیریتی مشترک", "توکن‌ها و کامپوننت‌های طراحی", "RTL / LTR", "حالت روشن / تاریک / سیستم"]
+      en: ["Design system", "Multilingual UX", "Reusable modules", "Accessibility"],
+      fa: ["سیستم طراحی", "تجربه چندزبانه", "ماژول‌های مشترک", "دسترس‌پذیری"]
     }
   },
   {
-    name: "Silver Fox License Platform",
-    short: "License",
-    category: { en: "SaaS Infrastructure", fa: "زیرساخت SaaS" },
-    status: { en: "Active development", fa: "در حال توسعه فعال" },
+    name: "Silver Fox License Platform", short: "License",
+    category: { en: "Cloud Control Plane", fa: "لایه کنترل ابری" },
+    status: { en: "Platform engineering", fa: "مهندسی پلتفرم" },
     description: {
-      en: "A multi-tenant cloud licensing platform for Silver Fox products and external commercial customers, separating subscriptions, entitlements, licenses, usage and billing.",
-      fa: "پلتفرم لایسنس ابری چندمستاجری برای محصولات Silver Fox و مشتریان تجاری خارجی که اشتراک، دسترسی‌ها، مجوزها، مصرف و صورتحساب را از یکدیگر تفکیک می‌کند."
+      en: "A multi-tenant control plane for product licensing, entitlements and usage governance, designed around explicit tenancy boundaries, auditable state and contract-driven integrations.",
+      fa: "لایه کنترل چندمستاجری برای لایسنس، دسترسی‌ها و حاکمیت مصرف که بر مرزهای شفاف مستأجرها، وضعیت قابل ممیزی و یکپارچگی مبتنی بر قرارداد طراحی شده است."
     },
     capabilities: {
-      en: ["Entitlements", "Usage metering", "RBAC & audit", "Billing-ready"],
-      fa: ["مدیریت Entitlement", "اندازه‌گیری مصرف", "RBAC و ممیزی", "آماده برای صورتحساب"]
+      en: ["Multi-tenancy", "Entitlements", "Usage governance", "Auditability"],
+      fa: ["چندمستاجری", "مدیریت دسترسی", "حاکمیت مصرف", "ممیزی‌پذیری"]
     }
   },
   {
-    name: "Fox Pay",
-    short: "Pay",
+    name: "Fox Pay", short: "Pay",
     category: { en: "Payment Infrastructure", fa: "زیرساخت پرداخت" },
-    status: { en: "Active development", fa: "در حال توسعه فعال" },
+    status: { en: "Platform engineering", fa: "مهندسی پلتفرم" },
     description: {
-      en: "A Silver Fox payment infrastructure product designed for SaaS and BYOM scenarios, with provider orchestration, independent organizations/projects and licensing integration.",
-      fa: "محصول زیرساخت پرداخت Silver Fox برای سناریوهای SaaS و BYOM با ارکستریشن ارائه‌دهندگان پرداخت، سازمان‌ها و پروژه‌های مستقل و اتصال به پلتفرم لایسنس."
+      en: "A payment orchestration layer built to isolate provider complexity behind stable contracts, support policy-driven routing, and provide a reliable foundation for transaction workflows.",
+      fa: "لایه ارکستریشن پرداخت که پیچیدگی ارائه‌دهندگان را پشت قراردادهای پایدار جدا می‌کند، از مسیریابی مبتنی بر سیاست پشتیبانی می‌کند و پایه‌ای قابل اتکا برای جریان‌های تراکنشی می‌سازد."
     },
     capabilities: {
-      en: ["Provider orchestration", "Project isolation", "Payment routing", "License integration"],
-      fa: ["ارکستریشن درگاه‌ها", "ایزوله‌سازی پروژه‌ها", "مسیریابی پرداخت", "یکپارچگی با لایسنس"]
+      en: ["Provider abstraction", "Policy routing", "Idempotency", "Reconciliation"],
+      fa: ["انتزاع ارائه‌دهنده", "مسیریابی سیاست‌محور", "Idempotency", "تطبیق تراکنش"]
     }
   },
   {
-    name: "ExoTravel",
-    short: "ExoTravel",
+    name: "ExoTravel", short: "ExoTravel",
     category: { en: "Travel Technology", fa: "فناوری سفر" },
-    status: { en: "Development", fa: "در حال توسعه" },
+    status: { en: "Product engineering", fa: "مهندسی محصول" },
     description: {
-      en: "A travel technology product within the Silver Fox ecosystem, designed to consume shared platform services while keeping its own business domain, data model and APIs.",
-      fa: "محصول فناوری سفر در اکوسیستم Silver Fox که از سرویس‌های مشترک پلتفرم استفاده می‌کند و در عین حال دامنه کسب‌وکار، مدل داده و APIهای مستقل خود را حفظ می‌کند."
+      en: "A travel technology domain built to consume shared platform capabilities while retaining clear ownership of its business model, data contracts and independent product lifecycle.",
+      fa: "دامنه‌ای در فناوری سفر که از قابلیت‌های مشترک پلتفرم استفاده می‌کند و در عین حال مالکیت روشن مدل کسب‌وکار، قراردادهای داده و چرخه مستقل محصول را حفظ می‌کند."
     },
     capabilities: {
-      en: ["Travel workflows", "Shared platform integration", "Independent domain model", "Private repository"],
-      fa: ["فرایندهای سفر", "یکپارچگی با پلتفرم مشترک", "مدل دامنه مستقل", "مخزن خصوصی"]
+      en: ["Domain ownership", "Platform integration", "API contracts", "Independent lifecycle"],
+      fa: ["مالکیت دامنه", "یکپارچگی پلتفرمی", "قراردادهای API", "چرخه مستقل"]
     }
   },
   {
-    name: "ExoHub",
-    short: "ExoHub",
-    category: { en: "Platform Product", fa: "محصول پلتفرمی" },
-    status: { en: "Development", fa: "در حال توسعه" },
+    name: "ExoHub", short: "ExoHub",
+    category: { en: "Ecosystem Platform", fa: "پلتفرم اکوسیستم" },
+    status: { en: "Product engineering", fa: "مهندسی محصول" },
     description: {
-      en: "A Silver Fox ecosystem product designed to participate in the shared platform architecture and consume common identity, administration, licensing and payment capabilities.",
-      fa: "محصولی از اکوسیستم Silver Fox که در معماری مشترک پلتفرم قرار می‌گیرد و از قابلیت‌های هویت، مدیریت، لایسنس و پرداخت مشترک استفاده می‌کند."
+      en: "An ecosystem product designed around composable platform services, shared identity and consistent engineering contracts while preserving bounded product responsibilities.",
+      fa: "محصولی در اکوسیستم که بر سرویس‌های پلتفرمی ترکیب‌پذیر، هویت مشترک و قراردادهای مهندسی یکپارچه تکیه دارد و مسئولیت‌های مرزبندی‌شده محصول را حفظ می‌کند."
     },
     capabilities: {
-      en: ["Shared identity", "SFAS integration", "Licensing", "Payment-ready"],
-      fa: ["هویت مشترک", "یکپارچگی با SFAS", "لایسنس", "آماده برای پرداخت"]
-    }
-  },
-  {
-    name: "Lilium Travel",
-    short: "Lilium",
-    category: { en: "Travel Product", fa: "محصول سفر" },
-    status: { en: "Development", fa: "در حال توسعه" },
-    description: {
-      en: "A travel product in the Silver Fox ecosystem with a dedicated customer journey, booking and payment flows, and integration with shared Silver Fox infrastructure.",
-      fa: "محصول سفر در اکوسیستم Silver Fox با مسیر کاربری اختصاصی، فرایندهای رزرو و پرداخت و اتصال به زیرساخت‌های مشترک Silver Fox."
-    },
-    capabilities: {
-      en: ["Booking journey", "Customer account", "Payments", "Shared platform services"],
-      fa: ["مسیر رزرو", "حساب کاربری مشتری", "پرداخت", "سرویس‌های مشترک پلتفرم"]
+      en: ["Composable services", "Shared identity", "Platform contracts", "Modular architecture"],
+      fa: ["سرویس‌های ترکیب‌پذیر", "هویت مشترک", "قراردادهای پلتفرمی", "معماری ماژولار"]
     }
   }
 ];
 
 export const copy = {
   en: {
-    langName: "فارسی",
-    langHref: "/fa/",
-    eyebrow: "SILVER FOX ENGINEERING",
-    heroTitle: "Building a connected digital ecosystem.",
-    heroBody:
-      "Silver Fox develops interoperable products across platform infrastructure, payments, licensing, administration and travel technology. This portal explains what we build, how the pieces fit together, and the engineering principles behind them.",
-    primaryCta: "Explore projects",
-    secondaryCta: "Architecture",
-    nav: ["Ecosystem", "Projects", "Architecture", "Standards", "Security"],
-    metrics: [
-      ["6", "Ecosystem products"],
-      ["2", "Languages by design"],
-      ["1", "Shared platform philosophy"]
-    ],
-    ecosystemTitle: "One ecosystem, independent products.",
-    ecosystemBody:
-      "Each product owns its business domain and data while shared platform capabilities reduce duplication and establish consistent engineering standards.",
+    langName: "فارسی", langHref: "/fa/", eyebrow: "SILVER FOX ENGINEERING",
+    heroTitle: "Engineering systems built to evolve.",
+    heroBody: "Silver Fox engineers a connected technology ecosystem across cloud platforms, product infrastructure, payments, licensing and digital experiences. We focus on clear boundaries, secure defaults, operational visibility and architectures that can evolve without turning shared infrastructure into shared complexity.",
+    primaryCta: "Explore engineering", secondaryCta: "Architecture",
+    nav: ["Ecosystem", "Platforms", "Architecture", "Technology", "Security"],
+    metrics: [["Cloud", "Platform-first architecture"],["AI", "Engineering acceleration"],["24/7", "Reliability mindset"]],
+    ecosystemTitle: "A platform ecosystem with explicit boundaries.",
+    ecosystemBody: "Shared capabilities are engineered once where centralization creates leverage. Product domains remain autonomous where ownership, release velocity and data boundaries matter.",
     pillars: [
-      ["Shared Experience", "SFAS provides a common administration and design-system foundation without forcing products to share business logic."],
-      ["Shared Infrastructure", "Licensing, payments, identity and platform services are designed as reusable capabilities across the ecosystem."],
-      ["Product Autonomy", "Products keep independent domain models, databases, APIs and release lifecycles where required."],
-      ["Bilingual by Default", "English/LTR and Persian/RTL are first-class concerns in architecture, components, quality assurance and localization."]
+      ["Platform Engineering", "Identity, administration, licensing, payments and common experience capabilities are treated as reusable platform concerns with stable contracts."],
+      ["Multi-tenancy", "Tenant context, isolation and authorization boundaries are architectural concerns across data access, APIs, background processing and operational tooling."],
+      ["Product Autonomy", "Bounded contexts preserve independent domain models, APIs, data ownership and delivery lifecycles while integrating through explicit contracts."],
+      ["Multilingual by Design", "Internationalization, localization, typography, content direction and locale-aware behavior are designed into product foundations from the start."]
     ],
-    projectsTitle: "Projects & platforms",
-    projectsBody: "Public overviews of products currently being built within the Silver Fox ecosystem.",
-    architectureTitle: "Architecture principles",
-    architectureBody:
-      "The ecosystem favors explicit boundaries, versioned shared contracts and cloud-managed platform services.",
+    projectsTitle: "Platforms & product domains",
+    projectsBody: "Selected public views of the engineering domains that make up the Silver Fox ecosystem.",
+    architectureTitle: "Architecture for change, not just launch.",
+    architectureBody: "We favor evolutionary architecture: clear contracts today, measurable systems in production, and room to split, scale or replace components as real operational evidence demands.",
     architecture: [
-      ["Platform over copy-paste", "Shared capabilities are consumed as stable platform services or versioned packages rather than duplicated across products."],
-      ["Contract-driven integration", "Products integrate through documented APIs, entitlements and stable interfaces while preserving internal boundaries."],
-      ["Cloud-first operation", "Core commercial platforms are designed for Silver Fox-managed cloud operation, with tenant isolation and dedicated resources where appropriate."],
-      ["Security by design", "RBAC, auditability, environment separation, idempotency and least-privilege principles are treated as platform concerns."]
+      ["Bounded architecture", "Domain boundaries, ownership and data responsibility are explicit. Shared infrastructure does not imply shared business logic."],
+      ["Contract-first integration", "Versioned APIs, schemas and compatibility rules reduce hidden coupling and make service evolution deliberate."],
+      ["Cloud-native foundations", "Workloads are designed for automation, horizontal evolution, environment isolation, managed infrastructure and repeatable delivery."],
+      ["Event-aware systems", "Synchronous APIs are complemented by asynchronous patterns where decoupling, resilience and workflow progression benefit from events."],
+      ["Data ownership", "PostgreSQL-backed transactional domains, Redis-assisted caching and carefully scoped data access keep consistency decisions close to domain ownership."],
+      ["Reliability engineering", "Timeouts, retries, idempotency, backpressure, health signals and graceful degradation are designed as system behavior rather than incident patches."]
     ],
-    standardsTitle: "Engineering standards",
+    techTitle: "Modern engineering across the stack",
+    techBody: "Technology choices follow system constraints. The goal is not a fashionable stack; it is a maintainable, observable and secure platform that can evolve.",
+    technology: [
+      ["Cloud & Edge", "Cloud-managed infrastructure, CDN and edge capabilities, DNS and traffic controls, environment separation, object storage and scalable delivery patterns."],
+      ["Backend & Data", "Go for service-oriented workloads, PostgreSQL for durable relational state, Redis for low-latency coordination and caching, and explicit API contracts."],
+      ["Web & Experience", "Modern TypeScript and React/Next.js foundations, reusable design systems, accessibility, responsive interfaces and multilingual product experiences."],
+      ["DevOps & Delivery", "Git-based workflows, automated validation, CI/CD, reproducible builds, deployment gates, infrastructure automation and progressive operational discipline."],
+      ["Observability & SRE", "Structured logs, metrics, traces, correlation, service-level thinking, actionable alerts, capacity awareness and evidence-driven reliability work."],
+      ["AI Engineering", "AI-assisted development, review and documentation are treated as engineering accelerators with human ownership, verification, security controls and auditable workflows."],
+      ["API Engineering", "RESTful contracts, versioning, idempotency, rate controls, webhook verification and integration boundaries designed for long-lived interoperability."],
+      ["Performance", "Caching strategy, query discipline, asynchronous work, profiling, load awareness and measurement before optimization."]
+    ],
+    standardsTitle: "Engineering principles",
     standards: [
-      "RTL and LTR are first-class and equivalent.",
-      "Persian and English experiences are designed together, not retrofitted.",
-      "Shared UI capabilities are centralized and versioned.",
-      "Technical values that must remain LTR are isolated intentionally.",
-      "Public documentation exposes architecture intent without exposing secrets or sensitive operational details.",
-      "Product repositories may remain private while public engineering information is curated here."
+      "Prefer explicit ownership and stable contracts over implicit coupling.",
+      "Design multilingual products as a core capability, not a translation layer.",
+      "Automate repeatable engineering work and keep human review where judgment matters.",
+      "Make systems observable enough to explain behavior in production.",
+      "Treat backward compatibility, migrations and versioning as architecture work.",
+      "Use tests, static analysis and CI as delivery controls rather than end-stage checks.",
+      "Optimize from measured evidence and preserve simplicity until complexity earns its place.",
+      "Publish useful engineering ideas without exposing sensitive implementation details."
     ],
-    securityTitle: "Public by design. Private where necessary.",
-    securityBody:
-      "This portal publishes product purpose, public architecture concepts, engineering standards and selected roadmap context. Source code, secrets, credentials, sensitive schemas, internal infrastructure details and non-public security implementation remain private.",
+    securityTitle: "Security is an engineering property.",
+    securityBody: "Security spans identity, authorization, tenant isolation, secrets management, supply-chain controls, secure delivery, auditability, data protection and operational response. Public documentation describes principles and capabilities; sensitive topology, credentials, defensive implementation details and internal procedures remain private.",
+    securityPoints: ["Least privilege & RBAC","Tenant isolation","Secrets hygiene","Audit trails","Secure SDLC","Dependency & supply-chain controls","Rate limiting & abuse resistance","Encryption & data protection"],
     footer: "Silver Fox Engineering — engineering.silverfoxcloud.com",
-    legal: "Engineering portal for the Silver Fox ecosystem."
+    legal: "Public engineering portal for the Silver Fox ecosystem."
   },
   fa: {
-    langName: "English",
-    langHref: "/",
-    eyebrow: "مهندسی SILVER FOX",
-    heroTitle: "ساخت یک اکوسیستم دیجیتال یکپارچه.",
-    heroBody:
-      "Silver Fox مجموعه‌ای از محصولات سازگار و متصل را در حوزه زیرساخت پلتفرم، پرداخت، لایسنس، مدیریت و فناوری سفر توسعه می‌دهد. این پرتال توضیح می‌دهد چه می‌سازیم، اجزا چگونه به هم متصل می‌شوند و اصول مهندسی پشت آن‌ها چیست.",
-    primaryCta: "مشاهده پروژه‌ها",
-    secondaryCta: "معماری",
-    nav: ["اکوسیستم", "پروژه‌ها", "معماری", "استانداردها", "امنیت"],
-    metrics: [
-      ["۶", "محصول در اکوسیستم"],
-      ["۲", "زبان از ابتدا در طراحی"],
-      ["۱", "فلسفه مشترک پلتفرم"]
-    ],
-    ecosystemTitle: "یک اکوسیستم، محصولات مستقل.",
-    ecosystemBody:
-      "هر محصول مالک دامنه کسب‌وکار و داده‌های خود است، در حالی که قابلیت‌های مشترک پلتفرم از تکرار جلوگیری کرده و استانداردهای مهندسی یکسانی ایجاد می‌کنند.",
+    langName: "English", langHref: "/", eyebrow: "مهندسی SILVER FOX",
+    heroTitle: "مهندسی سیستم‌هایی که برای تکامل ساخته می‌شوند.",
+    heroBody: "Silver Fox یک اکوسیستم فناوری متصل را در حوزه پلتفرم‌های ابری، زیرساخت محصول، پرداخت، لایسنس و تجربه‌های دیجیتال مهندسی می‌کند. تمرکز ما بر مرزهای روشن، امنیت پیش‌فرض، مشاهده‌پذیری عملیاتی و معماری‌هایی است که بدون تبدیل زیرساخت مشترک به پیچیدگی مشترک، قابلیت تکامل داشته باشند.",
+    primaryCta: "مشاهده مهندسی", secondaryCta: "معماری",
+    nav: ["اکوسیستم", "پلتفرم‌ها", "معماری", "فناوری", "امنیت"],
+    metrics: [["Cloud", "معماری پلتفرم‌محور"],["AI", "شتاب‌دهی مهندسی"],["۲۴/۷", "نگاه مبتنی بر قابلیت اتکا"]],
+    ecosystemTitle: "اکوسیستم پلتفرمی با مرزهای روشن.",
+    ecosystemBody: "قابلیت‌های مشترک در جایی متمرکز می‌شوند که این تمرکز ارزش ایجاد کند؛ دامنه‌های محصول نیز در جایی که مالکیت، سرعت انتشار و مرزهای داده اهمیت دارند، استقلال خود را حفظ می‌کنند.",
     pillars: [
-      ["تجربه مشترک", "SFAS زیرساخت مشترک مدیریت و سیستم طراحی را فراهم می‌کند، بدون آن‌که منطق کسب‌وکار محصولات را با هم ادغام کند."],
-      ["زیرساخت مشترک", "لایسنس، پرداخت، هویت و سرویس‌های پلتفرمی به‌عنوان قابلیت‌های قابل استفاده مجدد در اکوسیستم طراحی می‌شوند."],
-      ["استقلال محصول", "هر محصول در صورت نیاز مدل دامنه، دیتابیس، API و چرخه انتشار مستقل خود را حفظ می‌کند."],
-      ["دو‌زبانه از ابتدا", "انگلیسی/LTR و فارسی/RTL در معماری، کامپوننت‌ها، QA و بومی‌سازی هم‌سطح و first-class هستند."]
+      ["مهندسی پلتفرم", "هویت، مدیریت، لایسنس، پرداخت و قابلیت‌های مشترک تجربه به‌عنوان دغدغه‌های پلتفرمی با قراردادهای پایدار مهندسی می‌شوند."],
+      ["چندمستاجری", "زمینه مستأجر، ایزوله‌سازی و مرزهای مجوزدهی در دسترسی داده، APIها، پردازش‌های پس‌زمینه و ابزارهای عملیاتی بخشی از معماری هستند."],
+      ["استقلال محصول", "Bounded Contextها مدل دامنه، API، مالکیت داده و چرخه تحویل مستقل را حفظ می‌کنند و از طریق قراردادهای صریح یکپارچه می‌شوند."],
+      ["چندزبانه از ابتدا", "بین‌المللی‌سازی، بومی‌سازی، تایپوگرافی، جهت محتوا و رفتار وابسته به Locale از ابتدا در پایه محصول طراحی می‌شوند."]
     ],
-    projectsTitle: "پروژه‌ها و پلتفرم‌ها",
-    projectsBody: "معرفی عمومی محصولاتی که در حال حاضر در اکوسیستم Silver Fox توسعه داده می‌شوند.",
-    architectureTitle: "اصول معماری",
-    architectureBody:
-      "اکوسیستم بر مرزبندی شفاف، قراردادهای مشترک نسخه‌بندی‌شده و سرویس‌های پلتفرمی مدیریت‌شده در Cloud تکیه دارد.",
+    projectsTitle: "پلتفرم‌ها و دامنه‌های محصول",
+    projectsBody: "نمایی عمومی و انتخاب‌شده از دامنه‌های مهندسی تشکیل‌دهنده اکوسیستم Silver Fox.",
+    architectureTitle: "معماری برای تغییر، نه فقط شروع.",
+    architectureBody: "رویکرد ما معماری تکاملی است: قراردادهای روشن امروز، سیستم‌های قابل اندازه‌گیری در محیط واقعی و امکان تفکیک، مقیاس‌دهی یا جایگزینی اجزا بر اساس شواهد عملیاتی.",
     architecture: [
-      ["پلتفرم به‌جای کپی", "قابلیت‌های مشترک به‌صورت سرویس‌های پایدار یا پکیج‌های نسخه‌بندی‌شده مصرف می‌شوند و میان محصولات کپی نمی‌شوند."],
-      ["یکپارچگی مبتنی بر قرارداد", "محصولات از طریق APIها، entitlementها و رابط‌های پایدار و مستند با یکدیگر متصل می‌شوند و مرزهای داخلی خود را حفظ می‌کنند."],
-      ["عملیات Cloud-first", "پلتفرم‌های تجاری اصلی برای اجرای Cloud تحت مدیریت Silver Fox و ایزوله‌سازی tenantها طراحی می‌شوند."],
-      ["امنیت در طراحی", "RBAC، ممیزی، جداسازی محیط‌ها، idempotency و اصل کمترین سطح دسترسی از دغدغه‌های اصلی پلتفرم هستند."]
+      ["معماری مرزبندی‌شده", "مرز دامنه، مالکیت و مسئولیت داده صریح است؛ زیرساخت مشترک به معنی منطق کسب‌وکار مشترک نیست."],
+      ["یکپارچگی Contract-first", "APIها، Schemaها و قواعد سازگاری نسخه‌بندی‌شده، coupling پنهان را کاهش می‌دهند و تکامل سرویس را کنترل‌پذیر می‌کنند."],
+      ["پایه Cloud-native", "Workloadها برای اتوماسیون، تکامل افقی، جداسازی محیط‌ها، زیرساخت مدیریت‌شده و تحویل تکرارپذیر طراحی می‌شوند."],
+      ["سیستم‌های Event-aware", "در کنار APIهای هم‌زمان، جایی که decoupling، تاب‌آوری و پیشرفت workflow سود می‌برد از الگوهای ناهم‌زمان استفاده می‌شود."],
+      ["مالکیت داده", "دامنه‌های تراکنشی مبتنی بر PostgreSQL، کش و هماهنگی با Redis و دسترسی محدود به داده، تصمیم‌های سازگاری را نزدیک مالک دامنه نگه می‌دارند."],
+      ["مهندسی قابلیت اتکا", "Timeout، Retry، Idempotency، Backpressure، Health Signal و Graceful Degradation رفتار طراحی‌شده سیستم هستند، نه وصله‌های پس از رخداد."]
     ],
-    standardsTitle: "استانداردهای مهندسی",
+    techTitle: "مهندسی مدرن در تمام لایه‌ها",
+    techBody: "انتخاب فناوری از محدودیت‌ها و نیازهای سیستم پیروی می‌کند. هدف یک Stack مُد روز نیست؛ هدف پلتفرمی نگهداشت‌پذیر، مشاهده‌پذیر، امن و قابل تکامل است.",
+    technology: [
+      ["Cloud و Edge", "زیرساخت مدیریت‌شده ابری، CDN و قابلیت‌های Edge، کنترل DNS و ترافیک، جداسازی محیط‌ها، Object Storage و الگوهای مقیاس‌پذیر تحویل."],
+      ["Backend و Data", "Go برای workloadهای سرویس‌محور، PostgreSQL برای وضعیت رابطه‌ای پایدار، Redis برای هماهنگی کم‌تأخیر و کش و قراردادهای صریح API."],
+      ["Web و Experience", "پایه‌های مدرن TypeScript و React/Next.js، سیستم طراحی قابل استفاده مجدد، دسترس‌پذیری، رابط واکنش‌گرا و تجربه محصول چندزبانه."],
+      ["DevOps و Delivery", "جریان‌های Git-based، اعتبارسنجی خودکار، CI/CD، Build تکرارپذیر، Deployment Gate، اتوماسیون زیرساخت و انضباط عملیاتی."],
+      ["Observability و SRE", "لاگ ساختاریافته، Metric، Trace، Correlation، تفکر سطح سرویس، Alert قابل اقدام، آگاهی ظرفیت و بهبود قابلیت اتکا بر اساس شواهد."],
+      ["مهندسی AI", "توسعه، بازبینی و مستندسازی با کمک AI به‌عنوان شتاب‌دهنده مهندسی، همراه با مالکیت انسانی، راستی‌آزمایی، کنترل امنیتی و workflow قابل ممیزی."],
+      ["مهندسی API", "قراردادهای RESTful، نسخه‌بندی، Idempotency، کنترل نرخ، اعتبارسنجی Webhook و مرزهای یکپارچگی برای تعامل‌پذیری بلندمدت."],
+      ["Performance", "راهبرد کش، انضباط Query، پردازش ناهم‌زمان، Profiling، آگاهی از بار و اندازه‌گیری پیش از بهینه‌سازی."]
+    ],
+    standardsTitle: "اصول مهندسی",
     standards: [
-      "RTL و LTR هم‌سطح و first-class هستند.",
-      "تجربه فارسی و انگلیسی هم‌زمان طراحی می‌شوند، نه به‌صورت الحاقی.",
-      "قابلیت‌های مشترک رابط کاربری متمرکز و نسخه‌بندی می‌شوند.",
-      "مقادیر فنی که باید LTR باقی بمانند به‌صورت هدفمند ایزوله می‌شوند.",
-      "مستندات عمومی هدف معماری را نمایش می‌دهند، بدون افشای اطلاعات حساس.",
-      "مخازن محصولات می‌توانند خصوصی بمانند و فقط اطلاعات مهندسی انتخاب‌شده در این پرتال عمومی شوند."
+      "مالکیت صریح و قرارداد پایدار را به coupling ضمنی ترجیح می‌دهیم.",
+      "محصول چندزبانه یک قابلیت پایه است، نه لایه‌ای که بعداً ترجمه شود.",
+      "کارهای مهندسی تکرارپذیر را خودکار می‌کنیم و قضاوت‌های مهم را در مالکیت انسان نگه می‌داریم.",
+      "سیستم باید آن‌قدر مشاهده‌پذیر باشد که رفتار آن در Production قابل توضیح باشد.",
+      "Backward Compatibility، Migration و Versioning بخشی از کار معماری هستند.",
+      "Test، تحلیل ایستا و CI کنترل‌های فرایند تحویل‌اند، نه بررسی‌های انتهای کار.",
+      "بهینه‌سازی بر اساس اندازه‌گیری انجام می‌شود و پیچیدگی باید ضرورت خود را اثبات کند.",
+      "دانش مهندسی مفید را عمومی می‌کنیم، بدون افشای جزئیات حساس پیاده‌سازی."
     ],
-    securityTitle: "عمومی در جای درست؛ خصوصی در جای لازم.",
-    securityBody:
-      "این پرتال هدف محصولات، مفاهیم عمومی معماری، استانداردهای مهندسی و بخش‌های انتخاب‌شده‌ای از مسیر توسعه را منتشر می‌کند. سورس‌کد، Secretها، Credentialها، Schemaهای حساس، جزئیات زیرساخت داخلی و پیاده‌سازی‌های غیرعمومی امنیتی خصوصی باقی می‌مانند.",
+    securityTitle: "امنیت یک ویژگی مهندسی سیستم است.",
+    securityBody: "امنیت از هویت و مجوزدهی تا ایزوله‌سازی مستأجر، مدیریت Secret، کنترل زنجیره تأمین، تحویل امن، ممیزی‌پذیری، حفاظت داده و پاسخ عملیاتی امتداد دارد. مستندات عمومی اصول و قابلیت‌ها را توضیح می‌دهند؛ توپولوژی حساس، Credentialها، جزئیات دفاعی و رویه‌های داخلی خصوصی باقی می‌مانند.",
+    securityPoints: ["کمترین سطح دسترسی و RBAC","ایزوله‌سازی مستأجر","مدیریت امن Secret","Audit Trail","Secure SDLC","کنترل وابستگی و زنجیره تأمین","Rate Limiting و مقاومت در برابر سوءاستفاده","رمزنگاری و حفاظت داده"],
     footer: "Silver Fox Engineering — engineering.silverfoxcloud.com",
-    legal: "پرتال مهندسی اکوسیستم Silver Fox."
+    legal: "پرتال عمومی مهندسی اکوسیستم Silver Fox."
   }
 } as const;
