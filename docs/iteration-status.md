@@ -245,3 +245,10 @@ The public engineering portal is complete for its current static GitHub Pages ar
 An authenticated Package Admin / publication CMS is **not** part of the current runtime because this repository has no writable backend, database, migrations or existing Admin/CMS system to extend. Current package and publication records remain source-controlled.
 
 A future CMS requires an explicit architecture decision covering storage, authentication/RBAC, preview, publishing and operational ownership. A disconnected static mock admin is intentionally not treated as completion of that requirement.
+
+
+## Production publication
+
+The validated Silver Fox Engineering Portal was released to the production GitHub Pages pipeline on 2026-09-29.
+
+The public application content is unchanged from the fully validated runtime head; this documentation update exists only to align the repository HEAD with the production publication event.
