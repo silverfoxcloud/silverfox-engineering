@@ -591,3 +591,48 @@ footer { border-top:1px solid var(--border-soft); padding:40px 0 50px; backgroun
   .platformBody { padding:78px 0; }
   .rtl .detailHeroCopy h1,.rtl .platformHero h1 { font-size:29px; }
 }
+
+/* Navigation and interactive engineering surfaces */
+:focus-visible { outline:2px solid #91ceff; outline-offset:4px; }
+.megaNav { display:flex; gap:7px; margin-inline:auto; }
+.megaGroup { position:relative; }
+.megaGroup summary { cursor:pointer; list-style:none; padding:12px 16px; color:#d1dfec; font-size:14px; border-radius:9px; }
+.megaGroup summary::-webkit-details-marker { display:none; }
+.megaGroup summary span { margin-inline-start:9px; color:#85b8fa; }
+.megaGroup[open] summary,.megaGroup summary:hover { background:#132a43; color:white; }
+.megaPanel { position:absolute; top:calc(100% + 19px); left:50%; transform:translateX(-50%); width:min(760px,92vw); display:grid; grid-template-columns:1.2fr .8fr; gap:20px; padding:22px; border:1px solid #355473; border-radius:20px; background:#0a1b2e; box-shadow:0 28px 60px #020a16; animation:menuIn .2s ease-out; }
+.megaItems { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; }
+.megaItems a { padding:13px; border-radius:9px; font-size:14px; display:flex; justify-content:space-between; gap:12px; }
+.megaItems a:hover,.megaItems a:focus-visible { background:#17334f; }
+.megaItems a span { color:#70baff; }
+.megaFeature { background:linear-gradient(135deg,#153b61,#0b2743); border:1px solid #34618b; border-radius:14px; padding:22px; }
+.megaFeature>span { color:#8fcaff; font-size:12px; }
+.megaFeature strong { display:block; margin:20px 0 8px; font-size:20px; line-height:1.4; }
+.megaFeature p { color:#bbd0e1; font-size:14px; line-height:1.8; }
+.megaFeature a { color:#9ed6ff; font-size:14px; }
+.mobileMenu { display:none; }
+@keyframes menuIn { from {opacity:0;transform:translate(-50%,-8px)} to {opacity:1;transform:translate(-50%,0)} }
+.architectureMap { border:1px solid #315474; border-radius:26px; background:radial-gradient(circle at 50% 42%,#173b60,#0a1e32 55%,#081725); padding:30px; position:relative; overflow:hidden; box-shadow:inset 0 0 55px #06305355; }
+.architectureMap::before {content:"";position:absolute;inset:0;background-image:linear-gradient(#8abaff12 1px,transparent 1px),linear-gradient(90deg,#8abaff12 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(circle,black,transparent 80%);pointer-events:none;}
+.mapCore { position:relative; width:200px; min-height:160px; margin:0 auto 30px; border-radius:22px; background:#102b47; border:1px solid #6bb4e4; box-shadow:0 0 45px #378bd94d; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; animation:coreBreath 5s ease-in-out infinite; }
+.mapCore img { width:45px; height:45px; background:white; border-radius:10px; padding:5px; margin-bottom:9px; }
+.mapCore strong { font-size:20px; }.mapCore span {font-size:14px;color:#9dcced;margin-top:3px;}
+.mapNodes { position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; }
+.mapNodes::before {content:"";position:absolute;left:50%;top:-30px;height:30px;border-left:2px dashed #78bfff;opacity:.6;}
+.mapNode { position:relative; border:1px solid #2e587c; border-radius:13px; background:#0c233a; min-height:116px; padding:14px; transition:transform .2s,border-color .2s,box-shadow .2s; }
+.mapNode::before {content:"";position:absolute;top:-10px;left:50%;height:9px;border-left:1px solid #508bb8;}
+.mapNode:hover,.mapNode:focus-visible,.mapNode.active { transform:translateY(-3px); border-color:#83d5ff; box-shadow:0 0 24px #4aa7ea55; }
+.mapNodeIndex { color:#79c3f4; font-size:14px; display:block; margin-bottom:7px; }.mapNode strong {font-size:14px;display:block;}.mapNode small {color:#afc7da;font-size:12px;line-height:1.5;display:block;margin-top:7px;}
+.mapCaption {position:relative;color:#a9bfd2;font-size:13px;text-align:center;margin:22px 0 0;}
+.mapSection {padding:80px 0;}.mapSection h2 {margin:0 0 28px;}
+.radarExperience {padding:70px 0 90px;}.radarFilters {display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;}.radarFilters button,.radarMobile button {cursor:pointer;background:#10263e;color:#d8e7f4;border:1px solid #30516d;border-radius:999px;padding:9px 15px;font:inherit;font-size:13px;}.radarFilters button.selected {background:#3977bc;border-color:#86caff;color:white;}
+.radarLayout {display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:32px;align-items:center;}.radarPlot {aspect-ratio:1;max-width:720px;width:100%;position:relative;border-radius:50%;background:radial-gradient(circle,#17436b 0 24%,#123759 24% 47%,#102f4b 47% 70%,#0b253d 70%);border:1px solid #4b7fa7;box-shadow:0 0 75px #3179b12b;}
+.radarPlot::before,.radarPlot::after {content:"";position:absolute;inset:0;border:1px solid #7bb7e044;border-radius:50%;transform:scale(.75);pointer-events:none;}.radarPlot::after {transform:scale(.48);}
+.radarRing {position:absolute;inset:0;pointer-events:none;}.radarRing>span {position:absolute;left:50%;top:5%;transform:translateX(-50%);font-size:12px;color:#a9d3ef;white-space:nowrap;}.radarRing.ring-use>span {top:17%;}.radarRing.ring-trial>span {top:29%;}.radarRing.ring-adopt>span {top:41%;}
+.radarBlip {pointer-events:auto;position:absolute;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;border:1px solid #a6dbff;background:#2e73a9;color:white;font:600 11px Inter,sans-serif;cursor:pointer;box-shadow:0 0 15px #4cb4ed72;transition:transform .2s,background .2s;}.radarBlip:hover,.radarBlip.active {transform:translate(-50%,-50%) scale(1.2);background:#60b1e6;z-index:3;}.radarDetail {border:1px solid #345c79;border-radius:17px;padding:24px;background:#102840;min-height:210px;}.radarDetail span {color:#89c7f0;font-size:13px;}.radarDetail h2 {font-size:22px!important;margin:18px 0 10px;}.radarDetail p {color:#bed0df;font-size:14px;line-height:1.8;}.radarLegend {margin-top:20px;}.radarLegend>div {display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #2b4965;font-size:13px;}.radarLegend i {width:10px;height:10px;border-radius:50%;background:#70c8fa;}.radarLegend b {margin-inline-start:auto;}.radarMobile {display:none;}
+.rtl .featureIndex,.rtl .detailNumber,.rtl .capabilityList span,.rtl .storyPoint span,.rtl .standardList span {font-family:"Vazirmatn",sans-serif;font-size:15px;font-variant-numeric:normal;letter-spacing:0;}.rtl .platformPreviewCard>span,.rtl .relatedCard span,.rtl .kicker,.rtl .eyebrow {font-size:14px;}.rtl .homeFeatureCard p,.rtl .platformPreviewCard>p {font-size:14px;}
+@keyframes coreBreath {50%{box-shadow:0 0 65px #4da9ed88}}
+@media(max-width:980px){.megaNav {display:none;}.mobileMenu {display:block;position:relative;}.mobileMenu summary {cursor:pointer;list-style:none;font-size:25px;padding:5px 12px;}.mobileMenu nav {position:absolute;inset-inline-end:0;top:45px;width:min(90vw,420px);max-height:80vh;overflow:auto;background:#0a1b2e;border:1px solid #3c6485;border-radius:16px;padding:20px;box-shadow:0 20px 50px #030d1a;}.mobileMenu section {display:grid;gap:7px;padding:12px 0;border-bottom:1px solid #31506b;}.mobileMenu section strong {color:#91caff;font-size:14px;}.mobileMenu a {padding:7px;font-size:14px;}.mapNodes {grid-template-columns:repeat(2,minmax(0,1fr));}.radarLayout {grid-template-columns:1fr;}.radarSide {display:grid;grid-template-columns:1fr 1fr;gap:20px;}}
+@media(max-width:680px){.architectureMap {padding:18px;}.mapCore {width:170px;min-height:140px;}.mapNode {min-height:108px;padding:10px;}.mapNode small {font-size:11px;}.radarPlot {display:none;}.radarSide {display:block;}.radarMobile {display:block;}.radarMobile section {padding:18px 0;border-bottom:1px solid #30516d;}.radarMobile h3 {font-size:17px;}.radarMobile section>div {display:flex;gap:7px;flex-wrap:wrap;}}
+@media(prefers-reduced-motion:reduce){.mapCore {animation:none;}}
+.platformNarrative {padding:95px 0;background:radial-gradient(circle at 85% 20%,#163d5d,#081827 60%);border-top:1px solid var(--border-soft)}.platformNarrative h2 {max-width:850px;margin:16px 0 20px;font-size:clamp(28px,3.2vw,42px);line-height:1.4}.platformNarrative p {max-width:850px;color:#c0d0df;font-size:17px;line-height:1.9}.rtl .platformNarrative p {line-height:2.1}

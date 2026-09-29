@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "مهندسی Silver Fox",
-  description: "پرتال مهندسی اکوسیستم Silver Fox؛ محصولات، معماری، استانداردها، پرداخت، لایسنس، مدیریت و فناوری سفر.",
+  title: "مهندسی پردازش ابری روباه نقره‌ای",
+  description: "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ محصولات، معماری، استانداردها، پرداخت، لایسنس، مدیریت و فناوری سفر.",
   alternates: {
     canonical: "/fa/",
     languages: { en: "/", "fa-IR": "/fa/" },

@@ -10,8 +10,8 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
           <span className="brandText"><strong>Silver Fox</strong><small>Engineering</small></span>
         </div>
         <div className="footerText">
-          <span>© 2026 Silver Fox</span>
-          <small>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal of Silver Fox"}</small>
+          <span>{fa ? "© ۲۰۲۶ Silver Fox" : "© 2026 Silver Fox"}</span>
+          <small>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal"}</small>
         </div>
         <div className="footerLinks">
           {fa

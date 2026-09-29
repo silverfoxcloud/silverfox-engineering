@@ -13,6 +13,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
     return {
       title: page.title,
       description: page.lead,
+      openGraph: { title: page.title, description: page.lead, url: `/fa/${slug}/` },
       alternates: {
         canonical: `/fa/${slug}/`,
         languages: { en: `/${slug}/`, "fa-IR": `/fa/${slug}/` },

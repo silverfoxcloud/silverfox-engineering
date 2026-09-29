@@ -1,7 +1,8 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { copy, stack, type Locale } from "@/data/content";
+import { copy, type Locale } from "@/data/content";
+import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
 
 const featuredEngineering = ["architecture", "platform", "security", "devops-sre"] as const;
@@ -31,47 +32,10 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="systemCard" aria-label="Silver Fox ecosystem diagram">
-            <div className="systemTop">
-              <span>{fa ? "پردازش ابری روباه نقره‌ای" : "Silver Fox"}</span>
-              <span className="liveDot">ENGINEERING</span>
-            </div>
-            <div className="signalStage" aria-hidden="true">
-              <span className="signalRing ringOne" />
-              <span className="signalRing ringTwo" />
-              <span className="signalRing ringThree" />
-              <span className="signalDot dotOne" />
-              <span className="signalDot dotTwo" />
-              <span className="signalDot dotThree" />
-              <div className="coreNode">
-                <img src="/silver-fox-logo.svg" alt="" />
-                <strong>SILVER FOX</strong>
-                <span>ECOSYSTEM</span>
-              </div>
-            </div>
-            <div className="nodeRow">
-              <div className="node">SFAS<small>{fa ? "تجربه" : "Experience"}</small></div>
-              <div className="node">License<small>{fa ? "دسترسی" : "Entitlements"}</small></div>
-              <div className="node">Fox Pay<small>{fa ? "پرداخت" : "Payments"}</small></div>
-            </div>
-            <div className="connector vertical small" />
-            <div className="nodeRow productRow">
-              <div className="node product">ExoTravel</div>
-              <div className="node product">ExoHub</div>
-              <div className="node product">{fa ? "محصولات" : "Products"}</div>
-            </div>
-          </div>
+          <ArchitectureMap locale={locale} />
         </div>
 
-        <div className="shell metricGrid">
-          {c.metrics.map(([n, label]) => <div className="metric" key={label}><strong>{n}</strong><span>{label}</span></div>)}
-        </div>
-      </section>
 
-      <section className="techMarquee" aria-label="Technology stack">
-        <div className="marqueeTrack">
-          {[...stack, ...stack].map((item, i) => <span key={`${item}-${i}`}><i />{item}</span>)}
-        </div>
       </section>
 
       <section className="homeIntro">
@@ -80,7 +44,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             <span className="kicker">{fa ? "رویکرد مهندسی" : "ENGINEERING APPROACH"}</span>
             <h2>{fa ? "یک اکوسیستم؛ چند محصول؛ یک زبان مشترک مهندسی." : "One ecosystem. Multiple products. One engineering language."}</h2>
           </div>
-          <p>{fa ? "هدف این وب‌سایت معرفی محصول به شکل بازاریابی نیست. اینجا درباره تصمیم‌هایی می‌نویسیم که پشت محصولات قرار دارند؛ از مرزبندی دامنه و چندمستاجری تا امنیت، داده، عملیات، پردازش ابری و هوش مصنوعی." : "This is not a product marketing site. It documents the engineering choices behind the ecosystem—from domain boundaries and multi-tenancy to security, data, cloud operations and artificial intelligence."}</p>
+          <p>{fa ? "هویت، پرداخت و لایسنس در کنار زیرساخت ابری و تجربه چندزبانه، بر پایه قراردادهای روشن به محصولات متصل می‌شوند. هر محصول داده و مسیر توسعه خود را مدیریت می‌کند." : "Identity, payments and licensing connect to products through clear contracts. Each product retains ownership of its data and delivery path."}</p>
         </div>
       </section>
 
@@ -88,7 +52,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
         <div className="shell">
           <div className="homeSectionHeading">
             <span className="kicker">{fa ? "بخش‌های مهندسی" : "ENGINEERING AREAS"}</span>
-            <h2>{fa ? "از معماری تا عملیات؛ هر موضوع صفحه خودش را دارد." : "From architecture to operations, each concern gets its own space."}</h2>
+            <h2>{fa ? "از معماری تا عملیات؛ یک نگاه یکپارچه به فناوری" : "Engineering decisions across the stack"}</h2>
           </div>
           <div className="homeFeatureGrid">
             {featuredEngineering.map((slug, index) => {
@@ -120,7 +84,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
               <span className="kicker">{fa ? "پلتفرم‌ها و محصولات" : "PLATFORMS & PRODUCTS"}</span>
               <h2>{fa ? "هر محصول مستقل است؛ زیرساخت مشترک آن‌ها را به هم متصل می‌کند." : "Independent products, connected by shared infrastructure."}</h2>
             </div>
-            <p>{fa ? "معرفی عمومی هر پلتفرم روی نقش فنی آن تمرکز می‌کند؛ نه جزئیات محرمانه پیاده‌سازی." : "Each public platform page focuses on engineering responsibility without exposing confidential implementation detail."}</p>
+            <p>{fa ? "SFAS، پلتفرم لایسنس و Fox Pay قابلیت‌های مشترک می‌سازند؛ ExoTravel و ExoHub مسیر محصولی مستقل دارند." : "SFAS, License Platform and Fox Pay build shared capabilities; ExoTravel and ExoHub own distinct product paths."}</p>
           </div>
           <div className="platformPreviewGrid">
             {featuredPlatforms.map(slug => {

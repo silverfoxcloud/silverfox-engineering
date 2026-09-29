@@ -2,6 +2,8 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { engineeringPages, engineeringSlugs, type EngineeringSlug } from "@/data/engineering-pages";
+import ArchitectureMap from "@/components/ArchitectureMap";
+import TechnologyRadar from "@/components/TechnologyRadar";
 import type { Locale } from "@/data/content";
 
 export default function EngineeringDetailPage({ slug, locale }: { slug: EngineeringSlug; locale: Locale }) {
@@ -26,6 +28,8 @@ export default function EngineeringDetailPage({ slug, locale }: { slug: Engineer
         </div>
       </section>
 
+      {slug === "architecture" && <section className="mapSection shell"><h2>{fa ? "مرزهای اکوسیستم" : "Ecosystem boundaries"}</h2><ArchitectureMap locale={locale} /></section>}
+      {slug === "technology-radar" && <TechnologyRadar locale={locale} />}
       <section className="detailSections">
         <div className="shell">
           {page.sections.map((section, index) => (

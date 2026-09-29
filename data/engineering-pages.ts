@@ -114,7 +114,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
     fa: {
       eyebrow: "زیرساخت و پردازش ابری",
       title: "زیرساختی که بتوان آن را تکرار کرد، دید و با اطمینان تغییر داد.",
-      lead: "در Silver Fox زیرساخت از توسعه محصول جدا نیست. محیط‌های اجرایی، فرایند تحویل، کنترل ترافیک، ذخیره‌سازی، توان پردازشی و داده‌های عملیاتی در یک چرخه مهندسی دیده می‌شوند.",
+      lead: "در پردازش ابری روباه نقره‌ای زیرساخت از توسعه محصول جدا نیست. محیط‌های اجرایی، فرایند تحویل، کنترل ترافیک، ذخیره‌سازی، توان پردازشی و داده‌های عملیاتی در یک چرخه مهندسی دیده می‌شوند.",
       summary: "ابری بودن برای ما یعنی خودکارسازی و شفافیت عملیاتی؛ نه فقط انتقال پیچیدگی به یک سرور دیگر.",
       visual: "/visual-cloud.svg",
       sections: [
@@ -178,7 +178,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
     fa: {
       eyebrow: "مهندسی هوش مصنوعی",
       title: "هوش مصنوعی سرعت می‌دهد؛ مسئولیت مهندسی را واگذار نمی‌کند.",
-      lead: "در Silver Fox از هوش مصنوعی برای توسعه، بازبینی، مستندسازی و تحلیل استفاده می‌شود. تصمیم معماری، پذیرش تغییر و پیامد عملیاتی همچنان در مالکیت انسان باقی می‌ماند.",
+      lead: "در پردازش ابری روباه نقره‌ای از هوش مصنوعی برای توسعه، بازبینی، مستندسازی و تحلیل استفاده می‌شود. تصمیم معماری، پذیرش تغییر و پیامد عملیاتی همچنان در مالکیت انسان باقی می‌ماند.",
       summary: "گردش‌کار هوش مصنوعی زمانی ارزشمند است که مانند هر تغییر مهندسی دیگری قابل ردیابی، قابل آزمون و تحت کنترل باشد.",
       visual: "/visual-ai.svg",
       sections: [
@@ -242,7 +242,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
     fa: {
       eyebrow: "مهندسی داده",
       title: "منبع حقیقت باید همیشه روشن بماند.",
-      lead: "داده تراکنشی، کش، جست‌وجو و نمای رویداد هرکدام کار متفاوتی دارند. در Silver Fox این مرزها عمداً جدا نگه داشته می‌شوند تا افزایش سرعت، به ابهام در مالکیت داده تبدیل نشود.",
+      lead: "داده تراکنشی، کش، جست‌وجو و نمای رویداد هرکدام کار متفاوتی دارند. در پردازش ابری روباه نقره‌ای این مرزها عمداً جدا نگه داشته می‌شوند تا افزایش سرعت، به ابهام در مالکیت داده تبدیل نشود.",
       summary: "در دامنه‌های اصلی، PostgreSQL منبع حقیقت تراکنشی است. Redis و لایه‌های جست‌وجو یا نمای رویداد برای سرعت و الگوی دسترسی خاص استفاده می‌شوند، نه برای جایگزینی حقیقت اصلی.",
       visual: "/visual-platform.svg",
       sections: [
@@ -264,7 +264,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
       visual: "/visual-ai.svg",
       sections: [
         { title: "Adopt", body: "Go, PostgreSQL, Redis, TypeScript, React/Next.js, OpenAPI, structured CI/CD and security-focused source control practices are established parts of the stack." },
-        { title: "Adopt when justified", body: "Kafka, OpenSearch, OpenTelemetry, S3-compatible object storage and container orchestration are used when their operational role is clear." },
+        { title: "Use When Justified", body: "Kafka, OpenSearch, OpenTelemetry, S3-compatible object storage and container orchestration are used when their operational role is clear." },
         { title: "Trial", body: "AI-assisted engineering workflows, advanced policy automation and new platform abstractions are introduced behind measurable goals and review gates." },
         { title: "Assess continuously", body: "Managed cloud services, edge capabilities, international payment rails and emerging developer tooling are evaluated against portability, security and operational cost." }
       ],
@@ -274,7 +274,7 @@ export const engineeringPages: Record<EngineeringSlug, Record<Locale, PageCopy>>
     fa: {
       eyebrow: "رادار فناوری",
       title: "فناوری را آگاهانه انتخاب می‌کنیم.",
-      lead: "رادار فناوری Silver Fox جدول محبوبیت ابزارها نیست. نشان می‌دهد هر فناوری یا روش، امروز چه نقشی در رویکرد مهندسی ما دارد و با چه سطحی از تعهد استفاده می‌شود.",
+      lead: "رادار فناوری پردازش ابری روباه نقره‌ای جدول محبوبیت ابزارها نیست. نشان می‌دهد هر فناوری یا روش، امروز چه نقشی در رویکرد مهندسی ما دارد و با چه سطحی از تعهد استفاده می‌شود.",
       summary: "فناوری‌های تثبیت‌شده مسئله واقعی امروز را حل می‌کنند. گزینه‌های آزمایشی در محدوده مشخص سنجیده می‌شوند و فناوری‌های در حال بررسی پیش از گرفتن مسئولیت عملیاتی، باید ارزش خود را نشان دهند.",
       visual: "/visual-ai.svg",
       sections: [
