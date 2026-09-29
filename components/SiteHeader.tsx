@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/data/content";
+import { useLocale } from "@/components/LocaleProvider";
 
 const groups = [
   {
@@ -127,6 +128,7 @@ const groups = [
 export default function SiteHeader({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
   const pathname = usePathname();
+  const { setLocale } = useLocale();
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -154,12 +156,9 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   const hrefFor = (slug: string) => {
     if (slug.startsWith("https://")) return slug;
     const clean = "/" + slug.replace(/^\/+|\/+$/g, "") + "/";
-    return fa ? "/fa" + clean : clean;
+    return clean;
   };
 
-  const languageHref = fa
-    ? (pathname.replace(/^\/fa(?=\/|$)/, "") || "/")
-    : (pathname === "/" ? "/fa/" : "/fa" + pathname);
 
   const closeAll = () => {
     setOpenGroup(null);
@@ -198,15 +197,18 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
           })}
         </nav>
 
-        <Link
+        <button
           className="langSwitch"
+          type="button"
           lang={fa ? "en" : "fa"}
-          href={languageHref}
-          onClick={closeAll}
+          onClick={() => {
+            setLocale(fa ? "en" : "fa");
+            closeAll();
+          }}
           aria-label={fa ? "Switch to English" : "تغییر زبان به فارسی"}
         >
           {fa ? "English" : "فارسی"}
-        </Link>
+        </button>
 
         <button
           type="button"

@@ -14,7 +14,7 @@ const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 export default function PortalPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? (href === "/" ? "/fa/" : "/fa" + href) : href;
+  const localize = (href: string) => href;
 
   const capabilities = [
     {

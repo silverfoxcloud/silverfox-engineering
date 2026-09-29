@@ -3,7 +3,7 @@ import type { Locale } from "@/data/content";
 
 export default function SiteFooter({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? "/fa" + href : href;
+  const localize = (href: string) => href;
 
   return (
     <footer className="engineeringFooter">
