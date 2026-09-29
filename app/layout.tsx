@@ -22,14 +22,46 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: "Silver Fox Engineering",
+    description:
+      "Architecture, platforms, packages, engineering decisions and releases across the Silver Fox ecosystem.",
+  },
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://silverfoxcloud.com/#organization",
+        name: "Silver Fox",
+        url: "https://silverfoxcloud.com",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://engineering.silverfoxcloud.com/#website",
+        url: "https://engineering.silverfoxcloud.com",
+        name: "Silver Fox Engineering",
+        publisher: { "@id": "https://silverfoxcloud.com/#organization" },
+        inLanguage: ["en", "fa"],
+      },
+    ],
+  };
+
   return (
     <html lang="en" dir="ltr">
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
