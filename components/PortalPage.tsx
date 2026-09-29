@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { copy } from "@/data/content";
@@ -14,6 +15,23 @@ export default function PortalPage() {
   const { locale } = useLocale();
   const c = copy[locale];
   const fa = locale === "fa";
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          (entry.target as HTMLElement).classList.add("is-revealed");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
+    );
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
 
   useLocalizedMetadata(
     fa ? "مهندسی پردازش ابری روباه نقره‌ای" : "Silver Fox Engineering",
@@ -143,6 +161,7 @@ export default function PortalPage() {
               <Link
                 href={item.href}
                 className={"capabilityRow " + (index % 2 ? "capabilityRowReverse" : "")}
+                data-reveal
                 key={item.href + item.eyebrow}
               >
                 <div className="capabilityCopy">
@@ -189,7 +208,7 @@ export default function PortalPage() {
             {featuredPlatforms.map((slug, index) => {
               const page = platformPages[slug][locale];
               return (
-                <article className="productStory" key={slug}>
+                <article className="productStory" key={slug} data-reveal>
                   <div className="productStoryCopy">
                     <span className="kicker">{page.eyebrow}</span>
                     <h3>{page.name}</h3>
@@ -237,7 +256,7 @@ export default function PortalPage() {
       </section>
 
       <section className="homeRadarTeaser">
-        <div className="shell radarTeaserGrid">
+        <div className="shell radarTeaserGrid" data-reveal>
           <div>
             <span className="kicker">{fa ? "رادار فناوری" : "TECHNOLOGY RADAR"}</span>
             <h2>
