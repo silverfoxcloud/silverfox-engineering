@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { copy, type Locale } from "@/data/content";
@@ -16,28 +15,6 @@ export default function PortalPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const fa = locale === "fa";
   const localize = (href: string) => fa ? (href === "/" ? "/fa/" : "/fa" + href) : href;
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const root = document.documentElement;
-    root.classList.add("motionReady");
-    const nodes = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          (entry.target as HTMLElement).classList.add("is-revealed");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
-    );
-    nodes.forEach((node) => observer.observe(node));
-    return () => {
-      observer.disconnect();
-      root.classList.remove("motionReady");
-    };
-  }, []);
 
   const capabilities = [
     {
