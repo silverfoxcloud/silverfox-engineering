@@ -22,11 +22,20 @@ export async function generateMetadata({
   return {
     title: page.name,
     description: page.lead,
-    alternates: { canonical: "/platforms/" + slug + "/" },
+    alternates: {
+      canonical: "/platforms/" + slug + "/",
+      languages: {
+        en: "/platforms/" + slug + "/",
+        fa: "/fa/platforms/" + slug + "/",
+        "x-default": "/platforms/" + slug + "/",
+      },
+    },
     openGraph: {
       title: page.name,
       description: page.lead,
       url: "/platforms/" + slug + "/",
+      locale: "en_US",
+      alternateLocale: ["fa_IR"],
     },
   };
 }
@@ -39,5 +48,5 @@ export default async function PlatformPage({
   const { slug } = await params;
   if (!platformSlugs.includes(slug as PlatformSlug)) notFound();
 
-  return <PlatformDetailPage slug={slug as PlatformSlug} />;
+  return <PlatformDetailPage slug={slug as PlatformSlug} locale="en" />;
 }
