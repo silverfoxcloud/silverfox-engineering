@@ -72,4 +72,20 @@ Technology copy describes engineering context and trade-offs rather than implyin
 
 ## Domain-specific visuals
 
-Architecture, Data Engineering, DevOps & SRE and Technology Radar now use dedicated SVGs instead of reusing generic platform/cloud/AI artwork. Existing Cloud, Security, Platform and AI visuals remain domain-specific and are reviewed as separate assets.
+Engineering disciplines use dedicated system diagrams rather than one repeated illustration. Architecture, Data Engineering, DevOps & SRE and Technology Radar keep their purpose-built visualizations; Cloud, Security, Platform and AI now also expose distinct diagrams aligned to their public engineering narrative.
+
+Motion is intentionally restrained and informational:
+
+- Cloud visualizes traffic and lifecycle flow across edge, delivery, workloads and observability.
+- Security visualizes layered identity, authorization, tenancy and audit boundaries.
+- Platform visualizes shared capabilities consumed through versioned contracts by independently released products.
+- AI visualizes bounded inference, evaluation, human ownership and operational feedback.
+- All SVG motion stops when `prefers-reduced-motion: reduce` is active.
+
+Platform/product pages also use dedicated hero compositions:
+
+- SFAS: shared admin shell and RTL/LTR primitives.
+- License Platform: organization, product, entitlement, license and usage relationships.
+- Fox Pay: product-to-router-to-provider orchestration plus verification/reconciliation signals.
+- ExoTravel: product-owned travel-commerce lifecycle.
+- ExoHub: ecosystem integration hub with explicit shared boundaries.
