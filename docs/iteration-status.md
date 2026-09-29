@@ -20,6 +20,7 @@ Current implementation includes:
 - verified package and Engineering Library content preserved;
 - responsive rules for all required target widths;
 - Playwright QA rewritten for same-URL locale behavior and PR validation.
+- Git authorship audit: PASS for the redesign commits checked so far; author and committer are `Hadi Nobakht <hadinobakht@aol.com>` with no AI/co-author trailers.
 
 This section intentionally does **not** claim PASS or production deployment yet. The release gate remains open until pull-request CI, TypeScript, static export, full browser QA, screenshot review, authorship audit and production verification complete.
 
