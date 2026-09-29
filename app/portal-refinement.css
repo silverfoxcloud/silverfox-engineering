@@ -776,9 +776,7 @@
   font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
   cursor: pointer;
   box-shadow: 0 0 0 4px rgba(57, 139, 192, .08);
-  opacity: 0;
-  animation: radarBlipIn 420ms ease forwards;
-  animation-delay: var(--radar-delay, 0ms);
+  opacity: 1;
   transition: opacity 180ms ease, scale 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
