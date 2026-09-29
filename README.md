@@ -1,43 +1,43 @@
 # Silver Fox Engineering
 
-The bilingual public engineering portal of Silver Fox. It explains the architecture, platform boundaries, packages, engineering decisions, build stories and technology choices behind the ecosystem without exposing sensitive implementation detail.
+Silver Fox Engineering is the bilingual public engineering portal for the Silver Fox ecosystem. It explains architecture, platform boundaries, verified packages, engineering decisions, build stories, releases and technology choices without exposing sensitive implementation detail.
 
 ## Purpose
 
-The portal is an engineering publication rather than a generic corporate landing page. Its job is to make public technical decisions understandable: how shared capabilities are separated from product ownership, how platform boundaries are designed, what has actually shipped, how technologies are evaluated, and where a capability is still roadmap rather than current runtime.
+This repository is an engineering publication, not a generic corporate landing page. Public content is expected to answer what a system does, why it exists, how its boundary works, which trade-offs matter, what its current state is and what evidence supports the claim.
+
+The portal does not fabricate customers, historical activity, release maturity, package state, certifications or runtime capability.
 
 ## Public areas
 
-The current public surface includes:
+The current clean route tree includes:
 
-- architecture, cloud platform, security, data, AI and DevOps/SRE;
-- Technology Radar and Engineering Principles;
+- Architecture, Cloud Platform, Cloud Infrastructure, Security, Data, AI, DevOps/SRE, Technology Radar and Engineering Principles;
 - SFAS, Silver Fox License Platform, Fox Pay, ExoTravel and ExoHub;
-- a verified SFAS Package Directory with package detail pages;
+- the verified SFAS Package Directory and package detail pages;
 - Engineering Notes;
 - public Architecture Decisions;
 - Engineering Build Stories;
-- an evidence-based Engineering Changelog;
-- English LTR and Persian RTL as equal route trees.
+- the Engineering Changelog.
 
-English and Persian are independently edited. Persian is not generated as sentence-by-sentence machine translation.
+English and Persian are independently edited. Persian is not treated as a sentence-by-sentence machine translation of English.
 
 ## Source governance
 
-Public technical claims are grounded in current product repositories and the canonical `silverfox-project-documents` references.
+Public technical claims are grounded in current product repositories, accepted ADRs, accepted phase reports and canonical Silver Fox documentation.
 
 Source precedence is:
 
-1. current project status and accepted completion reports;
+1. current product status and accepted completion reports;
 2. accepted ADRs and current implementation documentation;
 3. canonical roadmaps and architecture documents;
-4. older design material only when it remains consistent with current evidence.
+4. older design material only where it remains consistent with current evidence.
 
 Roadmap concepts are labeled as direction rather than shipped features. Private topology, credentials, secrets, exploitable defensive detail and sensitive schemas are not published.
 
 ### Package truth
 
-The public Package Directory currently contains seven verified SFAS packages. The source manifests and SFAS project status establish:
+The Package Directory currently represents seven verified SFAS packages:
 
 - canonical scope: `@silverfoxcloud/*`;
 - version: `0.2.0-alpha.12`;
@@ -47,54 +47,78 @@ The public Package Directory currently contains seven verified SFAS packages. Th
 - first controlled publication: PASS;
 - real-registry clean install/import: PASS.
 
-The portal does not label these packages Stable or public when the source evidence does not support that claim.
+The portal does not call prerelease software Stable and does not expose registry credentials.
 
 ## Runtime architecture
 
-This repository is a static Next.js export deployed on GitHub Pages. There is no application database, API backend or existing CMS/Admin runtime in this repository.
+This repository is a static Next.js export deployed through GitHub Pages. It contains the public UI, source-controlled bilingual data, engineering visuals, build/deploy workflows and browser QA.
 
-That matters for content administration: the engineering prompt requires extending an existing admin rather than creating a disconnected replacement. Because no admin exists here, package/publication content remains source-controlled data. A future authenticated CMS would require an explicit platform architecture decision and a writable backend; it is not simulated inside the static site.
+It does not contain a writable application API, database, migrations or authenticated CMS/Admin runtime. A future CMS requires a separate architecture decision covering writable storage, authentication/RBAC, preview, publishing and operational ownership.
 
-## Public routing and locale
+## Same-URL locale architecture
 
-English uses the primary route tree, for example:
+English and Persian share one visible URL for every public page.
+
+Examples:
 
 - `/`
 - `/architecture/`
 - `/packages/`
 - `/engineering/`
-- `/architecture-decisions/`
-- `/build-stories/`
-- `/changelog/`
 - `/platforms/fox-pay/`
 
-Persian uses an equally indexable `/fa/` tree, for example:
+The active locale is application state rather than route state.
 
-- `/fa/`
-- `/fa/architecture/`
-- `/fa/packages/`
-- `/fa/engineering/`
-- `/fa/architecture-decisions/`
-- `/fa/build-stories/`
-- `/fa/changelog/`
-- `/fa/platforms/fox-pay/`
+- provider: `LocaleProvider`;
+- persistence key: `silverfox-engineering-locale`;
+- English: `lang="en" dir="ltr"`;
+- Persian: `lang="fa" dir="rtl"`;
+- switching language does not navigate and does not add a history entry;
+- internal links remain language-neutral;
+- locale persists across clean-route navigation and reload;
+- a small pre-hydration bootstrap applies the persisted document language/direction before visible application state.
 
-Each language page has its own canonical URL and reciprocal `hreflang`. Language switching is route-based, so crawlers and users receive the same language-specific document.
+Legacy `/fa/...` URLs remain only as compatibility entry points. They contain no unique content, are `noindex`, store Persian as the active locale and replace the legacy URL with the equivalent clean canonical route.
+
+### SEO trade-off
+
+One canonical URL is published per content route. The active route architecture does not advertise fake reciprocal language URLs or misleading `hreflang` pairs.
+
+Because both languages intentionally share one static URL, English and Persian are not presented as independently crawlable localized documents. Static metadata remains conservative; visible title/description are updated for the active locale in the browser. This is a deliberate product requirement and is documented as an SEO trade-off rather than hidden.
+
+## Visual system
+
+The portal uses a light, editorial, developer-first design system.
+
+The current live Kinde site was used as a visual benchmark and interaction reference for spacing discipline, navigation density, light surfaces, developer-oriented product storytelling and restrained CTA hierarchy. Silver Fox does not copy Kinde branding, proprietary imagery, product UI or marketing copy and is not affiliated with Kinde.
+
+Silver Fox identity remains grounded in its own logo, engineering diagrams, platform names, technical content, package evidence and system boundaries.
+
+See `docs/design-system.md` for the implemented semantic tokens and component rules.
 
 ## Quality gates
 
-Every change must preserve:
+Release validation covers:
 
-- TypeScript validation and static export;
-- English LTR and Persian RTL behavior;
-- keyboard navigation and focus visibility;
-- reduced-motion behavior;
-- responsive layouts;
-- no horizontal overflow;
-- no broken local images;
-- canonical/hreflang/sitemap consistency.
+- TypeScript validation;
+- production static export;
+- every generated clean route;
+- legacy `/fa` migration;
+- same-URL locale switching;
+- locale persistence after navigation and reload;
+- document `lang` / `dir`;
+- absence of generated `/fa` links;
+- keyboard navigation and focus return;
+- mobile accordion navigation;
+- WCAG-oriented focus/contrast semantics;
+- Technology Radar interaction;
+- reduced motion;
+- horizontal overflow;
+- broken local images;
+- EN/LTR and FA/RTL;
+- full-page browser screenshots at 320, 375, 430, 768, 1024, 1280, 1440 and 1920.
 
-`.github/workflows/visual-qa.yml` runs Chromium/Playwright against the built static export and covers the required desktop, tablet and mobile widths. Browser evidence is uploaded as a workflow artifact.
+`.github/workflows/visual-qa.yml` runs the Chromium/Playwright suite on pull requests and main.
 
 ## Documentation
 
