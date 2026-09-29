@@ -24,7 +24,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             <a href="#ecosystem">{c.nav[0]}</a>
             <a href="#projects">{c.nav[1]}</a>
             <a href="#architecture">{c.nav[2]}</a>
-            <a href="#standards">{c.nav[3]}</a>
+            <a href="#technology">{c.nav[3]}</a>
             <a href="#security">{c.nav[4]}</a>
           </nav>
           <Link href={c.langHref} className="langSwitch">{c.langName}</Link>
@@ -60,7 +60,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
             <div className="nodeRow productRow">
               <div className="node product">ExoTravel</div>
               <div className="node product">ExoHub</div>
-              <div className="node product">Lilium</div>
+              <div className="node product">Products</div>
             </div>
           </div>
         </div>
@@ -125,6 +125,23 @@ export default function PortalPage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      <section className="section techSection" id="technology">
+        <div className="shell">
+          <div className="sectionHeading">
+            <div><span className="kicker">◈ {locale === "fa" ? "TECHNOLOGY" : "TECHNOLOGY"}</span><h2>{c.techTitle}</h2></div>
+            <p>{c.techBody}</p>
+          </div>
+          <div className="techGrid">
+            {c.technology.map(([title, body], i) => (
+              <article className="techCard" key={title}>
+                <span className="techIndex">{String(i + 1).padStart(2, "0")}</span>
+                <h3>{title}</h3><p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section sectionAlt" id="standards">
         <div className="shell standardsGrid">
           <div>
@@ -140,7 +157,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
       <section className="section securitySection" id="security">
         <div className="shell securityCard">
           <div className="shield">SF</div>
-          <div><span className="kicker">SECURITY & DISCLOSURE</span><h2>{c.securityTitle}</h2><p>{c.securityBody}</p></div>
+          <div><span className="kicker">SECURITY ENGINEERING</span><h2>{c.securityTitle}</h2><p>{c.securityBody}</p><div className="securityTags">{c.securityPoints.map((item) => <span key={item}>{item}</span>)}</div></div>
         </div>
       </section>
 
