@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./portal-refinement.css";
-import LocaleProvider from "@/components/LocaleProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://engineering.silverfoxcloud.com"),
@@ -30,9 +29,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" dir="ltr">
-      <body>
-        <LocaleProvider>{children}</LocaleProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
