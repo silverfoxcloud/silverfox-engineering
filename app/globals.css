@@ -35,7 +35,7 @@ html[lang="fa"] .kicker,html[lang="fa"] .eyebrow{letter-spacing:0;text-transform
 .langSwitch{min-height:38px;padding:0 12px;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px;font-weight:730}.langSwitch:hover{background:var(--page-subtle);border-color:var(--border-strong)}
 .mobileMenuTrigger{width:40px;height:40px;display:none;place-items:center;border:1px solid var(--border);border-radius:8px;background:#fff}
 .menuBackdrop{position:absolute;z-index:1;inset-inline:0;inset-block-start:100%;width:100%;height:calc(100dvh - var(--header-height));border:0;background:rgba(18,19,21,.16);cursor:default}
-.megaSurface{position:absolute;inset-inline:0;inset-block-start:100%;background:#fff;border-block-end:1px solid var(--border);box-shadow:var(--shadow-menu)}
+.megaSurface{position:absolute;z-index:3;inset-inline:0;inset-block-start:100%;background:#fff;border-block-end:1px solid var(--border);box-shadow:var(--shadow-menu)}
 .megaPanelInner{display:grid;grid-template-columns:1.75fr .8fr;gap:42px;padding-block:28px 32px}.megaItems{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 24px}
 .megaLink{min-height:76px;display:flex;justify-content:space-between;gap:18px;padding:13px 10px;border-block-end:1px solid var(--border)}.megaLink:hover{background:var(--page-subtle)}
 .megaLinkCopy{display:grid;gap:6px}.megaLinkCopy strong{font-size:14px;font-weight:720}.megaLinkCopy small{max-width:38ch;color:var(--text-secondary);font-size:12px;line-height:1.55}.megaLink>span:last-child{color:var(--text-tertiary)}
