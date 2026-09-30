@@ -7,13 +7,14 @@ The Kinde-benchmarked light redesign and same-URL bilingual migration is merged 
 ### Production release
 
 - merged Pull Request: `#1` — **MERGED**;
-- production merge commit: `8c7c75326250d22c6047a3a5b61de4f26ef421d0`;
-- GitHub Pages workflow: run `174` / `36657808999` — **SUCCESS**;
-- Pages deployment action reported deployment **SUCCESS** for the production commit;
+- current production `main` HEAD: `7b48a7bfdb0243f70deeeb4f5e9793986113b4c1`;
+- Pull Request #1 merge commit `8c7c75326250d22c6047a3a5b61de4f26ef421d0` and current `main` HEAD resolve to the same repository tree `c07464d711df14c3c580e3265884e2562b57b25c`;
+- GitHub Pages workflow on current `main`: run `175` / `36658257166` — **SUCCESS**;
+- Pages deployment action reported deployment **SUCCESS** for the current production HEAD;
 - Pages environment URL reported by the deploy action: `http://engineering.silverfoxcloud.com/`;
-- production Visual QA: run `71` / `36657808908` — **SUCCESS**;
+- production Visual QA on current `main`: run `73` / `36658257270` — **SUCCESS**;
 - production Playwright result: **268 / 268 passed**;
-- production visual artifact: `11073485187`;
+- production visual artifact: `11073790162`;
 - TypeScript validation: **PASS**;
 - static Next.js export: **PASS**;
 - responsive / interaction browser QA: **PASS**.
@@ -45,7 +46,8 @@ The Kinde-benchmarked light redesign and same-URL bilingual migration is merged 
 - pull-request Playwright result: **268 / 268 passed**;
 - pull-request visual artifact: `11072652626`;
 - final documentation-head validation: Visual QA run `70` / `36657444342` — **SUCCESS**;
-- production validation: Visual QA run `71` / `36657808908` — **SUCCESS**.
+- first post-merge production validation: Visual QA run `71` / `36657808908` — **SUCCESS**;
+- current-main production validation: Visual QA run `73` / `36658257270` — **SUCCESS**.
 
 ### Manual visual review
 
