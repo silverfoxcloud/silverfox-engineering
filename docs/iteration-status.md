@@ -1,10 +1,23 @@
 # Current Redesign Iteration — 2026-09-30
 
-## Status — VALIDATION PASS / READY FOR MERGE
+## Status — PRODUCTION PASS
 
-The Kinde-benchmarked light redesign and same-URL bilingual migration is complete on Pull Request #1 from `redesign/kinde-light-locale` into `main`.
+The Kinde-benchmarked light redesign and same-URL bilingual migration is complete and published from `main`.
 
-### Validated scope
+### Production application head
+
+The validated application tree was published from:
+
+- application HEAD: `7b48a7bfdb0243f70deeeb4f5e9793986113b4c1`;
+- GitHub Pages run `175` / `36658257166`: **SUCCESS**;
+- Visual QA run `73` / `36658257270`: **SUCCESS**;
+- Playwright result: **268 / 268 passed**;
+- Visual QA artifact: `11073790162`;
+- TypeScript validation: **PASS**;
+- static Next.js export: **PASS**;
+- Pages artifact upload and deployment: **PASS**.
+
+### Implemented scope
 
 - one clean visible route tree for EN and FA;
 - `LocaleProvider` with `silverfox-engineering-locale` persistence;
@@ -22,22 +35,17 @@ The Kinde-benchmarked light redesign and same-URL bilingual migration is complet
 - EN/LTR and FA/RTL browser validation;
 - reduced-motion, overflow, broken-image and interaction coverage.
 
-### Release-gate evidence
+### Release-gate history
 
-- pre-PR branch validation: Visual QA run `68` / `36656547252` — **SUCCESS**;
-- branch Playwright result: **268 / 268 passed**;
-- branch visual artifact: `11072247570`;
-- pull-request validation: Visual QA run `69` / `36657083208` — **SUCCESS**;
-- pull-request Playwright result: **268 / 268 passed**;
-- pull-request visual artifact: `11072652626`;
-- TypeScript validation: **PASS**;
-- static Next.js export: **PASS**;
-- static QA server: **PASS**;
-- responsive / interaction Playwright suite: **PASS**.
+- branch validation run `68` / `36656547252`: **SUCCESS**, **268 / 268 passed**, artifact `11072247570`;
+- PR validation run `69` / `36657083208`: **SUCCESS**, **268 / 268 passed**, artifact `11072652626`;
+- final documentation-head PR run `70` / `36657444342`: **SUCCESS**, **268 / 268 passed**, artifact `11072198766`;
+- initial post-merge production Pages run `174` and QA run `71`: **SUCCESS**;
+- normalized-history production Pages run `175` and QA run `73`: **SUCCESS**.
 
 ### Manual visual review
 
-Browser artifacts were reviewed in addition to automated assertions.
+Workflow screenshots were reviewed in addition to automated assertions.
 
 Reviewed examples include:
 
@@ -47,20 +55,22 @@ Reviewed examples include:
 - Fox Pay — desktop;
 - Persian Package Directory — mobile.
 
-The review confirmed the intended quiet light technical-editorial hierarchy, readable RTL/LTR composition, visible Radar data, coherent platform visuals and responsive content flow. A bidi defect in the Persian package release version was found during manual review, fixed by isolating technical identifiers as LTR, and revalidated in run 68 before the PR gate.
+The review confirmed the intended quiet light technical-editorial hierarchy, readable RTL/LTR composition, visible Radar data, coherent platform visuals and responsive content flow. A bidi defect in the Persian package release version was found during review, fixed by isolating technical identifiers as LTR, and revalidated before release.
 
 ### Git / authorship audit
 
-Redesign commits checked on the branch use:
+All reachable redesign commits on the normalized `main` history are owned by the configured human identity:
 
-- Author: `Hadi Nobakht <hadinobakht@aol.com>`
-- Committer: `Hadi Nobakht <hadinobakht@aol.com>`
+- Author: `Hadi Nobakht <hadinobakht@aol.com>`;
+- Committer: `Hadi Nobakht <hadinobakht@aol.com>`.
+
+The GitHub-generated merge commit had `web-flow` as committer. Because the project governance requires user-only commit identity, `main` was normalized to the already validated PR head. The merge tree and PR-head tree were verified identical before the ref update, so this history normalization changed no application files or production content.
 
 No AI/co-author attribution trailer is present in the audited redesign commit messages.
 
-### Production boundary
+### Documentation-sync note
 
-This section records the validated pre-merge release gate. Production publication is performed only by the GitHub Pages workflow on `main` after Pull Request #1 is merged. Production success must be verified from that workflow rather than inferred from PR validation.
+This status update is documentation-only and records the already successful production application head above. It does not alter the validated public UI or runtime behavior.
 
 ---
 
