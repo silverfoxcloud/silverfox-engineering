@@ -2,7 +2,7 @@ name: Silver Fox Engineering Visual QA
 
 on:
   push:
-    branches: ["main", "redesign/kinde-light-locale"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
