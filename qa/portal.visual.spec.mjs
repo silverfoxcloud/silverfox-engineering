@@ -86,7 +86,10 @@ function slugify(route) {
 
 async function seedLocale(page, locale) {
   await page.addInitScript((value) => {
-    window.localStorage.setItem("silverfox-engineering-locale", value);
+    const key = "silverfox-engineering-locale";
+    if (window.localStorage.getItem(key) === null) {
+      window.localStorage.setItem(key, value);
+    }
   }, locale);
 }
 
