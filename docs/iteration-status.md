@@ -1,8 +1,22 @@
 # Current Redesign Iteration — 2026-09-30
 
-## Status — VALIDATION PASS / READY FOR MERGE
+## Status — PRODUCTION RELEASED / VERIFIED
 
-The Kinde-benchmarked light redesign and same-URL bilingual migration is complete on Pull Request #1 from `redesign/kinde-light-locale` into `main`.
+The Kinde-benchmarked light redesign and same-URL bilingual migration is merged to `main` and published through GitHub Pages.
+
+### Production release
+
+- merged Pull Request: `#1` — **MERGED**;
+- production merge commit: `8c7c75326250d22c6047a3a5b61de4f26ef421d0`;
+- GitHub Pages workflow: run `174` / `36657808999` — **SUCCESS**;
+- Pages deployment action reported deployment **SUCCESS** for the production commit;
+- Pages environment URL reported by the deploy action: `http://engineering.silverfoxcloud.com/`;
+- production Visual QA: run `71` / `36657808908` — **SUCCESS**;
+- production Playwright result: **268 / 268 passed**;
+- production visual artifact: `11073485187`;
+- TypeScript validation: **PASS**;
+- static Next.js export: **PASS**;
+- responsive / interaction browser QA: **PASS**.
 
 ### Validated scope
 
@@ -30,10 +44,8 @@ The Kinde-benchmarked light redesign and same-URL bilingual migration is complet
 - pull-request validation: Visual QA run `69` / `36657083208` — **SUCCESS**;
 - pull-request Playwright result: **268 / 268 passed**;
 - pull-request visual artifact: `11072652626`;
-- TypeScript validation: **PASS**;
-- static Next.js export: **PASS**;
-- static QA server: **PASS**;
-- responsive / interaction Playwright suite: **PASS**.
+- final documentation-head validation: Visual QA run `70` / `36657444342` — **SUCCESS**;
+- production validation: Visual QA run `71` / `36657808908` — **SUCCESS**.
 
 ### Manual visual review
 
@@ -47,20 +59,20 @@ Reviewed examples include:
 - Fox Pay — desktop;
 - Persian Package Directory — mobile.
 
-The review confirmed the intended quiet light technical-editorial hierarchy, readable RTL/LTR composition, visible Radar data, coherent platform visuals and responsive content flow. A bidi defect in the Persian package release version was found during manual review, fixed by isolating technical identifiers as LTR, and revalidated in run 68 before the PR gate.
+The review confirmed the quiet light technical-editorial hierarchy, readable RTL/LTR composition, visible Radar data, coherent platform visuals and responsive content flow. A bidi defect in the Persian package release version was found during manual review, fixed by isolating technical identifiers as LTR, and revalidated before merge.
 
 ### Git / authorship audit
 
-Redesign commits checked on the branch use:
+Redesign commits use:
 
 - Author: `Hadi Nobakht <hadinobakht@aol.com>`
 - Committer: `Hadi Nobakht <hadinobakht@aol.com>`
 
 No AI/co-author attribution trailer is present in the audited redesign commit messages.
 
-### Production boundary
+### Release disposition
 
-This section records the validated pre-merge release gate. Production publication is performed only by the GitHub Pages workflow on `main` after Pull Request #1 is merged. Production success must be verified from that workflow rather than inferred from PR validation.
+The redesign described in this iteration is **released and verified** under the current static GitHub Pages architecture. Future design/content changes should begin from the production `main` branch and preserve the same URL, locale, accessibility and evidence-governance contracts.
 
 ---
 
