@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { LocaleProvider } from "@/components/LocaleProvider";
 import "./globals.css";
-import "./portal-refinement.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://engineering.silverfoxcloud.com"),
@@ -10,9 +10,7 @@ export const metadata: Metadata = {
   },
   description:
     "Public engineering portal for Silver Fox architecture, platforms, security, data, operations and technology decisions.",
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Silver Fox Engineering",
     description:
@@ -29,6 +27,24 @@ export const metadata: Metadata = {
       "Architecture, platforms, packages, engineering decisions and releases across the Silver Fox ecosystem.",
   },
 };
+
+const localeBootstrap = [
+  "(function () {",
+  "  try {",
+  "    var key = 'silverfox-engineering-locale';",
+  "    var value = window.localStorage.getItem(key);",
+  "    if (value !== 'fa' && value !== 'en') value = 'en';",
+  "    var root = document.documentElement;",
+  "    root.lang = value;",
+  "    root.dir = value === 'fa' ? 'rtl' : 'ltr';",
+  "    root.dataset.locale = value;",
+  "    if (value === 'fa') {",
+  "      root.dataset.localePending = 'true';",
+  "      window.setTimeout(function () { delete root.dataset.localePending; }, 1600);",
+  "    }",
+  "  } catch (_) {}",
+  "})();",
+].join("\n");
 
 export default function RootLayout({
   children,
@@ -54,13 +70,16 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="ltr" data-locale="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: localeBootstrap }} />
+      </head>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
   );

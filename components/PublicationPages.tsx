@@ -17,8 +17,8 @@ const publicationSets: Record<PublicationKind, PublicationRecord[]> = {
   story: buildStories,
 };
 
-function localize(locale: Locale, href: string) {
-  return locale === "fa" ? "/fa" + href : href;
+function localize(_locale: Locale, href: string) {
+  return href;
 }
 
 function pathForKind(kind: PublicationKind) {

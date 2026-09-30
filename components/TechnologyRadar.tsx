@@ -72,7 +72,7 @@ function statusLabel(status: RadarStatus, fa: boolean) {
 
 export default function TechnologyRadar({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? "/fa" + href : href;
+  const localize = (href: string) => href;
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(entries.map((entry) => entry.category)))],
     [],

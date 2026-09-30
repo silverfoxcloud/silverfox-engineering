@@ -102,7 +102,7 @@ function PlatformHeroVisual({ slug, locale }: { slug: PlatformSlug; locale: Loca
 export default function PlatformDetailPage({ slug, locale }: { slug: PlatformSlug; locale: Locale }) {
   const page = platformPages[slug][locale];
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? "/fa" + href : href;
+  const localize = (href: string) => href;
 
   return (
     <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>

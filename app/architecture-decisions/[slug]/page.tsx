@@ -1,33 +1,33 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { PublicationDetailPage } from "@/components/PublicationPages";
+import { LocalizedPublicationDetail } from "@/components/LocalizedPages";
 import { architectureDecisions } from "@/data/publications";
 
 export function generateStaticParams() {
   return architectureDecisions.map((record) => ({ slug: record.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const record = architectureDecisions.find((item) => item.slug === slug);
   if (!record) return {};
   return {
     title: record.title.en,
     description: record.summary.en,
-    alternates: {
-      canonical: "/architecture-decisions/" + slug + "/",
-      languages: {
-        en: "/architecture-decisions/" + slug + "/",
-        fa: "/fa/architecture-decisions/" + slug + "/",
-        "x-default": "/architecture-decisions/" + slug + "/",
-      },
-    },
+    alternates: { canonical: "/architecture-decisions/" + slug + "/" },
   };
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
-  const record = architectureDecisions.find((item) => item.slug === slug);
-  if (!record) notFound();
-  return <PublicationDetailPage locale="en" record={record} />;
+  if (!architectureDecisions.some((item) => item.slug === slug)) notFound();
+  return <LocalizedPublicationDetail kind="decision" slug={slug} />;
 }

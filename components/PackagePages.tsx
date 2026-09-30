@@ -8,8 +8,8 @@ function faDigits(value: string) {
   return value.replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
 }
 
-function localize(locale: Locale, href: string) {
-  return locale === "fa" ? "/fa" + href : href;
+function localize(_locale: Locale, href: string) {
+  return href;
 }
 
 export function PackageDirectoryPage({ locale }: { locale: Locale }) {
@@ -33,7 +33,7 @@ export function PackageDirectoryPage({ locale }: { locale: Locale }) {
 
           <aside className="packageReleasePanel">
             <span>{fa ? "وضعیت انتشار" : "RELEASE EVIDENCE"}</span>
-            <strong>0.2.0-alpha.12</strong>
+            <strong dir="ltr">0.2.0-alpha.12</strong>
             <dl>
               <div><dt>{fa ? "کانال" : "Channel"}</dt><dd>next</dd></div>
               <div><dt>{fa ? "رجیستری" : "Registry"}</dt><dd>GitHub Packages</dd></div>
@@ -157,10 +157,10 @@ export function PackageDetailPage({ locale, pkg }: { locale: Locale; pkg: Packag
           </div>
 
           <aside className="packageMetaPanel">
-            <div><span>{fa ? "نسخه" : "Version"}</span><strong>{pkg.version}</strong></div>
-            <div><span>{fa ? "کانال" : "Channel"}</span><strong>{pkg.channel}</strong></div>
+            <div><span>{fa ? "نسخه" : "Version"}</span><strong dir="ltr">{pkg.version}</strong></div>
+            <div><span>{fa ? "کانال" : "Channel"}</span><strong dir="ltr">{pkg.channel}</strong></div>
             <div><span>{fa ? "چرخه" : "Lifecycle"}</span><strong>{fa ? "پیش‌انتشار" : pkg.lifecycle}</strong></div>
-            <div><span>{fa ? "رجیستری" : "Registry"}</span><strong>{pkg.registry}</strong></div>
+            <div><span>{fa ? "رجیستری" : "Registry"}</span><strong dir="ltr">{pkg.registry}</strong></div>
             <div><span>{fa ? "دسترسی" : "Visibility"}</span><strong>{fa ? "خصوصی" : pkg.registryVisibility}</strong></div>
             <div><span>{fa ? "انتشار" : "Published"}</span><strong>{fa ? "۲۰۲۶/۰۹/۲۹" : pkg.publishedAt}</strong></div>
           </aside>

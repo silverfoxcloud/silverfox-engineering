@@ -88,8 +88,8 @@ export const projects = [
 
 export const copy = {
   en: {
-    langName: "فارسی", langHref: "/fa/", eyebrow: "SILVER FOX ENGINEERING",
-    heroTitle: "Infrastructure for today. Architecture for what comes next.",
+    langName: "فارسی", langHref: "/", eyebrow: "SILVER FOX ENGINEERING",
+    heroTitle: "Independent products. Shared engineering leverage.",
     heroBody: "Each Silver Fox product evolves independently, but it does not start alone. Identity, licensing, payments, data foundations and shared product experience are engineered as explicit platform capabilities so products can grow faster without inheriting one shared release cycle.",
     primaryCta: "Explore engineering", secondaryCta: "Architecture",
     nav: ["Ecosystem", "Platforms", "Architecture", "Technology", "Security"],
@@ -145,7 +145,7 @@ export const copy = {
   },
   fa: {
     langName: "English", langHref: "/", eyebrow: "مهندسی پردازش ابری روباه نقره‌ای",
-    heroTitle: "زیرساختی برای امروز؛ معماری‌ای برای فردا",
+    heroTitle: "محصولات مستقل؛ توان مهندسی مشترک.",
     heroBody: "در پردازش ابری روباه نقره‌ای، هر محصول مستقل طراحی و توسعه می‌شود؛ اما تنها نمی‌ماند. هویت، لایسنس، پرداخت، داده و تجربه‌های مشترک روی پایه‌ای پلتفرمی شکل می‌گیرند تا محصولات سریع‌تر رشد کنند، ساده‌تر مقیاس بگیرند و با اطمینان بیشتری تغییر کنند.",
     primaryCta: "مشاهده رویکرد مهندسی", secondaryCta: "معماری",
     nav: ["اکوسیستم", "پلتفرم‌ها", "معماری", "فناوری", "امنیت"],

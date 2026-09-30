@@ -2,138 +2,224 @@
 
 ## Direction
 
-The visual language is **Technical Editorial + Living Infrastructure**.
+The current visual language is **quiet technical editorial**: light, spacious, developer-first and evidence-led.
 
-The site should feel engineered rather than decorated: system diagrams, release evidence, package state and technical writing provide the visual/content proof. Motion and accent color are restrained.
+A current Kinde website review on 2026-09-30 is used only as a **visual benchmark / interaction reference**. The implementation adapts high-level principles such as restrained navigation, large editorial headings, progressive disclosure, light product surfaces and concise CTA hierarchy. It does not copy Kinde copy, logos, illustrations, proprietary product UI or brand identity.
 
-## Core palette
+The intended combination is:
 
-The implementation follows the selected Silver Fox strategy:
+- disciplined light visual system;
+- Silver Fox technical depth;
+- Silver Fox ecosystem content and diagrams.
 
-- Obsidian / near-black: primary infrastructure surfaces;
-- charcoal/navy: elevated technical surfaces;
-- light editorial gray/white: knowledge and explanatory sections;
-- silver: neutral brand/supporting tone;
-- Fox Orange: scarce emphasis, release/lifecycle highlights and selected brand moments;
-- Engineering Cyan: relationships, flow, telemetry and interactive technical state;
-- green: reserved for actual healthy/successful state where needed.
+The site must not read as cyberpunk, terminal-first, glassmorphic, neon, gradient-led, card-wall or generic AI SaaS.
 
-Orange is intentionally not used as the dominant page color.
+## Semantic tokens
 
-## Surface rhythm
+The implemented core tokens in `app/globals.css` are:
 
-Homepage surface order deliberately alternates:
+| Token | Value | Use |
+| --- | --- | --- |
+| `--page` | `#ffffff` | primary page |
+| `--page-subtle` | `#f6f6f3` | editorial grouping |
+| `--surface` | `#ffffff` | component surface |
+| `--surface-muted` | `#f1f2ef` | subdued controls/surfaces |
+| `--text-primary` | `#121315` | primary typography |
+| `--text-secondary` | `#5d6167` | body/supporting text |
+| `--text-tertiary` | `#7a7f86` | metadata |
+| `--border` | `#e2e3df` | standard divider |
+| `--border-strong` | `#c9cbc6` | stronger technical boundary |
+| `--button-primary` | `#121315` | primary CTA |
+| `--button-primary-text` | `#ffffff` | primary CTA text |
+| `--button-secondary` | `#f2f3f0` | secondary CTA |
+| `--button-secondary-text` | `#17181a` | secondary CTA text |
+| `--focus` | `#555bd6` | focus intent |
+| `--technical-accent` | `#5b61d6` | restrained technical state |
+| `--technical-accent-soft` | `#ececff` | selected technical state |
+| `--success` | `#287a58` | verified success only |
+| `--warning` | `#8a681c` | warning state only |
 
-- dark system Hero;
-- light editorial explanation;
-- dark capability/platform surfaces;
-- light package evidence;
-- dark build/release evidence;
-- light engineering writing;
-- dark Technology Radar/final engineering surfaces.
-
-This separation communicates a distinction between systems/infrastructure and knowledge/explanation.
+Large dark navy sections and cyan/orange flooding are no longer part of the portal grammar. Accent exists to distinguish state or flow, not to brand entire sections.
 
 ## Typography
 
-English and Persian share hierarchy but not forced sentence structure.
+English uses a safe modern system stack led by Inter when available. Persian uses its own Tahoma / Segoe UI / Arial fallback stack and receives independent line-height and display-size tuning.
 
-Roles used across the portal:
+Rules:
 
-- display/H1;
-- H2/H3;
-- body and lead;
-- kicker/eyebrow;
-- metadata;
-- monospace for package IDs, versions, dates and code.
+- display headings are large but controlled;
+- headings use short readable line lengths;
+- body text remains high contrast and relatively narrow;
+- navigation typography is compact;
+- metadata is visibly subordinate;
+- Persian does not inherit Latin letter spacing;
+- code, package IDs, versions and URLs remain LTR-isolated inside RTL pages.
 
-Persian copy uses native line-height and removes Latin letter-spacing assumptions. Technical identifiers remain directionally isolated and LTR.
+## Spatial system
 
-## Spacing and layout
+The shared `.shell` max width is 1240px.
 
-- content uses the shared `.shell` container;
-- major editorial sections use generous vertical rhythm rather than dense card grids;
-- large capability/platform sections use split rows;
-- small metadata uses compact spacing;
-- breakpoints collapse structure intentionally instead of relying only on CSS mirroring.
+Large sections rely on:
 
-Validated target widths are 320, 375, 430, 768, 1024, 1280, 1440 and 1920.
+- generous vertical rhythm;
+- borders and off-white section grouping before cards;
+- editorial rows;
+- split copy / technical visual sections;
+- full-width technical moments;
+- intentional asymmetry only when it helps hierarchy.
 
-## Component grammar
+Cards are not a default container. Repeated rounded-rectangle mosaics are avoided.
 
-### Editorial rows
+## Header and navigation
 
-Used for capabilities, publications, packages and changelog. The row communicates order, metadata and a deep link without turning every item into a floating card.
+Desktop navigation is grouped into:
 
-### Technical surfaces
+- Engineering;
+- Platforms;
+- Packages;
+- Resources.
 
-Dark technical surfaces use:
+The mega menu is a white, bordered, low-shadow surface with concise descriptions and one justified feature panel.
 
-- fine borders;
-- low-contrast grid/connection structure;
-- cyan relationship signals;
-- restrained depth/shadow;
-- no decorative particle field.
+Accessibility behavior includes:
 
-### Code surfaces
+- native buttons;
+- `aria-expanded` / `aria-controls`;
+- keyboard operation;
+- Escape close;
+- focus return to the opening trigger.
 
-Package install instructions use directional LTR code blocks even inside Persian pages. Credentials and tokens are never rendered as examples.
+Mobile navigation is a dedicated accordion rather than a compressed desktop mega menu.
 
-### Status
+The locale control is a button, not a localized link, because language does not exist in the visible URL.
 
-Lifecycle/status language must reflect evidence:
+## Homepage grammar
 
-- Prerelease is not styled or worded as Stable.
-- Accepted architecture is not styled as Shipped.
-- Roadmap is not styled as current runtime.
-- Successful verification can use operational/success semantics.
+The homepage progressively reveals complexity:
 
-## Diagram grammar
+1. minimal confidence-led Hero;
+2. interactive Silver Fox architecture visual;
+3. verified engineering stack strip;
+4. engineering model;
+5. core capability editorial rows;
+6. platform storytelling;
+7. verified package evidence;
+8. real Build Stories and recently shipped work;
+9. Engineering Notes;
+10. Technology Radar;
+11. quiet final engineering statement.
 
-Engineering diagrams use consistent semantics:
+The Hero positioning is:
 
-- Orange: primary or lifecycle emphasis where needed;
-- Cyan: data/network/relationship signal;
-- Silver/neutral: shared supporting capability;
-- Green: verified healthy/success state only.
+- EN: **Independent products. Shared engineering leverage.**
+- FA: **محصولات مستقل؛ توان مهندسی مشترک.**
 
-Connectors and motion should explain relationships rather than decorate empty space.
+## Technical visuals
+
+Generic decorative dark diagrams were migrated to the light technical grammar.
+
+Engineering visuals use:
+
+- white/off-white canvases;
+- neutral relationship lines;
+- near-black labels;
+- selective `--technical-accent`;
+- no glow;
+- no cyberpunk grid;
+- no dependence on animation for content visibility.
+
+The five platform visuals remain structurally distinct:
+
+- SFAS: design primitives, adapters and RTL/LTR;
+- License Platform: organization/product → entitlement → license/usage;
+- Fox Pay: product → router → providers with verification/reconciliation;
+- ExoTravel: discovery → booking → payment → travel/operations;
+- ExoHub: shared ecosystem integration boundaries.
+
+## Packages and code
+
+Package pages use editorial rows for discovery and dark code surfaces only where code itself benefits from high contrast.
+
+Package presentation includes verified identity, version, lifecycle, registry, compatibility, dependencies and install commands. It never invents downloads, stars or a Stable state.
+
+## Engineering Library
+
+Engineering Notes, Architecture Decisions and Build Stories are treated as a publication rather than marketing card grids.
+
+Detail pages prioritize:
+
+- readable width;
+- source/status metadata;
+- section hierarchy;
+- trade-offs and consequences;
+- related reading.
+
+Changelog is a chronological engineering feed.
+
+## Technology Radar
+
+The Radar is a light engineering tool:
+
+- visible blips from initial render;
+- neutral rings;
+- restrained selected state;
+- keyboard-operable controls;
+- status/category filters;
+- contextual detail;
+- dedicated mobile list representation.
+
+Filtering never relies on entrance animation for visibility.
 
 ## Motion
 
-Allowed motion patterns:
+Motion is restrained and functional.
 
-- entering architecture relationships;
-- restrained flow pulses;
-- radar/filter transitions;
-- restrained interaction transitions that never gate content visibility.
+Allowed:
 
-Requirements:
+- menu transitions;
+- selected-state changes;
+- architecture relationship cues;
+- Radar interaction;
+- small diagram flows.
 
-- primary content remains visible regardless of JavaScript or scroll position;
-- `prefers-reduced-motion: reduce` disables nonessential motion;
-- no mouse-following decoration, constant particles or meaningless infinite 3D animation.
+Disallowed:
+
+- constant particle fields;
+- mouse followers;
+- ambient glow loops;
+- heavy parallax;
+- attention-seeking background animation.
+
+`prefers-reduced-motion: reduce` collapses nonessential animation/transition time, while primary content remains visible.
 
 ## RTL / LTR
 
-Direction is a first-class product mode.
+RTL and LTR are equal product modes.
 
-- components use logical properties where possible;
-- Persian and English share architecture but can use independently authored copy;
-- code/package names/URLs remain LTR-isolated;
-- responsive QA is run in both directions;
-- RTL and LTR regressions are treated as equally important.
+- CSS logical properties are preferred;
+- every shared component responds to locale state;
+- Persian copy is independently authored;
+- code and technical identifiers stay LTR-isolated;
+- mobile and desktop are validated in both directions.
 
 ## Accessibility
 
-Current design rules include:
+The quality bar is WCAG 2.2 AA-oriented.
 
-- visible `:focus-visible` treatment;
-- keyboard-operable mega menu/radar;
-- Escape close behavior;
-- semantic mobile navigation;
-- reduced-motion support;
-- meaningful text fallback for visual systems;
-- contrast tuning around dark and light surface transitions.
+Implementation and browser QA cover:
 
-Browser QA supplements, but does not replace, semantic/accessibility review.
+- visible focus;
+- keyboard navigation;
+- focus return;
+- semantic controls;
+- accessible names;
+- heading hierarchy;
+- touch target sizing;
+- neutral text contrast;
+- reduced motion;
+- code overflow;
+- responsive tables/rows;
+- Radar keyboard interaction;
+- RTL document order.
+
+Accessibility takes precedence over visual imitation of any reference site.

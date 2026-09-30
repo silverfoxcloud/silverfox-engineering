@@ -15,7 +15,7 @@ import type { Locale } from "@/data/content";
 export default function EngineeringDetailPage({ slug, locale }: { slug: EngineeringSlug; locale: Locale }) {
   const page = engineeringPages[slug][locale];
   const fa = locale === "fa";
-  const localize = (href: string) => fa ? "/fa" + href : href;
+  const localize = (href: string) => href;
 
   return (
     <main lang={fa ? "fa" : "en"} dir={fa ? "rtl" : "ltr"} className={fa ? "rtl detailPage" : "ltr detailPage"}>
