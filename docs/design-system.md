@@ -43,7 +43,7 @@ Large dark navy sections and cyan/orange flooding are no longer part of the port
 
 ## Typography
 
-English uses a safe modern system stack led by Inter when available. Persian uses its own Tahoma / Segoe UI / Arial fallback stack and receives independent line-height and display-size tuning.
+English uses a safe modern system stack led by Inter when available. Persian uses the self-hosted **Shabnam** family, with Tahoma / Segoe UI / Arial retained only as fallbacks. Shabnam is shipped under the SIL Open Font License 1.1, and its license text is retained with the distributed font files.
 
 Rules:
 
@@ -90,6 +90,8 @@ Accessibility behavior includes:
 - focus return to the opening trigger.
 
 Mobile navigation is a dedicated accordion rather than a compressed desktop mega menu.
+
+The top header identity is a typography-only **Silver Fox / Engineering** wordmark in both EN and FA; the fox SVG mark is intentionally not used in the header. The wordmark keeps a fixed Latin brand treatment even when the document is RTL.
 
 The locale control is a button, not a localized link, because language does not exist in the visible URL.
 

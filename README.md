@@ -92,7 +92,7 @@ The portal uses a light, editorial, developer-first design system.
 
 The current live Kinde site was used as a visual benchmark and interaction reference for spacing discipline, navigation density, light surfaces, developer-oriented product storytelling and restrained CTA hierarchy. Silver Fox does not copy Kinde branding, proprietary imagery, product UI or marketing copy and is not affiliated with Kinde.
 
-Silver Fox identity remains grounded in its own logo, engineering diagrams, platform names, technical content, package evidence and system boundaries.
+Silver Fox identity remains grounded in its typography-only header wordmark, engineering diagrams, platform names, technical content, package evidence and system boundaries. Persian UI typography is self-hosted Shabnam under the SIL Open Font License 1.1.
 
 See `docs/design-system.md` for the implemented semantic tokens and component rules.
 

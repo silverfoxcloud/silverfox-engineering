@@ -121,6 +121,13 @@ async function assertPageHealth(page, locale) {
   await expect(page.locator("main")).toHaveAttribute("lang", locale);
   await expect(page.locator("main")).toHaveAttribute("dir", fa ? "rtl" : "ltr");
   await expect(page.locator("h1").first()).toBeVisible();
+  await expect(page.locator(".siteHeader .brandText")).toBeVisible();
+  expect(await page.locator(".siteHeader .brand img").count(), "header brand must be typography-only").toBe(0);
+
+  if (fa) {
+    const bodyFont = await page.locator("body").evaluate((body) => getComputedStyle(body).fontFamily);
+    expect(bodyFont, "Persian pages must use Shabnam").toContain("Shabnam");
+  }
 
   const overflow = await page.evaluate(() => ({
     scroll: document.documentElement.scrollWidth,

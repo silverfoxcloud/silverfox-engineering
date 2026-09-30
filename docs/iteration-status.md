@@ -328,3 +328,11 @@ A future CMS requires an explicit architecture decision covering storage, authen
 The validated Silver Fox Engineering Portal was released to the production GitHub Pages pipeline on 2026-09-29.
 
 The public application content is unchanged from the fully validated runtime head; this documentation update exists only to align the repository HEAD with the production publication event.
+
+## Typography / header polish — 2026-09-30
+
+- Persian UI typography now uses self-hosted **Shabnam** instead of the previous Tahoma-first stack.
+- Shabnam Regular, Medium and Bold WOFF2 files are distributed locally under `public/fonts/shabnam/`.
+- The upstream Shabnam SIL Open Font License 1.1 text is retained beside the font files.
+- The top-site identity is now a typography-only `Silver Fox / Engineering` wordmark in both EN and FA; the graphical fox SVG is no longer rendered in the header.
+- Browser QA now asserts the Persian computed font stack contains Shabnam and that the header brand contains no image.

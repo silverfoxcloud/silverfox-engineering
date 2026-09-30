@@ -181,10 +181,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
     <header className="siteHeader">
       <div className="shell navWrap">
         <Link href="/" className="brand" aria-label="Silver Fox Engineering" onClick={closeAll}>
-          <span className="brandLogoWrap">
-            <img src="/silver-fox-logo.svg" alt="" className="brandLogo" />
-          </span>
-          <span className="brandText">
+          <span className="brandText brandWordmark">
             <strong>Silver Fox</strong>
             <small>Engineering</small>
           </span>
