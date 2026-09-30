@@ -33,9 +33,9 @@ The implemented core tokens in `app/globals.css` are:
 | `--button-primary-text` | `#ffffff` | primary CTA text |
 | `--button-secondary` | `#f2f3f0` | secondary CTA |
 | `--button-secondary-text` | `#17181a` | secondary CTA text |
-| `--focus` | `#555bd6` | focus intent |
-| `--technical-accent` | `#5b61d6` | restrained technical state |
-| `--technical-accent-soft` | `#ececff` | selected technical state |
+| `--focus` | `#ff8225` | focus intent |
+| `--technical-accent` | `#ff8225` | Silver Fox technical accent |
+| `--technical-accent-soft` | `#fff1e6` | selected technical state |
 | `--success` | `#287a58` | verified success only |
 | `--warning` | `#8a681c` | warning state only |
 

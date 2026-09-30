@@ -21,19 +21,19 @@
   <rect x="144" y="215" width="144" height="9" rx="5"/><rect x="144" y="235" width="112" height="8" rx="4"/>
   <rect x="472" y="215" width="144" height="9" rx="5"/><rect x="504" y="235" width="112" height="8" rx="4"/>
 </g>
-<g fill="#ffffff" stroke="#5b61d6">
+<g fill="#ffffff" stroke="#ff8225">
   <rect x="144" y="274" width="70" height="72" rx="10"/><rect x="226" y="274" width="70" height="72" rx="10"/>
   <rect x="464" y="274" width="70" height="72" rx="10"/><rect x="546" y="274" width="70" height="72" rx="10"/>
 </g>
-<path d="M350 260H410" stroke="#5b61d6" stroke-width="2"/>
-<path class="cursor" d="M372 250L388 260L372 270Z" fill="#5b61d6"/>
+<path d="M350 260H410" stroke="#ff8225" stroke-width="2"/>
+<path class="cursor" d="M372 250L388 260L372 270Z" fill="#ff8225"/>
 <g class="switch">
-  <rect x="344" y="182" width="72" height="30" rx="15" fill="#ffffff" stroke="#5b61d6"/>
+  <rect x="344" y="182" width="72" height="30" rx="15" fill="#ffffff" stroke="#ff8225"/>
   <text x="380" y="202" fill="#17181a" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">FA / EN</text>
 </g>
-<g fill="#5b61d6" font-family="Inter,Arial,sans-serif" font-size="9" text-anchor="middle">
+<g fill="#ff8225" font-family="Inter,Arial,sans-serif" font-size="9" text-anchor="middle">
   <text x="190" y="371">ACCESSIBLE PRIMITIVES</text>
   <text x="570" y="371">DIRECTION-AWARE UI</text>
 </g>
-<text x="380" y="414" fill="#5b61d6" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">ONE DESIGN SYSTEM · TWO EQUAL DIRECTIONS</text>
+<text x="380" y="414" fill="#ff8225" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700" text-anchor="middle">ONE DESIGN SYSTEM · TWO EQUAL DIRECTIONS</text>
 </svg>

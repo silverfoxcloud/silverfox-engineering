@@ -336,3 +336,4 @@ The public application content is unchanged from the fully validated runtime hea
 - The upstream Shabnam SIL Open Font License 1.1 text is retained beside the font files.
 - The top-site identity is now a typography-only `Silver Fox / Engineering` wordmark in both EN and FA; the graphical fox SVG is no longer rendered in the header.
 - Browser QA now asserts the Persian computed font stack contains Shabnam and that the header brand contains no image.
+- The portal's previous blue/violet technical accents have been migrated to Silver Fox orange `#ff8225`; soft, hover, selected and focus states now use orange-derived values.

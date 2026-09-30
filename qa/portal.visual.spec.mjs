@@ -123,6 +123,8 @@ async function assertPageHealth(page, locale) {
   await expect(page.locator("h1").first()).toBeVisible();
   await expect(page.locator(".siteHeader .brandText")).toBeVisible();
   expect(await page.locator(".siteHeader .brand img").count(), "header brand must be typography-only").toBe(0);
+  const technicalAccent = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--technical-accent").trim().toLowerCase());
+  expect(technicalAccent, "technical accent must use Silver Fox orange").toBe("#ff8225");
 
   if (fa) {
     const bodyFont = await page.locator("body").evaluate((body) => getComputedStyle(body).fontFamily);

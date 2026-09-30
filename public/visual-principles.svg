@@ -4,7 +4,7 @@
 <rect width="760" height="520" rx="28" fill="#f7f7f4"/>
 <path d="M108 104H652M108 416H652" stroke="#ffffff"/>
 <path d="M180 156H580M180 260H580M180 364H580" stroke="#c9cdd3" stroke-dasharray="4 8"/>
-<g fill="#ffffff" stroke="#5b61d6">
+<g fill="#ffffff" stroke="#ff8225">
   <rect x="82" y="124" width="188" height="64" rx="14"/>
   <rect x="490" y="124" width="188" height="64" rx="14"/>
   <rect x="82" y="228" width="188" height="64" rx="14"/>
@@ -12,14 +12,14 @@
   <rect x="82" y="332" width="188" height="64" rx="14"/>
   <rect x="490" y="332" width="188" height="64" rx="14"/>
 </g>
-<g fill="#ffffff" stroke="#5b61d6" stroke-width="2"><circle cx="380" cy="156" r="34"/><circle cx="380" cy="260" r="34"/><circle cx="380" cy="364" r="34"/></g>
+<g fill="#ffffff" stroke="#ff8225" stroke-width="2"><circle cx="380" cy="156" r="34"/><circle cx="380" cy="260" r="34"/><circle cx="380" cy="364" r="34"/></g>
 <g fill="#17181a" font-family="Inter,Arial,sans-serif">
-  <text x="105" y="151" font-size="13" font-weight="700">OWNERSHIP</text><text x="105" y="171" font-size="10" fill="#5b61d6">responsibility before reuse</text>
-  <text x="513" y="151" font-size="13" font-weight="700">CONTRACTS</text><text x="513" y="171" font-size="10" fill="#5b61d6">versioned boundaries</text>
-  <text x="105" y="255" font-size="13" font-weight="700">SECURE DEFAULTS</text><text x="105" y="275" font-size="10" fill="#5b61d6">explicit privilege</text>
-  <text x="513" y="255" font-size="13" font-weight="700">OBSERVABILITY</text><text x="513" y="275" font-size="10" fill="#5b61d6">explainable behavior</text>
-  <text x="105" y="359" font-size="13" font-weight="700">EVOLUTION</text><text x="105" y="379" font-size="10" fill="#5b61d6">evidence before complexity</text>
-  <text x="513" y="359" font-size="13" font-weight="700">RTL / LTR</text><text x="513" y="379" font-size="10" fill="#5b61d6">equal product modes</text>
+  <text x="105" y="151" font-size="13" font-weight="700">OWNERSHIP</text><text x="105" y="171" font-size="10" fill="#ff8225">responsibility before reuse</text>
+  <text x="513" y="151" font-size="13" font-weight="700">CONTRACTS</text><text x="513" y="171" font-size="10" fill="#ff8225">versioned boundaries</text>
+  <text x="105" y="255" font-size="13" font-weight="700">SECURE DEFAULTS</text><text x="105" y="275" font-size="10" fill="#ff8225">explicit privilege</text>
+  <text x="513" y="255" font-size="13" font-weight="700">OBSERVABILITY</text><text x="513" y="275" font-size="10" fill="#ff8225">explainable behavior</text>
+  <text x="105" y="359" font-size="13" font-weight="700">EVOLUTION</text><text x="105" y="379" font-size="10" fill="#ff8225">evidence before complexity</text>
+  <text x="513" y="359" font-size="13" font-weight="700">RTL / LTR</text><text x="513" y="379" font-size="10" fill="#ff8225">equal product modes</text>
 </g>
-<g fill="#5b61d6" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="middle"><text x="380" y="161">01</text><text x="380" y="265">02</text><text x="380" y="369">03</text></g>
+<g fill="#ff8225" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" text-anchor="middle"><text x="380" y="161">01</text><text x="380" y="265">02</text><text x="380" y="369">03</text></g>
 </svg>
