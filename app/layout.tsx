@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { fontProfiles } from "@silverfoxcloud/web-fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -70,7 +71,14 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" dir="ltr" data-locale="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      dir="ltr"
+      data-locale="en"
+      data-sf-font-en={fontProfiles.engineering.english}
+      data-sf-font-fa={fontProfiles.engineering.persian}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: localeBootstrap }} />
       </head>

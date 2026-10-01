@@ -11,6 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
+import { localeDocumentAttributes } from "@silverfoxcloud/web-locale";
 import type { Locale } from "@/data/content";
 
 const STORAGE_KEY = "silverfox-engineering-locale";
@@ -25,8 +26,9 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 function applyDocumentLocale(locale: Locale) {
   if (typeof document === "undefined") return;
-  document.documentElement.lang = locale;
-  document.documentElement.dir = locale === "fa" ? "rtl" : "ltr";
+  const attributes = localeDocumentAttributes(locale);
+  document.documentElement.lang = attributes.lang;
+  document.documentElement.dir = attributes.dir;
   document.documentElement.dataset.locale = locale;
 }
 
@@ -57,8 +59,9 @@ function updateClientMetadata(locale: Locale) {
       meta.content = lead.slice(0, 180);
     }
 
-    document.documentElement.lang = locale;
-    document.documentElement.dir = locale === "fa" ? "rtl" : "ltr";
+    const attributes = localeDocumentAttributes(locale);
+    document.documentElement.lang = attributes.lang;
+    document.documentElement.dir = attributes.dir;
   });
 }
 

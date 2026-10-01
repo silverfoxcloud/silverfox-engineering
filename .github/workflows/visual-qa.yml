@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 concurrency:
   group: "visual-qa"
@@ -26,9 +27,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          registry-url: https://npm.pkg.github.com
+          scope: "@silverfoxcloud"
 
       - name: Install application dependencies
         run: npm install --no-audit --no-fund
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pinned Playwright runtime
         run: |
