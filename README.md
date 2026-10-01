@@ -78,7 +78,7 @@ The active locale is application state rather than route state.
 - locale persists across clean-route navigation and reload;
 - a small pre-hydration bootstrap applies the persisted document language/direction before visible application state.
 
-Legacy `/fa/...` URLs remain only as compatibility entry points. They contain no unique content, are `noindex`, store Persian as the active locale and replace the legacy URL with the equivalent clean canonical route.
+Locale-prefixed public routes are not generated. Canonical public URLs never contain `/en` or `/fa`.
 
 ### SEO trade-off
 
@@ -103,11 +103,11 @@ Release validation covers:
 - TypeScript validation;
 - production static export;
 - every generated clean route;
-- legacy `/fa` migration;
+- absence of generated `/en` and `/fa` route surfaces;
 - same-URL locale switching;
 - locale persistence after navigation and reload;
 - document `lang` / `dir`;
-- absence of generated `/fa` links;
+- absence of generated `/en` and `/fa` links;
 - keyboard navigation and focus return;
 - mobile accordion navigation;
 - WCAG-oriented focus/contrast semantics;
@@ -125,3 +125,16 @@ Release validation covers:
 - `docs/portal-architecture.md`
 - `docs/design-system.md`
 - `docs/iteration-status.md`
+
+## Central Web Design Platform adoption
+
+Silver Fox Engineering is the first consumer of `silverfoxcloud/silverfox-web-design-system`.
+
+Pinned pilot line: `1.1.0-alpha.1`.
+
+Shared runtime packages:
+- `@silverfoxcloud/web-tokens`
+- `@silverfoxcloud/web-fonts`
+- `@silverfoxcloud/web-locale`
+
+Engineering-specific content, diagrams, Technology Radar and publication structures remain consumer-owned.

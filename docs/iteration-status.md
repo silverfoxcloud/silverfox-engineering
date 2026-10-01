@@ -1,3 +1,20 @@
+# Central Web Platform Pilot — 2026-10-01
+
+## Status — PHASE 1 IN PROGRESS
+
+Silver Fox Engineering is now the first consumer pilot for the centralized Silver Fox public-web platform.
+
+Current pilot scope:
+- central tokens/fonts/locale dependencies;
+- same-visible-URL locale with no generated `/en` or `/fa` routes;
+- central Persian human-number formatting;
+- expanded responsive QA;
+- preservation of approved Engineering-specific UI pending shared-component extraction.
+
+The historical production records below remain evidence of prior releases and are not rewritten.
+
+---
+
 # Current Redesign Iteration — 2026-09-30
 
 ## Status — PRODUCTION PASS

@@ -3,12 +3,18 @@ import { test, expect } from "@playwright/test";
 const baseURL = "http://127.0.0.1:4173";
 const widths = [
   { name: "320", width: 320, height: 900 },
-  { name: "375", width: 375, height: 900 },
+  { name: "360", width: 360, height: 800 },
+  { name: "375", width: 375, height: 812 },
+  { name: "390", width: 390, height: 844 },
+  { name: "414", width: 414, height: 896 },
   { name: "430", width: 430, height: 932 },
   { name: "768", width: 768, height: 1024 },
+  { name: "834", width: 834, height: 1194 },
   { name: "1024", width: 1024, height: 900 },
+  { name: "1120", width: 1120, height: 900 },
   { name: "1280", width: 1280, height: 900 },
   { name: "1440", width: 1440, height: 1000 },
+  { name: "1600", width: 1600, height: 1000 },
   { name: "1920", width: 1920, height: 1080 },
 ];
 
@@ -65,19 +71,6 @@ const allRoutes = [
   "/build-stories/license-engine-v1/",
   "/build-stories/foxpay-multi-tenant-core/",
   "/changelog/",
-];
-
-const legacyRoutes = [
-  ["/fa/", "/"],
-  ["/fa/architecture/", "/architecture/"],
-  ["/fa/technology-radar/", "/technology-radar/"],
-  ["/fa/platforms/fox-pay/", "/platforms/fox-pay/"],
-  ["/fa/packages/", "/packages/"],
-  ["/fa/packages/sfas-core/", "/packages/sfas-core/"],
-  ["/fa/engineering/", "/engineering/"],
-  ["/fa/architecture-decisions/", "/architecture-decisions/"],
-  ["/fa/build-stories/", "/build-stories/"],
-  ["/fa/changelog/", "/changelog/"],
 ];
 
 function slugify(route) {
@@ -142,8 +135,22 @@ async function assertPageHealth(page, locale) {
   );
   expect(brokenImages).toEqual([]);
 
-  const legacyLinks = await page.locator('a[href^="/fa"], a[href*="engineering.silverfoxcloud.com/fa/"]').count();
-  expect(legacyLinks, "normal navigation must never generate /fa links").toBe(0);
+  const localeLinks = await page
+    .locator('a[href^="/fa"], a[href^="/en"], a[href*="engineering.silverfoxcloud.com/fa/"], a[href*="engineering.silverfoxcloud.com/en/"]')
+    .count();
+  expect(localeLinks, "normal navigation must never generate locale path segments").toBe(0);
+
+  const centralAccent = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue("--sf-color-accent").trim().toLowerCase(),
+  );
+  expect(centralAccent, "central token package must be loaded").toBe("#ff8225");
+
+  if (fa) {
+    const humanIndex = page.locator(".featureIndex").first();
+    if (await humanIndex.count()) {
+      await expect(humanIndex).toHaveText(/^[۰-۹]+$/);
+    }
+  }
 }
 
 for (const route of visualRoutes) {
@@ -216,17 +223,21 @@ test("language switch keeps the exact url, history position and locale across na
   expect(await page.evaluate(() => history.length)).toBe(initialHistory + 1);
 });
 
-for (const [legacy, clean] of legacyRoutes) {
-  test(`legacy ${legacy} migrates to ${clean} and preserves Persian`, async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto(baseURL + legacy, { waitUntil: "domcontentloaded" });
-    await page.waitForURL(baseURL + clean);
-    await expect(page.locator("html")).toHaveAttribute("lang", "fa");
-    await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
-    await expect(page.locator("main")).toHaveAttribute("lang", "fa");
-    expect(await page.evaluate(() => localStorage.getItem("silverfox-engineering-locale"))).toBe("fa");
-  });
-}
+test("locale path segments are not generated as public routes", async ({ request }) => {
+  for (const forbidden of ["/fa/", "/en/"]) {
+    const response = await request.get(baseURL + forbidden);
+    expect(response.status(), forbidden + " must not exist as a generated public route").toBe(404);
+  }
+});
+
+test("Persian human indices use Persian digits while technical versions stay ASCII", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedLocale(page, "fa");
+  await page.goto(baseURL + "/packages/", { waitUntil: "domcontentloaded" });
+  const firstIndex = page.locator(".packageIdentity small").first();
+  await expect(firstIndex).toHaveText(/^[۰-۹]+$/);
+  await expect(page.locator(".packageVersion").first()).toHaveText(/^[0-9]/);
+});
 
 test("desktop mega menu closes with Escape and returns focus", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });

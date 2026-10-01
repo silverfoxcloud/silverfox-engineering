@@ -8,6 +8,7 @@ import ArchitectureMap from "@/components/ArchitectureMap";
 import { engineeringPages, platformPages } from "@/data/engineering-pages";
 import { packages } from "@/data/packages";
 import { buildStories, engineeringNotes, changelog } from "@/data/publications";
+import { toPersianDigits } from "@silverfoxcloud/web-locale";
 
 const featuredPlatforms = ["sfas", "license-platform", "fox-pay"] as const;
 
@@ -15,6 +16,8 @@ export default function PortalPage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const fa = locale === "fa";
   const localize = (href: string) => href;
+  const humanIndex = (value: number) =>
+    fa ? toPersianDigits(String(value).padStart(2, "0")) : String(value).padStart(2, "0");
 
   const capabilities = [
     {
@@ -154,9 +157,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
               >
                 <div className="capabilityCopy">
                   <span className="featureIndex">
-                    {fa
-                      ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰")
-                      : String(index + 1).padStart(2, "0")}
+                    {humanIndex(index + 1)}
                   </span>
                   <span className="kicker">{item.eyebrow}</span>
                   <h3>{item.title}</h3>
@@ -213,15 +214,13 @@ export default function PortalPage({ locale }: { locale: Locale }) {
                       {page.capabilities.slice(0, 3).map((capability, capabilityIndex) => (
                         <span key={capability}>
                           <b>
-                            {fa
-                              ? String(capabilityIndex + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰")
-                              : String(capabilityIndex + 1).padStart(2, "0")}
+                            {humanIndex(capabilityIndex + 1)}
                           </b>
                           {capability}
                         </span>
                       ))}
                     </div>
-                    <small>{fa ? "۰" + String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]) : String(index + 1).padStart(2, "0")} / {fa ? "۰۳" : "03"}</small>
+                    <small>{humanIndex(index + 1)} / {humanIndex(3)}</small>
                   </div>
                 </article>
               );
@@ -269,7 +268,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           <div className="homePackageRows">
             {packages.slice(0, 4).map((pkg, index) => (
               <Link href={localize("/packages/" + pkg.slug + "/")} key={pkg.slug}>
-                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <span>{humanIndex(index + 1)}</span>
                 <div>
                   <strong>{pkg.displayName}</strong>
                   <code>{pkg.name}</code>
@@ -299,7 +298,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           <div className="homeStoryRows">
             {buildStories.map((story, index) => (
               <Link href={localize("/build-stories/" + story.slug + "/")} key={story.slug}>
-                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <span>{humanIndex(index + 1)}</span>
                 <div>
                   <small>{story.platform}</small>
                   <h3>{story.title[locale]}</h3>
@@ -321,7 +320,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           <div className="homeChangelogRows">
             {changelog.slice(0, 3).map((entry) => (
               <Link href={localize(entry.href)} key={entry.date + entry.title.en}>
-                <time dateTime={entry.date}>{fa ? entry.date.replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).replaceAll("-", "/") : entry.date}</time>
+                <time dateTime={entry.date}>{fa ? toPersianDigits(entry.date).replaceAll("-", "/") : entry.date}</time>
                 <span>{entry.type}</span>
                 <strong>{entry.title[locale]}</strong>
                 <i aria-hidden="true">↗</i>
@@ -351,7 +350,7 @@ export default function PortalPage({ locale }: { locale: Locale }) {
           <div className="homeKnowledgeRows">
             {engineeringNotes.map((note, index) => (
               <Link href={localize("/engineering/" + note.slug + "/")} key={note.slug}>
-                <span>{fa ? String(index + 1).replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]).padStart(2, "۰") : String(index + 1).padStart(2, "0")}</span>
+                <span>{humanIndex(index + 1)}</span>
                 <div>
                   <small>{note.category} · {note.platform}</small>
                   <h3>{note.title[locale]}</h3>

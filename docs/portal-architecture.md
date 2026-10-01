@@ -87,7 +87,6 @@ Same-URL bilingual content cannot truthfully use the same SEO model as two separ
 The active architecture therefore:
 
 - publishes one canonical per clean route;
-- excludes `/fa` compatibility pages from the sitemap;
 - does not emit reciprocal `hreflang` links to fake active language pages;
 - keeps static metadata accurate and conservative;
 - updates browser title/description when the active locale changes;
@@ -183,11 +182,20 @@ Browser coverage validates:
 - same-URL language switching;
 - persistence after navigation/reload;
 - document `lang` / `dir`;
-- legacy `/fa` migration;
-- absence of generated `/fa` links;
+- absence of generated locale-prefixed routes;
+- absence of generated `/en` and `/fa` links;
 - hydration/browser errors;
 - navigation focus return;
 - mobile accordion behavior;
 - Radar visibility/filtering;
 - reduced motion;
 - horizontal overflow and broken images.
+
+## Central web-platform dependency
+
+Shared public-web runtime contracts come from `silverfoxcloud/silverfox-web-design-system`.
+
+The Engineering consumer imports central tokens, font-profile metadata and locale helpers.
+Consumer-specific routes, technical content, diagrams and source-grounded publication data remain local.
+
+Canonical public route generation must reject locale path segments.

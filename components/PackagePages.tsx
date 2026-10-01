@@ -3,10 +3,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { packages, type PackageRecord } from "@/data/packages";
 import type { Locale } from "@/data/content";
-
-function faDigits(value: string) {
-  return value.replace(/[0-9]/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
-}
+import { toPersianDigits } from "@silverfoxcloud/web-locale";
 
 function localize(_locale: Locale, href: string) {
   return href;
@@ -71,7 +68,7 @@ export function PackageDirectoryPage({ locale }: { locale: Locale }) {
                 key={pkg.slug}
               >
                 <span className="packageIdentity" role="cell">
-                  <small>{fa ? faDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</small>
+                  <small>{fa ? toPersianDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</small>
                   <strong>{pkg.displayName}</strong>
                   <code>{pkg.name}</code>
                 </span>
@@ -174,7 +171,7 @@ export function PackageDetailPage({ locale, pkg }: { locale: Locale; pkg: Packag
             <div className="packageBulletList">
               {pkg.capabilities[locale].map((item, index) => (
                 <div key={item}>
-                  <span>{fa ? faDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</span>
+                  <span>{fa ? toPersianDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</span>
                   <strong>{item}</strong>
                 </div>
               ))}
@@ -186,7 +183,7 @@ export function PackageDetailPage({ locale, pkg }: { locale: Locale; pkg: Packag
             <div className="packageBulletList">
               {pkg.compatibility[locale].map((item, index) => (
                 <div key={item}>
-                  <span>{fa ? faDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</span>
+                  <span>{fa ? toPersianDigits(String(index + 1).padStart(2, "0")) : String(index + 1).padStart(2, "0")}</span>
                   <strong>{item}</strong>
                 </div>
               ))}
