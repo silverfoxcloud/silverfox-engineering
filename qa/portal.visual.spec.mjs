@@ -136,7 +136,7 @@ async function assertPageHealth(page, locale) {
   expect(brokenImages).toEqual([]);
 
   const localeLinks = await page
-    .locator('a[href^="/fa"], a[href^="/en"], a[href*="engineering.silverfoxcloud.com/fa/"], a[href*="engineering.silverfoxcloud.com/en/"]')
+    .locator('a[href="/fa"], a[href^="/fa/"], a[href="/en"], a[href^="/en/"], a[href*="engineering.silverfoxcloud.com/fa/"], a[href*="engineering.silverfoxcloud.com/en/"]')
     .count();
   expect(localeLinks, "normal navigation must never generate locale path segments").toBe(0);
 
