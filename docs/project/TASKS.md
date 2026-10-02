@@ -1,49 +1,49 @@
 # Phase 1 Task Backlog
 
 ## Central dependency integration
-- [ ] Configure GitHub Packages registry.
-- [ ] Add exact central package dependencies.
-- [ ] Update CI for package read access.
-- [ ] Prove package installation in PR CI.
-- [ ] Update/reconcile lockfile.
+- [x] Configure GitHub Packages registry.
+- [x] Add exact central package dependencies.
+- [x] Update CI for package read access.
+- [x] Prove package installation in PR CI.
+- [x] Update/reconcile lockfile.
 
 ## Runtime
-- [ ] Import central token CSS.
-- [ ] Map current Engineering semantic tokens to central semantics.
-- [ ] Consume central font profile registry.
-- [ ] Consume central locale/direction helpers.
-- [ ] Use central Persian-number formatter for human-facing values.
+- [x] Import central token CSS.
+- [x] Map current Engineering semantic tokens to central semantics.
+- [x] Consume central font profile registry.
+- [x] Consume central locale/direction helpers.
+- [x] Use central Persian-number formatter for human-facing values in migrated shared/human-number surfaces.
 
 ## Locale routing
-- [ ] Remove generated/canonical `/fa` routes.
-- [ ] Ensure no `/en` routes exist.
-- [ ] Remove legacy locale redirect component when no longer needed.
-- [ ] Update sitemap/QA/docs.
-- [ ] Verify language switching preserves pathname.
+- [x] Remove generated/canonical `/fa` routes.
+- [x] Ensure no `/en` routes exist.
+- [x] Remove legacy locale redirect component when no longer needed.
+- [x] Update QA/docs; generated route tree contains no locale surface.
+- [x] Verify language switching preserves pathname.
 
 ## QA
-- [ ] Typecheck.
-- [ ] Static export build.
-- [ ] EN/LTR.
-- [ ] FA/RTL.
-- [ ] 1920.
-- [ ] 1600.
-- [ ] 1440.
-- [ ] 1280.
-- [ ] 1120.
-- [ ] 1024.
-- [ ] 834.
-- [ ] 768.
-- [ ] 430.
-- [ ] 414.
-- [ ] 390.
-- [ ] 375.
-- [ ] 360.
-- [ ] 200% zoom.
-- [ ] keyboard/focus.
-- [ ] reduced motion.
-- [ ] Persian digits.
-- [ ] no locale URL segments.
+- [x] Typecheck.
+- [x] Static export build.
+- [x] EN/LTR.
+- [x] FA/RTL.
+- [x] 1920.
+- [x] 1600.
+- [x] 1440.
+- [x] 1280.
+- [x] 1120.
+- [x] 1024.
+- [x] 834.
+- [x] 768.
+- [x] 430.
+- [x] 414.
+- [x] 390.
+- [x] 375.
+- [x] 360.
+- [ ] 200% zoom. **Deferred to Phase 2 dedicated manual/visual review; not claimed by Phase 1 automation.**
+- [x] keyboard/focus.
+- [x] reduced motion.
+- [x] Persian digits on migrated human-facing number surfaces.
+- [x] no locale URL segments.
 
 ## Documentation
 - [x] Business model.
@@ -52,5 +52,5 @@
 - [x] Gantt.
 - [x] Gap analysis baseline.
 - [x] Migration plan.
-- [ ] Final compliance report.
-- [ ] Phase 1 end report.
+- [x] Final Phase 1 compliance report.
+- [x] Phase 1 end report.
