@@ -1,7 +1,7 @@
 # Phase 2 Tasks — Engineering
 
 ## Integration
-- [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.1`;
+- [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.2`;
 - [ ] sync package-lock;
 - [x] add Next `transpilePackages`;
 - [x] import central web-ui styles.
@@ -31,8 +31,8 @@
 - [ ] EN/LTR;
 - [ ] FA/RTL;
 - [ ] 320–1920 responsive matrix;
-- [ ] keyboard/Escape/focus return;
-- [ ] mobile accordion;
+- [ ] keyboard/Escape/focus return + click-only desktop disclosure;
+- [ ] mobile accordion + focus containment + desktop-breakpoint cleanup;
 - [ ] reduced motion;
 - [ ] screenshot/manual review.
 
@@ -48,7 +48,7 @@
 
 
 ## Current integration gate — 2026-10-02
-- Central `web-ui@1.2.0-alpha.1` is published successfully.
+- Central `web-ui@1.2.0-alpha.2` is published successfully.
 - Engineering PR #6 attempts real GitHub Packages installation.
 - Current CI failure: `403 permission_denied: read_package` for `@silverfoxcloud/web-ui`.
 - Existing central tokens/fonts/locale package access remains valid.

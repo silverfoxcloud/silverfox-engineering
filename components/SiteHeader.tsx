@@ -205,6 +205,8 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
       LinkComponent={WebUiLinkAdapter}
       localeControl={localeControl}
       hoverIntent={false}
+      focusOpensMenu={false}
+      trapMobileFocus
       showBackdrop
       defaultMobileGroupId="engineering"
     />

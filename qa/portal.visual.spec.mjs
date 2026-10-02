@@ -241,6 +241,25 @@ test("Persian human indices use Persian digits while technical versions stay ASC
   await expect(page.locator(".packageVersion").first()).toHaveText(/^[0-9]/);
 });
 
+test("engineering desktop disclosure stays click-only", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const trigger = page.locator(".sf-header-trigger").first();
+  await trigger.hover();
+  await page.waitForTimeout(180);
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".sf-mega-surface")).toHaveCount(0);
+
+  await trigger.focus();
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+
+  await trigger.press("Enter");
+  await expect(trigger).toHaveAttribute("aria-expanded", "true");
+  await expect(page.locator(".sf-mega-surface")).toBeVisible();
+});
+
 test("desktop mega menu closes with Escape and returns focus", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await seedLocale(page, "en");
@@ -269,8 +288,58 @@ test("mobile navigation uses an accessible accordion and returns focus on Escape
   await group.click();
   await expect(group).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
-  await expect(page.locator(".sf-mobile-nav")).toHaveCount(0);
+  await expect(page.locator(".sf-mobile-nav")).toBeHidden();
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
   await expect(trigger).toBeFocused();
+});
+
+test("mobile navigation traps focus inside the header surface", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const trigger = page.locator(".sf-header-mobile-trigger");
+  await trigger.click();
+  await expect(page.locator(".sf-mobile-nav")).toBeVisible();
+
+  await page.evaluate(() => {
+    const root = document.querySelector(".sf-site-header");
+    if (!root) throw new Error("Missing central header");
+    const selector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+    const focusable = Array.from(root.querySelectorAll(selector))
+      .filter((node) => node instanceof HTMLElement && !node.hasAttribute("hidden") && node.getClientRects().length > 0);
+    const last = focusable.at(-1);
+    if (!(last instanceof HTMLElement)) throw new Error("Missing mobile focus target");
+    last.focus();
+  });
+
+  await page.keyboard.press("Tab");
+  const focusStayedInside = await page.evaluate(() => {
+    const root = document.querySelector(".sf-site-header");
+    return Boolean(root && root.contains(document.activeElement));
+  });
+  expect(focusStayedInside).toBe(true);
+});
+
+test("mobile navigation closes when returning to desktop width", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const trigger = page.locator(".sf-header-mobile-trigger");
+  await trigger.click();
+  await expect(page.locator(".sf-mobile-nav")).toBeVisible();
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await expect(trigger).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".sf-mobile-nav")).toBeHidden();
 });
 
 test("technology radar blips are visible immediately and filtering remains interactive", async ({ page }) => {

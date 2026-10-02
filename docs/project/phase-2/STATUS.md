@@ -4,7 +4,7 @@ Date: 2026-10-02
 
 ## Central dependency
 
-`@silverfoxcloud/web-ui@1.2.0-alpha.1` — published and centrally validated.
+`@silverfoxcloud/web-ui@1.2.0-alpha.2` — published and centrally validated. Alpha 2 includes the pre-reference hover/focus/mobile-focus corrections.
 
 ## Engineering migration
 
@@ -36,3 +36,17 @@ After access is granted:
 4. run full browser matrix;
 5. remediate real component/visual differences;
 6. close E2 milestones and M2.
+
+
+## Alpha 2 consumer preparation
+
+Engineering source now pins the full central package family to `1.2.0-alpha.2`.
+Additional browser assertions cover:
+- click-only desktop disclosure;
+- focus without automatic panel opening;
+- Escape and focus return;
+- mobile accordion;
+- mobile focus containment;
+- mobile→desktop state cleanup.
+
+Lockfile synchronization remains intentionally pending until GitHub Actions can read the private `web-ui` package.
