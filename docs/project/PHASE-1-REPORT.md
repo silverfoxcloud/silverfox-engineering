@@ -107,9 +107,9 @@ The authoritative closure gate is the latest Visual QA run for the latest branch
 
 ## Final main validation
 
-- Production/main HEAD validated before this closure-status commit: `d6f1f1e3d93579579f4036eb981849da40785230`
-- GitHub Pages run: **#179 — SUCCESS**
-- Visual QA run: **#88 — SUCCESS**
+- Production/main HEAD: `e265d7061d848559b90e52f55f09efea01ac4401`
+- GitHub Pages run: **#180 — SUCCESS**
+- Visual QA run: **#89 — SUCCESS**
 - Playwright: **394 / 394 PASS**
 - Artifact: `11242586392`
 - Artifact digest: `sha256:0039d1965d760e9f853f9bd753654e525c07e8cf796b456a0f01ff79ff5a2fc9`
@@ -125,3 +125,11 @@ The authoritative closure gate is the latest Visual QA run for the latest branch
 **E-M5 ACHIEVED.**
 
 Phase 2 is the next implementation phase. It centralizes shared Header, Mega Menu, Mobile Menu, Footer and reusable section/component APIs using both Engineering and Fastreserve evidence.
+
+## Deterministic dependency hardening
+
+Post-closure hardening switches application dependency installation from `npm install` to `npm ci` in both deploy and Visual QA workflows.
+
+The lockfile already contains exact central package versions and registry integrity metadata, so CI/deploy now fail fast on package.json/package-lock drift instead of silently rewriting dependency resolution.
+
+This hardening does not change the validated application UI.

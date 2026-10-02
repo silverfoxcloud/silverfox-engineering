@@ -39,7 +39,7 @@
 - [x] 390.
 - [x] 375.
 - [x] 360.
-- [x] 200% zoom reflow proxy at effective 640px. **Deferred to Phase 2 dedicated manual/visual review; not claimed by Phase 1 automation.**
+- [x] 200% zoom effective-width reflow proxy. Dedicated manual/browser zoom review remains a Phase 2 enhancement, but the Phase 1 automated proxy passed.
 - [x] keyboard/focus.
 - [x] reduced motion.
 - [x] Persian digits on migrated human-facing number surfaces.
@@ -54,3 +54,7 @@
 - [x] Migration plan.
 - [x] Final Phase 1 compliance report.
 - [x] Phase 1 end report.
+
+## Post-close hardening
+- [x] Use `npm ci` in deploy and Visual QA workflows.
+- [x] Keep exact central package versions locked.
