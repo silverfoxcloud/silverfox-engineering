@@ -4,7 +4,7 @@ Date: 2026-10-02
 
 ## Target
 
-Replace duplicated Engineering Header/Footer interaction runtime with central `@silverfoxcloud/web-ui@1.2.0-alpha.2`.
+Replace duplicated Engineering Header/Footer interaction runtime with central `@silverfoxcloud/web-ui@1.2.0-alpha.3`.
 
 ## Method
 
@@ -33,3 +33,9 @@ Engineering explicitly configures:
 - mobile focus containment enabled
 
 This preserves the approved Engineering behavior while leaving Fastreserve free to opt into hover-intent/focus-open behavior in its later profile migration.
+
+
+## Alpha 3 visual parity gate
+
+Phase 1/Phase 2 artifact comparison showed Footer composition drift in Alpha 2.
+Alpha 3 adds profile-driven identity placement and Engineering now requests `identityPlacement="column"`, preserving the approved first-column Footer structure centrally.

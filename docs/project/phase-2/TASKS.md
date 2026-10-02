@@ -1,7 +1,7 @@
 # Phase 2 Tasks — Engineering
 
 ## Integration
-- [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.2`;
+- [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.3`;
 - [x] sync package-lock with real Alpha 2 registry metadata;
 - [x] add Next `transpilePackages`;
 - [x] import central web-ui styles.
@@ -48,8 +48,19 @@
 
 
 ## Current integration gate — 2026-10-02
-- Central `web-ui@1.2.0-alpha.2` is published successfully.
+- Central `web-ui@1.2.0-alpha.3` is published successfully.
 - Engineering PR #6 attempts real GitHub Packages installation.
 - Current CI failure: `403 permission_denied: read_package` for `@silverfoxcloud/web-ui`.
 - Existing central tokens/fonts/locale package access remains valid.
 - No copied-source fallback is allowed.
+
+
+## Alpha 3 parity remediation
+- [x] inspect Phase 1 baseline artifact vs Phase 2 Alpha 2 artifact;
+- [x] classify Footer composition drift as a real parity issue;
+- [x] move Footer identity-layout choice into the central API;
+- [x] preserve Engineering Footer with `identityPlacement="column"`;
+- [x] fix compact-mobile typography wordmark visibility;
+- [x] fix hidden-link false negative in locale navigation QA;
+- [ ] run full Alpha 3 browser matrix;
+- [ ] compare final Alpha 3 representative screenshots to Phase 1 baseline.

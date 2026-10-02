@@ -342,6 +342,17 @@ test("mobile navigation closes when returning to desktop width", async ({ page }
   await expect(page.locator(".sf-mobile-nav")).toBeHidden();
 });
 
+test("Engineering Footer keeps the approved identity-column composition", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const columns = page.locator(".sf-footer-columns");
+  await expect(columns).toHaveAttribute("data-identity-placement", "column");
+  await expect(columns.locator(".sf-footer-identity-column")).toHaveCount(1);
+  await expect(columns.locator(".sf-footer-column")).toHaveCount(4);
+});
+
 test("technology radar blips are visible immediately and filtering remains interactive", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await seedLocale(page, "en");

@@ -94,7 +94,7 @@ This closes Phase 1 runtime adoption. Full shared-component convergence remains 
 
 Status: **IN PROGRESS — final browser evidence pending**
 
-Target central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.2`
+Target central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.3`
 
 Phase 2 moves the following previously approved-local runtime into the central package:
 - Header state/markup shell;
@@ -117,7 +117,7 @@ No true design exception has been approved.
 
 ## Phase 2 closure candidate
 
-Central target: `silverfox-web-design-system@1.2.0-alpha.2`
+Central target: `silverfox-web-design-system@1.2.0-alpha.3`
 
 Implemented centrally:
 - Header state and semantic shell;
@@ -140,3 +140,13 @@ Run #98 confirmed package install, TypeScript and static export, and identified 
 This report becomes Phase 2 PASS when the latest PR #6 head Visual QA is SUCCESS. The latest-run rule avoids a documentation commit recursively creating a new required QA run.
 
 True exceptions: **0**.
+
+
+### Alpha 3 parity correction
+
+Phase 2 is not accepted from functional tests alone.
+Artifact comparison against the Phase 1 approved baseline found Footer composition drift in Alpha 2, so the central package was refined to preserve Engineering's first-column Footer identity layout.
+
+The final M2 evidence must therefore include both:
+- browser/interaction PASS;
+- representative Phase 1 vs Alpha 3 screenshot review.

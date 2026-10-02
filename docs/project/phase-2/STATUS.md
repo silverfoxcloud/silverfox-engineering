@@ -4,8 +4,8 @@ Date: 2026-10-02
 
 ## Central
 
-- package family `1.2.0-alpha.2`: **PUBLISHED**
-- `@silverfoxcloud/web-ui@1.2.0-alpha.2`: **PUBLISHED**
+- package family `1.2.0-alpha.3`: **PUBLISHED**
+- `@silverfoxcloud/web-ui@1.2.0-alpha.3`: **PUBLISHED**
 - Alpha 2 central validation: **PASS**
 - Alpha 2 publish workflow: **PASS**
 
@@ -55,3 +55,24 @@ Required:
 - 200% reflow proxy.
 
 M2 is achieved only after the latest PR head passes this gate and PR #6 is merged.
+
+
+## Run #98 evidence and Alpha 3 response
+
+Run #98 proved:
+- GitHub Packages access: PASS;
+- application dependency install: PASS;
+- Playwright runtime: PASS;
+- TypeScript: PASS;
+- static export: PASS.
+
+Browser QA exposed:
+1. a real mobile wordmark regression caused by a leftover Engineering selector that only recognized the legacy `.siteHeader`;
+2. a language-switch test selecting a hidden Mega Menu route;
+3. visual artifact comparison showing Footer composition drift from the approved Phase 1 baseline.
+
+Alpha 3 fixes all three before M2:
+- central Footer uses profile-driven identity placement;
+- Engineering uses the approved first-column identity layout;
+- mobile wordmark selector recognizes the central Header;
+- language-switch navigation uses a visible route target.

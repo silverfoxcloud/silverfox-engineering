@@ -68,6 +68,7 @@ export default function SiteFooter({ locale }: { locale: Locale }) {
       profile="engineering"
       brand={brand}
       brandHref="/"
+      identityPlacement="column"
       statement={
         fa
           ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ برای توضیح معماری، تصمیم‌های فناوری و مرزهای پلتفرمی قابل انتشار."
