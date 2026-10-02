@@ -6,7 +6,7 @@
 
 ## Central version
 
-`silverfox-web-design-system@1.2.0-alpha.1`
+`silverfox-web-design-system@1.2.0-alpha.2`
 
 ## Sequence
 
