@@ -103,3 +103,25 @@ The repository visibility API still reports `public` as of this phase work, even
 
 Visual QA concurrency is branch-scoped. A new commit on this pilot branch may cancel only an older run for the same branch, not unrelated `main` validation.
 The authoritative closure gate is the latest Visual QA run for the latest branch head.
+
+
+## Final main validation
+
+- Production/main HEAD validated before this closure-status commit: `d6f1f1e3d93579579f4036eb981849da40785230`
+- GitHub Pages run: **#179 — SUCCESS**
+- Visual QA run: **#88 — SUCCESS**
+- Playwright: **394 / 394 PASS**
+- Artifact: `11242586392`
+- Artifact digest: `sha256:0039d1965d760e9f853f9bd753654e525c07e8cf796b456a0f01ff79ff5a2fc9`
+- Central private package installation: PASS
+- TypeScript: PASS
+- Static export: PASS
+- EN/LTR + FA/RTL: PASS
+- no generated canonical `/en` or `/fa` routes: PASS
+- 200% zoom effective-width reflow proxy: PASS
+
+## Final Phase 1 result
+
+**E-M5 ACHIEVED.**
+
+Phase 2 is the next implementation phase. It centralizes shared Header, Mega Menu, Mobile Menu, Footer and reusable section/component APIs using both Engineering and Fastreserve evidence.
