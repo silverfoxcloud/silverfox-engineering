@@ -114,8 +114,10 @@ async function assertPageHealth(page, locale) {
   await expect(page.locator("main")).toHaveAttribute("lang", locale);
   await expect(page.locator("main")).toHaveAttribute("dir", fa ? "rtl" : "ltr");
   await expect(page.locator("h1").first()).toBeVisible();
-  await expect(page.locator(".siteHeader .brandText")).toBeVisible();
-  expect(await page.locator(".siteHeader .brand img").count(), "header brand must be typography-only").toBe(0);
+  await expect(page.locator(".sf-site-header .brandText")).toBeVisible();
+  await expect(page.locator('[data-sf-component="site-header"]')).toHaveAttribute("data-sf-profile", "engineering");
+  await expect(page.locator('[data-sf-component="site-footer"]')).toHaveAttribute("data-sf-profile", "engineering");
+  expect(await page.locator(".sf-header-brand img").count(), "header brand must be typography-only").toBe(0);
   const technicalAccent = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--technical-accent").trim().toLowerCase());
   expect(technicalAccent, "technical accent must use Silver Fox orange").toBe("#ff8225");
 
@@ -243,13 +245,13 @@ test("desktop mega menu closes with Escape and returns focus", async ({ page }) 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await seedLocale(page, "en");
   await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
-  const trigger = page.locator(".megaNavButton").first();
+  const trigger = page.locator(".sf-header-trigger").first();
   await trigger.focus();
   await trigger.press("Enter");
   await expect(trigger).toHaveAttribute("aria-expanded", "true");
-  await expect(page.locator(".megaSurface")).toBeVisible();
+  await expect(page.locator(".sf-mega-surface")).toBeVisible();
   await page.keyboard.press("Escape");
-  await expect(page.locator(".megaSurface")).toHaveCount(0);
+  await expect(page.locator(".sf-mega-surface")).toHaveCount(0);
   await expect(trigger).toBeFocused();
 });
 
@@ -257,17 +259,17 @@ test("mobile navigation uses an accessible accordion and returns focus on Escape
   await page.setViewportSize({ width: 390, height: 844 });
   await seedLocale(page, "fa");
   await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
-  const trigger = page.locator(".mobileMenuTrigger");
+  const trigger = page.locator(".sf-header-mobile-trigger");
   await trigger.click();
-  await expect(page.locator(".mobileNavSurface")).toBeVisible();
-  const group = page.locator(".mobileGroupTrigger").first();
+  await expect(page.locator(".sf-mobile-nav")).toBeVisible();
+  const group = page.locator(".sf-mobile-group-trigger").first();
   await expect(group).toHaveAttribute("aria-expanded", "true");
   await group.click();
   await expect(group).toHaveAttribute("aria-expanded", "false");
   await group.click();
   await expect(group).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Escape");
-  await expect(page.locator(".mobileNavSurface")).toHaveCount(0);
+  await expect(page.locator(".sf-mobile-nav")).toHaveCount(0);
   await expect(trigger).toBeFocused();
 });
 

@@ -1,70 +1,86 @@
-import Link from "next/link";
+import { SfSiteFooter } from "@silverfoxcloud/web-ui/footer";
+import type { SfFooterColumn } from "@silverfoxcloud/web-ui";
 import type { Locale } from "@/data/content";
+import { toPersianDigits } from "@silverfoxcloud/web-locale";
+import WebUiLinkAdapter from "@/components/WebUiLinkAdapter";
 
 export default function SiteFooter({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
-  const localize = (href: string) => href;
+
+  const columns: SfFooterColumn[] = [
+    {
+      id: "engineering",
+      heading: fa ? "مهندسی" : "Engineering",
+      items: [
+        { id: "architecture", href: "/architecture/", label: fa ? "معماری" : "Architecture" },
+        { id: "security", href: "/security/", label: fa ? "امنیت" : "Security" },
+        { id: "devops", href: "/devops-sre/", label: "DevOps & SRE" },
+        { id: "data", href: "/data/", label: fa ? "مهندسی داده" : "Data Engineering" },
+      ],
+    },
+    {
+      id: "platforms",
+      heading: fa ? "پلتفرم‌ها" : "Platforms",
+      items: [
+        { id: "sfas", href: "/platforms/sfas/", label: "SFAS" },
+        { id: "license", href: "/platforms/license-platform/", label: fa ? "پلتفرم لایسنس" : "License Platform" },
+        { id: "foxpay", href: "/platforms/fox-pay/", label: "Fox Pay" },
+        { id: "exotravel", href: "/platforms/exotravel/", label: "ExoTravel" },
+      ],
+    },
+    {
+      id: "packages",
+      heading: fa ? "پکیج‌ها" : "Packages",
+      items: [
+        { id: "directory", href: "/packages/", label: fa ? "دایرکتوری" : "Directory" },
+        { id: "core", href: "/packages/sfas-core/", label: "SFAS Core" },
+        { id: "react", href: "/packages/sfas-react-adapter/", label: "React Adapter" },
+        { id: "date-picker", href: "/packages/sfas-date-picker/", label: "Date Picker" },
+      ],
+    },
+    {
+      id: "resources",
+      heading: fa ? "منابع" : "Resources",
+      items: [
+        { id: "principles", href: "/engineering-principles/", label: fa ? "اصول مهندسی" : "Engineering Principles" },
+        { id: "radar", href: "/technology-radar/", label: fa ? "رادار فناوری" : "Technology Radar" },
+        { id: "github", href: "https://git.silverfoxcloud.com", label: "GitHub ↗", target: "_blank", rel: "noreferrer" },
+        { id: "linkedin", href: "https://www.linkedin.com/company/silverfoxcloud", label: "LinkedIn ↗", target: "_blank", rel: "noreferrer" },
+        { id: "company", href: fa ? "https://silverfox.ir" : "https://silverfoxcloud.com", label: fa ? "شرکت ↗" : "Company ↗", target: "_blank", rel: "noreferrer" },
+      ],
+    },
+  ];
+
+  const brand = (
+    <span className="brand footerBrand">
+      <span className="brandLogoWrap">
+        <img src="/silver-fox-logo.svg" alt="" className="brandLogo" />
+      </span>
+      <span className="brandText">
+        <strong>Silver Fox</strong>
+        <small>Engineering</small>
+      </span>
+    </span>
+  );
 
   return (
-    <footer className="engineeringFooter">
-      <div className="shell footerGrid">
-        <div className="footerIdentity">
-          <div className="brand footerBrand">
-            <span className="brandLogoWrap">
-              <img src="/silver-fox-logo.svg" alt="" className="brandLogo" />
-            </span>
-            <span className="brandText">
-              <strong>Silver Fox</strong>
-              <small>Engineering</small>
-            </span>
-          </div>
-          <p>
-            {fa
-              ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ برای توضیح معماری، تصمیم‌های فناوری و مرزهای پلتفرمی قابل انتشار."
-              : "The public engineering portal for Silver Fox architecture, technology decisions and platform boundaries."}
-          </p>
-        </div>
-
-        <div className="footerGroup">
-          <strong>{fa ? "مهندسی" : "Engineering"}</strong>
-          <Link href={localize("/architecture/")}>{fa ? "معماری" : "Architecture"}</Link>
-          <Link href={localize("/security/")}>{fa ? "امنیت" : "Security"}</Link>
-          <Link href={localize("/devops-sre/")}>DevOps & SRE</Link>
-          <Link href={localize("/data/")}>{fa ? "مهندسی داده" : "Data Engineering"}</Link>
-        </div>
-
-        <div className="footerGroup">
-          <strong>{fa ? "پلتفرم‌ها" : "Platforms"}</strong>
-          <Link href={localize("/platforms/sfas/")}>SFAS</Link>
-          <Link href={localize("/platforms/license-platform/")}>{fa ? "پلتفرم لایسنس" : "License Platform"}</Link>
-          <Link href={localize("/platforms/fox-pay/")}>Fox Pay</Link>
-          <Link href={localize("/platforms/exotravel/")}>ExoTravel</Link>
-        </div>
-
-        <div className="footerGroup">
-          <strong>{fa ? "پکیج‌ها" : "Packages"}</strong>
-          <Link href={localize("/packages/")}>{fa ? "دایرکتوری" : "Directory"}</Link>
-          <Link href={localize("/packages/sfas-core/")}>SFAS Core</Link>
-          <Link href={localize("/packages/sfas-react-adapter/")}>React Adapter</Link>
-          <Link href={localize("/packages/sfas-date-picker/")}>Date Picker</Link>
-        </div>
-
-        <div className="footerGroup">
-          <strong>{fa ? "منابع" : "Resources"}</strong>
-          <Link href={localize("/engineering-principles/")}>{fa ? "اصول مهندسی" : "Engineering Principles"}</Link>
-          <Link href={localize("/technology-radar/")}>{fa ? "رادار فناوری" : "Technology Radar"}</Link>
-          <a href="https://git.silverfoxcloud.com" rel="noreferrer">GitHub ↗</a>
-          <a href="https://www.linkedin.com/company/silverfoxcloud" rel="noreferrer">LinkedIn ↗</a>
-          <a href={fa ? "https://silverfox.ir" : "https://silverfoxcloud.com"} rel="noreferrer">
-            {fa ? "شرکت ↗" : "Company ↗"}
-          </a>
-        </div>
-      </div>
-
-      <div className="shell footerMeta">
-        <span>{fa ? "© ۲۰۲۶ Silver Fox" : "© 2026 Silver Fox"}</span>
+    <SfSiteFooter
+      profile="engineering"
+      brand={brand}
+      brandHref="/"
+      statement={
+        fa
+          ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای؛ برای توضیح معماری، تصمیم‌های فناوری و مرزهای پلتفرمی قابل انتشار."
+          : "The public engineering portal for Silver Fox architecture, technology decisions and platform boundaries."
+      }
+      columns={columns}
+      baselineStart={
+        <span>{fa ? "© " + toPersianDigits("2026") + " Silver Fox" : "© 2026 Silver Fox"}</span>
+      }
+      baselineEnd={
         <span>{fa ? "پرتال عمومی مهندسی شرکت پردازش ابری روباه نقره‌ای" : "Public engineering portal"}</span>
-      </div>
-    </footer>
+      }
+      LinkComponent={WebUiLinkAdapter}
+    />
   );
 }

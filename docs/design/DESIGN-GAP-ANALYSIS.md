@@ -27,3 +27,14 @@ Profile: `engineering`
 
 A difference is not a bug by default.
 Approved local patterns remain protected until a central replacement proves equal or better in behavior, accessibility and responsive quality.
+
+## Phase 2 shared-component convergence
+
+| Area | Phase 1 state | Phase 2 target | Classification | Action |
+|---|---|---|---|---|
+| Header runtime | local approved implementation | central `SfSiteHeader` | MIGRATE | central behavior; local data/brand preserved |
+| Mega Menu runtime | local | central web-ui | MIGRATE | preserve Engineering content and feature panels |
+| Mobile Menu runtime | local | central web-ui | MIGRATE | preserve accordion semantics |
+| Footer structure | local | central `SfSiteFooter` | MIGRATE | preserve Engineering content/external links |
+| Navigation routes | consumer-owned | consumer-owned | ADAPTABLE | language-neutral hrefs remain local |
+| Technology Radar/diagrams | local | local | ADAPTABLE | not centralized |

@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
+import { useMemo } from "react";
 import { usePathname } from "next/navigation";
+import { SfSiteHeader } from "@silverfoxcloud/web-ui/header";
+import type { SfNavigationGroup } from "@silverfoxcloud/web-ui";
 import type { Locale } from "@/data/content";
 import { useLocale } from "@/components/LocaleProvider";
+import WebUiLinkAdapter from "@/components/WebUiLinkAdapter";
 
 const groups = [
   {
@@ -125,206 +127,86 @@ const groups = [
   },
 ] as const;
 
+function splitColumns(
+  id: string,
+  items: readonly (readonly [string, string, string, string, string])[],
+  fa: boolean,
+) {
+  const midpoint = Math.ceil(items.length / 2);
+  return [items.slice(0, midpoint), items.slice(midpoint)]
+    .filter((column) => column.length > 0)
+    .map((column, columnIndex) => ({
+      id: id + "-column-" + columnIndex,
+      items: column.map(([slug, en, faLabel, descEn, descFa]) => ({
+        id: slug,
+        href: slug.startsWith("https://") ? slug : "/" + slug.replace(/^\/+|\/+$/g, "") + "/",
+        label: fa ? faLabel : en,
+        description: fa ? descFa : descEn,
+        ...(slug.startsWith("https://") ? { target: "_blank" as const, rel: "noreferrer" } : {}),
+      })),
+    }));
+}
+
 export default function SiteHeader({ locale }: { locale: Locale }) {
   const fa = locale === "fa";
   const pathname = usePathname();
   const { setLocale } = useLocale();
-  const [openGroup, setOpenGroup] = useState<string | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [mobileGroup, setMobileGroup] = useState<string | null>("engineering");
-  const desktopTriggerRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  const mobileTriggerRef = useRef<HTMLButtonElement>(null);
 
-  const activeGroup = useMemo(
-    () => groups.find((group) => group.id === openGroup) ?? null,
-    [openGroup],
+  const navigation = useMemo<SfNavigationGroup[]>(
+    () =>
+      groups.map((group) => ({
+        id: group.id,
+        label: fa ? group.fa : group.en,
+        columns: splitColumns(group.id, group.items, fa),
+        feature: {
+          eyebrow: fa ? group.feature.fa.eyebrow : group.feature.en.eyebrow,
+          title: fa ? group.feature.fa.title : group.feature.en.title,
+          body: fa ? group.feature.fa.body : group.feature.en.body,
+          ctaLabel: fa ? group.feature.fa.cta : group.feature.en.cta,
+          href: fa ? group.feature.fa.href : group.feature.en.href,
+        },
+      })),
+    [fa],
   );
 
-  useEffect(() => {
-    setOpenGroup(null);
-    setMobileOpen(false);
-    setMobileGroup("engineering");
-  }, [pathname]);
+  const brand = (
+    <span className="brandText brandWordmark">
+      <strong>Silver Fox</strong>
+      <small>Engineering</small>
+    </span>
+  );
 
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      if (openGroup) {
-        const trigger = desktopTriggerRefs.current[openGroup];
-        setOpenGroup(null);
-        requestAnimationFrame(() => trigger?.focus());
-        return;
-      }
-      if (mobileOpen) {
-        setMobileOpen(false);
-        requestAnimationFrame(() => mobileTriggerRef.current?.focus());
-      }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [openGroup, mobileOpen]);
-
-  const hrefFor = (slug: string) => {
-    if (slug.startsWith("https://")) return slug;
-    const clean = "/" + slug.replace(/^\/+|\/+$/g, "") + "/";
-    return clean;
-  };
-
-
-  const closeAll = () => {
-    setOpenGroup(null);
-    setMobileOpen(false);
-    setMobileGroup("engineering");
-  };
+  const localeControl = (
+    <button
+      className="langSwitch"
+      type="button"
+      lang={fa ? "en" : "fa"}
+      onClick={() => setLocale(fa ? "en" : "fa")}
+      aria-label={fa ? "Switch to English" : "تغییر زبان به فارسی"}
+    >
+      {fa ? "English" : "فارسی"}
+    </button>
+  );
 
   return (
-    <header className="siteHeader">
-      <div className="shell navWrap">
-        <Link href="/" className="brand" aria-label="Silver Fox Engineering" onClick={closeAll}>
-          <span className="brandText brandWordmark">
-            <strong>Silver Fox</strong>
-            <small>Engineering</small>
-          </span>
-        </Link>
-
-        <nav className="megaNav" aria-label={fa ? "ناوبری اصلی" : "Primary navigation"}>
-          {groups.map((group) => {
-            const expanded = openGroup === group.id;
-            return (
-              <button
-                className="megaNavButton"
-                type="button"
-                key={group.id}
-                ref={(node) => { desktopTriggerRefs.current[group.id] = node; }}
-                aria-expanded={expanded}
-                aria-controls={"mega-" + group.id}
-                onClick={() => setOpenGroup(expanded ? null : group.id)}
-              >
-                {fa ? group.fa : group.en}
-                <span aria-hidden="true">{expanded ? "−" : "+"}</span>
-              </button>
-            );
-          })}
-        </nav>
-
-        <button
-          className="langSwitch"
-          type="button"
-          lang={fa ? "en" : "fa"}
-          onClick={() => {
-            setLocale(fa ? "en" : "fa");
-            closeAll();
-          }}
-          aria-label={fa ? "Switch to English" : "تغییر زبان به فارسی"}
-        >
-          {fa ? "English" : "فارسی"}
-        </button>
-
-        <button
-          type="button"
-          ref={mobileTriggerRef}
-          className="mobileMenuTrigger"
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => {
-            setMobileOpen((value) => !value);
-            setOpenGroup(null);
-          }}
-        >
-          <span aria-hidden="true">{mobileOpen ? "×" : "☰"}</span>
-          <span className="srOnly">{fa ? "فهرست" : "Menu"}</span>
-        </button>
-      </div>
-
-      {activeGroup && (
-        <>
-          <button
-            type="button"
-            className="menuBackdrop"
-            aria-label={fa ? "بستن فهرست" : "Close navigation"}
-            onClick={() => setOpenGroup(null)}
-          />
-          <div className="megaSurface" id={"mega-" + activeGroup.id}>
-            <div className="shell megaPanelInner">
-              <div className="megaItems">
-                {activeGroup.items.map(([slug, en, label, descEn, descFa]) => (
-                  <Link
-                    key={slug}
-                    href={hrefFor(slug)}
-                    className="megaLink"
-                    onClick={closeAll}
-                  >
-                    <span className="megaLinkCopy">
-                      <strong>{fa ? label : en}</strong>
-                      <small>{fa ? descFa : descEn}</small>
-                    </span>
-                    <span aria-hidden="true">↗</span>
-                  </Link>
-                ))}
-              </div>
-
-              <aside className="megaFeature">
-                <span>{fa ? activeGroup.feature.fa.eyebrow : activeGroup.feature.en.eyebrow}</span>
-                <strong>{fa ? activeGroup.feature.fa.title : activeGroup.feature.en.title}</strong>
-                <p>{fa ? activeGroup.feature.fa.body : activeGroup.feature.en.body}</p>
-                <Link
-                  href={hrefFor(fa ? activeGroup.feature.fa.href : activeGroup.feature.en.href)}
-                  onClick={closeAll}
-                >
-                  {fa ? activeGroup.feature.fa.cta : activeGroup.feature.en.cta}
-                  <span aria-hidden="true"> ↗</span>
-                </Link>
-              </aside>
-            </div>
-          </div>
-        </>
-      )}
-
-      {mobileOpen && (
-        <>
-          <button
-            type="button"
-            className="menuBackdrop mobileBackdrop"
-            aria-label={fa ? "بستن فهرست" : "Close navigation"}
-            onClick={() => setMobileOpen(false)}
-          />
-          <nav
-            id="mobile-navigation"
-            className="mobileNavSurface"
-            aria-label={fa ? "فهرست موبایل" : "Mobile navigation"}
-          >
-            <div className="shell mobileNavInner">
-              {groups.map((group) => {
-                const expanded = mobileGroup === group.id;
-                return (
-                  <section key={group.id}>
-                    <button
-                      type="button"
-                      className="mobileGroupTrigger"
-                      aria-expanded={expanded}
-                      aria-controls={"mobile-group-" + group.id}
-                      onClick={() => setMobileGroup(expanded ? null : group.id)}
-                    >
-                      <strong>{fa ? group.fa : group.en}</strong>
-                      <span aria-hidden="true">{expanded ? "−" : "+"}</span>
-                    </button>
-                    {expanded && (
-                      <div id={"mobile-group-" + group.id}>
-                        {group.items.map(([slug, en, label]) => (
-                          <Link key={slug} href={hrefFor(slug)} onClick={closeAll}>
-                            {fa ? label : en}
-                            <span aria-hidden="true">↗</span>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </section>
-                );
-              })}
-            </div>
-          </nav>
-        </>
-      )}
-    </header>
+    <SfSiteHeader
+      profile="engineering"
+      brand={brand}
+      brandHref="/"
+      groups={navigation}
+      labels={{
+        primaryNavigation: fa ? "ناوبری اصلی" : "Primary navigation",
+        mobileNavigation: fa ? "فهرست موبایل" : "Mobile navigation",
+        openMenu: fa ? "باز کردن فهرست" : "Open menu",
+        closeMenu: fa ? "بستن فهرست" : "Close menu",
+        closeNavigation: fa ? "بستن فهرست" : "Close navigation",
+      }}
+      navigationKey={pathname + ":" + locale}
+      LinkComponent={WebUiLinkAdapter}
+      localeControl={localeControl}
+      hoverIntent={false}
+      showBackdrop
+      defaultMobileGroupId="engineering"
+    />
   );
 }
