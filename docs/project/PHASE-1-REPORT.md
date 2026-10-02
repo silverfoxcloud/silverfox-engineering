@@ -98,3 +98,8 @@ The repository visibility API still reports `public` as of this phase work, even
 ## Next
 
 **Phase 2 — Shared Component Convergence.**
+
+## Closure CI behavior
+
+Visual QA concurrency is branch-scoped. A new commit on this pilot branch may cancel only an older run for the same branch, not unrelated `main` validation.
+The authoritative closure gate is the latest Visual QA run for the latest branch head.
