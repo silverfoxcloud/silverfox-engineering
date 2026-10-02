@@ -88,3 +88,28 @@ The final integrated Engineering mainline was revalidated after the Phase 1 clos
 - digest: `sha256:0039d1965d760e9f853f9bd753654e525c07e8cf796b456a0f01ff79ff5a2fc9`
 
 This closes Phase 1 runtime adoption. Full shared-component convergence remains Phase 2 and is not misrepresented as complete here.
+
+
+## Phase 2 convergence status
+
+Status: **IN PROGRESS — final browser evidence pending**
+
+Target central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.2`
+
+Phase 2 moves the following previously approved-local runtime into the central package:
+- Header state/markup shell;
+- Mega Menu interaction runtime;
+- Mobile Menu accordion/focus runtime;
+- Footer structural runtime.
+
+Engineering continues to own:
+- navigation labels and route tree;
+- Engineering wordmark/content;
+- locale persistence state;
+- Technology Radar;
+- architecture/platform diagrams;
+- publication content.
+
+Alpha 2 was selected instead of Alpha 1 because pre-reference review found interaction-semantic differences around click-only disclosure and focus-open behavior. These were corrected centrally before M2 acceptance.
+
+No true design exception has been approved.
