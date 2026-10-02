@@ -6,7 +6,7 @@ Make Silver Fox Engineering consume the centrally owned Header, Mega Menu, Mobil
 
 ## Central dependency
 
-`@silverfoxcloud/web-ui@1.2.0-alpha.1`
+`@silverfoxcloud/web-ui@1.2.0-alpha.2`
 
 Source of truth:
 `silverfoxcloud/silverfox-web-design-system`
