@@ -23,7 +23,7 @@
 
 ## QA
 - [x] update central component selectors;
-- [ ] package install;
+- [ ] package install — BLOCKED only by `@silverfoxcloud/web-ui` Actions package access.
 - [ ] typecheck;
 - [ ] static export;
 - [ ] same-visible-URL locale;
@@ -45,3 +45,11 @@
 - [x] Gap Analysis update;
 - [ ] Compliance Report;
 - [ ] Phase 2 End Report.
+
+
+## Current integration gate — 2026-10-02
+- Central `web-ui@1.2.0-alpha.1` is published successfully.
+- Engineering PR #6 attempts real GitHub Packages installation.
+- Current CI failure: `403 permission_denied: read_package` for `@silverfoxcloud/web-ui`.
+- Existing central tokens/fonts/locale package access remains valid.
+- No copied-source fallback is allowed.
