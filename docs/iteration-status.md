@@ -1,3 +1,14 @@
+# Central Web Platform Pilot — Phase 1 closure
+
+- Central runtime packages consumed from GitHub Packages.
+- Legacy locale-prefixed route tree removed.
+- Persian human-number helper adopted for explicit human-number surfaces.
+- Expanded responsive matrix implemented.
+- Implementation Visual QA run #84: **392 / 392 PASS**.
+- Phase 2 will centralize shared Header/Footer/navigation primitives using both Engineering and Fastreserve evidence.
+
+---
+
 # Central Web Platform Pilot — 2026-10-01
 
 ## Status — PHASE 1 IN PROGRESS

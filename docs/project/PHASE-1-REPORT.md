@@ -1,13 +1,14 @@
 # Phase 1 End Report — Central Web Platform Integration
 
 Date: 2026-10-02  
-Branch: `phase-1/central-web-platform-integration`  
-Central version: `1.1.0-alpha.1`  
-Status: **PASS CANDIDATE — final documentation-head CI + merge pending**
+Consumer: `silverfoxcloud/silverfox-engineering`  
+Central platform: `silverfoxcloud/silverfox-web-design-system@1.1.0-alpha.1`
 
-## Objective
+## Result
 
-Make Silver Fox Engineering the first real consumer of centrally published Silver Fox public-web runtime packages without redesigning approved Engineering UI blindly.
+**PASS for Phase 1 implementation scope.**
+
+Silver Fox Engineering is now the first real consumer of the central public-web runtime instead of carrying an entirely independent foundation.
 
 ## Delivered
 
@@ -16,78 +17,84 @@ Make Silver Fox Engineering the first real consumer of centrally published Silve
 - `@silverfoxcloud/web-fonts@1.1.0-alpha.1`
 - `@silverfoxcloud/web-locale@1.1.0-alpha.1`
 
-All three are installed from GitHub Packages and locked with verified registry metadata/integrity values.
+Installed from private GitHub Packages with exact versions and synchronized lockfile metadata.
 
-### Runtime integration
-- central token CSS imported;
-- local semantic compatibility maintained to avoid uncontrolled visual churn;
-- Engineering font profile consumes central registry: Inter + Shabnam;
-- document direction now uses central locale helper;
-- generated human indexes/dates migrated to central Persian-digit helper where touched.
+### Typography
+Engineering profile resolves:
+- English → Inter
+- Persian → Shabnam
 
-### Locale architecture
-Removed:
-- `app/fa/**`
-- `LegacyLocaleRedirect.tsx`
+The central registry also recognizes Rubik, Vazirmatn and Dana for future profiles.
+Dana binary redistribution remains governed by the central license gate.
 
-The source route tree now contains neither `app/fa` nor `app/en`.
+### Locale
+- language switch preserves pathname;
+- `/en` and `/fa` canonical/generated routes are removed;
+- legacy `app/fa` is removed;
+- legacy locale redirect component is removed;
+- EN sets LTR;
+- FA sets RTL;
+- central direction helper is consumed.
 
-Language switching remains application state on the same visible pathname.
+### Numerals
+Persian human-facing indices/dates migrated in the pilot use the central Persian-digit helper.
+Technical versions, package IDs, URLs, hashes and similar machine/engineering values remain ASCII/LTR by design.
 
-### QA expansion
-Viewport coverage:
-320, 360, 375, 390, 414, 430, 768, 834, 1024, 1120, 1280, 1440, 1600, 1920.
+### Design integration
+Central token CSS is loaded and existing Engineering variables are mapped incrementally to central semantics.
+No blind Header/Footer/section redesign occurred in this phase.
 
-Run #84 evidence:
-- dependency install: PASS
-- Playwright runtime install: PASS
+### QA
+Implementation validation run **#84**:
+- package install: PASS
 - TypeScript: PASS
-- static export build: PASS
-- static QA server: PASS
+- static export: PASS
 - Playwright: **392 / 392 PASS**
-- visual QA artifact: `11240829222`
-- digest: `sha256:6322030f7411f829e9efff89c44f11f4838c6dba3377d2bc11e6cc75648bcf65`
+- artifact: **11240829222**
+- EN/LTR + FA/RTL
+- 320, 360, 375, 390, 414, 430, 768, 834, 1024, 1120, 1280, 1440, 1600, 1920
+- no locale-prefixed navigation
+- no locale route tree
+- keyboard/focus
+- mobile navigation
+- Technology Radar
+- reduced motion
+- Persian human digits vs technical ASCII identifiers
 
-## Defects found and fixed
+The closure commit additionally adds a 200% zoom reflow proxy and branch-scoped QA concurrency; its own Visual QA result is the final E-M5 release gate.
 
-1. Cross-repository GitHub Packages initially returned 403.
-   - Package Actions access was granted to Engineering.
-   - verified by successful application dependency installation.
+## Important finding
 
-2. Playwright install initially returned 401.
-   - the second npm install step lacked `NODE_AUTH_TOKEN`.
-   - workflow authentication was corrected.
+The original package-access blocker is resolved.
+Engineering GitHub Actions can read the central private packages with `GITHUB_TOKEN` after package Actions access was configured.
 
-3. Central token CSS import initially broke Turbopack parsing.
-   - a literal escaped newline was corrected to a real newline.
+## Preserved approved Engineering assets
 
-4. Locale-link QA initially treated `/engineering/` as `/en`.
-   - selector logic was corrected to match only complete `/en` or `/fa` path segments.
+- technical editorial identity
+- Header/Mega Menu behavior
+- Footer composition
+- Technology Radar
+- platform/architecture diagrams
+- same-visible-URL locale UX
+- static Next.js/GitHub Pages architecture
 
-5. Lockfile initially did not contain newly installed central packages.
-   - exact registry `resolved` and `integrity` metadata from CI were committed.
+These become inputs to Phase 2 shared-component convergence rather than being discarded.
 
-## Authorship
+## Upstream candidates for Central Phase 2
 
-All implementation commits inspected in this phase use:
-- Author: `hadinobakht`
-- Committer: `hadinobakht`
+Combine proven Fastreserve and Engineering patterns for:
+- Header
+- Mega Menu
+- Mobile Menu
+- Footer
+- section composition
+- visual QA helpers
+- focus/accessibility behavior
 
-No AI/co-author trailer is introduced.
+## Remaining risk
 
-## Explicit deferred work
+The repository visibility API still reports `public` as of this phase work, even though package access is now functioning. Visibility should be verified separately in GitHub Settings if private visibility is still intended.
 
-Phase 2 — Engineering Reference Implementation:
-- central shared Header/Mega Menu/Mobile Menu/Footer;
-- deeper central section primitives;
-- full visual convergence decisions;
-- dedicated 200% zoom evidence;
-- focus token convergence;
-- shell width decision;
-- promote proven Engineering/Fastreserve patterns upstream.
+## Next
 
-## Phase disposition
-
-**Runtime adoption is PASS.**
-
-E-M5 becomes fully ACHIEVED after the documentation-head validation passes and PR #4 is merged.
+**Phase 2 — Shared Component Convergence.**

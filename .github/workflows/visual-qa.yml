@@ -12,7 +12,7 @@ permissions:
   packages: read
 
 concurrency:
-  group: "visual-qa"
+  group: "visual-qa-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:

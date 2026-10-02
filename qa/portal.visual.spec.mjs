@@ -311,3 +311,20 @@ test("persisted Persian is resolved before visible application state", async ({ 
   await expect(page.locator("main")).toHaveAttribute("lang", "fa");
   await expect(page.locator("h1").first()).toContainText("محصولات مستقل");
 });
+
+for (const locale of ["en", "fa"]) {
+  test(`200% zoom reflow proxy ${locale}`, async ({ page }) => {
+    // A 1280 CSS-pixel desktop viewport viewed at 200% exposes about 640 CSS px.
+    // Validate reflow at that effective width without relying on browser-specific zoom APIs.
+    await page.setViewportSize({ width: 640, height: 900 });
+    await seedLocale(page, locale);
+    const response = await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+    expect(response?.ok()).toBeTruthy();
+    await assertPageHealth(page, locale);
+    const overflow = await page.evaluate(() => ({
+      scroll: document.documentElement.scrollWidth,
+      client: document.documentElement.clientWidth,
+    }));
+    expect(overflow.scroll, "200% zoom proxy horizontal overflow").toBeLessThanOrEqual(overflow.client + 2);
+  });
+}

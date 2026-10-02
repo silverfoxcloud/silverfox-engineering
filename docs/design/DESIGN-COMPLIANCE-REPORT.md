@@ -1,58 +1,78 @@
 # Design Compliance Report — Phase 1
 
-Status: **RUNTIME ADOPTION PASS**
+Status: **PASS for Phase 1 scope; Phase 2 visual/component convergence remains planned.**
 
 - Project: `silverfoxcloud/silverfox-engineering`
 - Central design platform: `silverfoxcloud/silverfox-web-design-system@1.1.0-alpha.1`
 - Profile: `engineering`
-- Validated runtime head: `6d229904b8f94bed6022c4487db3ca21bcc09c54`
-- Workflow: Silver Fox Engineering Visual QA **#84**
+- Reference implementation validation: Visual QA run **#84**
 - Result: **392 / 392 PASS**
-- Artifact: `11240829222`
-- Artifact digest: `sha256:6322030f7411f829e9efff89c44f11f4838c6dba3377d2bc11e6cc75648bcf65`
+- Artifact: **11240829222**
 
-## Phase 1 compliance result
+## Phase 1 evidence
 
-### PASS
-- real installation from private GitHub Packages;
-- exact package versions locked in `package-lock.json`;
-- central token CSS consumed;
-- central font profile metadata consumed;
-- central locale/direction helpers consumed;
-- central Persian-digit helper used on migrated human-number surfaces;
-- no generated `/fa` application route tree;
-- no generated `/en` application route tree;
-- language switching preserves visible pathname;
-- EN/LTR and FA/RTL browser coverage;
-- expanded responsive viewport matrix;
-- keyboard/focus-return behavior;
-- reduced motion;
-- TypeScript;
-- static export;
-- broken-image / overflow health checks.
+- private GitHub Packages install: PASS
+- package-lock synchronized with registry integrity/resolved metadata: PASS
+- TypeScript: PASS
+- static Next.js export: PASS
+- EN/LTR: PASS
+- FA/RTL: PASS
+- central token package loaded: PASS
+- central font profile consumed: PASS
+- central locale/direction helper consumed: PASS
+- Persian human-facing digit assertions: PASS
+- technical package versions remain ASCII/LTR: PASS
+- no generated `/en` or `/fa` route tree: PASS
+- no locale-prefixed navigation links: PASS
+- same-path language switching: PASS
+- responsive matrix: PASS
+- keyboard/Escape/focus return: PASS
+- reduced motion: PASS
+- 200% zoom reflow proxy: included in closure validation
 
-## Scope boundary
+## Classification summary
 
-This is **not** a claim that every Engineering visual primitive is already centralized.
+### COMPLIANT
+- Shabnam Engineering Persian profile
+- Inter Engineering English profile
+- independent Persian content
+- restrained card usage
+- reduced-motion behavior
+- same-visible-URL locale product decision
 
-The following intentionally remain Phase 2 work:
-- shared Header extraction;
-- shared Mega Menu / Mobile Menu extraction;
-- shared Footer extraction;
-- deeper semantic-token convergence;
-- focus-token visual convergence;
-- 1240px vs 1280px shell comparison;
-- complete audit of every human number embedded inside source-authored Persian prose;
-- dedicated 200% zoom evidence;
-- component-level central visual regression.
+### MIGRATED in Phase 1
+- central package dependencies
+- token compatibility layer
+- font profile registry
+- locale/direction helper
+- Persian human-number helper on explicit human-number surfaces
+- removal of legacy `app/fa`
+- expanded central viewport matrix
+- package-aware CI permissions
 
-## Current classification snapshot
+### ADAPTABLE / APPROVED-LOCAL
+- Engineering navigation information architecture
+- current Header/Mega Menu behavior
+- current Footer composition
+- Technology Radar
+- technical platform diagrams
+- current 1240px shell pending Phase 2 browser comparison
 
-- COMPLIANT: Shabnam profile, Inter profile, same-path locale UX, reduced motion, Persian independent authoring, restrained card use.
-- MIGRATED in Phase 1: central package dependencies, runtime token layer, locale/direction helper, Persian digit helper on component-generated numbers, locale-route removal, expanded responsive QA.
-- ADAPTABLE / APPROVED-LOCAL: Technology Radar, platform diagrams, Engineering IA, typography-only wordmark, current Header/Footer behavior, 1240px shell pending Phase 2 review.
-- EXCEPTIONS: none approved.
+### Remaining Phase 2 convergence
+- generalize shared Header/Mega Menu/Mobile Menu/Footer APIs upstream
+- deeper semantic-token replacement after visual comparison
+- focus-token convergence with accessibility/contrast review
+- decide which Engineering section primitives should become shared `web-ui`
+- broaden automatic Persian human-number formatting without altering technical identifiers
 
-## Result
+## Exceptions
 
-Phase 1 proves the architecture: Silver Fox Engineering can consume centrally versioned private packages without copying their source.
+**0 approved true exceptions.**
+
+Approved local/profile adaptations are not counted as exceptions.
+
+## Closure rule
+
+This report is committed together with the Phase 1 closure changes.
+E-M5 becomes final when the Visual QA workflow for this closure commit is SUCCESS.
+No additional documentation mutation is required solely to record that self-referential run.

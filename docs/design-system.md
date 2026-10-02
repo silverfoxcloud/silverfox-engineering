@@ -225,3 +225,12 @@ Implementation and browser QA cover:
 - RTL document order.
 
 Accessibility takes precedence over visual imitation of any reference site.
+
+## Central source of truth
+
+The ecosystem-wide public-web source of truth is `silverfoxcloud/silverfox-web-design-system`.
+
+This repository is the Engineering profile/reference consumer.
+
+Phase 1 consumes central tokens, font-profile and locale runtime packages while preserving the approved Engineering composition.
+Shared Header/Footer/navigation components are not considered centralized until Phase 2 extracts and proves them upstream.

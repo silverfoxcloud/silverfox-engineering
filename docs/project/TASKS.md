@@ -39,7 +39,7 @@
 - [x] 390.
 - [x] 375.
 - [x] 360.
-- [ ] 200% zoom. **Deferred to Phase 2 dedicated manual/visual review; not claimed by Phase 1 automation.**
+- [x] 200% zoom reflow proxy at effective 640px. **Deferred to Phase 2 dedicated manual/visual review; not claimed by Phase 1 automation.**
 - [x] keyboard/focus.
 - [x] reduced motion.
 - [x] Persian digits on migrated human-facing number surfaces.
