@@ -2,14 +2,14 @@
   "project": "silverfoxcloud/silverfox-engineering",
   "designSystem": {
     "repository": "silverfoxcloud/silverfox-web-design-system",
-    "version": "1.2.0-alpha.3",
+    "version": "1.2.0-alpha.4",
     "profile": "engineering"
   },
   "packages": {
-    "tokens": "@silverfoxcloud/web-tokens@1.2.0-alpha.3",
-    "fonts": "@silverfoxcloud/web-fonts@1.2.0-alpha.3",
-    "locale": "@silverfoxcloud/web-locale@1.2.0-alpha.3",
-    "ui": "@silverfoxcloud/web-ui@1.2.0-alpha.3"
+    "tokens": "@silverfoxcloud/web-tokens@1.2.0-alpha.4",
+    "fonts": "@silverfoxcloud/web-fonts@1.2.0-alpha.4",
+    "locale": "@silverfoxcloud/web-locale@1.2.0-alpha.4",
+    "ui": "@silverfoxcloud/web-ui@1.2.0-alpha.4"
   },
   "locales": [
     "en",

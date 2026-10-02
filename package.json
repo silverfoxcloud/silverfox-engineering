@@ -12,10 +12,10 @@
     "next": "16.3.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "@silverfoxcloud/web-tokens": "1.2.0-alpha.3",
-    "@silverfoxcloud/web-fonts": "1.2.0-alpha.3",
-    "@silverfoxcloud/web-locale": "1.2.0-alpha.3",
-    "@silverfoxcloud/web-ui": "1.2.0-alpha.3"
+    "@silverfoxcloud/web-tokens": "1.2.0-alpha.4",
+    "@silverfoxcloud/web-fonts": "1.2.0-alpha.4",
+    "@silverfoxcloud/web-locale": "1.2.0-alpha.4",
+    "@silverfoxcloud/web-ui": "1.2.0-alpha.4"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
