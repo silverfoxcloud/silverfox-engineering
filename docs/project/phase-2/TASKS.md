@@ -2,7 +2,7 @@
 
 ## Integration
 - [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.2`;
-- [ ] sync package-lock;
+- [x] sync package-lock with real Alpha 2 registry metadata;
 - [x] add Next `transpilePackages`;
 - [x] import central web-ui styles.
 
@@ -23,18 +23,18 @@
 
 ## QA
 - [x] update central component selectors;
-- [ ] package install — BLOCKED only by `@silverfoxcloud/web-ui` Actions package access.
-- [ ] typecheck;
-- [ ] static export;
-- [ ] same-visible-URL locale;
-- [ ] no `/en` or `/fa` routes;
-- [ ] EN/LTR;
-- [ ] FA/RTL;
-- [ ] 320–1920 responsive matrix;
-- [ ] keyboard/Escape/focus return + click-only desktop disclosure;
-- [ ] mobile accordion + focus containment + desktop-breakpoint cleanup;
-- [ ] reduced motion;
-- [ ] screenshot/manual review.
+- [x] package install — Actions package access resolved; Alpha 2 install PASS in run #98.
+- [x] typecheck — PASS in run #98; closure run must reconfirm.
+- [x] static export — PASS in run #98; closure run must reconfirm.
+- [ ] same-visible-URL locale — closure browser gate.
+- [ ] no `/en` or `/fa` routes — closure browser gate.
+- [ ] EN/LTR — closure browser gate.
+- [ ] FA/RTL — closure browser gate.
+- [ ] 320–1920 responsive matrix — closure browser gate.
+- [ ] keyboard/Escape/focus return + click-only desktop disclosure — closure browser gate.
+- [ ] mobile accordion + focus containment + desktop-breakpoint cleanup — closure browser gate.
+- [ ] reduced motion — closure browser gate.
+- [ ] screenshot/manual review — closure artifact.
 
 ## Documentation
 - [x] Business Model;

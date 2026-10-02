@@ -208,7 +208,7 @@ test("language switch keeps the exact url, history position and locale across na
   await expect(page.locator("h1").first()).toContainText("محصولات مستقل");
   expect(await page.evaluate(() => history.length)).toBe(initialHistory);
 
-  await page.locator('a[href="/architecture/"]').first().click();
+  await page.locator('a[href="/architecture/"]:visible').first().click();
   await expect(page).toHaveURL(baseURL + "/architecture/");
   await expect(page.locator("html")).toHaveAttribute("lang", "fa");
   expect(await page.evaluate(() => localStorage.getItem("silverfox-engineering-locale"))).toBe("fa");

@@ -2,51 +2,56 @@
 
 Date: 2026-10-02
 
-## Central dependency
+## Central
 
-`@silverfoxcloud/web-ui@1.2.0-alpha.2` — published and centrally validated. Alpha 2 includes the pre-reference hover/focus/mobile-focus corrections.
+- package family `1.2.0-alpha.2`: **PUBLISHED**
+- `@silverfoxcloud/web-ui@1.2.0-alpha.2`: **PUBLISHED**
+- Alpha 2 central validation: **PASS**
+- Alpha 2 publish workflow: **PASS**
 
-## Engineering migration
+## Engineering
 
-Implemented on `phase-2/shared-component-convergence`:
-- central Header runtime;
-- central Mega Menu runtime;
-- central Mobile Menu runtime;
-- central Footer runtime;
-- route-agnostic Next Link adapter;
-- central CSS import;
-- Next transpilePackages configuration;
-- Engineering-owned navigation/content preserved;
-- same-visible-URL locale preserved;
-- QA selectors migrated to central component contracts.
+- branch: `phase-2/shared-component-convergence`
+- PR: #6
+- package Actions read access: **RESOLVED**
+- Header migration: **IMPLEMENTED**
+- Mega Menu migration: **IMPLEMENTED**
+- Mobile Menu migration: **IMPLEMENTED**
+- Footer migration: **IMPLEMENTED**
+- same-visible-URL locale: **PRESERVED**
+- source-owned route/content model: **PRESERVED**
+- package lock: **SYNCHRONIZED TO REGISTRY ALPHA 2 METADATA**
+- deterministic install: **RESTORED TO npm ci**
 
-## Current CI gate
+## Run #98 findings
 
-PR #6 cannot install `@silverfoxcloud/web-ui` until this repository is granted Actions read access to the newly created package.
+PASS:
+- package access/install;
+- Playwright runtime install;
+- TypeScript;
+- static export.
 
-Observed:
-`403 permission_denied: read_package`
+Browser failure classification:
+1. real consumer CSS integration regression at <=390px: typography wordmark hidden because a legacy override referenced `.siteHeader`;
+2. QA selector issue: locale persistence test selected a hidden `/architecture/` link inside central menu markup.
 
-This is a GitHub Packages permission gate, not a TypeScript/build/browser failure.
+Both are remediated in the closure commit.
 
-After access is granted:
-1. re-run PR #6;
-2. capture exact 1.2 lock metadata;
-3. switch workflow back to `npm ci`;
-4. run full browser matrix;
-5. remediate real component/visual differences;
-6. close E2 milestones and M2.
+## Closure gate
 
+The latest PR #6 Visual QA run after these remediations is authoritative.
 
-## Alpha 2 consumer preparation
-
-Engineering source now pins the full central package family to `1.2.0-alpha.2`.
-Additional browser assertions cover:
-- click-only desktop disclosure;
-- focus without automatic panel opening;
-- Escape and focus return;
+Required:
+- full route/viewport matrix;
+- EN/LTR + FA/RTL;
+- no locale route segments;
+- click-only Engineering desktop disclosure;
+- Escape/focus return;
 - mobile accordion;
 - mobile focus containment;
-- mobile→desktop state cleanup.
+- mobile→desktop state cleanup;
+- reduced motion;
+- Persian human digits;
+- 200% reflow proxy.
 
-Lockfile synchronization remains intentionally pending until GitHub Actions can read the private `web-ui` package.
+M2 is achieved only after the latest PR head passes this gate and PR #6 is merged.
