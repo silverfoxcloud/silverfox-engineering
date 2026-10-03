@@ -91,7 +91,7 @@ This closes Phase 1 runtime adoption. Full shared-component convergence remains 
 
 ## Phase 2 — Shared Component Convergence
 
-Status: **ENGINEERING PASS — E2-M5 ACHIEVED ON PHASE BRANCH**
+Status: **PHASE 2 PASS — M2 ENGINEERING REFERENCE ACHIEVED**
 
 Central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.4`  
 Profile: `engineering`
@@ -140,4 +140,11 @@ Direct Phase 1 vs Alpha 4 artifact review confirmed that centralization preserve
 ### Remaining work
 No Phase 2 consumer blocker remains.
 
-Ecosystem M2 becomes final after the fast-forwardable branch is integrated into `main` and mainline validation succeeds.
+Ecosystem M2 is final.
+
+Mainline evidence:
+- runtime commit `ab86ec7235b4432658c924785469ce5f6c9aa856`;
+- Visual QA #109: 401/401 PASS;
+- artifact `11265027384`;
+- artifact digest `sha256:7d182b730f96f3ba633e1dbe4c8299fffc6b30e42fc04f3d65abdc30b204e669`;
+- Pages #182: SUCCESS.

@@ -8,8 +8,7 @@ Reference runtime commit: `80310ab66225ce5ce2a059bd962b1e60cb2f4eed`
 
 ## Status
 
-**ENGINEERING PASS — E2-M5 ACHIEVED ON THE PHASE BRANCH.**  
-**ECOSYSTEM M2: MERGE/MAIN VALIDATION PENDING.**
+**PASS — ENGINEERING E2-M5 AND ECOSYSTEM M2 ACHIEVED.**
 
 ## Delivered
 
@@ -147,7 +146,26 @@ Engineering-specific Radar, diagrams, content IA and click-only disclosure are p
 
 Engineering E2-M0 through E2-M5: **ACHIEVED**.
 
-Ecosystem **M2 — Engineering Reference PASS** becomes final when this fast-forwardable branch is integrated into `main` and the mainline validation succeeds.
+Ecosystem **M2 — Engineering Reference PASS: ACHIEVED**.
+
+## Main integration record
+
+The validated Phase 2 branch was fast-forwarded into `main` without a synthetic merge commit.
+
+Runtime/main commit validated:
+`ab86ec7235b4432658c924785469ce5f6c9aa856`
+
+Mainline evidence:
+- Visual QA run **#109**: **401 / 401 PASS**
+- Visual artifact: `11265027384`
+- artifact digest: `sha256:7d182b730f96f3ba633e1dbe4c8299fffc6b30e42fc04f3d65abdc30b204e669`
+- Pages run **#182**: **SUCCESS**
+- package install: `npm ci` PASS
+- TypeScript: PASS
+- static export: PASS
+- deployment: PASS
+
+The documentation-only M2 close record is intentionally committed with CI skip after these mainline runtime gates; it does not alter runtime code or package dependencies.
 
 ## Next
 

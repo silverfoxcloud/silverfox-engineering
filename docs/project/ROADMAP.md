@@ -4,39 +4,39 @@
 Status: **PASS — E-M5 ACHIEVED**
 
 Delivered:
-- central tokens/fonts/locale packages;
-- deterministic package-lock and CI integration;
-- same-visible-URL locale enforcement;
-- removal of locale route tree;
-- Persian human-number helper adoption;
-- expanded QA matrix.
+- central tokens/fonts/locale;
+- deterministic GitHub Packages integration;
+- language-neutral URL architecture;
+- Persian human-number contract;
+- expanded QA.
 
 ## Phase 2 — Shared Component Convergence
-Status: **ENGINEERING PASS — E2-M5 ACHIEVED ON PHASE BRANCH; MAIN INTEGRATION PENDING**
+Status: **PASS — M2 ENGINEERING REFERENCE ACHIEVED**
 
 Delivered:
 - central Header;
 - central Mega Menu;
 - central Mobile Menu;
 - central Footer;
-- Engineering profile-preserving interaction rules;
-- Footer structural and typography parity profiles;
-- deterministic Alpha 4 package family;
-- artifact-backed parity review;
-- removal of superseded local Header/Footer runtime CSS;
-- 401/401 browser QA after cleanup.
-
-Exit: ecosystem M2 after fast-forward + mainline validation.
+- profile-level Engineering behavior/parity;
+- Alpha 4 deterministic package family;
+- artifact-backed visual parity;
+- removal of superseded local shared-component CSS;
+- branch and mainline 401/401 QA PASS;
+- Pages deployment PASS.
 
 ## Phase 3 — Engineering Reference Release
 Status: **NEXT**
 
 Goals:
-- finalize the post-pilot Engineering profile;
-- convert validated parity assertions into reusable central QA contracts;
-- publish/reference a post-pilot central release candidate;
-- prove the normal central upgrade workflow;
-- identify only genuinely reusable Engineering section primitives;
-- prepare the Silver Fox main website as the next consumer.
+- finalize the post-pilot Engineering profile contract;
+- promote validated parity checks into reusable central QA;
+- define the normal central upgrade workflow;
+- prepare a post-pilot release candidate;
+- evaluate only proven reusable Engineering section primitives;
+- prepare the Silver Fox main website as the next ecosystem consumer.
 
-After Phase 3, rollout proceeds to the Silver Fox main website, then Fastreserve.
+After Engineering Reference Release:
+1. Silver Fox main website
+2. Fastreserve
+3. future Silver Fox public web properties

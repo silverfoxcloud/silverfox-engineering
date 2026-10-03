@@ -2,7 +2,7 @@
 
 ```mermaid
 gantt
-    title Silver Fox Engineering Phase 2 — Completed
+    title Silver Fox Engineering Phase 2 — Complete
     dateFormat  YYYY-MM-DD
     axisFormat  %b %d
 
@@ -15,7 +15,7 @@ gantt
     Mobile Menu migration              :done, e23, after e22, 1d
     Footer migration                   :done, e24, after e23, 1d
 
-    section Refinement
+    section Central Refinement
     Interaction semantics Alpha 2      :done, e25, 2026-10-02, 1d
     Footer structure Alpha 3           :done, e26, 2026-10-02, 1d
     Footer typography Alpha 4          :done, e27, 2026-10-02, 1d
@@ -23,10 +23,10 @@ gantt
     section Validation
     Deterministic parity QA            :done, e28, 2026-10-03, 1d
     Legacy CSS cleanup + QA            :done, e29, 2026-10-03, 1d
+    Mainline QA + deploy               :done, e30, 2026-10-03, 1d
 
     section Close
-    Engineering phase report           :done, e30, 2026-10-03, 1d
-    Main integration                   :milestone, e31, after e30, 0d
+    M2 Engineering Reference PASS      :milestone, done, e31, 2026-10-03, 0d
 ```
 
-Milestone evidence, not calendar duration, is authoritative.
+Milestone evidence, not elapsed time, is authoritative.
