@@ -89,64 +89,55 @@ The final integrated Engineering mainline was revalidated after the Phase 1 clos
 
 This closes Phase 1 runtime adoption. Full shared-component convergence remains Phase 2 and is not misrepresented as complete here.
 
+## Phase 2 — Shared Component Convergence
 
-## Phase 2 convergence status
+Status: **ENGINEERING PASS — E2-M5 ACHIEVED ON PHASE BRANCH**
 
-Status: **IN PROGRESS — final browser evidence pending**
+Central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.4`  
+Profile: `engineering`
 
-Target central platform: `silverfoxcloud/silverfox-web-design-system@1.2.0-alpha.3`
+### MIGRATED
+- Header runtime → central `SfSiteHeader`
+- Mega Menu runtime → central `@silverfoxcloud/web-ui`
+- Mobile Menu/accordion/focus runtime → central `@silverfoxcloud/web-ui`
+- Footer runtime → central `SfSiteFooter`
+- Header/Footer profile styling → central Engineering profile
+- package graph → synchronized Alpha 4 package family
+- CI install → deterministic `npm ci`
 
-Phase 2 moves the following previously approved-local runtime into the central package:
-- Header state/markup shell;
-- Mega Menu interaction runtime;
-- Mobile Menu accordion/focus runtime;
-- Footer structural runtime.
+### COMPLIANT / PRESERVED
+- same-visible-URL locale architecture
+- EN/LTR and FA/RTL parity
+- typography-only Engineering Header wordmark
+- Inter/Shabnam Engineering typography profile
+- Persian human-facing numerals
+- technical identifiers/versions ASCII/LTR
+- Engineering click-only desktop disclosure
+- reduced-motion support
+- current 1240px Engineering shell
+- independent Persian copy
 
-Engineering continues to own:
-- navigation labels and route tree;
-- Engineering wordmark/content;
-- locale persistence state;
-- Technology Radar;
-- architecture/platform diagrams;
-- publication content.
+### ADAPTABLE / CONSUMER-OWNED
+- Engineering information architecture and navigation content
+- Technology Radar
+- platform/architecture diagrams
+- publications/build stories/ADRs
+- locale persistence state
+- technical product storytelling
 
-Alpha 2 was selected instead of Alpha 1 because pre-reference review found interaction-semantic differences around click-only disclosure and focus-open behavior. These were corrected centrally before M2 acceptance.
+### EXCEPTIONS
+**0 true exceptions.**
 
-No true design exception has been approved.
+### QA evidence
+- run #106: 401/401 PASS
+- run #107: 401/401 PASS after removal of superseded local Header/Footer CSS
+- run #107 artifact: `11264942111`
+- digest: `sha256:677d6fc3f4c2cf11d920e0826eef2ae2f728fc518b4b5f68d267e18e37323a22`
 
+### Visual parity
+Direct Phase 1 vs Alpha 4 artifact review confirmed that centralization preserved the approved Engineering Header/Footer grammar. Footer structural drift discovered in Alpha 2 was fixed upstream in Alpha 3, and remaining Footer typography/rhythm drift was fixed upstream in Alpha 4.
 
-## Phase 2 closure candidate
+### Remaining work
+No Phase 2 consumer blocker remains.
 
-Central target: `silverfox-web-design-system@1.2.0-alpha.3`
-
-Implemented centrally:
-- Header state and semantic shell;
-- Mega Menu runtime;
-- Mobile Menu accordion/focus runtime;
-- Footer structure;
-- profile-level hover/focus behavior.
-
-Engineering remains owner of:
-- navigation copy and routes;
-- Engineering wordmark;
-- Persian/English content;
-- Technology Radar and technical visuals;
-- locale persistence.
-
-Run #98 confirmed package install, TypeScript and static export, and identified two integration defects now remediated in the closure commit.
-
-### Closure acceptance
-
-This report becomes Phase 2 PASS when the latest PR #6 head Visual QA is SUCCESS. The latest-run rule avoids a documentation commit recursively creating a new required QA run.
-
-True exceptions: **0**.
-
-
-### Alpha 3 parity correction
-
-Phase 2 is not accepted from functional tests alone.
-Artifact comparison against the Phase 1 approved baseline found Footer composition drift in Alpha 2, so the central package was refined to preserve Engineering's first-column Footer identity layout.
-
-The final M2 evidence must therefore include both:
-- browser/interaction PASS;
-- representative Phase 1 vs Alpha 3 screenshot review.
+Ecosystem M2 becomes final after the fast-forwardable branch is integrated into `main` and mainline validation succeeds.

@@ -2,25 +2,31 @@
 
 ```mermaid
 gantt
-    title Silver Fox Engineering Phase 2
+    title Silver Fox Engineering Phase 2 — Completed
     dateFormat  YYYY-MM-DD
     axisFormat  %b %d
 
     section Foundation
     Phase docs                         :done, e20, 2026-10-02, 1d
-    web-ui package integration         :e21, after e20, 1d
+    web-ui package integration         :done, e21, after e20, 1d
 
     section Shared Components
-    Header + Mega Menu migration       :e22, after e21, 2d
-    Mobile Menu migration              :e23, after e22, 1d
-    Footer migration                   :e24, after e23, 1d
+    Header + Mega Menu migration       :done, e22, after e21, 1d
+    Mobile Menu migration              :done, e23, after e22, 1d
+    Footer migration                   :done, e24, after e23, 1d
+
+    section Refinement
+    Interaction semantics Alpha 2      :done, e25, 2026-10-02, 1d
+    Footer structure Alpha 3           :done, e26, 2026-10-02, 1d
+    Footer typography Alpha 4          :done, e27, 2026-10-02, 1d
 
     section Validation
-    Typecheck + static export          :e25, after e24, 1d
-    Browser/visual/RTL QA              :e26, after e25, 2d
+    Deterministic parity QA            :done, e28, 2026-10-03, 1d
+    Legacy CSS cleanup + QA            :done, e29, 2026-10-03, 1d
 
     section Close
-    Central refinement + reports       :e27, after e26, 2d
+    Engineering phase report           :done, e30, 2026-10-03, 1d
+    Main integration                   :milestone, e31, after e30, 0d
 ```
 
-Milestone evidence controls closure; dates are planning guidance.
+Milestone evidence, not calendar duration, is authoritative.

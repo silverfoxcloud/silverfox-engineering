@@ -1,6 +1,6 @@
 # Design Gap Analysis — Silver Fox Engineering
 
-Central version: `1.1.0-alpha.1`  
+Central version: `1.2.0-alpha.4`  
 Profile: `engineering`
 
 | Area | Current | Central target | Classification | Phase action |
@@ -38,3 +38,21 @@ Approved local patterns remain protected until a central replacement proves equa
 | Footer structure | local | central `SfSiteFooter` | MIGRATE | preserve Engineering content/external links |
 | Navigation routes | consumer-owned | consumer-owned | ADAPTABLE | language-neutral hrefs remain local |
 | Technology Radar/diagrams | local | local | ADAPTABLE | not centralized |
+
+
+## Phase 2 final disposition
+
+| Area | Final classification | Result |
+|---|---|---|
+| Header runtime | MIGRATED | central runtime + Engineering profile |
+| Mega Menu runtime | MIGRATED | central runtime; click-only Engineering profile preserved |
+| Mobile Menu runtime | MIGRATED | central accordion/focus/resize behavior |
+| Footer runtime | MIGRATED | central identity-column profile with parity-preserving type metrics |
+| Navigation routes/content | ADAPTABLE | remains consumer-owned |
+| 1240px Engineering shell | ADAPTABLE / PRESERVED | visual/geometry QA passed |
+| Technology Radar | ADAPTABLE | remains Engineering-owned |
+| Platform diagrams | ADAPTABLE | remains Engineering-owned |
+| Locale routing | COMPLIANT | no locale path segments |
+| True design exceptions | COMPLIANT | 0 |
+
+Phase 2 found no remaining shared-component gap that blocks Engineering reference status.

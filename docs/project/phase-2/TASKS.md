@@ -1,40 +1,57 @@
 # Phase 2 Tasks — Engineering
 
 ## Integration
-- [x] add `@silverfoxcloud/web-ui@1.2.0-alpha.3`;
-- [x] sync package-lock with real Alpha 2 registry metadata;
+- [x] consume `@silverfoxcloud/web-ui@1.2.0-alpha.4`;
+- [x] synchronize all central packages to `1.2.0-alpha.4`;
+- [x] synchronize package-lock with real registry metadata/integrity;
 - [x] add Next `transpilePackages`;
-- [x] import central web-ui styles.
+- [x] import central web-ui styles;
+- [x] restore deterministic `npm ci`.
 
-## Header
-- [x] convert Engineering groups to central navigation contract;
+## Header / Mega Menu / Mobile Menu
+- [x] convert Engineering groups to the central navigation contract;
 - [x] add Next Link adapter;
 - [x] preserve locale switch;
 - [x] preserve typography-only wordmark;
-- [x] migrate desktop menu behavior (pending browser QA);
-- [x] migrate mobile menu behavior (pending browser QA);
+- [x] preserve click-only Engineering desktop disclosure;
+- [x] centralize Escape/focus return;
+- [x] centralize mobile accordion;
+- [x] centralize mobile focus containment;
+- [x] centralize mobile→desktop state cleanup;
 - [x] remove superseded local Header state machine;
+- [x] remove superseded local Header CSS after parity proof.
 
 ## Footer
-- [x] convert footer columns to central contract;
+- [x] convert Footer columns to central contract;
 - [x] preserve Engineering external links/content;
-- [x] migrate Footer to central component (pending browser QA);
+- [x] preserve first-column identity layout through central profile;
+- [x] preserve approved Engineering Footer typography/rhythm;
 - [x] preserve Persian human-facing copyright digits;
+- [x] remove superseded local Footer CSS after parity proof.
 
 ## QA
-- [x] update central component selectors;
-- [x] package install — Actions package access resolved; Alpha 2 install PASS in run #98.
-- [x] typecheck — PASS in run #98; closure run must reconfirm.
-- [x] static export — PASS in run #98; closure run must reconfirm.
-- [ ] same-visible-URL locale — closure browser gate.
-- [ ] no `/en` or `/fa` routes — closure browser gate.
-- [ ] EN/LTR — closure browser gate.
-- [ ] FA/RTL — closure browser gate.
-- [ ] 320–1920 responsive matrix — closure browser gate.
-- [ ] keyboard/Escape/focus return + click-only desktop disclosure — closure browser gate.
-- [ ] mobile accordion + focus containment + desktop-breakpoint cleanup — closure browser gate.
-- [ ] reduced motion — closure browser gate.
-- [ ] screenshot/manual review — closure artifact.
+- [x] private GitHub Packages access;
+- [x] deterministic `npm ci`;
+- [x] TypeScript;
+- [x] static export;
+- [x] same-visible-URL locale;
+- [x] no `/en` or `/fa` routes;
+- [x] EN/LTR;
+- [x] FA/RTL;
+- [x] 320–1920 responsive matrix;
+- [x] Persian human-facing digits;
+- [x] technical versions remain ASCII/LTR;
+- [x] keyboard/Escape/focus return;
+- [x] click-only desktop disclosure;
+- [x] mobile accordion/focus containment;
+- [x] mobile→desktop cleanup;
+- [x] reduced motion;
+- [x] 200% reflow proxy;
+- [x] dedicated Header desktop geometry;
+- [x] dedicated Header compact geometry;
+- [x] dedicated Footer geometry;
+- [x] representative Phase 1 vs Alpha 4 artifact review;
+- [x] post-cleanup run #107 — 401/401 PASS.
 
 ## Documentation
 - [x] Business Model;
@@ -42,25 +59,18 @@
 - [x] Milestones;
 - [x] Gantt;
 - [x] Tasks;
-- [x] Gap Analysis update;
-- [ ] Compliance Report;
-- [ ] Phase 2 End Report.
+- [x] Gap Analysis;
+- [x] Compliance Report;
+- [x] Phase 2 End Report.
 
-
-## Current integration gate — 2026-10-02
-- Central `web-ui@1.2.0-alpha.3` is published successfully.
-- Engineering PR #6 attempts real GitHub Packages installation.
-- Current CI failure: `403 permission_denied: read_package` for `@silverfoxcloud/web-ui`.
-- Existing central tokens/fonts/locale package access remains valid.
-- No copied-source fallback is allowed.
-
-
-## Alpha 3 parity remediation
-- [x] inspect Phase 1 baseline artifact vs Phase 2 Alpha 2 artifact;
-- [x] classify Footer composition drift as a real parity issue;
-- [x] move Footer identity-layout choice into the central API;
-- [x] preserve Engineering Footer with `identityPlacement="column"`;
-- [x] fix compact-mobile typography wordmark visibility;
-- [x] fix hidden-link false negative in locale navigation QA;
-- [ ] run full Alpha 3 browser matrix;
-- [ ] compare final Alpha 3 representative screenshots to Phase 1 baseline.
+## Close
+- [x] Engineering E2-M0;
+- [x] Engineering E2-M1;
+- [x] Engineering E2-M2;
+- [x] Engineering E2-M3;
+- [x] Engineering E2-M4;
+- [x] Engineering E2-M5 on phase branch;
+- [ ] fast-forward branch into `main`;
+- [ ] mainline Visual QA;
+- [ ] mainline Pages/deployment validation;
+- [ ] mark ecosystem M2 achieved centrally.
