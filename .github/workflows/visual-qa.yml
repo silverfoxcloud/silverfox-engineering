@@ -31,21 +31,9 @@ jobs:
           scope: "@silverfoxcloud"
 
       - name: Install application dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Show central package lock entries
-        run: |
-          node - <<'NODE'
-          const lock = require('./package-lock.json');
-          const names = ['@silverfoxcloud/web-tokens','@silverfoxcloud/web-fonts','@silverfoxcloud/web-locale','@silverfoxcloud/web-ui'];
-          const out = {
-            root: Object.fromEntries(Object.entries(lock.packages[''].dependencies || {}).filter(([k]) => names.includes(k))),
-            packages: Object.fromEntries(Object.entries(lock.packages).filter(([k]) => names.some((n) => k.endsWith('node_modules/' + n))))
-          };
-          console.log('CENTRAL_LOCK_ENTRIES=' + JSON.stringify(out));
-          NODE
 
       - name: Install pinned Playwright runtime
         run: |

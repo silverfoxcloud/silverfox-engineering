@@ -241,6 +241,73 @@ test("Persian human indices use Persian digits while technical versions stay ASC
   await expect(page.locator(".packageVersion").first()).toHaveText(/^[0-9]/);
 });
 
+test("central Header preserves approved Engineering geometry", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const header = page.locator('[data-sf-component="site-header"]');
+  const brand = header.locator(".brandText");
+  const nav = header.locator(".sf-header-nav");
+  const locale = header.locator(".langSwitch");
+  const mobile = header.locator(".sf-header-mobile-trigger");
+  const shell = header.locator(".sf-header-bar");
+
+  await expect(header).toBeVisible();
+  await expect(brand).toBeVisible();
+  await expect(nav).toBeVisible();
+  await expect(locale).toBeVisible();
+  await expect(mobile).toBeHidden();
+
+  const headerBox = await header.boundingBox();
+  const shellBox = await shell.boundingBox();
+  expect(headerBox).not.toBeNull();
+  expect(shellBox).not.toBeNull();
+  expect(Math.round(headerBox.height)).toBe(72);
+  expect(Math.round(shellBox.width)).toBe(1240);
+  expect(Math.round(shellBox.x)).toBe(100);
+
+  await header.screenshot({ path: testInfo.outputPath("parity-header-en-1440.png") });
+});
+
+test("central compact Header preserves mobile wordmark and geometry", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const header = page.locator('[data-sf-component="site-header"]');
+  await expect(header.locator(".brandText")).toBeVisible();
+  await expect(header.locator(".sf-header-nav")).toBeHidden();
+  await expect(header.locator(".sf-header-mobile-trigger")).toBeVisible();
+
+  const headerBox = await header.boundingBox();
+  expect(headerBox).not.toBeNull();
+  expect(Math.round(headerBox.height)).toBe(64);
+
+  await header.screenshot({ path: testInfo.outputPath("parity-header-en-390.png") });
+});
+
+test("central Footer preserves approved Engineering geometry", async ({ page }, testInfo) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await seedLocale(page, "en");
+  await page.goto(baseURL + "/", { waitUntil: "domcontentloaded" });
+
+  const footer = page.locator('[data-sf-component="site-footer"]');
+  await footer.scrollIntoViewIfNeeded();
+  await expect(footer).toBeVisible();
+
+  const columns = footer.locator(".sf-footer-columns");
+  await expect(columns).toHaveAttribute("data-identity-placement", "column");
+  await expect(columns.locator(".sf-footer-identity-column")).toHaveCount(1);
+  await expect(columns.locator(".sf-footer-column")).toHaveCount(4);
+
+  const shellBox = await columns.boundingBox();
+  expect(shellBox).not.toBeNull();
+  expect(Math.round(shellBox.width)).toBe(1240);
+
+  await footer.screenshot({ path: testInfo.outputPath("parity-footer-en-1440.png") });
+});
+
 test("engineering desktop disclosure stays click-only", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await seedLocale(page, "en");
